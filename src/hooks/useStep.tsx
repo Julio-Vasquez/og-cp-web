@@ -1,6 +1,8 @@
+import { FC } from 'react'
 import { useState } from 'react'
 
-const useStep = ({ steps }) => {
+type props = { steps: { component: any } }
+const useStep: FC<props> = ({ steps }) => {
   const [currentStep, setCurrentStep] = useState(0)
 
   const isLastStep = currentStep === steps.length - 1

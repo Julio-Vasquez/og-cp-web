@@ -1,6 +1,6 @@
 import { combineReducers, AnyAction } from '@reduxjs/toolkit'
 
-import authReducer from './../services/Auth/authSlice'
+import authReducer from './../services/Auth/auth-slice'
 
 export const appReducer = combineReducers({
   Auth: authReducer,

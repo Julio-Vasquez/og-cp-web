@@ -1,3 +1,2 @@
-const App = () => <div>App</div>
-
+const App = () => <div></div>
 export default App
