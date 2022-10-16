@@ -1,0 +1,7 @@
+import { Query, Mutation } from './core'
+import { Methods } from './../../utils/api.util'
+
+const login = (body: Object) =>
+    Mutation({ method: Methods.post, url: 'auth/login', body })
+
+export default { login }

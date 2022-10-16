@@ -1,30 +1,35 @@
-import { FC } from 'react'
-import { useState } from 'react'
+import { useState, ReactElement } from 'react'
 
-type props = { steps: { component: any } }
-const useStep: FC<props> = ({ steps }) => {
-  const [currentStep, setCurrentStep] = useState(0)
+type props = { steps: [{ component: ReactElement; key: number; title: string }] }
 
-  const isLastStep = currentStep === steps.length - 1
+export const useStep = ({ steps }: props) => {
+    const [currentStep, setCurrentStep] = useState(0)
 
-  const isFirstStep = currentStep === 0
+    const isLastStep = currentStep === steps.length - 1
 
-  const next = () => {
-    setCurrentStep(current => (!isLastStep ? current + 1 : current))
-  }
+    const isFirstStep = currentStep === 0
 
-  const prev = () => {
-    setCurrentStep(current => (!isFirstStep ? current - 1 : current))
-  }
+    const next = () => {
+        setCurrentStep(current => (!isLastStep ? current + 1 : current))
+    }
 
-  return {
-    next,
-    prev,
-    isFirstStep,
-    isLastStep,
-    current: currentStep,
-    content: steps[currentStep].component,
-  }
+    const prev = () => {
+        setCurrentStep(current => (!isFirstStep ? current - 1 : current))
+    }
+
+    const resetStep = () => {
+        setCurrentStep(0)
+    }
+
+    return {
+        next,
+        prev,
+        resetStep,
+        isFirstStep,
+        isLastStep,
+        current: currentStep,
+        content: steps[currentStep].component,
+    }
 }
 
 export default useStep
