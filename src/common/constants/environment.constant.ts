@@ -1,6 +1,4 @@
-export const JWT_KEY = '&%@#*/IPA-PC-GO-KEY/*#@%&'
-
-export const COLOR_KEY = '@color-mode'
+export const JWT_KEY = '&%@#**/IPA-PC-GO-KEY/**#@%&'
 
 export const MAX_TIME_FETCH = 28000 // milisecons
 

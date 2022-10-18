@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { errorNotification } from '../../utils/notification.action'
 
 import { mutationType, state, func } from './types'
 
@@ -20,7 +21,7 @@ export const useMutation = <T>(
             if (onCompleted) onCompleted({ data, variables })
             return data
         } catch (error: any) {
-            if (!cancelError) console.log({ message: error, status: 'error' })
+            if (!cancelError) errorNotification(error)
             setReq({ loading: false })
             if (onError) onError(error)
             return undefined

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -10,76 +10,78 @@ import astronaut from './../../assets/img/404/astronaut.svg'
 import logo from './../../assets/img/404/logo.svg'
 
 import './Error404.scss'
+
 type Error404Props = {
-  redirect: string
-  title: string
+    redirect: string
+    title: string
 }
-export const Error404 = ({ redirect, title }: Error404Props) => {
-  return (
-    <div className="bg-purple">
-      <div className="stars">
-        <div className="custom-navbar">
-          <div className="brand-logo">
-            <img src={logo} width="80px" alt="the logo" />
-          </div>
+
+export const Error404: FC<Error404Props> = ({ redirect, title }) => {
+    return (
+        <div className='bg-purple'>
+            <div className='stars'>
+                <div className='custom-navbar'>
+                    <div className='brand-logo'>
+                        <img src={logo} width='80px' alt='the logo' />
+                    </div>
+                </div>
+                <div className='central-body'>
+                    <img
+                        className='image-404'
+                        src={error404}
+                        width='300px'
+                        alt='text 404'
+                    />
+                    <a className='btn-go-home'>GO BACK HOME</a>
+                </div>
+                <div className='object'>
+                    <img
+                        className='object_rocket'
+                        src={rocket}
+                        width='40px'
+                        alt='cohete'
+                    />
+                    <div className='earth-moon'>
+                        <img
+                            className='object_earth'
+                            src={earth}
+                            width='100px'
+                            alt='planeta tierra'
+                        />
+                        <img
+                            className='object_moon'
+                            src={moon}
+                            width='80px'
+                            alt='la luna'
+                        />
+                    </div>
+                    <div className='box_astronaut'>
+                        <img
+                            className='object_astronaut'
+                            src={astronaut}
+                            width='140px'
+                            alt='astronauta'
+                        />
+                    </div>
+                </div>
+                <div className='glowing_stars'>
+                    <div className='star'></div>
+                    <div className='star'></div>
+                    <div className='star'></div>
+                    <div className='star'></div>
+                    <div className='star'></div>
+                </div>
+            </div>
         </div>
-        <div className="central-body">
-          <img
-            className="image-404"
-            src={error404}
-            width="300px"
-            alt="text 404"
-          />
-          <a className="btn-go-home">GO BACK HOME</a>
-        </div>
-        <div className="object">
-          <img
-            className="object_rocket"
-            src={rocket}
-            width="40px"
-            alt="cohete"
-          />
-          <div className="earth-moon">
-            <img
-              className="object_earth"
-              src={earth}
-              width="100px"
-              alt="planeta tierra"
-            />
-            <img
-              className="object_moon"
-              src={moon}
-              width="80px"
-              alt="la luna"
-            />
-          </div>
-          <div className="box_astronaut">
-            <img
-              className="object_astronaut"
-              src={astronaut}
-              width="140px"
-              alt="astronauta"
-            />
-          </div>
-        </div>
-        <div className="glowing_stars">
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 Error404.propTypes = {
-  redirect: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+    redirect: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
 Error404.defaultProps = {
-  redirect: '/',
-  title: 'Error404',
+    redirect: '/',
+    title: 'Error404',
 }
