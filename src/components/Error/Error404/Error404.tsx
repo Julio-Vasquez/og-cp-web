@@ -1,20 +1,15 @@
 import { FC } from 'react'
 
-import PropTypes from 'prop-types'
+import { Error404Props, Error404DefaultProps, Error404PropTypes } from './error.types'
 
-import error404 from './../../assets/img/404/404.svg'
-import rocket from './../../assets/img/404/rocket.svg'
-import earth from './../../assets/img/404/earth.svg'
-import moon from './../../assets/img/404/moon.svg'
-import astronaut from './../../assets/img/404/astronaut.svg'
-import logo from './../../assets/img/404/logo.svg'
+import moon from './../../../assets/img/404/moon.svg'
+import logo from './../../../assets/img/404/logo.svg'
+import earth from './../../../assets/img/404/earth.svg'
+import error404 from './../../../assets/img/404/404.svg'
+import rocket from './../../../assets/img/404/rocket.svg'
+import astronaut from './../../../assets/img/404/astronaut.svg'
 
 import './Error404.scss'
-
-type Error404Props = {
-    redirect: string
-    title: string
-}
 
 export const Error404: FC<Error404Props> = ({ redirect, title }) => {
     return (
@@ -76,12 +71,8 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
     )
 }
 
-Error404.propTypes = {
-    redirect: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-}
+Error404.propTypes = Error404PropTypes
 
-Error404.defaultProps = {
-    redirect: '/',
-    title: 'Error404',
-}
+Error404.defaultProps = Error404DefaultProps
+
+export default Error404

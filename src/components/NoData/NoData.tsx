@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Col } from 'antd'
 
-import { NoDataProps, NoDataPropTypes } from './NoData.types'
+import { NoDataProps, NoDataPropTypes } from './no-data.types'
 
 import styles from './NoData.module.scss'
 

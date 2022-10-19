@@ -1,6 +1,6 @@
 export const JWT_KEY = import.meta.env.VITE_JWT_KEY
 
-export const MAX_TIME_FETCH = import.meta.env.VITE_MAX_TIME_FETCH // milisecons
+export const MAX_TIME_FETCH = +import.meta.env.VITE_MAX_TIME_FETCH // milisecons
 
 export const URL_API = import.meta.env.VITE_BASE_URL
 

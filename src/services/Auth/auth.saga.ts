@@ -2,8 +2,8 @@ import { put, takeLatest, all } from 'redux-saga/effects'
 
 import api from './../../common/api'
 import { loginAction } from './auth.types'
-import { IResponse } from '../../utils/api.util'
-import { clearData, SaveItem } from '../../common/storage'
+import { IResponse } from '../../utils/api/api.util'
+import { ClearData, SaveItem } from '../../common/storage'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 
 function* fetchLogin({ payload }: loginAction) {
@@ -26,7 +26,7 @@ function* fetchLogin({ payload }: loginAction) {
     }
 }
 
-const handleLogout = () => clearData()
+const handleLogout = () => ClearData()
 
 function* ActionWatcher() {
     yield takeLatest(login, fetchLogin)

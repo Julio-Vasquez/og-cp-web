@@ -1,4 +1,4 @@
-import { errorMessage } from '../message.action'
+import { errorMessage } from '../notifications/message.action'
 
 const requiredField = ({ field = 'Field' } = {}) => ({
     required: true,

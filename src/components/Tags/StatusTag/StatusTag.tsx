@@ -1,24 +1,34 @@
 import { Tag } from 'antd'
 
+import { useIntl } from './../../../hooks/useIntl'
+
 import {
     StatusTagPropTypes,
     StatusTagProps,
     DefaultStatusTagPropTypes,
 } from './status.type'
 
-const STATUS = {
-    active: { text: '', key: '1', color: '' },
-    inactive: { text: '', key: '2', color: '' },
-    pending: { text: '', key: '3', color: '' },
+type StatusType = {
+    key: string
+    color: string
+    text: string
 }
 
+const STATUS: StatusType[] = [
+    { text: 'active', key: '1', color: '' },
+    { text: 'inactive', key: '2', color: '' },
+    { text: 'pending', key: '3', color: '' },
+]
+
 const StatusTag = ({ status }: StatusTagProps) => {
-    const statusValue = STATUS[status]
+    const { formatMessage } = useIntl()
+
+    const statusValue = STATUS.find(ele => ele.text === status)
 
     return !!statusValue ? (
         <Tag color={statusValue.color}>{statusValue.text}</Tag>
     ) : (
-        <Tag color='red'>No Defined</Tag>
+        <Tag color='red'>{formatMessage({ id: 'noData' })}</Tag>
     )
 }
 

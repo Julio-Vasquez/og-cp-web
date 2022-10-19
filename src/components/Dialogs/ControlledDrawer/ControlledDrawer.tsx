@@ -1,42 +1,39 @@
-import { cloneElement } from 'react'
 import { Drawer } from 'antd'
+import { cloneElement, FC } from 'react'
 
-const ControlledDrawer = ({
-  visibleState,
-  children,
-  destroyOnClose,
-  width,
-  placement,
-  closable,
-  title,
-  ...props
+import {
+    ControlledDrawerDefaultProps,
+    ControlledDrawerProps,
+    ControlledDrawerPropTypes,
+} from './drawer.types'
+
+const ControlledDrawer: FC<ControlledDrawerProps> = ({
+    visibleState,
+    children,
+    placement,
+    width,
+    destroyOnClose,
 }) => {
-  const { visible, closeDialog } = visibleState
+    const { visible, closeDialog } = visibleState
 
-  const newChildren = cloneElement(children || <></>, {
-    closeDialog,
-  })
+    const newChildren = cloneElement(children || <></>, {
+        closeDialog,
+    })
 
-  return (
-    <Drawer
-      visible={visible}
-      onClose={closeDialog}
-      destroyOnClose={destroyOnClose}
-      placement={placement}
-      closable={closable}
-      title={title}
-      contentWrapperStyle={{ width: '100%', maxWidth: width }}
-      {...props}
-    >
-      {newChildren}
-    </Drawer>
-  )
+    return (
+        <Drawer
+            open={visible}
+            destroyOnClose={destroyOnClose}
+            onClose={closeDialog}
+            width={width}
+            placement={placement}
+        >
+            {newChildren}
+        </Drawer>
+    )
 }
+ControlledDrawer.propTypes = ControlledDrawerPropTypes
 
-ControlledDrawer.defaultProps = {
-  placement: 'right',
-  width: 800,
-  closable: true,
-}
+ControlledDrawer.defaultProps = ControlledDrawerDefaultProps
 
 export default ControlledDrawer

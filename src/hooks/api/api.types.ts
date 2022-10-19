@@ -4,17 +4,15 @@ export type state = {
     data?: []
 }
 
-type baseHook = {
+export type mutationType = {
     cancelError?: boolean
     onCompleted: Function
     onError?: Function
 }
 
-type queryType<T> = Omit<baseHook, 'onCompleted'> & {
+export type queryType<T> = Omit<mutationType, 'onCompleted'> & {
     variables?: T
     cancelFirstEffect: Function
 }
 
-type func = { functionFetch: Function }
-
-export { baseHook as mutationType, queryType, func }
+export type func = { functionFetch: Function }

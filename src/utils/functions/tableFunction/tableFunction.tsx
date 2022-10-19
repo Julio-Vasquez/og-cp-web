@@ -5,7 +5,7 @@ import { FilterDropdownProps, Key } from 'antd/lib/table/interface'
 
 import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 
-import { props, tableConfig, filter, params } from './types'
+import { props, tableConfig, filter, params } from './table.types'
 
 const useColumnSearch = ({ dataIndex, title }: props) => {
     const inputRef = useRef<InputRef>(null)
@@ -50,9 +50,7 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
                     Search
                 </Button>
                 <Button
-                    onClick={() =>
-                        clearFilters && handleReset(clearFilters, confirm)
-                    }
+                    onClick={() => clearFilters && handleReset(clearFilters, confirm)}
                     size='small'
                     style={{ width: 90 }}
                 >
@@ -62,9 +60,7 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
             </div>
         ),
         filterIcon: (filtered: boolean) => (
-            <SearchOutlined
-                style={{ color: filtered ? 'var(--primary)' : undefined }}
-            />
+            <SearchOutlined style={{ color: filtered ? 'var(--primary)' : undefined }} />
         ),
         onFilter: (value: string, record: string[]): boolean =>
             record[dataIndex]
@@ -85,11 +81,7 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
     }
 }
 
-const getTableConfig = ({
-    recordKey,
-    scrollX = 'max-content',
-    pagSize,
-}: tableConfig) => {
+const getTableConfig = ({ recordKey, scrollX = 'max-content', pagSize }: tableConfig) => {
     let rowKey = (record: any) => record?._id
     const pagination = pagSize
         ? { pagination: { pageSize: pagSize } }

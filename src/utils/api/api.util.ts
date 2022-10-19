@@ -1,6 +1,6 @@
-import { query } from '../common/api/core/api.types'
-import { URL_API } from '../common/constants/environment.constant'
-import { RESPONSE_API } from '../common/constants/response.constant'
+import { query } from '../../common/api/core/api.types'
+import { URL_API } from '../../common/constants/environment.constant'
+import { RESPONSE_API } from '../../common/constants/response.constant'
 
 export const getHeader = (token: string | null) => {
     const exists = token !== null && { Authorization: `Bearer ${token}` }
@@ -17,9 +17,7 @@ export const getHeader = (token: string | null) => {
 export const getUrl = ({ url, params }: query): URL => {
     const _url = new URL(`${URL_API}/${url}`)
     if (params)
-        Object.keys(params).forEach(key =>
-            _url.searchParams.append(key, params[key])
-        )
+        Object.keys(params).forEach(key => _url.searchParams.append(key, params[key]))
     return _url
 }
 

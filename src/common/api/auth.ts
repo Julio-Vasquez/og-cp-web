@@ -1,5 +1,5 @@
 import { Query, Mutation } from './core'
-import { Methods } from './../../utils/api.util'
+import { Methods } from '../../utils/api/api.util'
 
 const login = (body: Object) =>
     Mutation({ method: Methods.post, url: 'auth/login', body })

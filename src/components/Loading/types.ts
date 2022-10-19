@@ -1,11 +1,11 @@
-import PropTypes, { InferProps } from 'prop-types'
+import propTypes from 'prop-types'
 
 export const LoadingPropTypes = {
-  message: PropTypes.string.isRequired,
+    message: propTypes.string.isRequired,
 }
 
 export const DefaultLoadingPropTypes = {
-  message: 'Cargando',
+    message: 'Cargando',
 }
 
-export type LoadingProps = InferProps<typeof LoadingPropTypes>
+export type LoadingProps = propTypes.InferProps<typeof LoadingPropTypes>
