@@ -1,37 +1,47 @@
-import { cloneElement } from 'react'
 import { Popover } from 'antd'
+import { cloneElement, FC } from 'react'
 
-const ControlledPopover = ({
+import {
+    ControlledPopoverDefaultTypes,
+    ControlledPopoverPropTypes,
+    ControlledPopoverProps,
+} from './popover.types'
+
+const ControlledPopover: FC<ControlledPopoverProps> = ({
     visibleState,
     children,
     destroyOnClose,
     title,
     content,
     placement,
-    ...props
+    inheritCloseToChildren,
 }) => {
+    const newPlacement: any = placement
     const { visible, closeDialog } = visibleState
 
-    const newContent = cloneElement(content || <></>, { closeDialog })
+    const newContent = inheritCloseToChildren
+        ? cloneElement(content || <></>, { closeDialog })
+        : content
 
-    const onVisibleChange = visible => !visible && closeDialog()
+    const onVisibleChange = (currVisible: boolean) => !currVisible && closeDialog()
 
     return (
         <Popover
-            visible={visible}
+            open={visible}
             content={newContent}
             title={title}
             destroyTooltipOnHide={destroyOnClose}
-            onVisibleChange={onVisibleChange}
-            placement={placement}
+            onOpenChange={onVisibleChange}
+            placement={newPlacement}
             trigger='click'
-            {...props}
         >
             {children}
         </Popover>
     )
 }
 
-ControlledPopover.defaultProps = {}
+ControlledPopover.propTypes = ControlledPopoverPropTypes
+
+ControlledPopover.defaultProps = ControlledPopoverDefaultTypes
 
 export default ControlledPopover

@@ -1,52 +1,42 @@
-import { cloneElement } from 'react'
 import { Modal } from 'antd'
+import { cloneElement, FC } from 'react'
 
-const ControlledModal = ({
-  visibleState,
-  children,
-  destroyOnClose,
-  width,
-  closable,
-  centered,
-  title,
-  footer,
-  notCancelable,
-  inheritCloseToChildren,
-  ...props
+import { ControlledModalDefaultProps, ControlledModalProps } from './modal.types'
+import { ControlledDrawerPropTypes } from '../ControlledDrawer/drawer.types'
+
+const ControlledModal: FC<ControlledModalProps> = ({
+    visibleState,
+    children,
+    destroyOnClose,
+    width,
+    centered,
+    title,
+    footer,
+    inheritCloseToChildren,
 }) => {
-  const { visible, closeDialog } = visibleState
+    const { visible, closeDialog } = visibleState
 
-  const newChildren = inheritCloseToChildren
-    ? cloneElement(children || <></>, {
-        closeDialog,
-      })
-    : children
+    const newChildren = inheritCloseToChildren
+        ? cloneElement(children || <></>, { closeDialog })
+        : children
 
-  const onCancel = notCancelable ? () => {} : closeDialog
-
-  return (
-    <Modal
-      visible={visible}
-      onCancel={onCancel}
-      destroyOnClose={destroyOnClose}
-      closable={closable}
-      centered={centered}
-      title={title}
-      width='95%'
-      style={{ maxWidth: width }}
-      footer={footer}
-      {...props}
-    >
-      {newChildren}
-    </Modal>
-  )
+    return (
+        <Modal
+            open={visible}
+            onCancel={closeDialog}
+            destroyOnClose={destroyOnClose}
+            centered={centered}
+            title={title}
+            width={width}
+            footer={footer}
+        >
+            {newChildren}
+        </Modal>
+    )
 }
 
-ControlledModal.defaultProps = {
-  centered: true,
-  width: 420,
-  footer: null,
-  inheritCloseToChildren: true,
-}
+ControlledModal.propTypes = ControlledDrawerPropTypes
+
+ControlledModal.defaultProps = ControlledModalDefaultProps
 
 export default ControlledModal

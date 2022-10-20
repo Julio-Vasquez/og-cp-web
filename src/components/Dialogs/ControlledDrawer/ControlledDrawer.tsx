@@ -14,6 +14,7 @@ const ControlledDrawer: FC<ControlledDrawerProps> = ({
     width,
     destroyOnClose,
 }) => {
+    const newPlacement: any = placement
     const { visible, closeDialog } = visibleState
 
     const newChildren = cloneElement(children || <></>, {
@@ -26,7 +27,7 @@ const ControlledDrawer: FC<ControlledDrawerProps> = ({
             destroyOnClose={destroyOnClose}
             onClose={closeDialog}
             width={width}
-            placement={placement}
+            placement={newPlacement}
         >
             {newChildren}
         </Drawer>
