@@ -5,7 +5,11 @@ const App = () => {
     const onCompleted = ({ data }: { data: string }) => {}
     const { execFunction: loginFetch } = loginService({ onCompleted })
 
-    return <Error404 title='el perez' redirect='home' />
+    return (
+        <>
+            <Error404 title='el perez' redirect='home' />
+        </>
+    )
 }
 
 export default App
