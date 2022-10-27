@@ -1,14 +1,21 @@
-import { Error404 } from '../components/Error/Error404'
-import { loginService } from '../services/Auth/auth.service'
+import { FC } from 'react'
+import { Provider } from 'react-redux'
+import { I18nextProvider } from 'react-i18next'
 
-const App = () => {
-    const onCompleted = ({ data }: { data: string }) => {}
-    const { execFunction: loginFetch } = loginService({ onCompleted })
+import { useIntl } from './../hooks/useIntl'
+
+import store from '../store'
+import i18n from '../i18n/config'
+
+const App: FC = () => {
+    const { formatMessage } = useIntl()
 
     return (
-        <>
-            <Error404 title='el perez' redirect='home' />
-        </>
+        <Provider store={store}>
+            <I18nextProvider i18n={i18n}>
+                <p>{formatMessage({ id: 'button.login' })}</p>
+            </I18nextProvider>
+        </Provider>
     )
 }
 
