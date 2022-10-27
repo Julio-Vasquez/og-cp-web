@@ -9,7 +9,7 @@ const Login = lazy(() => import('../views/Public/Login'))
 export const PublicRoutes = () => {
     return (
         <BrowserRouter>
-            <Suspense fallback={<Loading message='Cargando' />}>
+            <Suspense fallback={<Loading message='loading' />}>
                 <Routes>
                     <Route path='/' element={<Login />} />
                     <Route path='/login' element={<Login />} />
