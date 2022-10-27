@@ -1,15 +1,15 @@
-import { Error404 } from '../components/Error/Error404'
-import { loginService } from '../services/Auth/auth.service'
+import { useState } from "react";
+import RoutePrivate from "./Private/RoutePrivate";
+import RoutePublic from "./Public/RoutePublic";
 
 const App = () => {
-    const onCompleted = ({ data }: { data: string }) => {}
-    const { execFunction: loginFetch } = loginService({ onCompleted })
+  const [user, setUser] = useState(null);
 
-    return (
-        <>
-            <Error404 title='el perez' redirect='home' />
-        </>
-    )
-}
+  return (
+    <div>
+      {!user ? <RoutePublic /> : <RoutePrivate />}
+    </div>
+  );
+};
 
-export default App
+export default App;
