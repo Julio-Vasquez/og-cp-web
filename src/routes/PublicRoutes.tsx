@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Loading } from './../components/Loading'
 
 const Error404 = lazy(() => import('./../components/Error/Error404'))
-const Login = lazy(() => import('../views/Public/Login'))
+const Login = lazy(() => import('../Views/Public/Login'))
 
 export const PublicRoutes = () => {
     return (
