@@ -1,9 +1,9 @@
-import store from '../../../store'
-import { GetItem } from '../../storage'
+import store from '../../store'
+import { GetItem } from '../../utils/storage'
 import { mutation, query } from './api.types'
-import { getHeader, getUrl } from '../../../utils/api/api.util'
-import { logout } from '../../../services/Auth/auth.slice'
-import { MAX_TIME_FETCH } from '../../constants/environment.constant'
+import { getHeader, getUrl } from '../../utils/api/api.util'
+import { logout } from '../../services/Auth/auth.slice'
+import { MAX_TIME_FETCH } from '../../utils/constants/environment.constant'
 
 const Query = async ({ url, params }: query) => {
     const newUrl = getUrl({ url, params })

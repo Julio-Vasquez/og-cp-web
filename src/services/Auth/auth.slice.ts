@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { TokenIsValid } from '../../common/storage'
-import { AUTH } from '../../common/constants/redux.constants'
+import { TokenIsValid } from '../../utils/storage'
+import { AUTH } from '../../utils/constants/redux.constants'
 import { loginAction, loginFailedType, loginSuccessType, state } from './auth.types'
 
 export const initialState: state = {

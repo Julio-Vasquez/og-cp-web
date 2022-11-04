@@ -1,9 +1,9 @@
 import { put, takeLatest, all } from 'redux-saga/effects'
 
-import api from './../../common/api'
+import api from '../../api'
 import { loginAction } from './auth.types'
 import { IResponse } from '../../utils/api/api.util'
-import { ClearData, SaveItem } from '../../common/storage'
+import { ClearData, SaveItem } from '../../utils/storage'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 
 function* fetchLogin({ payload }: loginAction) {
