@@ -2,11 +2,10 @@ import { lazy, Suspense, FC } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { Loading } from './../components/Loading'
-
-const Home = lazy(() => import('../Views/Public/Home/Home'))
-const Login = lazy(() => import('../Views/Public/Login/Login'))
+const Home = lazy(() => import('../Views/Public/Home'))
+const Login = lazy(() => import('../Views/Public/Login'))
+const Register = lazy(() => import('../Views/Public/Register/'))
 const Error404 = lazy(() => import('./../components/Error/Error404'))
-const Register = lazy(() => import('../Views/Public/Register/Register'))
 
 export const PublicRoutes: FC = () => {
     return (

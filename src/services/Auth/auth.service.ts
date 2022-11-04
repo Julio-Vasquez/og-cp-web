@@ -1,4 +1,4 @@
-import api from '../../common/api'
+import api from '../../api'
 import { loginType } from './auth.types'
 import { useMutation } from '../../hooks/api'
 

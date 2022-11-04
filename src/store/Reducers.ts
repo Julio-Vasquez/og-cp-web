@@ -1,6 +1,6 @@
 import { combineReducers, AnyAction } from '@reduxjs/toolkit'
 
-import { AUTH } from '../common/constants/redux.constants'
+import { AUTH } from '../utils/constants/redux.constants'
 
 import authReducer, {
     initialState as initialStateAuth,
