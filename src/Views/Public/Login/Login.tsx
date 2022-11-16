@@ -1,9 +1,18 @@
 import { FC } from 'react'
-import { Button, Form, Input, Divider } from 'antd'
-import { LockOutlined, UserOutlined, StarOutlined } from '@ant-design/icons'
+import { Button, Form, Input } from 'antd'
+import {
+    LockOutlined,
+    UserOutlined,
+    StarOutlined,
+    LoginOutlined,
+} from '@ant-design/icons'
+
 import { LoginDefaultProps, LoginProps, LoginPropTypes } from './login.types'
 
+import JImg from './../../../assets/img/publicBackground.jpg'
+
 import './Login.scss'
+
 export const Login: FC<LoginProps> = ({ description }) => {
     const onFinish = (values: any) => {
         console.log('Success:', values)
@@ -13,13 +22,12 @@ export const Login: FC<LoginProps> = ({ description }) => {
         console.log('Failed:', errorInfo)
     }
     return (
-        <div className='main'>
-            <div className='main_container'>
-                <img
-                    src='https://images.pexels.com/photos/8123784/pexels-photo-8123784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                    alt='image'
-                />
+        <div className='Login'>
+            <div className='Login__container'>
+                <img src={JImg} alt='image' />
+
                 <Form
+                    className='Login__container--form'
                     name='normal_login'
                     labelCol={{ span: 10 }}
                     wrapperCol={{ span: 6 }}
@@ -29,15 +37,18 @@ export const Login: FC<LoginProps> = ({ description }) => {
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <Form.Item wrapperCol={{ offset: 0 }}>
-                        <h1>Login</h1>
-                    </Form.Item>
-                    <Divider>
-                        <StarOutlined />
-                    </Divider>
+                    <LoginOutlined className='Login__container--form-icon' />
+
+                    <div className='div'>
+                        <div className='div__line'></div>
+                        <div className='div__legend'>
+                            <StarOutlined />
+                        </div>
+                        <div className='div__line'></div>
+                    </div>
+                    <h2>Sign in</h2>
 
                     <Form.Item
-                        className='main_formItem'
                         name='username'
                         rules={[
                             {
@@ -46,6 +57,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
+                        className='Login__container--form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -54,7 +66,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                     </Form.Item>
 
                     <Form.Item
-                        className='main_formItem'
+                        className='Login__container--form-item'
                         name='password'
                         rules={[
                             {
