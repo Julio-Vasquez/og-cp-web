@@ -1,9 +1,13 @@
 import {FC} from "react"
 import { RegisterDefaultProps,RegisterPropTypes,RegisterProps } from "./register.types"
 
+
+import './SignUp.scss'
 export const Register: FC<RegisterProps> = () =>{
     return (
-        <h1>Register</h1>
+        <div className="signUp">
+            
+        </div>
     )
 }
 
