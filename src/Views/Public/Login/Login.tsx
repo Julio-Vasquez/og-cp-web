@@ -94,11 +94,11 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         </Button>
                     </Item>
 
-                    <Link
-                        className='login__container__form__link '
-                        to='/forgot-password'
-                    >
+                    <Link className='login__container__form__link ' to='/'>
                         Forgot password
+                    </Link>
+                    <Link className='login__container__form__link ' to='/register'>
+                        Register
                     </Link>
                 </Form>
             </div>

@@ -8,6 +8,8 @@ import {
     RegisterProps,
 } from './register.types'
 
+import { Link } from 'react-router-dom'
+
 import JImg from './../../../assets/img/publicBackground.jpg'
 
 import './Register.scss'
@@ -23,12 +25,12 @@ export const Register: FC<RegisterProps> = () => {
         console.log('Failed:', errorInfo)
     }
     return (
-        <div className='Register'>
-            <div className='Register__container'>
+        <div className='register'>
+            <div className='register__container'>
                 <img src={JImg} alt='image' />
 
                 <Form
-                    className='Register__container__form'
+                    className='register__container__form'
                     name='normal_Register'
                     labelCol={{ span: 10 }}
                     wrapperCol={{ span: 6 }}
@@ -38,7 +40,7 @@ export const Register: FC<RegisterProps> = () => {
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <UserAddOutlined className='Register__container__form-icon' />
+                    <UserAddOutlined className='register__container__form-icon' />
                     <div className='start'>
                         <div className='start__line'></div>
                         <div className='start__legend'>
@@ -57,7 +59,7 @@ export const Register: FC<RegisterProps> = () => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='Register__container__form-item'
+                        className='register__container__form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -73,7 +75,7 @@ export const Register: FC<RegisterProps> = () => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='Register__container__form-item'
+                        className='register__container__form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -89,7 +91,7 @@ export const Register: FC<RegisterProps> = () => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='Register__container__form-item'
+                        className='register__container__form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -105,7 +107,7 @@ export const Register: FC<RegisterProps> = () => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='Register__container__form-item'
+                        className='register__container__form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -121,7 +123,7 @@ export const Register: FC<RegisterProps> = () => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='Register__container__form-item'
+                        className='register__container__form-item'
                     >
                         <Input
                             prefix={<UserOutlined className='site-form-item-icon' />}
@@ -135,9 +137,9 @@ export const Register: FC<RegisterProps> = () => {
                         </Button>
                     </Item>
 
-                    <a className='Register-form-forgot' href=''>
-                        Forgot password
-                    </a>
+                    <Link className='register__container__form__link ' to='/login'>
+                        Login
+                    </Link>
                 </Form>
             </div>
         </div>
