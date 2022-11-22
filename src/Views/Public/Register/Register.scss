@@ -1,3 +1,85 @@
-.signUp{
-    background-color: aqua;
+.Register {
+    background-image: url('./../../../assets/img/publicBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+
+    &__container {
+        display: flex;
+        border-radius: 20px;
+        width: 1095px;
+        height: 700px;
+        color: white;
+        border: solid transparent;
+
+        &__form {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 550px;
+            height: 700px;
+            padding: 30px 0 0 0;
+            border-radius: 0px 20px 20px 0;
+            align-items: center;
+
+            &-icon {
+                font-size: 50px;
+                color: rgba(0, 0, 0, 0.849);
+                margin: 20px;
+            }
+
+            .start {
+                width: 400px;
+                margin: 20px 0 20px 0;
+                &__line {
+                    margin: 0 50px;
+                    width: 90px;
+                    border-top: 1px solid #999;
+                    position: relative;
+                    top: 10px;
+                    float: left;
+                    color: #6744c6;
+                }
+                &__legend {
+                    color: #6744c6;
+                    font-weight: bold;
+                    float: left;
+                }
+            }
+
+            &-item {
+                border-radius: 25px;
+                width: 80%;
+                Input {
+                    border: solid black;
+                    border-radius: 25px;
+                }
+            }
+            h2 {
+                font-size: 32px;
+                color: black;
+                margin: 0 0 20px 0;
+            }
+
+            Button {
+                border-radius: 15px;
+                border-color: transparent;
+                width: 424px;
+                margin: 20px 0 20px 0;
+                background-color: #6744c6;
+            }
+        }
+
+        img {
+            width: 550px;
+            height: 700px;
+            border-radius: 20px 0px 0px 20px;
+        }
+    }
 }

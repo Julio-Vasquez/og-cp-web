@@ -1,8 +1,10 @@
-.Login {
-    background-image: url('./../../../assets/img/publicBackground.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.login {
+    background: {
+        image: url('./../../../assets/img/publicBackground.jpg');
+        repeat: 'no-repeat';
+        size: cover;
+        position: center;
+    }
     width: 100%;
     height: 100%;
     display: flex;
@@ -16,9 +18,9 @@
         width: 1095px;
         height: 700px;
         color: white;
-        border: solid transparent;
+        border: transparent;
 
-        &--form {
+        &__form {
             background-color: white;
             display: flex;
             flex-direction: column;
@@ -28,16 +30,16 @@
             border-radius: 0px 20px 20px 0;
             align-items: center;
 
-            &-icon {
+            &__icon {
                 font-size: 50px;
                 color: rgba(0, 0, 0, 0.849);
                 margin: 20px;
             }
 
-            .div {
+            .start {
                 width: 400px;
                 margin: 20px 0 20px 0;
-                &__line {
+                &__lines {
                     margin: 0 50px;
                     width: 90px;
                     border-top: 1px solid #999;
@@ -53,11 +55,10 @@
                 }
             }
 
-            &-item {
+            &__item {
                 border-radius: 25px;
                 width: 80%;
                 Input {
-                    border: solid black;
                     border-radius: 25px;
                 }
             }
@@ -68,8 +69,10 @@
             }
 
             Button {
-                border-radius: 15px;
-                border-color: transparent;
+                border : {
+                    radius: 15px;
+                    color: transparent;
+                }
                 width: 424px;
                 margin: 20px 0 20px 0;
                 background-color: #6744c6;
