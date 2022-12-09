@@ -1,9 +1,9 @@
-import { useState, ReactElement } from 'react'
+import { useState } from 'react'
 
-type props = { steps: [{ component: ReactElement; key: number; title: string }] }
+import { StepReturnType, StepType } from './useStep.types'
 
-export const useStep = ({ steps }: props) => {
-    const [currentStep, setCurrentStep] = useState(0)
+export const useStep = (steps: StepType[]): StepReturnType => {
+    const [currentStep, setCurrentStep] = useState<number>(0)
 
     const isLastStep = currentStep === steps.length - 1
 
@@ -13,21 +13,21 @@ export const useStep = ({ steps }: props) => {
         setCurrentStep(current => (!isLastStep ? current + 1 : current))
     }
 
-    const prev = () => {
+    const previous = () => {
         setCurrentStep(current => (!isFirstStep ? current - 1 : current))
     }
 
-    const resetStep = () => {
+    const resetSteps = () => {
         setCurrentStep(0)
     }
 
     return {
         next,
-        prev,
-        resetStep,
+        previous,
+        resetSteps,
         isFirstStep,
         isLastStep,
-        current: currentStep,
+        currentStep,
         content: steps[currentStep].component,
     }
 }
