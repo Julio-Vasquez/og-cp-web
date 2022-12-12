@@ -29,9 +29,10 @@
             background-color: white;
             display: flex;
             flex-direction: column;
+            // justify-content: space-around;
             width: 50%;
             height: 100%;
-            padding: 50px 0 0 0;
+            padding: 60px 0 20px 0;
             border-radius: 0 20px 20px 0;
             align-content: center;
 
@@ -47,10 +48,34 @@
                 margin: 1% auto 0 auto;
             }
 
+            &__steps {
+                padding: 0 20px 0 20px;
+                .ant-steps-item-process
+                    > .ant-steps-item-container
+                    > .ant-steps-item-icon {
+                    background: #6744c6;
+                }
+                .ant-steps-item-finish .ant-steps-item-icon {
+                    background-color: #fff;
+                    border-color: #6744c6;
+                }
+                .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+                    color: #6744c6;
+                }
+
+                .ant-steps-item-finish
+                    > .ant-steps-item-container
+                    > .ant-steps-item-content
+                    > .ant-steps-item-title::after {
+                    background-color: #6744c6;
+                }
+            }
+
             &__link {
                 width: 100%;
                 display: flex;
                 justify-content: center;
+                color: #6744c6;
             }
             .start {
                 width: 100%;
@@ -82,16 +107,18 @@
 
             Button {
                 border : {
-                    radius: 15px;
+                    radius: 50px;
                     color: transparent;
                     border: black solid;
                 }
                 width: 80%;
+                height: 40px;
                 display: flex;
-                margin: 5% auto 5% auto;
+                margin: 2% auto 2% auto;
                 background-color: #6744c6;
                 align-items: center;
                 justify-content: center;
+                color: white;
             }
         }
     }

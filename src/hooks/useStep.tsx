@@ -1,8 +1,13 @@
 import { useState, ReactElement } from 'react'
 
-type props = { steps: [{ component: ReactElement; key: number; title: string }] }
+export type stepsTypes = {
+    component: ReactElement
+    key: number
+    title: string
+    description?: string
+}
 
-export const useStep = ({ steps }: props) => {
+export const useStep = (steps: stepsTypes[]) => {
     const [currentStep, setCurrentStep] = useState(0)
 
     const isLastStep = currentStep === steps.length - 1

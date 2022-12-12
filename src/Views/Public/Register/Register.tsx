@@ -1,6 +1,11 @@
-import { FC } from 'react'
-import { Button, Form, Input } from 'antd'
+import { FC, MouseEventHandler, useState } from 'react'
+import { Button, Form, Input, message, Steps } from 'antd'
 import { UserOutlined, StarOutlined, UserAddOutlined } from '@ant-design/icons'
+
+import Account from '../../../components/Steps/Account/Account'
+import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
+
+import { stepsTypes, useStep } from '../../../hooks/useStep'
 
 import {
     RegisterDefaultProps,
@@ -14,9 +19,25 @@ import JImg from './../../../assets/img/publicBackground.jpg'
 
 import './Register.scss'
 
-const { Item } = Form
+const { Step } = Steps
 
 export const Register: FC<RegisterProps> = () => {
+    const steps: stepsTypes[] = [
+        {
+            key: 1,
+            title: 'primero',
+            component: <PersonalInformation />,
+        },
+        {
+            key: 2,
+            title: 'segundo',
+
+            component: <Account />,
+        },
+    ]
+
+    const { current, content, isFirstStep, isLastStep, next, prev } = useStep(steps)
+
     const onFinish = (values: any) => {
         console.log('Success:', values)
     }
@@ -24,6 +45,7 @@ export const Register: FC<RegisterProps> = () => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
     }
+
     return (
         <div className='register'>
             <div className='register__container'>
@@ -50,92 +72,22 @@ export const Register: FC<RegisterProps> = () => {
                     </div>
                     <h2>Sign in</h2>
 
-                    <Item
-                        name='firstName'
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                        wrapperCol={{ offset: 0 }}
-                        className='register__container__form-item'
-                    >
-                        <Input
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='first name'
-                        />
-                    </Item>
-                    <Item
-                        name='secondName'
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                        wrapperCol={{ offset: 0 }}
-                        className='register__container__form-item'
-                    >
-                        <Input
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='second name'
-                        />
-                    </Item>
-                    <Item
-                        name='lastName'
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                        wrapperCol={{ offset: 0 }}
-                        className='register__container__form-item'
-                    >
-                        <Input
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='last name'
-                        />
-                    </Item>
-                    <Item
-                        name='secondLastName'
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                        wrapperCol={{ offset: 0 }}
-                        className='register__container__form-item'
-                    >
-                        <Input
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='second last name'
-                        />
-                    </Item>
-                    <Item
-                        name='gender'
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                        wrapperCol={{ offset: 0 }}
-                        className='register__container__form-item'
-                    >
-                        <Input
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='gender'
-                        />
-                    </Item>
-
-                    <Item wrapperCol={{ offset: 0 }}>
-                        <Button type='primary' htmlType='submit'>
-                            Sign in
+                    <div className='register__container__form__steps'>
+                        <Steps current={current}>
+                            {steps.map(item => (
+                                <Step key={item.key} />
+                            ))}
+                        </Steps>
+                        {content}
+                        <Button onClick={prev} disabled={isFirstStep}>
+                            prev
                         </Button>
-                    </Item>
+                        {!isLastStep ? (
+                            <Button onClick={next}>next</Button>
+                        ) : (
+                            <Button onClick={onFinish}>finish</Button>
+                        )}
+                    </div>
 
                     <Link className='register__container__form__link ' to='/login'>
                         Login

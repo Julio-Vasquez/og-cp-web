@@ -1,0 +1,15 @@
+.main-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__item {
+        width: 80%;
+        &__input {
+            //   border: solid;
+            height: 40px;
+            border-radius: 50px;
+            display: flex;
+            text-align: center;
+        }
+    }
+}
