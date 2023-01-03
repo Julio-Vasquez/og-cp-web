@@ -30,7 +30,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
         <div className='login'>
             <div className='login__container'>
                 <img src={loginImg} alt='image' />
-
+                <h2 className='login__container__tittle'>Innocently learning</h2>
                 <Form
                     className='login__container__form'
                     name='normal_login'
