@@ -1,5 +1,4 @@
 import { FC } from 'react'
-<<<<<<< HEAD
 
 import { Button, Form, Input } from 'antd'
 import {
@@ -17,10 +16,6 @@ import loginImg from './../../../assets/img/publicBackground.jpg'
 const { Item } = Form
 
 import './Login.scss'
-=======
-import { LoginDefaultProps, LoginProps, LoginPropTypes } from './login.types'
-import { Button, Checkbox, Form, Input } from 'antd'
->>>>>>> master
 
 export const Login: FC<LoginProps> = ({ description }) => {
     const onFinish = (values: any) => {
@@ -30,13 +25,12 @@ export const Login: FC<LoginProps> = ({ description }) => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
     }
-<<<<<<< HEAD
 
     return (
         <div className='login'>
             <div className='login__container'>
                 <img src={loginImg} alt='image' />
-                <h2 className='login__container__tittle'>Innocently learning</h2>
+                {/*  <h2 className='login__container__tittle'>Innocently learning</h2> */}
                 <Form
                     className='login__container__form'
                     name='normal_login'
@@ -71,6 +65,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         className='login__container__form__item'
                     >
                         <Input
+                            className='login__container__form__item__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
                             placeholder='Username'
                         />
@@ -88,6 +83,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         wrapperCol={{ offset: 0 }}
                     >
                         <Input
+                            className='login__container__form__item__input'
                             prefix={<LockOutlined className='site-form-item-icon' />}
                             type='password'
                             placeholder='Password'
@@ -114,57 +110,4 @@ export const Login: FC<LoginProps> = ({ description }) => {
 Login.propTypes = LoginPropTypes
 Login.defaultProps = LoginDefaultProps
 
-=======
-    return (
-        <Form
-            name='basic'
-            labelCol={{ span: 10 }}
-            wrapperCol={{ span: 6 }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete='off'
-        >
-            <Form.Item wrapperCol={{ offset: 12, span: 12 }}>
-                <h1>Login</h1>
-            </Form.Item>
-            <Form.Item
-                label='Username'
-                name='username'
-                rules={[{ required: true, message: 'Please input your username!' }]}
-                wrapperCol={{ offset: 0, span: 8 }}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                label='Password'
-                name='password'
-                rules={[{ required: true, message: 'Please input your password!' }]}
-                wrapperCol={{ offset: 0, span: 8 }}
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-                name='remember'
-                valuePropName='checked'
-                wrapperCol={{ offset: 11, span: 5 }}
-            >
-                <a>Forgot password </a>
-            </Form.Item>
-
-            <Form.Item wrapperCol={{ offset: 12, span: 12 }}>
-                <Button type='primary' htmlType='submit'>
-                    Submit
-                </Button>
-            </Form.Item>
-        </Form>
-    )
-}
-
-Login.propTypes = LoginPropTypes
-Login.defaultProps = LoginDefaultProps
-
->>>>>>> master
 export default Login
