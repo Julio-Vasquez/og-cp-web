@@ -5,7 +5,6 @@ import { Loading } from './../components/Loading'
 
 const Error404 = lazy(() => import('./../components/Error/Error404'))
 
-export const PrivateRoutes = () => {
 export const PrivateRoutes: FC = () => {
     return (
         <BrowserRouter>

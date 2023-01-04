@@ -1,11 +1,11 @@
-import { FC, MouseEventHandler, useState } from 'react'
-import { Button, Form, Input, message, Steps } from 'antd'
-import { UserOutlined, StarOutlined, UserAddOutlined } from '@ant-design/icons'
+import { FC } from 'react'
+import { Button, Form, Steps } from 'antd'
+import { StarOutlined, UserAddOutlined } from '@ant-design/icons'
 
 import Account from '../../../components/Steps/Account/Account'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
-import { stepsTypes, useStep } from '../../../hooks/useStep'
+import { StepType, useStep } from '../../../hooks/useStep'
 
 import {
     RegisterDefaultProps,
@@ -22,7 +22,7 @@ import './Register.scss'
 const { Step } = Steps
 
 export const Register: FC<RegisterProps> = () => {
-    const steps: stepsTypes[] = [
+    const steps: StepType[] = [
         {
             key: 1,
             title: 'primero',
@@ -36,7 +36,8 @@ export const Register: FC<RegisterProps> = () => {
         },
     ]
 
-    const { current, content, isFirstStep, isLastStep, next, prev } = useStep(steps)
+    const { currentStep, content, isFirstStep, isLastStep, next, previous } =
+        useStep(steps)
 
     const onFinish = (values: any) => {
         console.log('Success:', values)
@@ -45,6 +46,10 @@ export const Register: FC<RegisterProps> = () => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
     }
+
+    const onPrev = () => previous()
+
+    const onNext = () => next()
 
     return (
         <div className='register'>
@@ -73,24 +78,24 @@ export const Register: FC<RegisterProps> = () => {
                     <h2>Sign in</h2>
 
                     <div className='register__container__form__steps'>
-                        <Steps current={current}>
+                        <Steps current={currentStep}>
                             {steps.map(item => (
                                 <Step key={item.key} />
                             ))}
                         </Steps>
                         {content}
-                        <Button onClick={prev} disabled={isFirstStep}>
+                        <Button onClick={onPrev} disabled={isFirstStep}>
                             prev
                         </Button>
                         {!isLastStep ? (
-                            <Button onClick={next}>next</Button>
+                            <Button onClick={onNext}>next</Button>
                         ) : (
                             <Button onClick={onFinish}>finish</Button>
                         )}
                     </div>
 
                     <Link className='register__container__form__link ' to='/login'>
-                        Login
+                        or Login
                     </Link>
                 </Form>
             </div>

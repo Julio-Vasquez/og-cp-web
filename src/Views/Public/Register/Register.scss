@@ -15,7 +15,7 @@
     &__container {
         display: flex;
         border-radius: 20px;
-        width: 60%;
+        width: 50%;
         height: 70%;
         color: white;
 
@@ -29,10 +29,9 @@
             background-color: white;
             display: flex;
             flex-direction: column;
-            // justify-content: space-around;
             width: 50%;
             height: 100%;
-            padding: 60px 0 20px 0;
+            padding: 5% 0 5% 0;
             border-radius: 0 20px 20px 0;
             align-content: center;
 
@@ -43,8 +42,7 @@
             }
 
             &-item {
-                border-radius: 25px;
-                width: 80%;
+                border-radius: 55px;
                 margin: 1% auto 0 auto;
             }
 
@@ -109,13 +107,14 @@
                 border : {
                     radius: 50px;
                     color: transparent;
+                    width: 80%;
                     border: black solid;
                 }
                 width: 80%;
                 height: 40px;
                 display: flex;
                 margin: 2% auto 2% auto;
-                background-color: #6744c6;
+                backxground-color: #6744c6;
                 align-items: center;
                 justify-content: center;
                 color: white;
