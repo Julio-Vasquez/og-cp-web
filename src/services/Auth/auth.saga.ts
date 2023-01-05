@@ -8,8 +8,8 @@ import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 
 function* fetchLogin({ payload }: loginAction) {
     try {
-        const res: IResponse = yield api.auth.login({ body: payload })
-
+        const res: IResponse = yield api.auth.login(payload)
+        console.log(res)
         if (res && !res.error && res?.payload) {
             yield put(
                 loginSuccess({
@@ -21,7 +21,6 @@ function* fetchLogin({ payload }: loginAction) {
             SaveItem({ newItem: res?.payload.token })
         } else yield put(loginFailed({ error: true, message: res.message }))
     } catch (e: any) {
-        console.log(e)
         yield put(loginFailed({ error: true, message: e.message }))
     }
 }

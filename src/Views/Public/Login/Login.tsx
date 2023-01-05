@@ -1,5 +1,6 @@
 import { FC } from 'react'
-
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 import {
     LockOutlined,
@@ -7,19 +8,21 @@ import {
     StarOutlined,
     LoginOutlined,
 } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
-
-import { LoginDefaultProps, LoginProps, LoginPropTypes } from './login.types'
 
 import loginImg from './../../../assets/img/publicBackground.jpg'
 
-const { Item } = Form
+import { login } from './../../../services/Auth/auth.slice'
+import { loginType } from '../../../services/Auth/auth.types'
+import { LoginDefaultProps, LoginProps, LoginPropTypes } from './login.types'
 
 import './Login.scss'
+const { Item } = Form
 
 export const Login: FC<LoginProps> = ({ description }) => {
-    const onFinish = (values: any) => {
-        console.log('Success:', values)
+    const dispatch = useDispatch()
+
+    const onFinish = (values: loginType) => {
+        dispatch(login(values))
     }
 
     const onFinishFailed = (errorInfo: any) => {
@@ -82,11 +85,9 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         ]}
                         wrapperCol={{ offset: 0 }}
                     >
-                        <Input
+                        <Input.Password
                             className='login__container__form__item__input'
-                            prefix={<LockOutlined className='site-form-item-icon' />}
-                            type='password'
-                            placeholder='Password'
+                            prefix={<LockOutlined />}
                         />
                     </Item>
 
