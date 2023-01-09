@@ -4,12 +4,10 @@ import { I18nextProvider } from 'react-i18next'
 
 import i18n from '../i18n/config'
 import useData from '../hooks/useData'
-import { useIntl } from './../hooks/useIntl'
 import { PrivateRoutes, PublicRoutes } from '../routes'
 import { AUTH } from '../utils/constants/redux.constants'
 
 const App: FC = () => {
-    const { formatMessage } = useIntl()
     const { authentication } = useData({ reducer: AUTH })
     return (
         <I18nextProvider i18n={i18n}>
