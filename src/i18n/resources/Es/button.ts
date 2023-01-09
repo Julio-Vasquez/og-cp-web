@@ -8,5 +8,6 @@ export const Button = {
     signUpToContinue: 'Registrate para continuar',
     email: 'Correo electronico',
     confirmPassword: 'Confirmar contraseña',
-    addObj: 'Agregar a {{name}}',
+    next: 'Siguiente',
+    //addObj: 'Agregar a {{name}}',
 }

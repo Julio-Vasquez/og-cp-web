@@ -6,7 +6,7 @@ import { mutationType, state, func } from './api.types'
 export const useMutation = <T>(
     { functionFetch }: func,
     { onCompleted, cancelError, onError }: mutationType
-) => {
+): [Function, state] => {
     const [req, setReq] = useState<state>({
         loading: false,
         error: false,
@@ -28,5 +28,5 @@ export const useMutation = <T>(
         }
     }
 
-    return { execFunction, ...req }
+    return [execFunction, { ...req }]
 }

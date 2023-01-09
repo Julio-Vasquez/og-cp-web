@@ -8,4 +8,5 @@ export const Button = {
     signUpToContinue: 'Sign up to continue',
     email: 'Email',
     confirmPassword: 'Confirm password',
+    next: 'Next',
 }

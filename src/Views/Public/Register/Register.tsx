@@ -1,11 +1,16 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Form, Steps } from 'antd'
 import { StarOutlined, UserAddOutlined } from '@ant-design/icons'
 
 import Account from '../../../components/Steps/Account/Account'
+import LoginImage from './../../../assets/img/publicBackground.jpg'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
+import api from '../../../api'
 import { StepType, useStep } from '../../../hooks/useStep'
+import { useIntl } from './../../../hooks/useIntl'
+import { useMutation /*useGet*/ } from './../../../hooks/api'
 
 import {
     RegisterDefaultProps,
@@ -13,27 +18,28 @@ import {
     RegisterProps,
 } from './register.types'
 
-import { Link } from 'react-router-dom'
-
-import JImg from './../../../assets/img/publicBackground.jpg'
-
 import './Register.scss'
 
-const { Step } = Steps
-
 export const Register: FC<RegisterProps> = () => {
-    const steps: StepType[] = [
-        {
-            key: 1,
-            title: 'primero',
-            component: <PersonalInformation />,
-        },
-        {
-            key: 2,
-            title: 'segundo',
+    const { formatMessage } = useIntl()
+    const onCompleted = (data: any) => {
+        console.log(data)
+    }
 
-            component: <Account />,
-        },
+    const onError = (err: any) => {
+        console.log(err)
+    }
+
+    const [mutation, { loading, error, data }] = useMutation(
+        { functionFetch: api.auth.signUp },
+        { onCompleted, onError, cancelError: false }
+    )
+
+    //const {loading: LoadingGet} = useGet({ functionFetch: api.auth.signUp }, {})
+
+    const steps: StepType[] = [
+        { key: 1, title: 'primero', component: <PersonalInformation /> },
+        { key: 2, title: 'segundo', component: <Account /> },
     ]
 
     const { currentStep, content, isFirstStep, isLastStep, next, previous } =
@@ -41,6 +47,7 @@ export const Register: FC<RegisterProps> = () => {
 
     const onFinish = (values: any) => {
         console.log('Success:', values)
+        mutation(values)
     }
 
     const onFinishFailed = (errorInfo: any) => {
@@ -54,7 +61,7 @@ export const Register: FC<RegisterProps> = () => {
     return (
         <div className='register'>
             <div className='register__container'>
-                <img src={JImg} alt='image' />
+                <img src={LoginImage} alt='image' />
 
                 <Form
                     className='register__container__form'
@@ -78,17 +85,21 @@ export const Register: FC<RegisterProps> = () => {
                     <h2>Sign in</h2>
 
                     <div className='register__container__form__steps'>
-                        <Steps current={currentStep}>
-                            {steps.map(item => (
-                                <Step key={item.key} />
-                            ))}
-                        </Steps>
+                        <Steps
+                            current={currentStep}
+                            items={steps.map(item => ({ ...item }))}
+                        />
+
                         {content}
+
                         <Button onClick={onPrev} disabled={isFirstStep}>
                             prev
                         </Button>
+
                         {!isLastStep ? (
-                            <Button onClick={onNext}>next</Button>
+                            <Button onClick={onNext}>
+                                {formatMessage({ id: 'button.next' })}{' '}
+                            </Button>
                         ) : (
                             <Button onClick={onFinish}>finish</Button>
                         )}

@@ -12,7 +12,7 @@ export type mutationType = {
 
 export type queryType<T> = Omit<mutationType, 'onCompleted'> & {
     variables?: T
-    cancelFirstEffect: Function
+    cancelFirstEffect?: Function
 }
 
 export type func = { functionFetch: Function }
