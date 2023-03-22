@@ -47,6 +47,7 @@ export const Register: FC<RegisterProps> = () => {
 
     const onFinish = (values: any) => {
         console.log('Success:', values)
+        
         mutation(values)
     }
 
@@ -76,7 +77,7 @@ export const Register: FC<RegisterProps> = () => {
                 >
                     <UserAddOutlined className='register__container__form-icon' />
                     <div className='start'>
-                        <div className='start__line'></div>
+                        <div className='start__line'/>
                         <div className='start__legend'>
                             <StarOutlined />
                         </div>

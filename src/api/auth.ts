@@ -8,4 +8,5 @@ const login = (body: Object) =>
 
 const signUp = (body: loginType) =>
     Mutation({ method: Methods.post, url: 'auth/signup', body })
+    
 export default { login, signUp }

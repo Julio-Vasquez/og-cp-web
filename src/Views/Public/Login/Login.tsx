@@ -88,6 +88,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         <Input.Password
                             className='login__container__form__item__input'
                             prefix={<LockOutlined />}
+                            placeholder='Password'
                         />
                     </Item>
 
