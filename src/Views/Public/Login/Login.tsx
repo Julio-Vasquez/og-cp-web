@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
@@ -11,15 +10,25 @@ import {
 
 import loginImg from './../../../assets/img/publicBackground.jpg'
 
+import useData from '../../../hooks/useData'
+import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
-import { LoginDefaultProps, LoginProps, LoginPropTypes } from './login.types'
+import { AUTH } from '../../../utils/constants/redux.constants'
+import { LoginDefaultProps, LoginPropTypes } from './login.types'
 
 import './Login.scss'
-const { Item } = Form
 
-export const Login: FC<LoginProps> = ({ description }) => {
+const { Item } = Form
+const { Password } = Input
+const labelCol = { span: 10 }
+const wrapperCol = { span: 6 }
+const initialValues = { remember: true }
+
+export const Login = () => {
     const dispatch = useDispatch()
+    const { formatMessage } = useIntl()
+    const { error, message, loading } = useData({ reducer: AUTH })
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
@@ -35,17 +44,17 @@ export const Login: FC<LoginProps> = ({ description }) => {
                 <img src={loginImg} alt='image' />
                 {/*  <h2 className='login__container__tittle'>Innocently learning</h2> */}
                 <Form
-                    className='login__container__form'
+                    className='login__form'
                     name='normal_login'
-                    labelCol={{ span: 10 }}
-                    wrapperCol={{ span: 6 }}
-                    initialValues={{ remember: true }}
+                    labelCol={labelCol}
+                    wrapperCol={wrapperCol}
+                    initialValues={initialValues}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <LoginOutlined className='login__container__form__icon' />
+                    <LoginOutlined className='login__icon' />
 
                     <div className='start'>
                         <div className='start__lines'></div>
@@ -54,7 +63,7 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         </div>
                         <div className='start__lines'></div>
                     </div>
-                    <h2>Sign in</h2>
+                    <h2>{formatMessage({ id: 'title.signIn' })}</h2>
 
                     <Item
                         name='username'
@@ -65,17 +74,17 @@ export const Login: FC<LoginProps> = ({ description }) => {
                             },
                         ]}
                         wrapperCol={{ offset: 0 }}
-                        className='login__container__form__item'
+                        className='login__item'
                     >
                         <Input
-                            className='login__container__form__item__input'
+                            className='login__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder='Username'
+                            placeholder={formatMessage({ id: 'title.username' })}
                         />
                     </Item>
 
                     <Item
-                        className='login__container__form__item'
+                        className='login__item'
                         name='password'
                         rules={[
                             {
@@ -85,30 +94,31 @@ export const Login: FC<LoginProps> = ({ description }) => {
                         ]}
                         wrapperCol={{ offset: 0 }}
                     >
-                        <Input.Password
-                            className='login__container__form__item__input'
+                        <Password
+                            className='login__input'
                             prefix={<LockOutlined />}
-                            placeholder='Password'
+                            placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
 
                     <Item wrapperCol={{ offset: 0 }}>
                         <Button type='primary' htmlType='submit'>
-                            Sign in
+                            {formatMessage({ id: 'button.login' })}
                         </Button>
                     </Item>
 
-                    <Link className='login__container__form__link ' to='/'>
-                        Forgot password
+                    <Link className='login__link ' to='/'>
+                        {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
-                    <Link className='login__container__form__link ' to='/register'>
-                        Register
+                    <Link className='login__link ' to='/register'>
+                        {formatMessage({ id: 'link.orSignUp' })}
                     </Link>
                 </Form>
             </div>
         </div>
     )
 }
+
 Login.propTypes = LoginPropTypes
 Login.defaultProps = LoginDefaultProps
 

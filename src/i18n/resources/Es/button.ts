@@ -2,6 +2,7 @@ export const Button = {
     add: 'Agregar',
     login: 'Iniciar sesión',
     password: 'Contraseña',
+    forgotPassword: '¿Olvido su contraseña?',
     username: 'Nombre de usuario',
     signUp: 'Registrarse',
     welcome: 'Bienvenido',
