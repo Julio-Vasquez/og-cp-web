@@ -1,3 +1,6 @@
+::-webkit-scrollbar {
+    display: none;
+}
 .login {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
@@ -10,32 +13,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
-
+    font-family: 'exo';
     &__container {
         display: flex;
         border-radius: 20px;
         width: 50%;
         height: 70%;
         color: white;
-
-        &__tittle {
-            font-family: Oatlander;
-            position: absolute;
-            margin-top: 200px;
-            margin-left: 100px;
-            font-size: 35px;
-            color: #6744c6;
-            width: 100px;
-        }
-        img {
-            width: 50%;
-            height: 100%;
-            border-radius: 20px 0px 0px 20px;
-        }
     }
-
-    &__form {
+    &__img-container {
+        width: 50%;
+        height: 100%;
+        border-radius: 20px 0px 0px 20px;
+    }
+    &__sign-in-form {
         background-color: white;
         display: flex;
         flex-direction: column;
@@ -44,7 +35,6 @@
         padding: 8% 0 5% 0;
         border-radius: 0 20px 20px 0;
         align-content: center;
-
         .start {
             width: 100%;
             margin: 20px 0 20px 0;
@@ -65,33 +55,31 @@
                 float: left;
             }
         }
-
-        h2 {
-            display: flex;
-            justify-content: center;
-            font-size: 35px;
-            color: black;
+    }
+    &__submit-form {
+        border : {
+            radius: 15px;
+            color: transparent;
         }
-
-        Button {
-            border : {
-                radius: 15px;
-                color: transparent;
-            }
-            height: 40px;
-            border-radius: 50px;
-            display: flex;
-            text-align: center;
-            width: 80%;
-            display: flex;
-            margin: 7% auto 5% auto;
-            background-color: #6744c6;
-            align-items: center;
-            justify-content: center;
-        }
+        height: 40px;
+        border-radius: 50px;
+        display: flex;
+        text-align: center;
+        width: 80%;
+        display: flex;
+        margin: 7% auto 5% auto;
+        background-color: #6744c6;
+        align-items: center;
+        justify-content: center;
+    }
+    &__title-sign-in {
+        display: flex;
+        justify-content: center;
+        font-size: 35px;
+        color: black;
     }
 
-    &__icon {
+    &__icon-sign-in {
         font-size: 250%;
         color: rgba(0, 0, 0, 0.849);
         width: 100%;
@@ -99,7 +87,6 @@
         justify-content: center;
     }
     &__input {
-        //   border: solid;
         height: 40px;
         border-radius: 50px;
         display: flex;
@@ -115,34 +102,18 @@
     }
 }
 
-@media only screen and (max-width: 912px) {
+@media only screen and (max-width: 992px) {
     .login {
-        &__container {
-            height: auto;
-            img {
-                display: none;
-            }
-            &__form {
-                width: 100vh;
-                height: 70vh;
-                display: flex;
-                margin: auto;
-                justify-content: center;
-                border-radius: 20px 20px 20px 20px;
-            }
+        &__title-sign-in {
+            font-size: 200%;
         }
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .login {
         &__container {
             height: auto;
             img {
                 display: none;
             }
         }
-        &__form {
+        &__sign-in-form {
             width: 100vh;
             height: 70vh;
             display: flex;
@@ -153,16 +124,19 @@
     }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 768px) {
     .login {
+        &__title-sign-in {
+            font-size: 200%;
+        }
         &__container {
-            width: 60vh;
             height: auto;
+            justify-content: center;
             img {
                 display: none;
             }
         }
-        &__form {
+        &__sign-in-form {
             width: 100vh;
             height: 70vh;
             display: flex;
@@ -173,32 +147,26 @@
     }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 576px) {
     .login {
-        display: flex;
+        &__title-sign-in {
+            font-size: 200%;
+        }
         &__container {
-            margin: auto;
+            width: 40vh;
+            height: auto;
+            justify-content: center;
             img {
                 display: none;
             }
         }
-        &__form {
-            width: 90%;
-        }
-    }
-}
-
-@media only screen and (max-width: 280px) {
-    .login {
-        display: flex;
-        &__container {
+        &__sign-in-form {
+            width: 100vh;
+            height: 70vh;
+            display: flex;
             margin: auto;
-            img {
-                display: none;
-            }
-        }
-        &__form {
-            width: 70%;
+            justify-content: center;
+            border-radius: 20px 20px 20px 20px;
         }
     }
 }

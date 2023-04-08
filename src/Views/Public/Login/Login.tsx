@@ -19,42 +19,36 @@ import { LoginDefaultProps, LoginPropTypes } from './login.types'
 
 import './Login.scss'
 
-const { Item } = Form
-const { Password } = Input
-const labelCol = { span: 10 }
-const wrapperCol = { span: 6 }
-const initialValues = { remember: true }
-
 export const Login = () => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
     const { error, message, loading } = useData({ reducer: AUTH })
 
+    const { Item } = Form
+    const { Password } = Input
+    const labelCol = { span: 10 }
+    const wrapperCol = { span: 6 }
+    const initialValues = { remember: true }
+
     const onFinish = (values: loginType) => {
         dispatch(login(values))
-    }
-
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo)
     }
 
     return (
         <div className='login'>
             <div className='login__container'>
-                <img src={loginImg} alt='image' />
-                {/*  <h2 className='login__container__tittle'>Innocently learning</h2> */}
+                <img className='login__img-container' src={loginImg} alt='image' />
                 <Form
-                    className='login__form'
+                    className='login__sign-in-form'
                     name='normal_login'
                     labelCol={labelCol}
                     wrapperCol={wrapperCol}
                     initialValues={initialValues}
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <LoginOutlined className='login__icon' />
+                    <LoginOutlined className='login__icon-sign-in' />
 
                     <div className='start'>
                         <div className='start__lines'></div>
@@ -63,7 +57,9 @@ export const Login = () => {
                         </div>
                         <div className='start__lines'></div>
                     </div>
-                    <h2>{formatMessage({ id: 'title.signIn' })}</h2>
+                    <h2 className='login__title-sign-in'>
+                        {formatMessage({ id: 'title.signIn' })}
+                    </h2>
 
                     <Item
                         name='username'
@@ -102,12 +98,16 @@ export const Login = () => {
                     </Item>
 
                     <Item wrapperCol={{ offset: 0 }}>
-                        <Button type='primary' htmlType='submit'>
+                        <Button
+                            className='login__submit-form'
+                            type='primary'
+                            htmlType='submit'
+                        >
                             {formatMessage({ id: 'button.login' })}
                         </Button>
                     </Item>
 
-                    <Link className='login__link ' to='/'>
+                    <Link className='login__link ' to='/forgot-password'>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
                     <Link className='login__link ' to='/register'>

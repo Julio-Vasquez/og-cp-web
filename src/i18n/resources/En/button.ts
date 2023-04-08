@@ -10,4 +10,5 @@ export const Button = {
     email: 'Email',
     confirmPassword: 'Confirm password',
     next: 'Next',
+    send: 'Send',
 }
