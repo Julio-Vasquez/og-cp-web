@@ -20,15 +20,15 @@ import { LoginDefaultProps, LoginPropTypes } from './login.types'
 import './Login.scss'
 
 export const Login = () => {
-    const dispatch = useDispatch()
-    const { formatMessage } = useIntl()
-    const { error, message, loading } = useData({ reducer: AUTH })
-
     const { Item } = Form
     const { Password } = Input
     const labelCol = { span: 10 }
     const wrapperCol = { span: 6 }
     const initialValues = { remember: true }
+
+    const dispatch = useDispatch()
+    const { formatMessage } = useIntl()
+    const { error, message, loading } = useData({ reducer: AUTH })
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
@@ -60,7 +60,6 @@ export const Login = () => {
                     <h2 className='login__title-sign-in'>
                         {formatMessage({ id: 'title.signIn' })}
                     </h2>
-
                     <Item
                         name='username'
                         rules={[
@@ -96,7 +95,6 @@ export const Login = () => {
                             placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
-
                     <Item wrapperCol={{ offset: 0 }}>
                         <Button
                             className='login__submit-form'
@@ -106,7 +104,6 @@ export const Login = () => {
                             {formatMessage({ id: 'button.login' })}
                         </Button>
                     </Item>
-
                     <Link className='login__link ' to='/forgot-password'>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
