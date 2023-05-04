@@ -37,10 +37,13 @@ export const Login = () => {
     return (
         <div className='login'>
             <div className='login__container'>
-                <img className='login__img-container' src={loginImg} alt='image' />
+                <img
+                    className='login__img-container'
+                    src={loginImg}
+                    alt='image-background'
+                />
                 <Form
                     className='login__sign-in-form'
-                    name='normal_login'
                     labelCol={labelCol}
                     wrapperCol={wrapperCol}
                     initialValues={initialValues}
@@ -49,7 +52,6 @@ export const Login = () => {
                     layout='vertical'
                 >
                     <LoginOutlined className='login__icon-sign-in' />
-
                     <div className='start'>
                         <div className='start__lines'></div>
                         <div className='start__legend'>
@@ -77,7 +79,6 @@ export const Login = () => {
                             placeholder={formatMessage({ id: 'title.username' })}
                         />
                     </Item>
-
                     <Item
                         className='login__item'
                         name='password'
@@ -95,18 +96,17 @@ export const Login = () => {
                             placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
-                    <Item wrapperCol={{ offset: 0 }}>
-                        <Button
-                            className='login__submit-form'
-                            type='primary'
-                            htmlType='submit'
-                        >
-                            {formatMessage({ id: 'button.login' })}
-                        </Button>
-                    </Item>
+                    <Button
+                        className='login__submit-form'
+                        type='primary'
+                        htmlType='submit'
+                    >
+                        {formatMessage({ id: 'button.login' })}
+                    </Button>
                     <Link className='login__link ' to='/forgot-password'>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
+                    o
                     <Link className='login__link ' to='/register'>
                         {formatMessage({ id: 'link.orSignUp' })}
                     </Link>

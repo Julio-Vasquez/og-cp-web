@@ -10,6 +10,7 @@ export const Button = {
     email: 'Correo electronico',
     confirmPassword: 'Confirmar contraseña',
     next: 'Siguiente',
+    prev: 'Anterior',
     send: 'Enviar',
     //addObj: 'Agregar a {{name}}',
 }

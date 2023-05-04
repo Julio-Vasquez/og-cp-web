@@ -1,5 +1,6 @@
 export const Title = {
     signIn: 'Sign in',
+    signUp: 'Sign Up',
     username: 'Username',
     password: 'Password',
     mail: 'e-mail',
