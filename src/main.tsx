@@ -1,9 +1,9 @@
 import React from 'react'
-import store from './store'
-import App from './Views/App'
+import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom/client'
 
-import { Provider } from 'react-redux'
+import store from './store'
+import App from './Views/App'
 
 import './sass/main.scss'
 

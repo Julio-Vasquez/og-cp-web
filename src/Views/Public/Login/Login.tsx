@@ -10,11 +10,9 @@ import {
 
 import loginImg from './../../../assets/img/publicBackground.jpg'
 
-import useData from '../../../hooks/useData'
 import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
-import { AUTH } from '../../../utils/constants/redux.constants'
 import { LoginDefaultProps, LoginPropTypes } from './login.types'
 
 import './Login.scss'
@@ -28,7 +26,6 @@ export const Login = () => {
 
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
-    const { error, message, loading } = useData({ reducer: AUTH })
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
