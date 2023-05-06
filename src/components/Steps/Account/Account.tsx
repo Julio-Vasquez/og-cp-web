@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Steps } from 'antd'
+import { Form, Input, message } from 'antd'
 
 import './Account.scss'
 
@@ -8,49 +8,40 @@ const Account = () => {
     return (
         <div className='main-account'>
             <Item
-                name='email'
+                name='mail'
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your first e-mail!',
                     },
                 ]}
                 wrapperCol={{ offset: 0 }}
                 className='main-account__item'
             >
-                <Input placeholder='e-mail' className='main-account__item__input' />
+                <Input placeholder='e-mail' className='main-account__input' />
             </Item>
             <Item
-                name='Username'
+                name='username'
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your second Username!',
                     },
                 ]}
                 wrapperCol={{ offset: 0 }}
                 className='main-account__item'
             >
-                <Input
-                    placeholder='Username'
-                    className='main-account__item__input'
-                />
+                <Input placeholder='Username' className='main-account__input' />
             </Item>
             <Item
                 name='password'
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
                     },
                 ]}
                 wrapperCol={{ offset: 0 }}
                 className='main-account__item'
             >
-                <Input
-                    placeholder='password'
-                    className='main-account__item__input'
-                />
+                <Input placeholder='password' className='main-account__input' />
             </Item>
         </div>
     )
