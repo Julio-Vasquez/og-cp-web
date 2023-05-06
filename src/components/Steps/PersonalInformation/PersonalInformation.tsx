@@ -1,17 +1,18 @@
 import { Form, Input, Select, DatePicker, DatePickerProps, Space } from 'antd'
 
 import api from '../../../api'
-import useIntl from '../../../hooks/useIntl'
 import { useGet } from '../../../hooks/api'
+import useIntl from '../../../hooks/useIntl'
 import {
     availableDataTypes,
     signUpGenders,
     signUpTypeDocument,
 } from '../../../Views/Public/Signup/signup.types'
 
+const { Item } = Form
+
 import './PersonalInformation.scss'
 
-const { Item } = Form
 const PersonalInformation = () => {
     const { formatMessage } = useIntl()
 
@@ -47,7 +48,16 @@ const PersonalInformation = () => {
                 >
                     <Input placeholder='first name' className='main__input' />
                 </Item>
-                <Item name='middleName' className='main__item'>
+                <Item
+                    name='middleName'
+                    className='main__item'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your middleName!',
+                        },
+                    ]}
+                >
                     <Input placeholder='second name' className='main__input' />
                 </Item>
             </div>
@@ -64,7 +74,16 @@ const PersonalInformation = () => {
                 >
                     <Input placeholder='lastname one' className='main__input' />
                 </Item>
-                <Item name='lastNameTwo' className='main__item'>
+                <Item
+                    name='lastNameTwo'
+                    className='main__item'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your lastNameTwo!',
+                        },
+                    ]}
+                >
                     <Input placeholder='lastname two' className='main__input' />
                 </Item>
             </div>

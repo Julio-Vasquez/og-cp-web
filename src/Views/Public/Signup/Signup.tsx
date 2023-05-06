@@ -72,10 +72,11 @@ export const Signup: FC<signupProps> = () => {
             onNext()
             setPersonaInformation(values)
         } else {
-            const isAdmin = availableData?.payload?.roles?.find(
+            const isAdmin = availableData?.payload?.roles.find(
                 (item: signUpRoles) => item.role === ROLES.Admin
             )
             const { role } = isAdmin
+            console.log(role)
 
             mutation({
                 ...personaInformation,
