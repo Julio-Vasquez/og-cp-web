@@ -1,0 +1,13 @@
+export const Texts = {
+    firstName: 'Primer nombre',
+    middleName: 'Segundo nombre',
+    firstLastName: 'Primer apellido',
+    middleLastName: 'Segundo apellido',
+    gender: 'Género',
+    typeDocument: 'T.D',
+    identification: 'Número de identificación',
+    phone: 'Número de teléfono',
+    mail: 'Correo',
+    username: 'Usuario',
+    password: 'Contraseña',
+}

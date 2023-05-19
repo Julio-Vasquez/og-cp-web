@@ -1,11 +1,18 @@
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Form, Steps } from 'antd'
-import { StarOutlined, UserAddOutlined } from '@ant-design/icons'
+import {
+    CheckOutlined,
+    LeftOutlined,
+    RightOutlined,
+    StarOutlined,
+    UserAddOutlined,
+} from '@ant-design/icons'
 
-import Account from '../../../components/Steps/Account/Account'
+import Account from '../../../components/Steps/SignUp/Account/Account'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
-import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
+import PersonalInformation1 from '../../../components/Steps/SignUp/PersonalInformation1/PersonalInformation1'
+import PersonalInformation2 from '../../../components/Steps/SignUp/PersonalInformation2/PersonalInformation2'
 
 import {
     signupDefaultProps,
@@ -25,13 +32,12 @@ import './Signup.scss'
 export const Signup: FC<signupProps> = () => {
     const { formatMessage } = useIntl()
 
-    const labelCol = { span: 0 }
-    const wrapperCol = { span: 0 }
     const initialValues = { remember: true }
 
     const steps: StepType[] = [
-        { key: 1, title: 'primero', component: <PersonalInformation /> },
-        { key: 2, title: 'segundo', component: <Account /> },
+        { key: 1, title: '', component: <PersonalInformation1 /> },
+        { key: 2, title: '', component: <PersonalInformation2 /> },
+        { key: 3, title: '', component: <Account /> },
     ]
     const [personaInformation, setPersonaInformation] = useState({
         identification: 0,
@@ -70,7 +76,8 @@ export const Signup: FC<signupProps> = () => {
     const onFinish = (values: any) => {
         if (!isLastStep) {
             onNext()
-            setPersonaInformation(values)
+            setPersonaInformation({ ...personaInformation, ...values })
+            console.log('22', personaInformation)
         } else {
             const isAdmin = availableData?.payload?.roles.find(
                 (item: signUpRoles) => item.role === ROLES.Admin
@@ -87,24 +94,21 @@ export const Signup: FC<signupProps> = () => {
     }
 
     return (
-        <div className='sign-up'>
-            <div className='sign-up__container'>
+        <div className='signUp'>
+            <div className='signUp__container'>
                 <img
-                    className='sign-up__img-container'
+                    className='signUp__img-container'
                     src={LoginImage}
                     alt='image'
                 />
-
                 <Form
-                    labelCol={labelCol}
-                    wrapperCol={wrapperCol}
                     initialValues={initialValues}
-                    className='sign-up__form-data'
+                    className='signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <UserAddOutlined className='sign-up__icon' />
+                    <UserAddOutlined className='signUp__icon' />
                     <div className='start'>
                         <div className='start__line' />
                         <div className='start__legend'>
@@ -112,34 +116,48 @@ export const Signup: FC<signupProps> = () => {
                         </div>
                         <div className='start__line'></div>
                     </div>
-                    <h2 className='sign-up__title'>
+                    <h2 className='signUp__title'>
                         {formatMessage({ id: 'title.signUp' })}
                     </h2>
-                    <div className='sign-up__steps'>
-                        <Steps current={currentStep} items={steps} />
+                    <div className='signUp__steps'>
+                        <Steps
+                            current={currentStep}
+                            items={steps}
+                            className='signUp__steps-main'
+                        />
 
                         {content}
 
-                        <Button
-                            className='sign-up__submit-form'
-                            onClick={onPrev}
-                            disabled={isFirstStep}
-                        >
-                            {formatMessage({ id: 'button.prev' })}
-                        </Button>
+                        <div className='signUp__main-submit-form'>
+                            <Button
+                                className='signUp__submit-form'
+                                onClick={onPrev}
+                                disabled={isFirstStep}
+                            >
+                                <LeftOutlined />
+                            </Button>
 
-                        <Button className='sign-up__submit-form' htmlType='submit'>
-                            {!isLastStep ? (
-                                <>{formatMessage({ id: 'button.next' })}</>
-                            ) : (
-                                <>{formatMessage({ id: 'button.signUp' })}</>
-                            )}
-                        </Button>
+                            <Button
+                                className='signUp__submit-form'
+                                htmlType='submit'
+                            >
+                                {!isLastStep ? (
+                                    <>
+                                        <RightOutlined />
+                                    </>
+                                ) : (
+                                    <>
+                                        <CheckOutlined />
+                                    </>
+                                )}
+                            </Button>
+                        </div>
                     </div>
-                    o
-                    <Link className='sign-up__link-login ' to='/login'>
-                        {formatMessage({ id: 'link.orSignIn' })}
-                    </Link>
+                    <div className='signUp__link-login '>
+                        <Link to='/login'>
+                            {formatMessage({ id: 'link.SignIn' })}
+                        </Link>
+                    </div>
                 </Form>
             </div>
         </div>

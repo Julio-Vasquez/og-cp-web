@@ -1,100 +1,110 @@
-::-webkit-scrollbar {
-    display: none;
-}
-
-.sign-up {
+.signUp {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
         repeat: 'no-repeat';
         size: cover;
         position: center;
     }
-    width: 100%;
+    width: 100cqmax;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'exo';
+
     &__container {
         display: flex;
         border-radius: 20px;
         width: 50%;
-        height: auto;
+        height: 80%;
         color: white;
+        overflow: none;
     }
-
     &__img-container {
         width: 50%;
-        height: auto;
         border-radius: 20px 0px 0px 20px;
     }
-
     &__form-data {
         background-color: white;
+        padding: 5px;
+        width: 50%;
+        max-height: 100vh;
+        border-radius: 0 20px 20px 0;
         display: flex;
         flex-direction: column;
-        width: 50%;
-        height: auto;
-        padding: 5% 0 5% 0;
-        border-radius: 0 20px 20px 0;
-        align-content: center;
         align-items: center;
-
+        justify-content: center;
         .start {
-            width: 100%;
-            margin: 10px 0 10px 0;
             display: flex;
-            justify-content: center;
+            align-items: center;
+
             &__line {
-                margin: 0 50px;
-                width: 90px;
+                width: 15vh;
+                max-width: 15vh;
+                min-width: 15vh;
                 border-top: 1px solid #999;
-                position: relative;
-                top: 10px;
-                float: left;
                 color: #6744c6;
             }
             &__legend {
                 color: #6744c6;
-                font-weight: bold;
+                font-size: medium;
                 float: left;
             }
         }
     }
-
     &__title {
         display: flex;
-        justify-content: center;
-        font-size: 35px;
+        font-size: 3vh;
         color: black;
     }
-
+    &__main-submit-form {
+        display: flex;
+        width: 100%;
+        margin: 30px auto;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
     &__submit-form {
         border : {
             radius: 50px;
-            width: 80%;
         }
-        width: 80%;
-        height: 30px;
-        display: flex;
         background: #6744c6;
-        margin: 2% auto 2% auto;
+        height: 4vh;
+        width: 20vh;
+        margin: 0 5px;
         color: white;
+        font-size: 2vh;
+        display: flex;
         align-items: center;
         justify-content: center;
+        text-align: center;
     }
 
     &__link-login {
-        width: 100%;
-        display: flex;
-        justify-content: center;
         color: #6744c6;
+        font-size: 2vh;
+    }
+    &__steps-main {
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px auto;
     }
     &__steps {
         width: 80%;
-        padding: 0 20px 0 20px;
+        height: auto;
+
         .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
             background: #6744c6;
+            font-size: 2vh;
+            height: 3vh;
+            width: 3vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
         }
         .ant-steps-item-finish .ant-steps-item-icon {
             background-color: #fff;
@@ -113,7 +123,7 @@
     }
 
     &__icon {
-        font-size: 250%;
+        font-size: 5vh;
         color: rgba(0, 0, 0, 0.849);
         width: 100%;
         display: flex;
@@ -121,69 +131,125 @@
     }
 }
 
-@media only screen and (max-width: 992px) {
-    .sign-up {
+@media only screen and (max-width: 1400px) {
+    .signUp {
+        width: 100%;
+        display: grid;
+        place-items: center;
         &__title {
-            font-size: 200%;
+            font-size: 30px;
         }
         &__container {
-            height: auto;
+            width: 100%;
+            height: 600px;
+        }
+
+        &__form-data {
+            width: 400px;
+            height: 100%;
+            display: flex;
             justify-content: center;
+            padding: 5% 0;
+            border-radius: 0px 20px 20px 0px;
+        }
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .signUp {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        &__title {
+            font-size: 30px;
+        }
+        &__container {
+            width: 100%;
+            height: 600px;
+        }
+
+        &__form-data {
+            width: 400px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 5% 0;
+            border-radius: 0px 20px 20px 0px;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .signUp {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        &__title {
+            font-size: 30px;
+        }
+        &__container {
+            width: 100%;
+            height: 600px;
         }
         &__img-container {
             display: none;
         }
         &__form-data {
-            width: 100vh;
-            height: auto;
+            width: 400px;
+            height: 100%;
             display: flex;
-            margin: auto;
             justify-content: center;
+            padding: 5% 0;
             border-radius: 20px 20px 20px 20px;
         }
     }
 }
-
 @media only screen and (max-width: 768px) {
-    .sign-up {
+    .signUp {
+        width: 100%;
+        display: grid;
+        place-items: center;
         &__title {
-            font-size: 200%;
+            font-size: 30px;
         }
         &__container {
-            height: auto;
+            width: 100%;
+            height: 600px;
         }
         &__img-container {
             display: none;
         }
         &__form-data {
-            width: 100vh;
-            height: auto;
+            width: 400px;
+            height: 100%;
             display: flex;
-            margin: auto;
             justify-content: center;
+            padding: 5% 0;
             border-radius: 20px 20px 20px 20px;
         }
     }
 }
 
 @media only screen and (max-width: 576px) {
-    .sign-up {
+    .signUp {
+        width: 100%;
+        display: grid;
+        place-items: center;
+
         &__title {
-            font-size: 200%;
+            font-size: 25px;
         }
         &__container {
-            width: 40vh;
-            height: auto;
+            width: 100%;
+            height: 600px;
         }
         &__img-container {
             display: none;
         }
         &__form-data {
-            width: 100vh;
-            height: auto;
+            width: 400px;
+            height: 100%;
             display: flex;
-            margin: auto;
             justify-content: center;
+            padding: 5% 0;
             border-radius: 20px 20px 20px 20px;
         }
     }
