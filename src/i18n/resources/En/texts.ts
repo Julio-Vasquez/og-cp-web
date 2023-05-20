@@ -10,4 +10,5 @@ export const Texts = {
     mail: 'E-mail',
     username: 'Username',
     password: 'Password',
+    insertUsername: 'Insert Username',
 }
