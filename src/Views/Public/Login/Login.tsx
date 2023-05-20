@@ -38,7 +38,7 @@ export const Login = () => {
         <div className='login'>
             <div className='login__container'>
                 <img
-                    className='login__img-container'
+                    className='login__image-container'
                     src={loginImg}
                     alt='image-background'
                 />
@@ -106,9 +106,8 @@ export const Login = () => {
                     <Link className='login__link ' to='/forgot-password'>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
-                    o
                     <Link className='login__link ' to='/register'>
-                        {formatMessage({ id: 'link.orSignUp' })}
+                        {formatMessage({ id: 'link.SignUp' })}
                     </Link>
                 </Form>
             </div>
