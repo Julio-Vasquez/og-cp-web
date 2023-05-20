@@ -125,9 +125,7 @@ export const Signup: FC<signupProps> = () => {
                             items={steps}
                             className='signUp__steps-main'
                         />
-
                         {content}
-
                         <div className='signUp__main-submit-form'>
                             <Button
                                 className='signUp__submit-form'
