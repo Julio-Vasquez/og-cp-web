@@ -5,26 +5,32 @@ import {
     LockOutlined,
     UserOutlined,
     StarOutlined,
-    LoginOutlined,
-    MailOutlined,
     ArrowLeftOutlined,
 } from '@ant-design/icons'
 import loginImg from '../../../assets/img/publicBackground.jpg'
 
+import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
-import useData from '../../../hooks/useData'
-import { AUTH } from '../../../utils/constants/redux.constants'
+import { useMutation } from '../../../hooks/api'
 
 import './ForgotPassword.scss'
 
 const { Item } = Form
 
 const ForgotPassword = () => {
-    const dispatch = useDispatch()
     const { formatMessage } = useIntl()
-    const { error, message, loading } = useData({ reducer: AUTH })
 
-    const onFinish = (values: any) => {}
+    const onCompleted = (data: any) => {}
+    const onError = (err: any) => {}
+
+    const [mutation, { loading, error, data }] = useMutation(
+        { functionFetch: api.auth.forgotPassword },
+        { onCompleted, onError, cancelError: false }
+    )
+
+    const onFinish = (values: any) => {
+        mutation({ ...values })
+    }
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
@@ -66,7 +72,7 @@ const ForgotPassword = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your email!',
+                                message: 'Please input your Username!',
                             },
                         ]}
                     >
