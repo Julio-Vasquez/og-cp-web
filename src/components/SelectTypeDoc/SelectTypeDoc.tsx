@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Form, Input, Select } from 'antd'
 
 import {
@@ -12,7 +13,13 @@ const { Item } = Form
 
 import './SelectTypeDoc.scss'
 
-export const SelectTypeDoc = () => {
+import {
+    SelectTypeDocDefaultProps,
+    SelectTypeDocPropTypes,
+    SelectTypeDocProps,
+} from './SelectTypeDoc.types'
+
+export const SelectTypeDoc: FC<SelectTypeDocProps> = () => {
     const { formatMessage } = useIntl()
     const onChangeTypeDoc = (value: string) => {
         console.log(`selected ${value}`)
@@ -24,7 +31,7 @@ export const SelectTypeDoc = () => {
             {}
         )
     const prefixSelector = (
-        <Item name='typeDocument' noStyle>
+        <Item name={'typDocument'} noStyle>
             <Select
                 bordered={false}
                 className='select-type-doc__select'
@@ -57,3 +64,7 @@ export const SelectTypeDoc = () => {
         </div>
     )
 }
+
+SelectTypeDoc.defaultProps = SelectTypeDocDefaultProps
+
+export default SelectTypeDoc
