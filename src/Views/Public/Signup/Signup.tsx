@@ -29,14 +29,33 @@ import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
 import './Signup.scss'
 
+const { useForm } = Form
+
 export const Signup: FC<signupProps> = () => {
     const { formatMessage } = useIntl()
+    const [form] = useForm()
 
     const initialValues = { remember: true }
 
+    const { data: availableData, loading: loadingAvailableData } =
+        useGet<availableDataTypes>(
+            { functionFetch: api.defaultData.availableData },
+            {}
+        )
+
     const steps: StepType[] = [
         { key: 1, title: '', component: <PersonalInformation1 /> },
-        { key: 2, title: '', component: <PersonalInformation2 /> },
+        {
+            key: 2,
+            title: '',
+            component: (
+                <PersonalInformation2
+                    genders={availableData?.payload?.genders}
+                    typeDocuments={availableData?.payload?.typeDocuments}
+                    loading={loadingAvailableData}
+                />
+            ),
+        },
         { key: 3, title: '', component: <Account /> },
     ]
     const [personaInformation, setPersonaInformation] = useState({
@@ -62,12 +81,6 @@ export const Signup: FC<signupProps> = () => {
     const onCompleted = (data: any) => {}
     const onError = (err: any) => {}
 
-    const { data: availableData, loading: loadingAvailableData } =
-        useGet<availableDataTypes>(
-            { functionFetch: api.defaultData.availableData },
-            {}
-        )
-
     const [mutation, { loading, error, data }] = useMutation(
         { functionFetch: api.auth.signUp },
         { onCompleted, onError, cancelError: false }
@@ -89,7 +102,7 @@ export const Signup: FC<signupProps> = () => {
             })
         }
     }
-
+    console.log(form.getFieldsValue())
     return (
         <div className='signUp'>
             <div className='signUp__container'>
@@ -99,6 +112,7 @@ export const Signup: FC<signupProps> = () => {
                     alt='image'
                 />
                 <Form
+                    form={form}
                     initialValues={initialValues}
                     className='signUp__form-data'
                     onFinish={onFinish}
