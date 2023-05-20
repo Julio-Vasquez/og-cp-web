@@ -1,9 +1,7 @@
+import { FC } from 'react'
 import { Input, Select, Form } from 'antd'
 
-import { TypeDocumentsType } from './custom.type'
 import './CustomInput.scss'
-import { reduceString } from '../../../utils/types/string.util'
-import { FC } from 'react'
 
 const { Item } = Form
 
@@ -45,8 +43,8 @@ const CustomInput: FC<Props> = ({ data, name, customMap, ...props }) => {
                 name={name}
             >
                 <Select
+                    className='custom-input__prefix'
                     placeholder='Select'
-                    style={{ width: 120 }}
                     options={data.map((item: any) => ({
                         value: item[customMap.value],
                         label: item[customMap.label],
@@ -56,7 +54,9 @@ const CustomInput: FC<Props> = ({ data, name, customMap, ...props }) => {
         )
     }
 
-    return <Input {...props} addonBefore={<CustomSelect />} />
+    return (
+        <Input className='custom-input' {...props} addonBefore={<CustomSelect />} />
+    )
 }
 
 export default CustomInput
