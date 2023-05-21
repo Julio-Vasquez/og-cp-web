@@ -1,5 +1,5 @@
 export const Link = {
-    orSignUp: ' Sign up',
-    orSignIn: ' Sign in',
+    SignUp: ' Sign up',
+    SignIn: ' Sign in',
     forgotPassword: 'Forgot password?',
 }

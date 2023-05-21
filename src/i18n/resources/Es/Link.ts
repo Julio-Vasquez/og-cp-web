@@ -1,5 +1,5 @@
 export const Link = {
-    orSignUp: ' Registrarse',
-    orSignIn: ' Iniciar sesion',
+    SignUp: ' Registrarse',
+    SignIn: ' Iniciar sesion',
     forgotPassword: '¿Olvido su constraseña?',
 }

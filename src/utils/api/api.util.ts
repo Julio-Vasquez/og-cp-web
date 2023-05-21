@@ -41,3 +41,11 @@ export interface IResponse {
     statusCode?: number
     success?: boolean
 }
+
+export interface ResponseFetch<T> {
+    error?: boolean
+    message: string
+    payload: T | [] | {} | any
+    statusCode?: number
+    success?: boolean
+}

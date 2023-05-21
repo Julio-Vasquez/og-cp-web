@@ -7,8 +7,8 @@ export const useGet = <T>(
     { functionFetch }: func,
     { cancelFirstEffect, cancelError, onError, variables }: queryType<T>
 ) => {
-    const [req, setReq] = useState<state>({
-        data: [],
+    const [req, setReq] = useState<state<T>>({
+        data: {} as T,
         loading: false,
         error: false,
     })
@@ -20,13 +20,13 @@ export const useGet = <T>(
     const getData = async (newVariables?: T) => {
         const fetchVariables = !newVariables ? variables : newVariables
 
-        setReq({ data: [], loading: true, error: false })
+        setReq({ data: {} as T, loading: true, error: false })
         try {
             const data = await functionFetch(fetchVariables)
             setReq({ data, loading: false })
         } catch (error: any) {
             if (!cancelError) errorNotification(error)
-            setReq({ data: [], loading: false, error: true })
+            setReq({ data: {} as T, loading: false, error: true })
             if (onError) onError(error)
         }
     }

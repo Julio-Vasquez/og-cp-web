@@ -1,7 +1,7 @@
-export type state = {
+export type state<T> = {
     loading: boolean
     error?: boolean
-    data?: []
+    data: T
 }
 
 export type mutationType = {
