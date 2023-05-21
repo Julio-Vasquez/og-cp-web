@@ -20,10 +20,6 @@ import './Login.scss'
 export const Login = () => {
     const { Item } = Form
     const { Password } = Input
-    const labelCol = { span: 10 }
-    const wrapperCol = { span: 6 }
-    const initialValues = { remember: true }
-
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
 
@@ -40,15 +36,12 @@ export const Login = () => {
                     alt='image-background'
                 />
                 <Form
-                    className='login__sign-in-form'
-                    labelCol={labelCol}
-                    wrapperCol={wrapperCol}
-                    initialValues={initialValues}
+                    className='login__signIn-form'
                     onFinish={onFinish}
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <LoginOutlined className='login__icon-sign-in' />
+                    <LoginOutlined className='login__icon-signIn' />
                     <div className='start'>
                         <div className='start__lines'></div>
                         <div className='start__legend'>
@@ -56,7 +49,7 @@ export const Login = () => {
                         </div>
                         <div className='start__lines'></div>
                     </div>
-                    <h2 className='login__title-sign-in'>
+                    <h2 className='login__title-signIn'>
                         {formatMessage({ id: 'title.signIn' })}
                     </h2>
                     <Item
@@ -64,10 +57,11 @@ export const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: formatMessage({
+                                    id: 'texts.insertUsername',
+                                }),
                             },
                         ]}
-                        wrapperCol={{ offset: 0 }}
                         className='login__item'
                     >
                         <Input
@@ -82,10 +76,11 @@ export const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your password!',
+                                message: formatMessage({
+                                    id: 'texts.insertPassword',
+                                }),
                             },
                         ]}
-                        wrapperCol={{ offset: 0 }}
                     >
                         <Password
                             className='login__input'

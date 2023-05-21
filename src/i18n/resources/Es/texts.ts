@@ -10,5 +10,6 @@ export const Texts = {
     mail: 'Correo',
     username: 'Usuario',
     password: 'Contraseña',
-    insertUsername: 'Ingrese nombre de usuario',
+    insertUsername: 'Ingrese nombre de usuario!',
+    insertPassword: 'Ingrese su contraseña!',
 }
