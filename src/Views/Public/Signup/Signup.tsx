@@ -15,24 +15,22 @@ import PersonalInformation1 from '../../../components/Steps/SignUp/PersonalInfor
 import PersonalInformation2 from '../../../components/Steps/SignUp/PersonalInformation2/PersonalInformation2'
 
 import {
-    signupDefaultProps,
-    signupPropTypes,
-    signupProps,
-    signUpRoles,
+    SignUpDefaultProps,
+    SignUpPropTypes,
+    SignUpProps,
+    SignUpRoles,
     availableDataTypes,
-} from './signup.types'
+} from './SignUp.types'
 import api from '../../../api'
 import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
-import './Signup.scss'
+import './SignUp.scss'
 
-export const Signup: FC<signupProps> = () => {
+export const SignUp: FC<SignUpProps> = () => {
     const { formatMessage } = useIntl()
-
-    const initialValues = { remember: true }
 
     const steps: StepType[] = [
         { key: 1, title: '', component: <PersonalInformation1 /> },
@@ -69,7 +67,7 @@ export const Signup: FC<signupProps> = () => {
         )
 
     const [mutation, { loading, error, data }] = useMutation(
-        { functionFetch: api.auth.signUp },
+        { functionFetch: api.auth.SignUp },
         { onCompleted, onError, cancelError: false }
     )
 
@@ -79,7 +77,7 @@ export const Signup: FC<signupProps> = () => {
             setPersonaInformation({ ...personaInformation, ...values })
         } else {
             const isAdmin = availableData?.payload?.roles.find(
-                (item: signUpRoles) => item.role === ROLES.Admin
+                (item: SignUpRoles) => item.role === ROLES.Admin
             )
             const { role } = isAdmin
             mutation({
@@ -99,7 +97,6 @@ export const Signup: FC<signupProps> = () => {
                     alt='image'
                 />
                 <Form
-                    initialValues={initialValues}
                     className='signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
@@ -114,7 +111,7 @@ export const Signup: FC<signupProps> = () => {
                         <div className='start__line'></div>
                     </div>
                     <h2 className='signUp__title'>
-                        {formatMessage({ id: 'title.signUp' })}
+                        {formatMessage({ id: 'title.SignUp' })}
                     </h2>
                     <div className='signUp__steps'>
                         <Steps
@@ -136,15 +133,7 @@ export const Signup: FC<signupProps> = () => {
                                 className='signUp__submit-form'
                                 htmlType='submit'
                             >
-                                {!isLastStep ? (
-                                    <>
-                                        <RightOutlined />
-                                    </>
-                                ) : (
-                                    <>
-                                        <CheckOutlined />
-                                    </>
-                                )}
+                                {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
                             </Button>
                         </div>
                     </div>
@@ -158,7 +147,7 @@ export const Signup: FC<signupProps> = () => {
         </div>
     )
 }
-Signup.propTypes = signupPropTypes
-Signup.defaultProps = signupDefaultProps
+SignUp.propTypes = SignUpPropTypes
+SignUp.defaultProps = SignUpDefaultProps
 
-export default Signup
+export default SignUp

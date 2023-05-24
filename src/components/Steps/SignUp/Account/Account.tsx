@@ -13,7 +13,12 @@ const Account = () => {
         <div className='account'>
             <Item
                 name='mail'
-                rules={[{ required: true }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputEmail' }),
+                    },
+                ]}
                 wrapperCol={{ offset: 0 }}
                 className='account__item'
             >
@@ -24,7 +29,12 @@ const Account = () => {
             </Item>
             <Item
                 name='username'
-                rules={[{ required: true }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputUsername' }),
+                    },
+                ]}
                 wrapperCol={{ offset: 0 }}
                 className='account__item'
             >
@@ -35,12 +45,46 @@ const Account = () => {
             </Item>
             <Item
                 name='password'
-                rules={[{ required: true }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputPassword' }),
+                    },
+                ]}
                 wrapperCol={{ offset: 0 }}
                 className='account__item'
             >
                 <Input
                     placeholder={formatMessage({ id: 'texts.password' })}
+                    className='account__input'
+                />
+            </Item>
+            <Item
+                name='confirm'
+                dependencies={['password']}
+                hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.confirmPassword' }),
+                    },
+                    ({ getFieldValue }) => ({
+                        validator(_, value) {
+                            if (!value || getFieldValue('password') === value) {
+                                return Promise.resolve()
+                            }
+                            return Promise.reject(
+                                new Error(
+                                    formatMessage({ id: 'texts.passwordDoMatch' })
+                                )
+                            )
+                        },
+                    }),
+                ]}
+                className='account__item'
+            >
+                <Input
+                    placeholder={formatMessage({ id: 'texts.passwordConfirm' })}
                     className='account__input'
                 />
             </Item>

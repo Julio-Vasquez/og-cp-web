@@ -13,7 +13,12 @@ const PersonalInformation1 = () => {
         <div className='personalInformation1'>
             <Item
                 name='name'
-                rules={[{ required: true, message: 'Please first name!' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputFirstName' }),
+                    },
+                ]}
                 className='personalInformation1__item'
             >
                 <Input
@@ -21,11 +26,7 @@ const PersonalInformation1 = () => {
                     className='personalInformation1__input'
                 />
             </Item>
-            <Item
-                name='middleName'
-                className='personalInformation1__item'
-                rules={[{ required: true, message: 'Please middleName!' }]}
-            >
+            <Item name='middleName' className='personalInformation1__item'>
                 <Input
                     placeholder={formatMessage({ id: 'texts.middleName' })}
                     className='personalInformation1__input'
@@ -34,7 +35,12 @@ const PersonalInformation1 = () => {
 
             <Item
                 name='lastNameOne'
-                rules={[{ required: true, message: 'Please lastName!' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputFirstLastName' }),
+                    },
+                ]}
                 className='personalInformation1__item'
             >
                 <Input
@@ -45,10 +51,15 @@ const PersonalInformation1 = () => {
             <Item
                 name='lastNameTwo'
                 className='personalInformation1__item'
-                rules={[{ required: true, message: 'Please middle lastName!' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: formatMessage({ id: 'texts.inputMiddleName' }),
+                    },
+                ]}
             >
                 <Input
-                    placeholder={formatMessage({ id: 'texts.middleLastName' })}
+                    placeholder={formatMessage({ id: 'texts.secondLastName' })}
                     className='personalInformation1__input'
                 />
             </Item>

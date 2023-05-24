@@ -4,7 +4,7 @@ import { Form, Input, Select } from 'antd'
 import {
     availableDataTypes,
     signUpTypeDocument,
-} from '../../Views/Public/Signup/signup.types'
+} from '../../Views/Public/SignUp/SignUp.types'
 
 import useIntl from '../../hooks/useIntl'
 import { useGet } from '../../hooks/api'
