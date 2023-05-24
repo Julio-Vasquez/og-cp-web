@@ -1,6 +1,11 @@
 import { FC } from 'react'
 import { Input, Select, Form } from 'antd'
 
+import {
+    CustomInputProps,
+    CustomInputDefaultProps,
+    CustomInputPropTypes,
+} from './custom'
 import './CustomInput.scss'
 
 const { Item } = Form
@@ -13,28 +18,7 @@ const { Item } = Form
  * *
  */
 
-type CustomMap = {
-    value: string | number
-    label: string | number
-}
-
-type ItemProps = {
-    value: string | number | boolean
-    id: string
-    onChange: Function
-    'aria-required': string
-}
-
-type Props = {
-    data: any
-    name: string | string[]
-    customMap: CustomMap
-    props?: ItemProps
-}
-
-const CustomInput: FC<Props> = ({ data, name, customMap, ...props }) => {
-    console.log(props)
-
+const CustomInput: FC<CustomInputProps> = ({ data, name, customMap, ...props }) => {
     const CustomSelect = () => {
         return (
             <Item
@@ -58,5 +42,8 @@ const CustomInput: FC<Props> = ({ data, name, customMap, ...props }) => {
         <Input className='custom-input' {...props} addonBefore={<CustomSelect />} />
     )
 }
+
+CustomInput.propTypes = CustomInputPropTypes
+CustomInput.defaultProps = CustomInputDefaultProps
 
 export default CustomInput
