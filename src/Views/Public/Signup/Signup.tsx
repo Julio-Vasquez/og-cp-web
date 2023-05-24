@@ -29,12 +29,40 @@ import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
 import './SignUp.scss'
 
+<<<<<<< HEAD
 export const SignUp: FC<SignUpProps> = () => {
-    const { formatMessage } = useIntl()
+=======
+const { useForm } = Form
 
+export const Signup: FC<signupProps> = () => {
+>>>>>>> feat/custom-input
+    const { formatMessage } = useIntl()
+    const [form] = useForm()
+
+<<<<<<< HEAD
+=======
+    const initialValues = { remember: true }
+
+    const { data: availableData, loading: loadingAvailableData } =
+        useGet<availableDataTypes>(
+            { functionFetch: api.defaultData.availableData },
+            {}
+        )
+
+>>>>>>> feat/custom-input
     const steps: StepType[] = [
         { key: 1, title: '', component: <PersonalInformation1 /> },
-        { key: 2, title: '', component: <PersonalInformation2 /> },
+        {
+            key: 2,
+            title: '',
+            component: (
+                <PersonalInformation2
+                    genders={availableData?.payload?.genders}
+                    typeDocuments={availableData?.payload?.typeDocuments}
+                    loading={loadingAvailableData}
+                />
+            ),
+        },
         { key: 3, title: '', component: <Account /> },
     ]
     const [personaInformation, setPersonaInformation] = useState({
@@ -60,12 +88,6 @@ export const SignUp: FC<SignUpProps> = () => {
     const onCompleted = (data: any) => {}
     const onError = (err: any) => {}
 
-    const { data: availableData, loading: loadingAvailableData } =
-        useGet<availableDataTypes>(
-            { functionFetch: api.defaultData.availableData },
-            {}
-        )
-
     const [mutation, { loading, error, data }] = useMutation(
         { functionFetch: api.auth.SignUp },
         { onCompleted, onError, cancelError: false }
@@ -87,7 +109,7 @@ export const SignUp: FC<SignUpProps> = () => {
             })
         }
     }
-
+    console.log(form.getFieldsValue())
     return (
         <div className='signUp'>
             <div className='signUp__container'>
@@ -97,6 +119,11 @@ export const SignUp: FC<SignUpProps> = () => {
                     alt='image'
                 />
                 <Form
+<<<<<<< HEAD
+=======
+                    form={form}
+                    initialValues={initialValues}
+>>>>>>> feat/custom-input
                     className='signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
