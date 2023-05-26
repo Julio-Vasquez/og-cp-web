@@ -20,7 +20,7 @@ import {
     SignUpProps,
     SignUpRoles,
     availableDataTypes,
-} from './SignUp.types'
+} from './signup.types'
 import api from '../../../api'
 import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
@@ -28,19 +28,12 @@ import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
 import './SignUp.scss'
+import { useForm } from 'antd/es/form/Form'
 
-<<<<<<< HEAD
 export const SignUp: FC<SignUpProps> = () => {
-=======
-const { useForm } = Form
-
-export const Signup: FC<signupProps> = () => {
->>>>>>> feat/custom-input
     const { formatMessage } = useIntl()
     const [form] = useForm()
 
-<<<<<<< HEAD
-=======
     const initialValues = { remember: true }
 
     const { data: availableData, loading: loadingAvailableData } =
@@ -49,7 +42,6 @@ export const Signup: FC<signupProps> = () => {
             {}
         )
 
->>>>>>> feat/custom-input
     const steps: StepType[] = [
         { key: 1, title: '', component: <PersonalInformation1 /> },
         {
@@ -119,11 +111,6 @@ export const Signup: FC<signupProps> = () => {
                     alt='image'
                 />
                 <Form
-<<<<<<< HEAD
-=======
-                    form={form}
-                    initialValues={initialValues}
->>>>>>> feat/custom-input
                     className='signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
@@ -135,10 +122,10 @@ export const Signup: FC<signupProps> = () => {
                         <div className='start__legend'>
                             <StarOutlined />
                         </div>
-                        <div className='start__line'></div>
+                        <div className='start__line' />
                     </div>
                     <h2 className='signUp__title'>
-                        {formatMessage({ id: 'title.SignUp' })}
+                        {formatMessage({ id: 'title.signUp' })}
                     </h2>
                     <div className='signUp__steps'>
                         <Steps
