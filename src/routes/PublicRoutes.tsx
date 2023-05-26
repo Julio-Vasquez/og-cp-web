@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Loading } from './../components/Loading'
 const Home = lazy(() => import('../Views/Public/Home'))
 const Login = lazy(() => import('../Views/Public/Login'))
-const Signup = lazy(() => import('../Views/Public/SignUp/SignUp'))
+const Signup = lazy(() => import('../Views/Public/SignUp/Signup'))
 const ForgotPassword = lazy(
     () => import('../Views/Public/ForgotPassword/ForgotPassword')
 )
