@@ -12,4 +12,5 @@ export const Button = {
     next: 'Next',
     prev: 'Back',
     send: 'Send',
+    insertObj: 'Insert a {{obj}}',
 }
