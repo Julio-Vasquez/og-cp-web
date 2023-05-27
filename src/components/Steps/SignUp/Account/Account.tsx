@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Form, Input } from 'antd'
 
 import { useIntl } from '../../../../hooks/useIntl'
@@ -5,9 +6,11 @@ import { useIntl } from '../../../../hooks/useIntl'
 import './Account.scss'
 
 const { Item } = Form
+const { Password } = Input
 
 const Account = () => {
     const { formatMessage } = useIntl()
+    const [passwordVisible, setPasswordVisible] = useState(false)
 
     return (
         <div className='account'>
@@ -54,7 +57,7 @@ const Account = () => {
                 wrapperCol={{ offset: 0 }}
                 className='account__item'
             >
-                <Input
+                <Password
                     placeholder={formatMessage({ id: 'texts.password' })}
                     className='account__input'
                 />
@@ -83,7 +86,7 @@ const Account = () => {
                 ]}
                 className='account__item'
             >
-                <Input
+                <Password
                     placeholder={formatMessage({ id: 'texts.passwordConfirm' })}
                     className='account__input'
                 />

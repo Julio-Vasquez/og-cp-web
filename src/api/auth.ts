@@ -6,10 +6,10 @@ import { loginType } from '../services/Auth/auth.types'
 const login = (body: Object) =>
     Mutation({ method: Methods.post, url: 'auth/login', body })
 
-const SignUp = (body: loginType) =>
+const signUp = (body: loginType) =>
     Mutation({ method: Methods.post, url: 'auth/signup', body })
 
 const forgotPassword = (body: loginType) =>
     Mutation({ method: Methods.post, url: 'auth/forgot-password', body })
 
-export default { login, SignUp, forgotPassword }
+export default { login, signUp, forgotPassword }

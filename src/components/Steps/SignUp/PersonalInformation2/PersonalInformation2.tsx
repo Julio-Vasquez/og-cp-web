@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+import type { RangePickerProps } from 'antd/es/date-picker'
 import { Form, Input, Select, DatePicker, DatePickerProps, Spin } from 'antd'
 
 import CustomInput from '../../../Fields/CustomInput/CustomInput'
@@ -15,6 +17,10 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
     const onChangeGender = (value: string) => {}
 
     const onChangeBirthDate: DatePickerProps['onChange'] = (date, dateString) => {}
+
+    const disabledDate: RangePickerProps['disabledDate'] = current => {
+        return current && current >= dayjs().endOf('day')
+    }
 
     return (
         <div className='personalInformation2'>
@@ -37,6 +43,7 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
                     <DatePicker
                         onChange={onChangeBirthDate}
                         className='personalInformation2__date'
+                        disabledDate={disabledDate}
                     />
                 </Item>
                 <Item

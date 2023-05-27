@@ -27,14 +27,13 @@ import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
-import './SignUp.scss'
 import { useForm } from 'antd/es/form/Form'
+
+import './SignUp.scss'
 
 export const SignUp: FC<SignUpProps> = () => {
     const { formatMessage } = useIntl()
     const [form] = useForm()
-
-    const initialValues = { remember: true }
 
     const { data: availableData, loading: loadingAvailableData } =
         useGet<availableDataTypes>(
@@ -81,7 +80,7 @@ export const SignUp: FC<SignUpProps> = () => {
     const onError = (err: any) => {}
 
     const [mutation, { loading, error, data }] = useMutation(
-        { functionFetch: api.auth.SignUp },
+        { functionFetch: api.auth.signUp },
         { onCompleted, onError, cancelError: false }
     )
 
