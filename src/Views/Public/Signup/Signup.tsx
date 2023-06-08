@@ -100,7 +100,6 @@ export const SignUp: FC<SignUpProps> = () => {
             })
         }
     }
-    console.log(form.getFieldsValue())
     return (
         <div className='signUp'>
             <div className='signUp__container'>

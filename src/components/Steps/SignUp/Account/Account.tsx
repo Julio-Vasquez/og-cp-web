@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Form, Input } from 'antd'
 
 import { useIntl } from '../../../../hooks/useIntl'
@@ -10,14 +9,13 @@ const { Password } = Input
 
 const Account = () => {
     const { formatMessage } = useIntl()
-    const [passwordVisible, setPasswordVisible] = useState(false)
-
     return (
         <div className='account'>
             <Item
                 name='mail'
                 rules={[
                     {
+                        type: 'email',
                         required: true,
                         message: formatMessage({ id: 'texts.inputEmail' }),
                     },
