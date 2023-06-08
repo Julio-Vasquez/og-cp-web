@@ -13,7 +13,6 @@ import loginImg from './../../../assets/img/publicBackground.jpg'
 import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
-import { LoginDefaultProps, LoginPropTypes } from './login.types'
 
 import './Login.scss'
 
@@ -106,8 +105,5 @@ export const Login = () => {
         </div>
     )
 }
-
-Login.propTypes = LoginPropTypes
-Login.defaultProps = LoginDefaultProps
 
 export default Login
