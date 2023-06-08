@@ -8,11 +8,12 @@ import {
     LoginOutlined,
 } from '@ant-design/icons'
 
-import loginImg from './../../../assets/img/publicBackground.jpg'
+import { RoutesPublic } from '../../../utils/constants/routes.constants'
 
 import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
+import loginImg from './../../../assets/img/publicBackground.jpg'
 
 import './Login.scss'
 
@@ -94,10 +95,10 @@ export const Login = () => {
                     >
                         {formatMessage({ id: 'button.login' })}
                     </Button>
-                    <Link className='login__link ' to='/forgot-password'>
+                    <Link className='login__link ' to={RoutesPublic.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
-                    <Link className='login__link ' to='/register'>
+                    <Link className='login__link ' to={RoutesPublic.register}>
                         {formatMessage({ id: 'link.SignUp' })}
                     </Link>
                 </Form>
