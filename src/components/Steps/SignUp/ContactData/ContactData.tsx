@@ -15,7 +15,6 @@ import './ContactData.scss'
 
 const ContactData: FC<ContactDataProps> = ({ typeDocuments, genders, loading }) => {
     const { formatMessage } = useIntl()
-    console.log(typeDocuments)
 
     const disabledDate: RangePickerProps['disabledDate'] = current => {
         return current && current >= dayjs().endOf('day')

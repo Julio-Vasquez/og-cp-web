@@ -60,7 +60,7 @@ export const SignUp: FC<SignUpProps> = () => {
     const onPrev = () => previous()
     const onNext = () => next()
     const onCompleted = (data: any) => {}
-    const onError = (err: any) => {}
+    const onError = (data: any) => {}
 
     const [mutation] = useMutation(
         { functionFetch: api.auth.signUp },
