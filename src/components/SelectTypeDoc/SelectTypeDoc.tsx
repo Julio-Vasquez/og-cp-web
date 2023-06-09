@@ -16,9 +16,6 @@ const { Item } = Form
 
 export const SelectTypeDoc = () => {
     const { formatMessage } = useIntl()
-    const onChangeTypeDoc = (value: string) => {
-        console.log(`selected ${value}`)
-    }
 
     const { data: availableData, loading: loadingAvailableData } =
         useGet<availableDataTypes>(
@@ -31,7 +28,6 @@ export const SelectTypeDoc = () => {
             <Select
                 bordered={false}
                 className='select-type-doc__select'
-                onChange={onChangeTypeDoc}
                 placeholder={formatMessage({ id: 'texts.typeDocument' })}
                 options={availableData?.payload?.typeDocuments?.map(
                     (item: SignUpTypeDocument) => ({
