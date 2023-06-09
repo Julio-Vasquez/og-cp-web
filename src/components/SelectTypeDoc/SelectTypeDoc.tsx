@@ -3,23 +3,18 @@ import { Form, Input, Select } from 'antd'
 
 import {
     availableDataTypes,
-    signUpTypeDocument,
+    SignUpTypeDocument,
 } from '../../Views/Public/SignUp/SignUp.types'
 
-import useIntl from '../../hooks/useIntl'
-import { useGet } from '../../hooks/api'
 import api from '../../api'
-const { Item } = Form
+import { useGet } from '../../hooks/api'
+import useIntl from '../../hooks/useIntl'
 
 import './SelectTypeDoc.scss'
 
-import {
-    SelectTypeDocDefaultProps,
-    SelectTypeDocPropTypes,
-    SelectTypeDocProps,
-} from './SelectTypeDoc.types'
+const { Item } = Form
 
-export const SelectTypeDoc: FC<SelectTypeDocProps> = () => {
+export const SelectTypeDoc = () => {
     const { formatMessage } = useIntl()
     const onChangeTypeDoc = (value: string) => {
         console.log(`selected ${value}`)
@@ -30,6 +25,7 @@ export const SelectTypeDoc: FC<SelectTypeDocProps> = () => {
             { functionFetch: api.defaultData.availableData },
             {}
         )
+
     const prefixSelector = (
         <Item name={'typDocument'} noStyle>
             <Select
@@ -38,7 +34,7 @@ export const SelectTypeDoc: FC<SelectTypeDocProps> = () => {
                 onChange={onChangeTypeDoc}
                 placeholder={formatMessage({ id: 'texts.typeDocument' })}
                 options={availableData?.payload?.typeDocuments?.map(
-                    (item: signUpTypeDocument) => ({
+                    (item: SignUpTypeDocument) => ({
                         value: item.typeDocument,
                     })
                 )}
@@ -64,7 +60,5 @@ export const SelectTypeDoc: FC<SelectTypeDocProps> = () => {
         </div>
     )
 }
-
-SelectTypeDoc.defaultProps = SelectTypeDocDefaultProps
 
 export default SelectTypeDoc

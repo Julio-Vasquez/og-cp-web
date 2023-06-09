@@ -4,7 +4,7 @@ import useIntl from '../../../../hooks/useIntl'
 
 const { Item } = Form
 
-import './PersonalInformation1.scss'
+import './PersonalInformation.scss'
 
 const PersonalInformation1 = () => {
     const { formatMessage } = useIntl()

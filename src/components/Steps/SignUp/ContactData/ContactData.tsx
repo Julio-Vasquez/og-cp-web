@@ -1,22 +1,21 @@
 import dayjs from 'dayjs'
+import { FC } from 'react'
 import type { RangePickerProps } from 'antd/es/date-picker'
-import { Form, Input, Select, DatePicker, DatePickerProps, Spin } from 'antd'
+import { Form, Input, Select, DatePicker, Spin } from 'antd'
 
 import CustomInput from '../../../Fields/CustomInput/CustomInput'
 
 import useIntl from '../../../../hooks/useIntl'
-import { SignUpGenders } from '../../../../Views/Public/SignUp/signup.types'
+import { ContactDataProps } from './ContactData.type'
+import { SignUpGenders } from '../../../../Views/Public/SignUp/SignUp.types'
 
 const { Item } = Form
 
-import './PersonalInformation2.scss'
+import './ContactData.scss'
 
-const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
+const ContactData: FC<ContactDataProps> = ({ typeDocuments, genders, loading }) => {
     const { formatMessage } = useIntl()
-
-    const onChangeGender = (value: string) => {}
-
-    const onChangeBirthDate: DatePickerProps['onChange'] = (date, dateString) => {}
+    console.log(typeDocuments)
 
     const disabledDate: RangePickerProps['disabledDate'] = current => {
         return current && current >= dayjs().endOf('day')
@@ -41,7 +40,6 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
                     rules={[{ required: true, message: 'Please birthDate!' }]}
                 >
                     <DatePicker
-                        onChange={onChangeBirthDate}
                         className='personalInformation2__date'
                         disabledDate={disabledDate}
                     />
@@ -55,7 +53,6 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
                         bordered={false}
                         className='personalInformation2__option'
                         placeholder={formatMessage({ id: 'texts.gender' })}
-                        onChange={onChangeGender}
                         allowClear
                         options={genders?.map((item: SignUpGenders) => ({
                             value: item.gender,
@@ -65,7 +62,14 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
                 </Item>
                 <Item
                     name='phoneNumber'
-                    rules={[{ required: true, message: 'Please phone number!' }]}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please phone number!',
+                            max: 10,
+                            min: 10,
+                        },
+                    ]}
                     className='personalInformation2__item'
                 >
                     <Input
@@ -79,4 +83,4 @@ const PersonalInformation2 = ({ typeDocuments, genders, loading }: any) => {
     )
 }
 
-export default PersonalInformation2
+export default ContactData
