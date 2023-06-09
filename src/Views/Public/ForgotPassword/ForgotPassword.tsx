@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 import {
     LockOutlined,
@@ -7,6 +6,7 @@ import {
     StarOutlined,
     ArrowLeftOutlined,
 } from '@ant-design/icons'
+
 import loginImg from '../../../assets/img/publicBackground.jpg'
 
 import api from '../../../api'
@@ -23,17 +23,13 @@ const ForgotPassword = () => {
     const onCompleted = (data: any) => {}
     const onError = (err: any) => {}
 
-    const [mutation, { loading, error, data }] = useMutation(
+    const [mutation] = useMutation(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
 
     const onFinish = (values: any) => {
         mutation({ ...values })
-    }
-
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo)
     }
 
     return (
@@ -44,14 +40,10 @@ const ForgotPassword = () => {
                     src={loginImg}
                     alt='image'
                 />
-                {/*                 <h2 className='forgot-password__title'>
-                    {formatMessage({ id: 'title.innocentlyLearning' })}
-                </h2> */}
                 <Form
                     className='forgot-password__form-data'
                     name='normal_forgot-password'
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete='off'
                     layout='vertical'
                 >
