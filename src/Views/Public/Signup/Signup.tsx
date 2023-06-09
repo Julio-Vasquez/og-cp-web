@@ -28,6 +28,7 @@ import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
 import './Signup.scss'
+import { RoutesPublic } from '../../../utils/constants/routes.constants'
 
 export const Signup: FC<signupProps> = () => {
     const { formatMessage } = useIntl()
@@ -149,7 +150,7 @@ export const Signup: FC<signupProps> = () => {
                         </div>
                     </div>
                     <div className='signUp__link-login '>
-                        <Link to='/login'>
+                        <Link to={RoutesPublic.login}>
                             {formatMessage({ id: 'link.SignIn' })}
                         </Link>
                     </div>

@@ -14,6 +14,7 @@ import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 
 import './ForgotPassword.scss'
+import { RoutesPublic } from '../../../utils/constants/routes.constants'
 
 const { Item } = Form
 
@@ -89,7 +90,7 @@ const ForgotPassword = () => {
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>
-                    <Link className='forgot-password__link ' to='/login'>
+                    <Link className='forgot-password__link ' to={RoutesPublic.login}>
                         <ArrowLeftOutlined />
                     </Link>
                 </Form>
