@@ -1,40 +1,32 @@
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
-import {
-    LockOutlined,
-    UserOutlined,
-    StarOutlined,
-    ArrowLeftOutlined,
-} from '@ant-design/icons'
+import { LockOutlined, UserOutlined, StarOutlined } from '@ant-design/icons'
+
 import loginImg from '../../../assets/img/publicBackground.jpg'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
+import { forgotPassword } from './forgotPassword.type'
+import { successNotification } from '../../../utils/notifications/notification.action'
 
 import './ForgotPassword.scss'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 const { Item } = Form
 
 const ForgotPassword = () => {
     const { formatMessage } = useIntl()
 
-    const onCompleted = (data: any) => {}
-    const onError = (err: any) => {}
-
-    const [mutation] = useMutation(
-        { functionFetch: api.auth.forgotPassword },
-        { onCompleted, onError, cancelError: false }
-    )
-
-    const onFinish = (values: any) => {
-        mutation({ ...values })
+    const onCompleted = ({ data }: any) => {
+        successNotification(data.message)
     }
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo)
+    const [mutation] = useMutation<forgotPassword>(
+        { functionFetch: api.auth.forgotPassword },
+        { onCompleted, cancelError: false }
+    )
+
+    const onFinish = (values: forgotPassword) => {
+        mutation({ ...values })
     }
 
     return (
@@ -45,12 +37,10 @@ const ForgotPassword = () => {
                     src={loginImg}
                     alt='image'
                 />
-
                 <Form
                     className='forgot-password__form-data'
                     name='normal_forgot-password'
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete='off'
                     layout='vertical'
                 >
@@ -88,9 +78,6 @@ const ForgotPassword = () => {
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>
-                    <Link className='forgot-password__link ' to={RP.login}>
-                        <ArrowLeftOutlined />
-                    </Link>
                 </Form>
             </div>
         </div>
