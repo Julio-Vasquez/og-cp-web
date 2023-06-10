@@ -11,7 +11,7 @@
     "dependencies": {
         "@ant-design/icons": "^4.8.0",
         "@reduxjs/toolkit": "^1.9.1",
-        "antd": "^5.1.2",
+        "antd": "^5.5.2",
         "i18next": "^22.1.5",
         "i18next-browser-languagedetector": "^7.0.1",
         "jwt-decode": "^3.1.2",
