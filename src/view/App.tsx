@@ -11,7 +11,6 @@ const App: FC = () => {
     const { authentication } = useData({ reducer: AUTH })
     return (
         <I18nextProvider i18n={i18n}>
-            {/* <p>{formatMessage({ id: 'button.login' })}</p> */}
             {authentication ? <PrivateRoutes /> : <PublicRoutes />}
         </I18nextProvider>
     )

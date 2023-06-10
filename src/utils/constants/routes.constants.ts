@@ -1,4 +1,4 @@
-export const RoutesPublic = {
+export const ROUTES_PUBLIC = {
     login: '/login',
     register: '/register',
     forgotPassword: '/forgot-password',

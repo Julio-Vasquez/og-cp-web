@@ -8,7 +8,7 @@ import {
     LoginOutlined,
 } from '@ant-design/icons'
 
-import { RoutesPublic } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
@@ -101,10 +101,10 @@ export const Login = () => {
                     >
                         {formatMessage({ id: 'button.login' })}
                     </Button>
-                    <Link className='login__link ' to={RoutesPublic.forgotPassword}>
+                    <Link className='login__link ' to={RP.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
-                    <Link className='login__link ' to={RoutesPublic.register}>
+                    <Link className='login__link ' to={RP.register}>
                         {formatMessage({ id: 'link.SignUp' })}
                     </Link>
                 </Form>

@@ -11,8 +11,8 @@ import {
 
 import Account from '../../../components/Steps/SignUp/Account/Account'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
-import PersonalInformation1 from '../../../components/Steps/SignUp/PersonalInformation/PersonalInformation'
 import ContactData from '../../../components/Steps/SignUp/ContactData/ContactData'
+import PersonalInformation from '../../../components/Steps/SignUp/PersonalInformation/PersonalInformation'
 
 import {
     SignUpDefaultProps,
@@ -25,7 +25,8 @@ import api from '../../../api'
 import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
-import { ROLES } from '../../../utils/constants/roles/roles.enum'
+import { ROLES } from '../../../utils/constants/roles.enum'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Signup.scss'
 
@@ -39,7 +40,7 @@ export const SignUp: FC<SignUpProps> = () => {
         )
 
     const steps: StepType[] = [
-        { key: 1, title: '', component: <PersonalInformation1 /> },
+        { key: 1, title: '', component: <PersonalInformation /> },
         {
             key: 2,
             title: '',
@@ -133,7 +134,7 @@ export const SignUp: FC<SignUpProps> = () => {
                         </div>
                     </div>
                     <div className='signUp__link-login '>
-                        <Link to={RoutesPublic.login}>
+                        <Link to={RP.login}>
                             {formatMessage({ id: 'link.SignIn' })}
                         </Link>
                     </div>
@@ -142,6 +143,7 @@ export const SignUp: FC<SignUpProps> = () => {
         </div>
     )
 }
+
 SignUp.propTypes = SignUpPropTypes
 SignUp.defaultProps = SignUpDefaultProps
 

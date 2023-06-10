@@ -1,14 +1,16 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+
+import useIntl from '../../../hooks/useIntl'
 import { HomeDefaultProps, HomeProps, HomePropTypes } from './home.types'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 export const Home: FC<HomeProps> = () => {
+    const { formatMessage } = useIntl()
     return (
         <div>
-            Home
-            <Link to='login'>Login</Link>
-            <Link to='register'>register</Link>
-            <Link to='404'>404</Link>
+            <Link to={RP.login}>{formatMessage({ id: 'link.SignIn' })}</Link>
+            <Link to={RP.register}>{formatMessage({ id: 'link.SignUp' })}</Link>
         </div>
     )
 }
