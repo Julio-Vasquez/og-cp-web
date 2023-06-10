@@ -14,7 +14,7 @@ import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 
 import './ForgotPassword.scss'
-import { RoutesPublic } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 const { Item } = Form
 
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     const onCompleted = (data: any) => {}
     const onError = (err: any) => {}
 
-    const [mutation, { loading, error, data }] = useMutation(
+    const [mutation] = useMutation(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
@@ -45,9 +45,7 @@ const ForgotPassword = () => {
                     src={loginImg}
                     alt='image'
                 />
-                {/*                 <h2 className='forgot-password__title'>
-                    {formatMessage({ id: 'title.innocentlyLearning' })}
-                </h2> */}
+
                 <Form
                     className='forgot-password__form-data'
                     name='normal_forgot-password'
@@ -90,7 +88,7 @@ const ForgotPassword = () => {
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>
-                    <Link className='forgot-password__link ' to={RoutesPublic.login}>
+                    <Link className='forgot-password__link ' to={RP.login}>
                         <ArrowLeftOutlined />
                     </Link>
                 </Form>
