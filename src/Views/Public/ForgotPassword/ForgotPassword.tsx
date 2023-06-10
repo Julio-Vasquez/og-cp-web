@@ -1,17 +1,13 @@
-import { Link } from 'react-router-dom'
 import { Button, Form, Input } from 'antd'
-import {
-    LockOutlined,
-    UserOutlined,
-    StarOutlined,
-    ArrowLeftOutlined,
-} from '@ant-design/icons'
+import { LockOutlined, UserOutlined, StarOutlined } from '@ant-design/icons'
 
 import loginImg from '../../../assets/img/publicBackground.jpg'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
+import { forgotPassword } from './forgotPassword.type'
+import { successNotification } from '../../../utils/notifications/notification.action'
 
 import './ForgotPassword.scss'
 
@@ -20,15 +16,16 @@ const { Item } = Form
 const ForgotPassword = () => {
     const { formatMessage } = useIntl()
 
-    const onCompleted = (data: any) => {}
-    const onError = (err: any) => {}
+    const onCompleted = ({ data }: any) => {
+        successNotification(data.message)
+    }
 
-    const [mutation] = useMutation(
+    const [mutation] = useMutation<forgotPassword>(
         { functionFetch: api.auth.forgotPassword },
-        { onCompleted, onError, cancelError: false }
+        { onCompleted, cancelError: false }
     )
 
-    const onFinish = (values: any) => {
+    const onFinish = (values: forgotPassword) => {
         mutation({ ...values })
     }
 
@@ -81,9 +78,6 @@ const ForgotPassword = () => {
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>
-                    <Link className='forgot-password__link ' to='/login'>
-                        <ArrowLeftOutlined />
-                    </Link>
                 </Form>
             </div>
         </div>
