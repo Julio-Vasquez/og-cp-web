@@ -1,7 +1,7 @@
 import { Title } from './title'
 import { Button } from './button'
 import { Language } from './language'
-import { Link } from './Link'
+import { Link } from './link'
 import { Texts } from './texts'
 
 export const EN = {

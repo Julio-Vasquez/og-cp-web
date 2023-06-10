@@ -10,17 +10,14 @@
         &__type-doc {
             height: auto;
             display: flex;
-            text-align: center;
         }
 
         &__item {
-            text-align: center;
             margin: 5px 0;
         }
     }
 
     &__item {
-        text-align: center;
         margin: 5px 0;
     }
 
@@ -28,7 +25,7 @@
         height: 35px;
         display: flex;
         align-items: center;
-        text-align: center;
+
         background-color: white;
         border-radius: 20px;
         border: solid 0.01px rgba(0, 0, 0, 0.178);
@@ -36,15 +33,16 @@
     &__date {
         border-radius: 20px;
         display: flex;
-        justify-content: center;
     }
     &__input {
         width: 100%;
         height: 35px;
         border-radius: 2vh;
-        text-align: center;
         font-size: 15px;
     }
+}
+.ant-form-item {
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -64,7 +62,6 @@
                 display: flex;
                 align-items: center;
                 width: 50%;
-                text-align: center;
             }
         }
         &__item {
@@ -80,15 +77,14 @@
             width: 100%;
             height: 35px;
             display: flex;
-            padding-left: 110px;
+
             justify-content: center;
-            text-align: center;
         }
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-            text-align: center;
+
             font-size: 15px;
         }
     }
@@ -110,7 +106,6 @@
                 display: flex;
                 align-items: center;
                 width: 50%;
-                text-align: center;
             }
         }
         &__item {
@@ -126,15 +121,14 @@
             width: 315px;
             height: 35px;
             display: flex;
-            padding-left: 110px;
+
             justify-content: center;
-            text-align: center;
         }
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-            text-align: center;
+
             font-size: 15px;
         }
     }
@@ -156,7 +150,6 @@
                 display: flex;
                 align-items: center;
                 width: 50%;
-                text-align: center;
             }
         }
         &__item {
@@ -172,15 +165,13 @@
             width: 315px;
             height: 35px;
             display: flex;
-            padding-left: 110px;
             justify-content: center;
-            text-align: center;
         }
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-            text-align: center;
+
             font-size: 15px;
         }
     }
@@ -202,7 +193,6 @@
                 display: flex;
                 align-items: center;
                 width: 50%;
-                text-align: center;
             }
         }
         &__item {
@@ -218,15 +208,14 @@
             width: 315px;
             height: 35px;
             display: flex;
-            padding-left: 110px;
+
             justify-content: center;
-            text-align: center;
         }
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-            text-align: center;
+
             font-size: 15px;
         }
     }
@@ -249,7 +238,6 @@
                 display: flex;
                 align-items: center;
                 width: 50%;
-                text-align: center;
             }
         }
         &__item {
@@ -265,15 +253,14 @@
             width: 315px;
             height: 35px;
             display: flex;
-            padding-left: 110px;
+
             justify-content: center;
-            text-align: center;
         }
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-            text-align: center;
+
             font-size: 15px;
         }
     }

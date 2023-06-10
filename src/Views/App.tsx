@@ -1,10 +1,10 @@
 import { FC } from 'react'
-
 import { I18nextProvider } from 'react-i18next'
+
+import { PrivateRoutes, PublicRoutes } from '../routes'
 
 import i18n from '../i18n/config'
 import useData from '../hooks/useData'
-import { PrivateRoutes, PublicRoutes } from '../routes'
 import { AUTH } from '../utils/constants/redux.constants'
 
 const App: FC = () => {

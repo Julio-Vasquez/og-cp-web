@@ -6,7 +6,7 @@ import { RoutesPublic } from '../utils/constants/routes.constants'
 
 const Home = lazy(() => import('../Views/Public/Home'))
 const Login = lazy(() => import('../Views/Public/Login'))
-const Signup = lazy(() => import('../Views/Public/Signup/Signup'))
+const Signup = lazy(() => import('../Views/Public/SignUp/SignUp'))
 const ForgotPassword = lazy(
     () => import('../Views/Public/ForgotPassword/ForgotPassword')
 )

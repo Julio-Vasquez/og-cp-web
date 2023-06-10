@@ -11,16 +11,16 @@ import {
 
 import Account from '../../../components/Steps/SignUp/Account/Account'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
-import PersonalInformation1 from '../../../components/Steps/SignUp/PersonalInformation1/PersonalInformation1'
-import PersonalInformation2 from '../../../components/Steps/SignUp/PersonalInformation2/PersonalInformation2'
+import PersonalInformation1 from '../../../components/Steps/SignUp/PersonalInformation/PersonalInformation'
+import ContactData from '../../../components/Steps/SignUp/ContactData/ContactData'
 
 import {
-    signupDefaultProps,
-    signupPropTypes,
-    signupProps,
-    signUpRoles,
+    SignUpDefaultProps,
+    SignUpPropTypes,
+    SignUpProps,
+    SignUpRoles,
     availableDataTypes,
-} from './signup.types'
+} from './SignUp.types'
 import api from '../../../api'
 import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
@@ -28,40 +28,9 @@ import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles/roles.enum'
 
 import './Signup.scss'
-import { RoutesPublic } from '../../../utils/constants/routes.constants'
 
-export const Signup: FC<signupProps> = () => {
+export const SignUp: FC<SignUpProps> = () => {
     const { formatMessage } = useIntl()
-
-    const initialValues = { remember: true }
-
-    const steps: StepType[] = [
-        { key: 1, title: '', component: <PersonalInformation1 /> },
-        { key: 2, title: '', component: <PersonalInformation2 /> },
-        { key: 3, title: '', component: <Account /> },
-    ]
-    const [personaInformation, setPersonaInformation] = useState({
-        identification: 0,
-        name: '',
-        middleName: '',
-        lastNameOne: '',
-        lastNameTwo: '',
-        birthDate: '',
-        gender: '',
-        role: '',
-        username: '',
-        password: '',
-        mail: '',
-        typeDocument: '',
-        phoneNumber: 0,
-    })
-
-    const { currentStep, content, isFirstStep, isLastStep, next, previous } =
-        useStep(steps)
-    const onPrev = () => previous()
-    const onNext = () => next()
-    const onCompleted = (data: any) => {}
-    const onError = (err: any) => {}
 
     const { data: availableData, loading: loadingAvailableData } =
         useGet<availableDataTypes>(
@@ -69,7 +38,31 @@ export const Signup: FC<signupProps> = () => {
             {}
         )
 
-    const [mutation, { loading, error, data }] = useMutation(
+    const steps: StepType[] = [
+        { key: 1, title: '', component: <PersonalInformation1 /> },
+        {
+            key: 2,
+            title: '',
+            component: (
+                <ContactData
+                    genders={availableData?.payload?.genders}
+                    typeDocuments={availableData?.payload?.typeDocuments}
+                    loading={loadingAvailableData}
+                />
+            ),
+        },
+        { key: 3, title: '', component: <Account /> },
+    ]
+    const [personaInformation, setPersonaInformation] = useState({})
+
+    const { currentStep, content, isFirstStep, isLastStep, next, previous } =
+        useStep(steps)
+    const onPrev = () => previous()
+    const onNext = () => next()
+    const onCompleted = (data: any) => {}
+    const onError = (data: any) => {}
+
+    const [mutation] = useMutation(
         { functionFetch: api.auth.signUp },
         { onCompleted, onError, cancelError: false }
     )
@@ -80,7 +73,7 @@ export const Signup: FC<signupProps> = () => {
             setPersonaInformation({ ...personaInformation, ...values })
         } else {
             const isAdmin = availableData?.payload?.roles.find(
-                (item: signUpRoles) => item.role === ROLES.Admin
+                (item: SignUpRoles) => item.role === ROLES.Admin
             )
             const { role } = isAdmin
             mutation({
@@ -90,7 +83,6 @@ export const Signup: FC<signupProps> = () => {
             })
         }
     }
-
     return (
         <div className='signUp'>
             <div className='signUp__container'>
@@ -100,7 +92,6 @@ export const Signup: FC<signupProps> = () => {
                     alt='image'
                 />
                 <Form
-                    initialValues={initialValues}
                     className='signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
@@ -112,7 +103,7 @@ export const Signup: FC<signupProps> = () => {
                         <div className='start__legend'>
                             <StarOutlined />
                         </div>
-                        <div className='start__line'></div>
+                        <div className='start__line' />
                     </div>
                     <h2 className='signUp__title'>
                         {formatMessage({ id: 'title.signUp' })}
@@ -137,15 +128,7 @@ export const Signup: FC<signupProps> = () => {
                                 className='signUp__submit-form'
                                 htmlType='submit'
                             >
-                                {!isLastStep ? (
-                                    <>
-                                        <RightOutlined />
-                                    </>
-                                ) : (
-                                    <>
-                                        <CheckOutlined />
-                                    </>
-                                )}
+                                {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
                             </Button>
                         </div>
                     </div>
@@ -159,7 +142,7 @@ export const Signup: FC<signupProps> = () => {
         </div>
     )
 }
-Signup.propTypes = signupPropTypes
-Signup.defaultProps = signupDefaultProps
+SignUp.propTypes = SignUpPropTypes
+SignUp.defaultProps = SignUpDefaultProps
 
-export default Signup
+export default SignUp

@@ -1,5 +1,5 @@
 export const Link = {
-    SignUp: ' Registrarse',
-    SignIn: ' Iniciar sesion',
-    forgotPassword: '¿Olvido su contraseña?',
+    SignUp: 'Registrarse',
+    SignIn: 'Iniciar sesión',
+    forgotPassword: '¿Olvido su constraseña?',
 }

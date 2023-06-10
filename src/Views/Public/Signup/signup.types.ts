@@ -1,33 +1,33 @@
 import propTypes from 'prop-types'
-import { ResponseFetch } from './../../../utils/api/api.util'
+import { ResponseFetch } from '../../../utils/api/api.util'
 
-export const signupPropTypes = {}
+export const SignUpPropTypes = {}
 
-export const signupDefaultProps = {}
+export const SignUpDefaultProps = {}
 
-export type signupProps = propTypes.InferProps<typeof signupPropTypes>
+export type SignUpProps = propTypes.InferProps<typeof SignUpPropTypes>
 
 type publicKey = {
     publicKey: string
 }
 
-export type signUpRoles = {
+export type SignUpRoles = {
     role: string
 } & publicKey
 
-export type signUpGenders = {
+export type SignUpGenders = {
     gender: string
 } & publicKey
 
-export type signUpTypeDocument = {
+export type SignUpTypeDocument = {
     abbr: string
     typeDocument: string
 } & publicKey
 
 export type response = {
-    roles: signUpRoles[]
-    genders: signUpGenders[]
-    typeDocuments: signUpTypeDocument[]
+    roles: SignUpRoles[]
+    genders: SignUpGenders[]
+    typeDocuments: SignUpTypeDocument[]
 }
 
 export type availableDataTypes = ResponseFetch<response>
