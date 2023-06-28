@@ -19,8 +19,8 @@ export const ProviderAntd: FC<ProviderProps> = ({ children }) => {
 
     return (
         <>
-            <LanguageSelector locale={locale} setLocal={setLocal} />
-            <ThemeSelector data={data} setData={setData} />
+            {/*   <LanguageSelector locale={locale} setLocal={setLocal} />
+            <ThemeSelector data={data} setData={setData} /> */}
             <ConfigProvider
                 locale={locale}
                 theme={{

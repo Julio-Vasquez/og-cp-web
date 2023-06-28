@@ -29,12 +29,6 @@ export const Login = () => {
 
     return (
         <div className='login'>
-            <Button>
-                {formatMessage({
-                    id: 'button.insertObj',
-                    objVars: { obj: formatMessage({ id: 'button.password' }) },
-                })}
-            </Button>
             <div className='login__container'>
                 <img
                     className='login__image-container'

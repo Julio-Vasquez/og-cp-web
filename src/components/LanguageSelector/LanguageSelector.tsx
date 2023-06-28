@@ -27,7 +27,6 @@ export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
 
     return (
         <div style={{ marginBottom: 16 }}>
-            <span style={{ marginRight: 16 }}>Change locale of components:</span>
             <Radio.Group value={locale} onChange={handleLocale}>
                 <Radio.Button key='en' value={enUS}>
                     English
