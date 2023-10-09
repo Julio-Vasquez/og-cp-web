@@ -7,7 +7,7 @@ import CustomInput from '../../../Fields/CustomInput/CustomInput'
 
 import useIntl from '../../../../hooks/useIntl'
 import { ContactDataProps } from './ContactData.type'
-import { SignUpGenders } from '../../../../Views/Public/SignUp/SignUp.types'
+import { SignUpGenders } from '../../../../views/Public/SignUp/signUp.types'
 
 const { Item } = Form
 

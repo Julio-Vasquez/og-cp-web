@@ -20,7 +20,7 @@ import {
     SignUpProps,
     SignUpRoles,
     availableDataTypes,
-} from './SignUp.types'
+} from './signUp.types'
 import api from '../../../api'
 import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
@@ -28,7 +28,7 @@ import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
-import './Signup.scss'
+import './signUp.scss'
 
 export const SignUp: FC<SignUpProps> = () => {
     const { formatMessage } = useIntl()
