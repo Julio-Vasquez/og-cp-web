@@ -2,24 +2,25 @@ import { lazy, Suspense, FC } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { Loading } from './../components/Loading'
-import { LayoutPrivate } from '../components/LayoutPrivate/LayoutPrivate'
-import Home from '../views/Private/Home'
+import { ROUTES_PRIVATE as RP } from '../utils/constants/routes.constants'
 
+const Home = lazy(() => import('../views/Private/Home'))
 const Error404 = lazy(() => import('./../components/Error/Error404'))
+const LayoutPrivate = lazy(() => import('../components/LayoutPrivate'))
 
 export const PrivateRoutes: FC = () => {
     return (
-        <BrowserRouter>
-            <Suspense fallback={<Loading message='loading' />}>
-                <LayoutPrivate>
+        <Suspense fallback={<Loading message='loading' />}>
+            <LayoutPrivate>
+                <BrowserRouter>
                     <Routes>
-                        <Route path='/' element={<Home />} />
+                        <Route path={RP.default} element={<Home />} />
+                        <Route path={RP.error404} element={<Error404 />} />
 
-                        <Route path='/404' element={<Error404 />} />
-                        <Route path='*' element={<Navigate replace to='/404' />} />
+                        <Route path='/login' element={<Navigate replace to='/' />} />
                     </Routes>
-                </LayoutPrivate>
-            </Suspense>
-        </BrowserRouter>
+                </BrowserRouter>
+            </LayoutPrivate>
+        </Suspense>
     )
 }

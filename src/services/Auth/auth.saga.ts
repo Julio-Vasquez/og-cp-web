@@ -5,7 +5,10 @@ import { loginAction } from './auth.types'
 import { IResponse } from '../../utils/api/api.util'
 import { ClearData, SaveItem } from '../../utils/storage'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
-import { errorMessage } from '../../utils/notifications/message.action'
+import {
+    errorMessage,
+    successMessage,
+} from '../../utils/notifications/message.action'
 
 function* fetchLogin({ payload }: loginAction) {
     try {
@@ -20,6 +23,7 @@ function* fetchLogin({ payload }: loginAction) {
                 })
             )
             SaveItem({ newItem: res?.payload.token })
+            successMessage('login success full')
         } else yield put(loginFailed({ error: true, message: res.message }))
         errorMessage(res.message)
     } catch (e: any) {

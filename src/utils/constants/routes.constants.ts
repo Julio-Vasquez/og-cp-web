@@ -5,3 +5,7 @@ export const ROUTES_PUBLIC = {
     error404: '/404',
     default: '/',
 }
+export const ROUTES_PRIVATE = {
+    error404: '/404',
+    default: '/',
+}
