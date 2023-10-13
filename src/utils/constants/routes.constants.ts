@@ -8,4 +8,7 @@ export const ROUTES_PUBLIC = {
 export const ROUTES_PRIVATE = {
     error404: '/404',
     default: '/',
+    dashboard: '/dashboard',
+    statistics: '/statistics',
+    ranking: '/ranking',
 }
