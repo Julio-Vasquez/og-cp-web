@@ -2,12 +2,12 @@ import { FC, Fragment } from 'react'
 import { Layout, Menu } from 'antd'
 import { SiderPProps, SiderPPropsDefault, SiderPPropsTypes } from './siderP.type'
 
-import image from '../../../assets/img/image.png'
 import dashboard from '../../../assets/svg/dashboard.svg'
 import statistics from '../../../assets/svg/statistics.svg'
 import ranking from '../../../assets/svg/ranking.svg'
 
 import './SiderP.scss'
+import Logo from '../../Logo/Logo'
 const { Sider } = Layout
 
 export const SiderP: FC<SiderPProps> = ({ collapsed }) => {
@@ -19,20 +19,7 @@ export const SiderP: FC<SiderPProps> = ({ collapsed }) => {
             theme='light'
             className='main-sider'
         >
-            <div className='main-sider__container-logo'>
-                {!collapsed ? (
-                    <Fragment>
-                        <div className='main-sider__container-img'>
-                            <img src={image} alt='img' />
-                        </div>
-                        <h2 className='main-sider__title'>Innocently Learning</h2>
-                    </Fragment>
-                ) : (
-                    <div className='main-sider__container-img'>
-                        <img src={image} alt='img' />
-                    </div>
-                )}
-            </div>
+            <Logo collapsed={collapsed} />
 
             {!collapsed ? (
                 <h2 className='main-sider__subtitle'>Main menu</h2>
