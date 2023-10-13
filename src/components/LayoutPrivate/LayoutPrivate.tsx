@@ -1,17 +1,15 @@
-import { FC, useState } from 'react'
-
+import { Layout } from 'antd'
 import {
     LayoutPrivateProps,
     LayoutPrivateDefaultProps,
     LayoutPrivatePropsTypes,
 } from './layoutPrivate.types'
-import { Layout } from 'antd'
+import { FC, lazy, useState } from 'react'
 
 import './Layout.scss'
-import { HeaderP } from './Header/HeaderP'
-import SiderP from './SiderP'
 
-const { Sider } = Layout
+const HeaderP = lazy(() => import('./Header'))
+const SiderP = lazy(() => import('./SiderP'))
 
 export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false)
