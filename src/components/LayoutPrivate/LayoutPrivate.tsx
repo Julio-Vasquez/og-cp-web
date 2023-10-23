@@ -8,7 +8,7 @@ import { FC, lazy, useState } from 'react'
 
 import './Layout.scss'
 
-const HeaderP = lazy(() => import('./Header'))
+const HeaderP = lazy(() => import('./NavBar'))
 const SiderP = lazy(() => import('./SiderP'))
 
 export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {

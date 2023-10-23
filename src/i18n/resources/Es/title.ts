@@ -6,4 +6,8 @@ export const Title = {
     mail: 'Correo',
     forgotPassword: '¿Olvido su contraseña?',
     innocentlyLearning: 'Aprendiendo inocentemente',
+    mainMenu: 'Menu principal',
+    dashboard: 'Panel',
+    statistics: 'Estadísticas',
+    ranking: 'Clasificación',
 }

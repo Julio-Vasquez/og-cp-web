@@ -1,6 +1,11 @@
-.main-header {
-    padding: 0;
+.main-NavBar {
+    padding: 0 50px 0 0;
     height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: exo;
+    font-size: 25px;
 
     &__btn {
         font-size: 16px;

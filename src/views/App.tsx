@@ -13,7 +13,7 @@ const App: FC = () => {
     return (
         <I18nextProvider i18n={i18n}>
             <ProviderAntd>
-                {authentication ? <PrivateRoutes /> : <PublicRoutes />}
+                {true ? <PrivateRoutes /> : <PublicRoutes />}
             </ProviderAntd>
         </I18nextProvider>
     )

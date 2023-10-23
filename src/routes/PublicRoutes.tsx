@@ -18,8 +18,7 @@ export const PublicRoutes: FC = () => {
         <Suspense fallback={<Loading message='loading' />}>
             <BrowserRouter>
                 <Routes>
-                    <Route path={RP.default} element={<Home />} />
-                    <Route path={RP.login} element={<Login />} />
+                    <Route path={RP.default} element={<Login />} />
                     <Route path={RP.register} element={<SignUp />} />
                     <Route path={RP.forgotPassword} element={<ForgotPassword />} />
                     <Route path={RP.error404} element={<Error404 />} />

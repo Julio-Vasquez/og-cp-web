@@ -23,9 +23,11 @@ function* fetchLogin({ payload }: loginAction) {
                 })
             )
             SaveItem({ newItem: res?.payload.token })
-            successMessage('login success full')
-        } else yield put(loginFailed({ error: true, message: res.message }))
-        errorMessage(res.message)
+            successMessage(res.message)
+        } else {
+            yield put(loginFailed({ error: true, message: res.message }))
+            errorMessage(res.message)
+        }
     } catch (e: any) {
         yield put(loginFailed({ error: true, message: e.message }))
     }

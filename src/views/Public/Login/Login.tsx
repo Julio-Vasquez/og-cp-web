@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 import {
     LockOutlined,
@@ -10,6 +9,7 @@ import {
 
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
+import { useDispatch } from 'react-redux'
 import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
