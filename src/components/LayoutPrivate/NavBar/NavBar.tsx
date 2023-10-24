@@ -11,7 +11,7 @@ import ItemsNavBar from './itemsNavBar/ItemsHeader'
 
 const { Header, Content } = Layout
 
-export const NavBar: FC<HeaderProps> = ({ children, collapsed, setCollapsed }) => {
+export const NavBar: FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
     const { formatMessage } = useIntl()
     const {
         token: { colorBgContainer },
@@ -20,27 +20,18 @@ export const NavBar: FC<HeaderProps> = ({ children, collapsed, setCollapsed }) =
     const { pathname } = useLocation()
 
     return (
-        <Layout>
-            <Header className='main-NavBar' style={{ background: colorBgContainer }}>
-                <Button
-                    type='text'
-                    className='main-NavBar__btn'
-                    onClick={() => setCollapsed(!collapsed)}
-                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                />
+        <Header className='main-NavBar' style={{ background: colorBgContainer }}>
+            <Button
+                type='text'
+                className='main-NavBar__btn'
+                onClick={() => setCollapsed(!collapsed)}
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            />
 
-                <h1>{pathname.toUpperCase().split('/')}</h1>
+            <h1>{pathname.toUpperCase().split('/')}</h1>
 
-                <ItemsNavBar />
-            </Header>
-
-            {/* <Content
-                className='main-header__content'
-                style={{ background: colorBgContainer }}
-            >
-                {children}
-            </Content> */}
-        </Layout>
+            <ItemsNavBar />
+        </Header>
     )
 }
 

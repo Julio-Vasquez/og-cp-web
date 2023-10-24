@@ -7,9 +7,10 @@ import {
 import { FC, lazy, useState } from 'react'
 
 import './Layout.scss'
+import SiderP from './SiderP'
+import NavBar from './NavBar'
 
-const HeaderP = lazy(() => import('./NavBar'))
-const SiderP = lazy(() => import('./SiderP'))
+const { Content } = Layout
 
 export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false)
@@ -17,9 +18,19 @@ export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
     return (
         <Layout className='main-layout'>
             <SiderP collapsed={collapsed} />
-            <HeaderP collapsed={collapsed} setCollapsed={setCollapsed}>
-                {children}
-            </HeaderP>
+            <Layout>
+                <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
+                <Content
+                    style={{
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                        background: 'gray',
+                    }}
+                >
+                    {children}
+                </Content>
+            </Layout>
         </Layout>
     )
 }
