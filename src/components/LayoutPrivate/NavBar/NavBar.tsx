@@ -4,15 +4,12 @@ import { useLocation } from 'react-router-dom'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { HeaderPDefaultProps, HeaderProps, HeaderPropsTypes } from './headerP.type'
 
-import useIntl from '../../../hooks/useIntl'
-
 import './NavBar.scss'
 import ItemsNavBar from './itemsNavBar/ItemsHeader'
 
-const { Header, Content } = Layout
+const { Header } = Layout
 
 export const NavBar: FC<HeaderProps> = ({ collapsed, setCollapsed }) => {
-    const { formatMessage } = useIntl()
     const {
         token: { colorBgContainer },
     } = theme.useToken()
