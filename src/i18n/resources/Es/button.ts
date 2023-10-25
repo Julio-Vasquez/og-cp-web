@@ -12,6 +12,7 @@ export const Button = {
     next: 'Siguiente',
     prev: 'Anterior',
     send: 'Enviar',
+    activeAccount: 'Activar cuenta',
     insertObj: 'Insertar un {{obj}}',
     //addObj: 'Agregar a {{name}}',
 }

@@ -1,6 +1,9 @@
 import { Query, Mutation } from './core'
 import { Methods } from '../utils/api/api.util'
 import { loginType } from '../services/Auth/auth.types'
+import { type forgotPassword } from '../views/Public/ForgotPassword/forgotPassword.type'
+import { type setPassword } from '../views/Public/SetPassword/setPassword.type'
+import { activateAccount } from '../views/Public/ActivateAccount/activateAccount.type'
 
 //listado de endpoints, que se usaran en authService
 const login = (body: Object) =>
@@ -9,7 +12,13 @@ const login = (body: Object) =>
 const signUp = (body: loginType) =>
     Mutation({ method: Methods.post, url: 'auth/signup', body })
 
-const forgotPassword = (body: loginType) =>
-    Mutation({ method: Methods.post, url: 'auth/forgot-password', body })
+const forgotPassword = (body: forgotPassword) =>
+    Mutation({ method: Methods.post, url: 'auth/request-forgot-password', body })
 
-export default { login, signUp, forgotPassword }
+const setPassword = (body: setPassword) =>
+    Mutation({ method: Methods.patch, url: 'auth/set-password', body })
+
+const activateAccount = (body: activateAccount) =>
+    Mutation({ method: Methods.post, url: 'auth/active-account', body })
+
+export default { login, signUp, forgotPassword, setPassword, activateAccount }

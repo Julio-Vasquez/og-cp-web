@@ -28,4 +28,21 @@ export const TokenIsValid = () => {
     }
 }
 
+export const ValidateToken = (token: string) => {
+    type Token = {
+        iat: number
+        exp: number
+    }
+    try {
+        const tokenValid: Token = jwtDecode(token)
+
+        return (
+            ![undefined, null, ''].includes(tokenValid?.exp.toString()) &&
+            tokenValid?.exp >= Math.round(new Date().getTime() / 1000)
+        )
+    } catch (e) {
+        return false
+    }
+}
+
 export const ClearData = (key = JWT_KEY) => localStorage.removeItem(key)

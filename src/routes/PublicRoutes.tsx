@@ -10,6 +10,8 @@ const SignUp = lazy(() => import('../views/Public/SignUp/SignUp'))
 const ForgotPassword = lazy(
     () => import('../views/Public/ForgotPassword/ForgotPassword')
 )
+const ActivateAccount = lazy(() => import('../views/Public/ActivateAccount'))
+const SetPassword = lazy(() => import('../views/Public/SetPassword'))
 
 const Error404 = lazy(() => import('./../components/Error/Error404'))
 
@@ -21,6 +23,8 @@ export const PublicRoutes: FC = () => {
                     <Route path={RP.default} element={<Login />} />
                     <Route path={RP.register} element={<SignUp />} />
                     <Route path={RP.forgotPassword} element={<ForgotPassword />} />
+                    <Route path={RP.activateAccount} element={<ActivateAccount />} />
+                    <Route path={RP.setPassword} element={<SetPassword />} />
                     <Route path={RP.error404} element={<Error404 />} />
                     <Route
                         path='*'

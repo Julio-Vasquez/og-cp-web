@@ -21,7 +21,10 @@ export const Texts = {
     inputPhoneNumber: 'Please input your phone number!',
     inputEmail: 'Please input your e-mail!',
     inputUsername: 'Please input your username!',
-    inputPassword: 'Please input your password!',
-    confirmPassword: 'Please confirm your password!',
+    inputNewPassword: 'Please input your new password!',
+    inputConfirmNewPassword: 'Please confirm your new password!',
     passwordDoMatch: 'The two passwords that you entered do not match!',
+    confirmNewPassword: 'Confirm new password',
+    assignNewPassword: 'Assign new password',
+    newPassword: 'New Password',
 }

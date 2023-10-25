@@ -23,5 +23,10 @@ export const Texts = {
     inputUsername: '¡Porfavor ingrese su nombre de usuario!',
     inputPassword: '¡Porfavor ingrese su contraseña!',
     confirmPassword: '¡Por favor confirme su contraseña!',
+    inputNewPassword: 'Por favor ingrese su nueva contraseña!',
+    inputConfirmNewPassword: 'Por favor confirme su nueva contraseña!',
     passwordDoMatch: '¡Las dos contraseñas que ingresaste no coinciden!',
+    confirmNewPassword: 'Confirmar nueva contraseña',
+    assignNewPassword: 'Asignar nueva contraseña',
+    newPassword: 'Nueva contraseña',
 }

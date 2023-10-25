@@ -12,5 +12,6 @@ export const Button = {
     next: 'Next',
     prev: 'Back',
     send: 'Send',
+    activeAccount: 'Active Account',
     insertObj: 'Insert a {{obj}}',
 }
