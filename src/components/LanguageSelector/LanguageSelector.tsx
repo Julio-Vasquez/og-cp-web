@@ -1,15 +1,15 @@
+import 'dayjs/locale/en'
 import dayjs from 'dayjs'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import enUS from 'antd/lib/locale/en_US'
 import enES from 'antd/lib/locale/es_ES'
-import type { Locale } from 'antd/es/locale'
 import { Radio, RadioChangeEvent } from 'antd'
 import { useTranslation } from 'react-i18next'
 
-import 'dayjs/locale/en'
-import { Props } from './languateSelector.type'
+import { Props } from './languageSelector.type'
 
 dayjs.locale('en')
+
 export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
     const { i18n } = useTranslation()
     const handleLocale = (e: RadioChangeEvent) => {

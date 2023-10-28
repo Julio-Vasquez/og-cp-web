@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useDispatch, useStore } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Avatar, Badge, Space } from 'antd'
 
 import {
@@ -17,18 +17,16 @@ import useData from '../../../../hooks/useData'
 import { logout } from '../../../../services/Auth/auth.slice'
 import { AUTH } from '../../../../utils/constants/redux.constants'
 
-export const ItemsNavBar: FC<ItemsNavBarProps> = () => {
+export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const { user } = useData({ reducer: AUTH })
     const dispatch = useDispatch()
-    const store = useStore()
-
-    console.log(store)
 
     const handleLogOut = () => {
         dispatch(logout())
     }
     return (
         <div
+            className='main-items-header'
             style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -85,7 +83,7 @@ export const ItemsNavBar: FC<ItemsNavBarProps> = () => {
     )
 }
 
-ItemsNavBar.propTypes = ItemsNavBarPropsTypes
-ItemsNavBar.defaultProps = ItemsNavBarDefaultProps
+ItemsHeader.propTypes = ItemsNavBarPropsTypes
+ItemsHeader.defaultProps = ItemsNavBarDefaultProps
 
-export default ItemsNavBar
+export default ItemsHeader

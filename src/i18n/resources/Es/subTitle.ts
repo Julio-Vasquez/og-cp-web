@@ -1,4 +1,4 @@
 export const SubTitle = {
-    requestSend: 'SOLICITUD ENVIADA',
+    requestSend: 'SOLICITUD INVALIDA',
     newPassword: 'Nueva contraseña',
 }

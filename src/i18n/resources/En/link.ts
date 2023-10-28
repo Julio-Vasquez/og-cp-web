@@ -1,6 +1,7 @@
 export const Link = {
-    SignUp: 'Sign up',
-    SignIn: 'Sign in',
+    signUp: 'Sign up',
+    signIn: 'Sign in',
     forgotPassword: 'Forgot password?',
     start: 'Start',
+    goBackHome: 'GO BACK HOME',
 }

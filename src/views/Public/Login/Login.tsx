@@ -99,7 +99,7 @@ export const Login = () => {
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
                     <Link className='login__link ' to={RP.register}>
-                        {formatMessage({ id: 'link.SignUp' })}
+                        {formatMessage({ id: 'link.signUp' })}
                     </Link>
                 </Form>
             </div>

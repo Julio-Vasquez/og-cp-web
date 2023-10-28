@@ -1,7 +1,11 @@
 import { FC, lazy } from 'react'
 import { Layout, Menu } from 'antd'
 import { Link } from 'react-router-dom'
-import { SiderPProps, SiderPPropsDefault, SiderPPropsTypes } from './siderP.type'
+import {
+    SidebarPrivateProps,
+    SidebarPrivatePropsDefault,
+    SidebarPrivatePropsTypes,
+} from './sidebarrPrivate.type'
 
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
@@ -17,7 +21,7 @@ const Logo = lazy(() => import('../../Logo'))
 
 const { Sider } = Layout
 
-export const SiderP: FC<SiderPProps> = ({ collapsed }) => {
+export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
     const { formatMessage } = useIntl()
     return (
         <Sider
@@ -76,7 +80,7 @@ export const SiderP: FC<SiderPProps> = ({ collapsed }) => {
     )
 }
 
-SiderP.propTypes = SiderPPropsTypes
-Sider.defaultProps = SiderPPropsDefault
+SidebarPrivate.propTypes = SidebarPrivatePropsTypes
+SidebarPrivate.defaultProps = SidebarPrivatePropsDefault
 
-export default SiderP
+export default SidebarPrivate

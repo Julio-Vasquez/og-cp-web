@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { Layout, theme } from 'antd'
 
-import SiderP from './SiderP'
-import NavBar from './NavBar'
+import HeaderPrivate from './HeaderPrivate'
+
 import {
     LayoutPrivateProps,
     LayoutPrivateDefaultProps,
@@ -10,6 +10,7 @@ import {
 } from './layoutPrivate.types'
 
 import './Layout.scss'
+import { SidebarPrivate } from './SidebarPrivate'
 
 const { Content } = Layout
 
@@ -20,9 +21,9 @@ export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
     } = theme.useToken()
     return (
         <Layout className='main-layout'>
-            <SiderP collapsed={collapsed} />
+            <SidebarPrivate collapsed={collapsed} />
             <Layout>
-                <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
+                <HeaderPrivate collapsed={collapsed} setCollapsed={setCollapsed} />
                 <Content
                     className='main-layout__content'
                     style={{ background: colorBgContainer }}

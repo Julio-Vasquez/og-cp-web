@@ -28,7 +28,7 @@ import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
-import './signUp.scss'
+import './SignUp.scss'
 
 export const SignUp: FC<SignUpProps> = () => {
     const { formatMessage } = useIntl()
@@ -89,20 +89,20 @@ export const SignUp: FC<SignUpProps> = () => {
         }
     }
     return (
-        <div className='signUp'>
-            <div className='signUp__container'>
+        <div className='main-signUp'>
+            <div className='main-signUp__container'>
                 <img
-                    className='signUp__img-container'
+                    className='main-signUp__img-container'
                     src={LoginImage}
                     alt='image'
                 />
                 <Form
-                    className='signUp__form-data'
+                    className='main-signUp__form-data'
                     onFinish={onFinish}
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <UserAddOutlined className='signUp__icon' />
+                    <UserAddOutlined className='main-signUp__icon' />
                     <div className='start'>
                         <div className='start__line' />
                         <div className='start__legend'>
@@ -110,19 +110,19 @@ export const SignUp: FC<SignUpProps> = () => {
                         </div>
                         <div className='start__line' />
                     </div>
-                    <h2 className='signUp__title'>
+                    <h2 className='main-signUp__title'>
                         {formatMessage({ id: 'title.signUp' })}
                     </h2>
-                    <div className='signUp__steps'>
+                    <div className='main-signUp__steps'>
                         <Steps
                             current={currentStep}
                             items={steps}
-                            className='signUp__steps-main'
+                            className='main-signUp__steps-main'
                         />
                         {content}
-                        <div className='signUp__main-submit-form'>
+                        <div className='main-signUp__main-submit-form'>
                             <Button
-                                className='signUp__submit-form'
+                                className='main-signUp__submit-form'
                                 onClick={onPrev}
                                 disabled={isFirstStep}
                             >
@@ -130,16 +130,16 @@ export const SignUp: FC<SignUpProps> = () => {
                             </Button>
 
                             <Button
-                                className='signUp__submit-form'
+                                className='main-signUp__submit-form'
                                 htmlType='submit'
                             >
                                 {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
                             </Button>
                         </div>
                     </div>
-                    <div className='signUp__link-login '>
+                    <div className='main-signUp__link-login '>
                         <Link to={RP.login}>
-                            {formatMessage({ id: 'link.SignIn' })}
+                            {formatMessage({ id: 'link.signIn' })}
                         </Link>
                     </div>
                 </Form>

@@ -1,6 +1,10 @@
 import { FC } from 'react'
 
-import { Error404Props, Error404DefaultProps, Error404PropTypes } from './error.types'
+import {
+    Error404Props,
+    Error404DefaultProps,
+    Error404PropTypes,
+} from './error.types'
 
 import moon from './../../../assets/img/404/moon.svg'
 import logo from './../../../assets/img/404/logo.svg'
@@ -9,9 +13,12 @@ import error404 from './../../../assets/img/404/404.svg'
 import rocket from './../../../assets/img/404/rocket.svg'
 import astronaut from './../../../assets/img/404/astronaut.svg'
 
+import useIntl from '../../../hooks/useIntl'
+
 import './Error404.scss'
 
 export const Error404: FC<Error404Props> = ({ redirect, title }) => {
+    const { formatMessage } = useIntl()
     return (
         <div className='bg-purple'>
             <div className='stars'>
@@ -27,7 +34,9 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
                         width='300px'
                         alt='text 404'
                     />
-                    <a className='btn-go-home'>GO BACK HOME</a>
+                    <a className='btn-go-home'>
+                        {formatMessage({ id: 'link.goBackHome' })}
+                    </a>
                 </div>
                 <div className='object'>
                     <img
@@ -60,11 +69,11 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
                     </div>
                 </div>
                 <div className='glowing_stars'>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
                 </div>
             </div>
         </div>
