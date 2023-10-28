@@ -5,7 +5,7 @@ import {
     SidebarPrivateProps,
     SidebarPrivatePropsDefault,
     SidebarPrivatePropsTypes,
-} from './sidebarrPrivate.type'
+} from './sidebarPrivate.type'
 
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
@@ -15,7 +15,7 @@ import dashboard from '../../../assets/svg/dashboard.svg'
 import statistics from '../../../assets/svg/statistics.svg'
 import ranking from '../../../assets/svg/ranking.svg'
 
-import './SiderP.scss'
+import './SidebarPrivate.scss'
 
 const Logo = lazy(() => import('../../Logo'))
 
@@ -29,20 +29,20 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
             collapsible
             collapsed={collapsed}
             theme='light'
-            className='main-sider'
+            className='main-sidebar-private'
         >
             <Logo collapsed={collapsed} />
 
             {!collapsed ? (
-                <h2 className='main-sider__subtitle'>
+                <h2 className='main-sidebar-private__subtitle'>
                     {formatMessage({ id: 'title.mainMenu' })}
                 </h2>
             ) : (
-                <h2 className='main-sider__subtitle' />
+                <h2 className='main-sidebar-private__subtitle' />
             )}
 
             <Menu
-                className='main-sider__menu'
+                className='main-sidebar-private__menu'
                 theme='light'
                 mode='inline'
                 defaultSelectedKeys={['1']}
