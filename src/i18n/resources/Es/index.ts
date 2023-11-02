@@ -10,6 +10,6 @@ export const ES = {
     button: Button,
     language: Language,
     link: Link,
-    texts: Texts,
+    text: Texts,
     subTitle: SubTitle,
 }

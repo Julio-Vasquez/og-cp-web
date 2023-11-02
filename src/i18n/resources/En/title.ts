@@ -10,4 +10,5 @@ export const Title = {
     dashboard: 'Dashboard',
     statistics: 'Statistics',
     ranking: 'Ranking',
+    verified: 'Your have successfully verified the account',
 }

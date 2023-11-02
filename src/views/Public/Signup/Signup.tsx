@@ -1,18 +1,12 @@
-import { FC, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Form, Steps } from 'antd'
 import {
     CheckOutlined,
     LeftOutlined,
     RightOutlined,
-    StarOutlined,
     UserAddOutlined,
 } from '@ant-design/icons'
-
-import Account from '../../../components/Steps/SignUp/Account/Account'
-import LoginImage from './../../../assets/img/publicBackground.jpg'
-import ContactData from '../../../components/Steps/SignUp/ContactData/ContactData'
-import PersonalInformation from '../../../components/Steps/SignUp/PersonalInformation/PersonalInformation'
+import { FC, useState } from 'react'
+import { Button, Form, Steps } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
 
 import {
     SignUpDefaultProps,
@@ -21,17 +15,28 @@ import {
     SignUpRoles,
     availableDataTypes,
 } from './signUp.types'
+import Account from '../../../components/Steps/Account/Account'
+import LoginImage from './../../../assets/img/publicBackground.jpg'
+import ContactData from '../../../components/Steps/ContactData/ContactData'
+import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
+
 import api from '../../../api'
-import { useIntl } from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './SignUp.scss'
+import Star from '../../../components/Star/Star'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
+import { formTranslate } from '../../../utils/functions/translation.function'
 
 export const SignUp: FC<SignUpProps> = () => {
-    const { formatMessage } = useIntl()
+    const navigate = useNavigate()
+    const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
         useGet<availableDataTypes>(
@@ -40,7 +45,11 @@ export const SignUp: FC<SignUpProps> = () => {
         )
 
     const steps: StepType[] = [
-        { key: 1, title: '', component: <PersonalInformation /> },
+        {
+            key: 1,
+            title: '',
+            component: <PersonalInformation loading={loadingAvailableData} />,
+        },
         {
             key: 2,
             title: '',
@@ -52,24 +61,26 @@ export const SignUp: FC<SignUpProps> = () => {
                 />
             ),
         },
-        { key: 3, title: '', component: <Account /> },
+        { key: 3, title: '', component: <Account loading={loadingAvailableData} /> },
     ]
-    const [personaInformation, setPersonaInformation] = useState({})
 
     const { currentStep, content, isFirstStep, isLastStep, next, previous } =
         useStep(steps)
     const onPrev = () => previous()
     const onNext = () => next()
+
     const onCompleted = (data: any) => {
-        console.log('completed', data)
-    }
-    const onError = (data: any) => {
-        console.log('Error', data)
+        if (data.data.statusCode === 201) {
+            successNotification(data.data.message)
+            navigate('/login')
+        } else {
+            errorNotification(data.data.message)
+        }
     }
 
     const [mutation] = useMutation(
         { functionFetch: api.auth.signUp },
-        { onCompleted, onError, cancelError: false }
+        { onCompleted }
     )
 
     const onFinish = (values: any) => {
@@ -103,15 +114,9 @@ export const SignUp: FC<SignUpProps> = () => {
                     layout='vertical'
                 >
                     <UserAddOutlined className='main-signUp__icon' />
-                    <div className='start'>
-                        <div className='start__line' />
-                        <div className='start__legend'>
-                            <StarOutlined />
-                        </div>
-                        <div className='start__line' />
-                    </div>
+                    <Star />
                     <h2 className='main-signUp__title'>
-                        {formatMessage({ id: 'title.signUp' })}
+                        {formTranslate({ id: 'title.signUp' })}
                     </h2>
                     <div className='main-signUp__steps'>
                         <Steps
@@ -137,11 +142,10 @@ export const SignUp: FC<SignUpProps> = () => {
                             </Button>
                         </div>
                     </div>
-                    <div className='main-signUp__link-login '>
-                        <Link to={RP.login}>
-                            {formatMessage({ id: 'link.signIn' })}
-                        </Link>
-                    </div>
+
+                    <Link to={RP.login} className='main-signUp__link-login '>
+                        {formTranslate({ id: 'link.signIn' })}
+                    </Link>
                 </Form>
             </div>
         </div>

@@ -2,10 +2,10 @@
     color: #fff;
     background-color: #6744c6eb;
 }
-.login {
+.active-account {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
-        repeat: 'no-repeat';
+
         size: cover;
         position: center;
     }
@@ -15,75 +15,39 @@
     align-items: center;
     justify-content: center;
     font-family: 'exo';
-    &__container {
-        display: flex;
-        border-radius: 20px;
+
+    &__form-data {
+        background-color: white;
+        padding: 6px;
         width: 50%;
         height: 600px;
-        color: white;
-    }
-    &__image-container {
-        width: 50%;
-        border-radius: 20px 0px 0px 20px;
-    }
-    &__signIn-form {
-        background-color: white;
+        max-height: 100vh;
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
-        width: 50%;
-        height: 100%;
-        padding: 8% 0 5% 0;
-        border-radius: 0 20px 20px 0;
-        justify-content: center;
-        align-items: center;
-    }
-    &__submit-form {
-        border : {
-            radius: 16px;
-        }
-        width: 50%;
-        height: 40px;
-        border-radius: 50px;
-        display: flex;
-        text-align: center;
-        display: flex;
-        margin: 7% 0;
-        background-color: #6744c6;
         align-items: center;
         justify-content: center;
     }
-    &__title-signIn {
-        display: flex;
+    &__icon {
+        font-size: 10vh;
+        color: #6744c6f3;
+        margin-bottom: 30px;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px;
+    }
+    &__title {
         font-size: 3vh;
-        color: black;
+        text-align: center;
+        margin: 30px 0;
     }
 
-    &__icon-signIn {
-        font-size: 4vh;
-        color: rgba(0, 0, 0, 0.849);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    &__input {
-        height: 36px;
-        border-radius: 50px;
-        display: flex;
-    }
-    &__item {
-        border-radius: 26px;
-        width: 80%;
-        height: auto;
-        margin: 5px auto 0 auto;
-    }
-    &__link-register {
-        margin: 0 auto;
+    &__link {
         font-size: 2vh;
     }
 }
 
 @media only screen and (max-width: 1400px) {
-    .login {
+    .active-account {
         width: 100%;
         display: grid;
         place-items: center;
@@ -106,18 +70,18 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .login {
+    .active-account {
         width: 100%;
         display: grid;
         place-items: center;
-        &__title-signIn {
-            font-size: 30px;
+        &__title {
+            font-size: 26px;
         }
         &__container {
             width: 100%;
             height: 600px;
         }
-        &__signIn-form {
+        &__form-data {
             width: 400px;
             height: 100%;
             display: flex;
@@ -129,12 +93,12 @@
 }
 
 @media only screen and (max-width: 992px) {
-    .login {
+    .active-account {
         width: 100%;
         display: grid;
         place-items: center;
-        &__title-signIn {
-            font-size: 30px;
+        &__title {
+            font-size: 26px;
         }
         &__container {
             width: 100%;
@@ -143,7 +107,7 @@
         &__image-container {
             display: none;
         }
-        &__signIn-form {
+        &__form-data {
             width: 400px;
             height: 100%;
             display: flex;
@@ -155,12 +119,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .login {
+    .active-account {
         width: 100%;
         display: grid;
         place-items: center;
-        &__title-signIn {
-            font-size: 30px;
+        &__title {
+            font-size: 26px;
         }
         &__container {
             width: 100%;
@@ -169,7 +133,7 @@
         &__image-container {
             display: none;
         }
-        &__signIn-form {
+        &__form-data {
             width: 400px;
             height: 100%;
             display: flex;
@@ -181,12 +145,12 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .login {
+    .active-account {
         width: 100%;
         display: grid;
         place-items: center;
-        &__title-signIn {
-            font-size: 30px;
+        &__title {
+            font-size: 26px;
         }
         &__container {
             width: 100%;
@@ -195,7 +159,7 @@
         &__image-container {
             display: none;
         }
-        &__signIn-form {
+        &__form-data {
             width: 400px;
             height: 100%;
             display: flex;

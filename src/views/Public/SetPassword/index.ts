@@ -1,1 +1,1 @@
-export { default } from './SetPassword'
+export { SetPassword, default } from './SetPassword'

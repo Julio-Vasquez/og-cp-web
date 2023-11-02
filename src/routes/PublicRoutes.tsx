@@ -4,9 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Loading } from './../components/Loading'
 import { ROUTES_PUBLIC as RP } from '../utils/constants/routes.constants'
 
-const Home = lazy(() => import('../views/Public/Home'))
 const Login = lazy(() => import('../views/Public/Login'))
-const SignUp = lazy(() => import('../views/Public/SignUp/SignUp'))
+const SignUp = lazy(() => import('../views/Public/SignUp'))
 const ForgotPassword = lazy(
     () => import('../views/Public/ForgotPassword/ForgotPassword')
 )
@@ -20,7 +19,11 @@ export const PublicRoutes: FC = () => {
         <Suspense fallback={<Loading message='loading' />}>
             <BrowserRouter>
                 <Routes>
-                    <Route path={RP.default} element={<Login />} />
+                    <Route path={RP.login} element={<Login />} />
+                    <Route
+                        path={RP.default}
+                        element={<Navigate to={RP.login} />}
+                    />{' '}
                     <Route path={RP.register} element={<SignUp />} />
                     <Route path={RP.forgotPassword} element={<ForgotPassword />} />
                     <Route path={RP.activateAccount} element={<ActivateAccount />} />

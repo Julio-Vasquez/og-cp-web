@@ -1,21 +1,40 @@
+import { formTranslate } from './translation.function'
 import { errorMessage } from '../notifications/message.action'
 
-const requiredField = ({ field = 'Field' } = {}) => ({
+const requiredField = ({ field = 'Field' }) => ({
     required: true,
-    message: `${field} is required`,
+    message: formTranslate({
+        id: 'text.inputObj',
+        objVars: { field: formTranslate({ id: field }) },
+    }),
 })
 
 const minLength = ({ field = 'Field', min = 3 }) => ({
     min: min,
-    message: `${field} should be ${min} characters at least`,
+    messages: `${field} should be ${min} characters at least`,
+    message: formTranslate({
+        id: 'text.minLengthObj',
+        objVars: { min, field: formTranslate({ id: field }) },
+    }),
 })
+
+// formTranslation({id: 'texts', field})
 
 const maxLength = ({ field = 'Field', max = 100 }) => ({
-    max: max,
-    message: `${field} should be less than ${max} digits`,
+    max,
+    message: formTranslate({
+        id: 'text.maxLengthObj',
+        objVars: { max, field: formTranslate({ id: field }) },
+    }),
 })
 
-const emailField = () => ({ type: 'email', message: `Please enter valid Email` })
+const emailField = () => ({
+    type: 'email',
+    message: formTranslate({
+        id: 'text.inputObj',
+        objVars: formTranslate({ id: 'text.mail' }),
+    }),
+})
 
 const phoneField = () => ({
     pattern: /^[1-9][0-9]*$/,
@@ -51,6 +70,7 @@ const getSelectSearch = () => {
         optionFilterProp,
     }
 }
+
 const inputToUpperCase = () => ({
     normalize: (value: string) => (value || '').toUpperCase(),
 })
@@ -72,6 +92,20 @@ const selectFilterSort = () => ({
         optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase()),
 })
 
+type MatchPassword = {
+    getFieldValue: (name: string) => any
+    field: string
+}
+
+const matchPassword = ({ getFieldValue, field }: MatchPassword) => ({
+    validator(_: any, value: string) {
+        if (!value || getFieldValue(field) === value) return Promise.resolve()
+        return Promise.reject(
+            new Error(formTranslate({ id: 'text.passwordDoMatch' }))
+        )
+    },
+})
+
 export {
     requiredField,
     emailField,
@@ -86,4 +120,5 @@ export {
     inputToLowerCase,
     selectFilterOptions,
     selectFilterSort,
+    matchPassword,
 }

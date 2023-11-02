@@ -1,39 +1,56 @@
-import { Button } from 'antd'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { CheckCircleFilled } from '@ant-design/icons'
 
-import Error from '../../../components/Token/Error'
+import Star from '../../../components/Star/Star'
+import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { successNotification } from '../../../utils/notifications/notification.action'
+
+import './ActiveAccount.scss'
 
 const ActivateAccount = () => {
     const { token } = useParams()
     const { formatMessage } = useIntl()
-    const validateToken = ValidateToken(token ? token : '')
+    const validToken = ValidateToken(token ?? '')
 
     const onCompleted = (data: any) => {
-        console.log('completed', data)
-    }
-
-    const onError = (data: any) => {
-        console.log('error', data)
+        successNotification(data.data.message, 'top')
     }
 
     const [mutation] = useMutation(
         { functionFetch: api.auth.activateAccount },
-        { onCompleted, onError, cancelError: false }
+        { onCompleted }
     )
 
-    if (!validateToken) return <Error />
+    useEffect(() => {
+        if (validToken) mutation({ token, activate: true })
+    }, [])
 
-    const handleClick = () => mutation({ token, activate: true })
+    if (!validToken) return <ErrorToken />
 
     return (
-        <Button onClick={handleClick}>
-            {formatMessage({ id: 'button.activeAccount' })}
-        </Button>
+        <div className='active-account'>
+            <div className='active-account__form-data'>
+                <CheckCircleFilled className='active-account__icon' />
+                <Star />
+                <h2 className='active-account__title'>
+                    {formatMessage({
+                        id: 'title.verified',
+                        /*  objVars: formatMessage({ id: 'title.verified' }), */
+                    })}
+                </h2>
+                <Link to={RP.login} className='active-account__link '>
+                    {formatMessage({ id: 'link.signIn' })}
+                </Link>
+            </div>
+        </div>
     )
 }
 

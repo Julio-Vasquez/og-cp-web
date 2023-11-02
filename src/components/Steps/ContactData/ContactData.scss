@@ -1,4 +1,4 @@
-.personalInformation2 {
+.main-contactData {
     .compact {
         display: flex;
 
@@ -46,7 +46,7 @@
 }
 
 @media only screen and (max-width: 1400px) {
-    .personalInformation2 {
+    .main-contactData {
         .compact {
             &__select {
                 width: 50%;
@@ -90,7 +90,7 @@
     }
 }
 @media only screen and (max-width: 1200px) {
-    .personalInformation2 {
+    .main-contactData {
         .compact {
             &__select {
                 width: 50%;
@@ -134,7 +134,7 @@
     }
 }
 @media only screen and (max-width: 992px) {
-    .personalInformation2 {
+    .main-contactData {
         .compact {
             &__select {
                 width: 50%;
@@ -177,7 +177,7 @@
     }
 }
 @media only screen and (max-width: 768px) {
-    .personalInformation2 {
+    .main-contactData {
         .compact {
             &__select {
                 width: 50%;
@@ -221,7 +221,7 @@
     }
 }
 @media only screen and (max-width: 576px) {
-    .personalInformation2 {
+    .main-contactData {
         .compact {
             border: solid;
             &__select {

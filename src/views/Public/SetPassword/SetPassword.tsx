@@ -1,30 +1,55 @@
 import { Button, Form, Input } from 'antd'
-import { useParams } from 'react-router-dom'
-import { Error } from '../../../components/Token/Error/Error'
+import { LockOutlined } from '@ant-design/icons'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import loginImg from '../../../assets/img/publicBackground.jpg'
+import Star from '../../../components/Star/Star'
+import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
-import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
-import { successNotification } from '../../../utils/notifications/notification.action'
-import { LockOutlined, StarOutlined, UserOutlined } from '@ant-design/icons'
+import loginImg from '../../../assets/img/publicBackground.jpg'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
+import {
+    matchPassword,
+    maxLength,
+    minLength,
+    requiredField,
+} from '../../../utils/functions/form.functions'
+import { formTranslate } from '../../../utils/functions/translation.function'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+
+import './SetPassword.scss'
 
 const { Item } = Form
 const { Password } = Input
-import './SetPassword.scss'
 
-const SetPassword = () => {
+export const SetPassword = () => {
     const { token } = useParams()
+    const navigate = useNavigate()
+    const validateToken = ValidateToken(token!)
 
-    const { formatMessage } = useIntl()
+    const onCompleted = (data: any) => {
+        if (data.data.statusCode === 200) {
+            successNotification(data.data.message)
+            navigate(RP.login)
+        } else errorNotification(data.data.message)
+    }
 
-    const validateToken = ValidateToken(token ? token : '')
+    const [mutation] = useMutation(
+        { functionFetch: api.auth.setPassword },
+        { onCompleted }
+    )
 
-    if (!validateToken) return <Error />
+    const onFinish = (values: any) => {
+        const { newPassword } = values
+        mutation({ newPassword, token })
+    }
 
-    const onFinish = () => {}
+    if (!validateToken) return <ErrorToken />
 
     return (
         <div className='set-password'>
@@ -42,52 +67,48 @@ const SetPassword = () => {
                     layout='vertical'
                 >
                     <LockOutlined className='set-password__icon' />
-                    <div className='start'>
-                        <div className='start__lines'></div>
-                        <div className='start__legend'>
-                            <StarOutlined />
-                        </div>
-                        <div className='start__lines'></div>
-                    </div>
+                    <Star />
                     <h2 className='set-password__title'>
-                        {formatMessage({ id: 'texts.assignNewPassword' })}
+                        {formTranslate({ id: 'text.assignNewPassword' })}
                     </h2>
-
                     <Item
-                        name='username'
+                        name='newPassword'
+                        hasFeedback
                         className='set-password__item'
                         rules={[
-                            {
-                                required: true,
-                                message: formatMessage({
-                                    id: 'texts.inputNewPassword',
-                                }),
-                            },
+                            requiredField({ field: 'text.newPassword' }),
+                            maxLength({ field: 'text.newPassword', max: 60 }),
+                            minLength({ field: 'text.newPassword', min: 6 }),
                         ]}
                     >
                         <Password
                             className='set-password__input'
-                            placeholder={formatMessage({
-                                id: 'texts.newPassword',
+                            placeholder={formTranslate({
+                                id: 'text.newPassword',
                             })}
                         />
                     </Item>
                     <Item
-                        name='username'
+                        name='confirm'
+                        dependencies={['newPassword']}
+                        hasFeedback
                         className='set-password__item'
                         rules={[
-                            {
-                                required: true,
-                                message: formatMessage({
-                                    id: 'texts.inputNewPassword',
+                            requiredField({ field: 'text.confirmNewPassword' }),
+                            maxLength({ field: 'confirmNewPassword', max: 60 }),
+                            minLength({ field: 'confirmNewPassword', min: 6 }),
+                            ({ getFieldValue }) =>
+                                matchPassword({
+                                    getFieldValue,
+                                    field: 'newPassword',
                                 }),
-                            },
                         ]}
                     >
                         <Password
                             className='set-password__input'
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({ id: 'texts.username' })}
+                            placeholder={formTranslate({
+                                id: 'text.confirmNewPassword',
+                            })}
                         />
                     </Item>
                     <Button
@@ -95,11 +116,10 @@ const SetPassword = () => {
                         type='primary'
                         htmlType='submit'
                     >
-                        {formatMessage({ id: 'button.send' })}
+                        {formTranslate({ id: 'button.send' })}
                     </Button>
                 </Form>
             </div>
-            <Button> {formatMessage({ id: 'button.send' })} </Button>
         </div>
     )
 }

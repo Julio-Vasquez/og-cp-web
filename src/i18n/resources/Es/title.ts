@@ -10,4 +10,5 @@ export const Title = {
     dashboard: 'Panel',
     statistics: 'Estadísticas',
     ranking: 'Clasificación',
+    verified: 'Has verificado exitosamente la cuenta.',
 }

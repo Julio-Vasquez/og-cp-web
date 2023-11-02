@@ -1,27 +1,28 @@
 import { Link } from 'react-router-dom'
 import { Button, Form, Input } from 'antd'
-import {
-    LockOutlined,
-    UserOutlined,
-    StarOutlined,
-    LoginOutlined,
-} from '@ant-design/icons'
+import { LockOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons'
 
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import Star from '../../../components/Star/Star'
 
 import { useDispatch } from 'react-redux'
-import useIntl from '../../../hooks/useIntl'
 import { login } from './../../../services/Auth/auth.slice'
 import { loginType } from '../../../services/Auth/auth.types'
 import loginImg from './../../../assets/img/publicBackground.jpg'
+import {
+    maxLength,
+    minLength,
+    requiredField,
+} from '../../../utils/functions/form.functions'
+import { formTranslate } from '../../../utils/functions/translation.function'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Login.scss'
 
+const { Item } = Form
+const { Password } = Input
+
 export const Login = () => {
-    const { Item } = Form
-    const { Password } = Input
     const dispatch = useDispatch()
-    const { formatMessage } = useIntl()
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
@@ -42,50 +43,40 @@ export const Login = () => {
                     layout='vertical'
                 >
                     <LoginOutlined className='login__icon-signIn' />
-                    <div className='start'>
-                        <div className='start__lines'></div>
-                        <div className='start__legend'>
-                            <StarOutlined />
-                        </div>
-                        <div className='start__lines'></div>
-                    </div>
+                    <Star />
                     <h2 className='login__title-signIn'>
-                        {formatMessage({ id: 'title.signIn' })}
+                        {formTranslate({ id: 'title.signIn' })}
                     </h2>
                     <Item
                         name='username'
+                        hasFeedback
                         rules={[
-                            {
-                                required: true,
-                                message: formatMessage({
-                                    id: 'texts.insertUsername',
-                                }),
-                            },
+                            requiredField({ field: 'text.username' }),
+                            maxLength({ field: 'text.username', max: 10 }),
+                            minLength({ field: 'text.username', min: 4 }),
                         ]}
                         className='login__item'
                     >
                         <Input
                             className='login__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({ id: 'title.username' })}
+                            placeholder={formTranslate({ id: 'text.username' })}
                         />
                     </Item>
                     <Item
                         className='login__item'
                         name='password'
+                        hasFeedback
                         rules={[
-                            {
-                                required: true,
-                                message: formatMessage({
-                                    id: 'texts.insertPassword',
-                                }),
-                            },
+                            requiredField({ field: 'text.password' }),
+                            maxLength({ field: 'text.password', max: 10 }),
+                            minLength({ field: 'text.password', min: 4 }),
                         ]}
                     >
                         <Password
                             className='login__input'
                             prefix={<LockOutlined />}
-                            placeholder={formatMessage({ id: 'title.password' })}
+                            placeholder={formTranslate({ id: 'title.password' })}
                         />
                     </Item>
                     <Button
@@ -93,13 +84,13 @@ export const Login = () => {
                         type='primary'
                         htmlType='submit'
                     >
-                        {formatMessage({ id: 'button.login' })}
+                        {formTranslate({ id: 'button.login' })}
                     </Button>
                     <Link className='login__link ' to={RP.forgotPassword}>
-                        {formatMessage({ id: 'link.forgotPassword' })}
+                        {formTranslate({ id: 'link.forgotPassword' })}
                     </Link>
-                    <Link className='login__link ' to={RP.register}>
-                        {formatMessage({ id: 'link.signUp' })}
+                    <Link className='login__link-register ' to={RP.register}>
+                        {formTranslate({ id: 'link.signUp' })}
                     </Link>
                 </Form>
             </div>

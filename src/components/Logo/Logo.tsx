@@ -17,7 +17,7 @@ export const Logo: FC<LogoProps> = ({ collapsed }) => {
                     <div className='main-logo__container-img'>
                         <img src={image} alt='img' />
                     </div>
-                    <h2 className='main-sider__title'>
+                    <h2 className='main-sidebar__title'>
                         {formatMessage({ id: 'title.innocentlyLearning' })}
                     </h2>
                 </>
