@@ -52,7 +52,7 @@ export const Login = () => {
                         hasFeedback
                         rules={[
                             requiredField({ field: 'text.username' }),
-                            maxLength({ field: 'text.username', max: 10 }),
+                            maxLength({ field: 'text.username', max: 45 }),
                             minLength({ field: 'text.username', min: 4 }),
                         ]}
                         className='login__item'
@@ -69,7 +69,7 @@ export const Login = () => {
                         hasFeedback
                         rules={[
                             requiredField({ field: 'text.password' }),
-                            maxLength({ field: 'text.password', max: 10 }),
+                            maxLength({ field: 'text.password', max: 60 }),
                             minLength({ field: 'text.password', min: 4 }),
                         ]}
                     >

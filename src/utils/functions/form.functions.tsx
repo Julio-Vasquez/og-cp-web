@@ -1,3 +1,4 @@
+import { type Rule } from 'antd/es/form'
 import { formTranslate } from './translation.function'
 import { errorMessage } from '../notifications/message.action'
 
@@ -28,7 +29,7 @@ const maxLength = ({ field = 'Field', max = 100 }) => ({
     }),
 })
 
-const emailField = () => ({
+const emailField = (): Rule => ({
     type: 'email',
     message: formTranslate({
         id: 'text.inputObj',
@@ -38,17 +39,17 @@ const emailField = () => ({
 
 const phoneField = () => ({
     pattern: /^[1-9][0-9]*$/,
-    message: 'Your Entered Phone number is not valid',
+    message: formTranslate({ id: 'text.phoneField' }),
 })
 
 const postalCodeField = () => ({
     pattern: /^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$/,
-    message: 'Please enter valid Postal Code',
+    message: formTranslate({ id: 'text.postalCodeField' }),
 })
 
 const numberField = () => ({
     pattern: /^[0-9.]+$/,
-    message: 'This Field should be number',
+    message: formTranslate({ id: 'text.numberField' }),
 })
 
 const checkValidation = (err: any) =>

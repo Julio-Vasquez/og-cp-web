@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
 import {
-    PersonalInformationDefaultProps,
     PersonalInformationProps,
     PersonalInformationPropTypes,
+    PersonalInformationDefaultProps,
 } from './personalInformation.type'
 import {
     maxLength,
@@ -57,14 +57,19 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     className='personalInformation__item'
                 >
                     <Input
-                        placeholder={formTranslate({ id: 'text.firstLastName' })}
                         className='personalInformation__input'
+                        placeholder={formTranslate({ id: 'text.firstLastName' })}
                     />
                 </Item>
                 <Item
                     name='lastNameTwo'
                     hasFeedback
                     className='personalInformation__item'
+                    rules={[
+                        requiredField({ field: 'text.middleLastName' }),
+                        maxLength({ field: 'text.middleLastName', max: 60 }),
+                        minLength({ field: 'text.middleLastName', min: 3 }),
+                    ]}
                 >
                     <Input
                         placeholder={formTranslate({ id: 'text.middleLastName' })}

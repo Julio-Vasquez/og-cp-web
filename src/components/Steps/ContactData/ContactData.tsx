@@ -3,12 +3,13 @@ import { FC } from 'react'
 import type { RangePickerProps } from 'antd/es/date-picker'
 import { Form, Input, Select, DatePicker, Spin } from 'antd'
 
+import CustomInput from '../../Fields/CustomInput/CustomInput'
+
 import {
     ContactDataDefaultProps,
     ContactDataProps,
     ContactDataPropTypes,
 } from './ContactData.type'
-import CustomInput from '../../Fields/CustomInput/CustomInput'
 import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 import {
     maxLength,
@@ -33,16 +34,16 @@ export const ContactData: FC<ContactDataProps> = ({
         <div className='main-contactData'>
             <Spin spinning={loading}>
                 <Item
+                    hasFeedback
+                    name='identification'
                     rules={[
                         requiredField({ field: 'text.typeDocument' }),
                         maxLength({ field: 'text.typeDocument', max: 14 }),
                         minLength({ field: 'text.typeDocument', min: 6 }),
                     ]}
-                    name={'identification'}
-                    hasFeedback
                 >
                     <CustomInput
-                        data={typeDocuments!}
+                        data={typeDocuments!.sort()}
                         name={'typeDocument'}
                         customMap={{
                             value: 'typeDocument',
@@ -51,9 +52,9 @@ export const ContactData: FC<ContactDataProps> = ({
                     />
                 </Item>
                 <Item
-                    className='main-contactData__item'
-                    name='birthDate'
                     hasFeedback
+                    name='birthDate'
+                    className='main-contactData__item'
                     rules={[requiredField({ field: 'text.birthDate' })]}
                 >
                     <DatePicker
@@ -62,25 +63,25 @@ export const ContactData: FC<ContactDataProps> = ({
                     />
                 </Item>
                 <Item
-                    className='main-contactData__item'
-                    name='gender'
                     hasFeedback
+                    name='gender'
+                    className='main-contactData__item'
                     rules={[requiredField({ field: 'text.gender' })]}
                 >
                     <Select
+                        allowClear
                         bordered={false}
                         className='main-contactData__option'
                         placeholder={formTranslate({ id: 'text.gender' })}
-                        allowClear
-                        options={genders?.map((item: SignUpGenders) => ({
+                        options={genders?.sort()?.map((item: SignUpGenders) => ({
                             value: item.gender,
                             label: item.gender,
                         }))}
                     />
                 </Item>
                 <Item
-                    name='phoneNumber'
                     hasFeedback
+                    name='phoneNumber'
                     rules={[
                         requiredField({ field: 'text.phoneNumber' }),
                         maxLength({ field: 'text.phoneNumber', max: 10 }),

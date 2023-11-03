@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
 import {
+    emailField,
     matchPassword,
     maxLength,
     minLength,
@@ -24,7 +25,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                     hasFeedback
                     className='account__item'
                     rules={[
-                        { type: 'email' },
+                        emailField(),
                         requiredField({ field: 'text.mail' }),
                         maxLength({ field: 'text.mail', max: 150 }),
                         minLength({ field: 'text.mail', min: 10 }),

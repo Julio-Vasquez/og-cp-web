@@ -8,6 +8,11 @@ import { FC, useState } from 'react'
 import { Button, Form, Steps } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 
+import Star from '../../../components/Star/Star'
+import Account from '../../../components/Steps/Account/Account'
+import ContactData from '../../../components/Steps/ContactData/ContactData'
+import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
+
 import {
     SignUpDefaultProps,
     SignUpPropTypes,
@@ -15,24 +20,19 @@ import {
     SignUpRoles,
     availableDataTypes,
 } from './signUp.types'
-import Account from '../../../components/Steps/Account/Account'
-import LoginImage from './../../../assets/img/publicBackground.jpg'
-import ContactData from '../../../components/Steps/ContactData/ContactData'
-import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
-
 import api from '../../../api'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
+import LoginImage from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
-
-import './SignUp.scss'
-import Star from '../../../components/Star/Star'
 import {
     errorNotification,
     successNotification,
 } from '../../../utils/notifications/notification.action'
 import { formTranslate } from '../../../utils/functions/translation.function'
+
+import './SignUp.scss'
 
 export const SignUp: FC<SignUpProps> = () => {
     const navigate = useNavigate()
@@ -55,9 +55,9 @@ export const SignUp: FC<SignUpProps> = () => {
             title: '',
             component: (
                 <ContactData
+                    loading={loadingAvailableData}
                     genders={availableData?.payload?.genders}
                     typeDocuments={availableData?.payload?.typeDocuments}
-                    loading={loadingAvailableData}
                 />
             ),
         },
@@ -72,7 +72,7 @@ export const SignUp: FC<SignUpProps> = () => {
     const onCompleted = (data: any) => {
         if (data.data.statusCode === 201) {
             successNotification(data.data.message)
-            navigate('/login')
+            navigate(RP.login)
         } else {
             errorNotification(data.data.message)
         }

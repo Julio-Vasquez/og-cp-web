@@ -1,17 +1,18 @@
-import useIntl from '../../../hooks/useIntl'
+import { Link } from 'react-router-dom'
+
+import { formTranslate } from '../../../utils/functions/translation.function'
 
 import './ErrorToken.scss'
 
 export const ErrorToken = () => {
-    const { formatMessage } = useIntl()
     return (
         <div id='notFound'>
             <div className='notFound'>
                 <div className='notFound-404'>
                     <h1>404</h1>
-                    <h2>{formatMessage({ id: 'subtitle.requestSend' })}</h2>
+                    <h2>{formTranslate({ id: 'subtitle.requestSend' })}</h2>
                 </div>
-                <a href='/'>{formatMessage({ id: 'link.start' })}</a>
+                <Link to='/'>{formTranslate({ id: 'link.start' })}</Link>
             </div>
         </div>
     )

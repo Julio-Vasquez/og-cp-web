@@ -1,30 +1,27 @@
 import { FC } from 'react'
 import { LogoProps, LogoPropsDefault, LogoPropsTypes } from './logo.type'
 
-import useIntl from '../../hooks/useIntl'
-
 import image from '../../assets/img/image.png'
+import { formTranslate } from '../../utils/functions/translation.function'
 
 import './Logo.scss'
 
 export const Logo: FC<LogoProps> = ({ collapsed }) => {
-    const { formatMessage } = useIntl()
-
     return (
         <div className='main-logo'>
-            {!collapsed ? (
+            {collapsed ? (
+                <div className='main-logo__container-img'>
+                    <img src={image} alt='img' />
+                </div>
+            ) : (
                 <>
                     <div className='main-logo__container-img'>
                         <img src={image} alt='img' />
                     </div>
                     <h2 className='main-sidebar__title'>
-                        {formatMessage({ id: 'title.innocentlyLearning' })}
+                        {formTranslate({ id: 'title.innocentlyLearning' })}
                     </h2>
                 </>
-            ) : (
-                <div className='main-logo__container-img'>
-                    <img src={image} alt='img' />
-                </div>
             )}
         </div>
     )

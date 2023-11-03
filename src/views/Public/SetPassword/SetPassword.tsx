@@ -95,8 +95,8 @@ export const SetPassword = () => {
                         className='set-password__item'
                         rules={[
                             requiredField({ field: 'text.confirmNewPassword' }),
-                            maxLength({ field: 'confirmNewPassword', max: 60 }),
-                            minLength({ field: 'confirmNewPassword', min: 6 }),
+                            maxLength({ field: 'text.confirmNewPassword', max: 60 }),
+                            minLength({ field: 'text.confirmNewPassword', min: 6 }),
                             ({ getFieldValue }) =>
                                 matchPassword({
                                     getFieldValue,

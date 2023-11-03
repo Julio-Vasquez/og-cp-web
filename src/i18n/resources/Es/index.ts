@@ -1,15 +1,15 @@
-import { Title } from './title'
-import { Button } from './button'
-import { Language } from './language'
 import { Link } from './link'
+import { Title } from './title'
 import { Texts } from './texts'
+import { Button } from './button'
 import { SubTitle } from './subTitle'
+import { Language } from './language'
 
 export const ES = {
-    title: Title,
-    button: Button,
-    language: Language,
     link: Link,
     text: Texts,
+    title: Title,
+    button: Button,
     subTitle: SubTitle,
+    language: Language,
 }

@@ -1,14 +1,14 @@
 export const Title = {
+    mail: 'E-mail',
     signIn: 'Sign in',
     signUp: 'Sign Up',
+    ranking: 'Ranking',
     username: 'Username',
     password: 'Password',
-    mail: 'e-mail',
-    forgotPassword: 'Forgot password',
-    innocentlyLearning: 'innocentlyLearning',
     mainMenu: 'Main menu',
     dashboard: 'Dashboard',
     statistics: 'Statistics',
-    ranking: 'Ranking',
+    forgotPassword: 'Forgot password',
+    innocentlyLearning: 'Innocently Learning',
     verified: 'Your have successfully verified the account',
 }

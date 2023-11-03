@@ -32,7 +32,7 @@ const ForgotPassword = () => {
             errorNotification(data.message)
         } else {
             successNotification(data.message)
-            navigate('/login')
+            navigate(RP.login)
         }
     }
 
@@ -78,7 +78,7 @@ const ForgotPassword = () => {
                         className='forgot-password__item'
                         rules={[
                             requiredField({ field: 'text.username' }),
-                            maxLength({ field: 'text.username', max: 10 }),
+                            maxLength({ field: 'text.username', max: 45 }),
                             minLength({ field: 'text.username', min: 4 }),
                         ]}
                     >

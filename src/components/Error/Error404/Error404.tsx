@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import {
     Error404Props,
@@ -14,10 +15,11 @@ import rocket from './../../../assets/img/404/rocket.svg'
 import astronaut from './../../../assets/img/404/astronaut.svg'
 
 import useIntl from '../../../hooks/useIntl'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Error404.scss'
 
-export const Error404: FC<Error404Props> = ({ redirect, title }) => {
+export const Error404: FC<Error404Props> = () => {
     const { formatMessage } = useIntl()
     return (
         <div className='bg-purple'>
@@ -34,9 +36,9 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
                         width='300px'
                         alt='text 404'
                     />
-                    <a className='btn-go-home'>
+                    <Link to={RP.login} className='btn-go-home'>
                         {formatMessage({ id: 'link.goBackHome' })}
-                    </a>
+                    </Link>
                 </div>
                 <div className='object'>
                     <img

@@ -7,6 +7,7 @@ import { Radio, RadioChangeEvent } from 'antd'
 import { useTranslation } from 'react-i18next'
 
 import { Props } from './languageSelector.type'
+import { formTranslate } from '../../utils/functions/translation.function'
 
 dayjs.locale('en')
 
@@ -29,10 +30,10 @@ export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
         <div style={{ marginBottom: 16 }}>
             <Radio.Group value={locale} onChange={handleLocale}>
                 <Radio.Button key='en' value={enUS}>
-                    English
+                    {formTranslate({ id: 'text.english' })}
                 </Radio.Button>
                 <Radio.Button key='es' value={enES}>
-                    Spanish
+                    {formTranslate({ id: 'text.spanish' })}
                 </Radio.Button>
             </Radio.Group>
         </div>
