@@ -21,7 +21,6 @@ import { formTranslate } from '../../../utils/functions/translation.function'
 import './ContactData.scss'
 
 const { Item } = Form
-
 export const ContactData: FC<ContactDataProps> = ({
     typeDocuments,
     genders,
@@ -30,6 +29,10 @@ export const ContactData: FC<ContactDataProps> = ({
     const disabledDate: RangePickerProps['disabledDate'] = current => {
         return current && current >= dayjs().endOf('day')
     }
+    const sortedTypeDocument = typeDocuments.sort((a, b) =>
+        a!.abbr.localeCompare(b!.abbr)
+    )
+
     return (
         <div className='main-contactData'>
             <Spin spinning={loading}>
@@ -43,7 +46,7 @@ export const ContactData: FC<ContactDataProps> = ({
                     ]}
                 >
                     <CustomInput
-                        data={typeDocuments!.sort()}
+                        data={sortedTypeDocument}
                         name={'typeDocument'}
                         customMap={{
                             value: 'typeDocument',

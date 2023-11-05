@@ -5,7 +5,7 @@ import {
     CustomInputProps,
     CustomInputDefaultProps,
     CustomInputPropTypes,
-} from './custom'
+} from './custom.type'
 import './CustomInput.scss'
 
 const { Item } = Form
@@ -19,6 +19,8 @@ const { Item } = Form
  */
 
 const CustomInput: FC<CustomInputProps> = ({ data, name, customMap, ...props }) => {
+    console.log(data)
+
     const CustomSelect = () => {
         return (
             <Item

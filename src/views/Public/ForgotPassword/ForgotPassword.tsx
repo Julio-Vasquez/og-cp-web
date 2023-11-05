@@ -74,6 +74,7 @@ const ForgotPassword = () => {
                         })}
                     </p>
                     <Item
+                        hasFeedback
                         name='username'
                         className='forgot-password__item'
                         rules={[

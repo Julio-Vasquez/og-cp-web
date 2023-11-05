@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 
 export const CustomInputPropTypes = {
-    data: propTypes.arrayOf(propTypes.object.isRequired).isRequired,
+    data: propTypes.arrayOf(propTypes.any.isRequired).isRequired,
     name: propTypes.oneOfType([
         propTypes.string.isRequired,
         propTypes.arrayOf(propTypes.string.isRequired).isRequired,
