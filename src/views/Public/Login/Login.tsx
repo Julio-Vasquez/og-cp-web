@@ -5,15 +5,15 @@ import { LockOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons'
 import Star from '../../../components/Star/Star'
 
 import { useDispatch } from 'react-redux'
-import { login } from './../../../services/Auth/auth.slice'
-import { loginType } from '../../../services/Auth/auth.types'
-import loginImg from './../../../assets/img/publicBackground.jpg'
+import useIntl from '../../../hooks/useIntl'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { formTranslate } from '../../../utils/functions/translation.function'
+import { login } from './../../../services/Auth/auth.slice'
+import { loginType } from '../../../services/Auth/auth.types'
+import loginImg from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Login.scss'
@@ -23,6 +23,7 @@ const { Password } = Input
 
 export const Login = () => {
     const dispatch = useDispatch()
+    const { formatMessage } = useIntl()
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
@@ -45,7 +46,7 @@ export const Login = () => {
                     <LoginOutlined className='login__icon-signIn' />
                     <Star />
                     <h2 className='login__title-signIn'>
-                        {formTranslate({ id: 'title.signIn' })}
+                        {formatMessage({ id: 'title.signIn' })}
                     </h2>
                     <Item
                         name='username'
@@ -60,7 +61,7 @@ export const Login = () => {
                         <Input
                             className='login__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formTranslate({ id: 'text.username' })}
+                            placeholder={formatMessage({ id: 'text.username' })}
                         />
                     </Item>
                     <Item
@@ -76,7 +77,7 @@ export const Login = () => {
                         <Password
                             className='login__input'
                             prefix={<LockOutlined />}
-                            placeholder={formTranslate({ id: 'title.password' })}
+                            placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
                     <Button
@@ -84,13 +85,13 @@ export const Login = () => {
                         type='primary'
                         htmlType='submit'
                     >
-                        {formTranslate({ id: 'button.login' })}
+                        {formatMessage({ id: 'button.login' })}
                     </Button>
                     <Link className='login__link ' to={RP.forgotPassword}>
-                        {formTranslate({ id: 'link.forgotPassword' })}
+                        {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
                     <Link className='login__link-register ' to={RP.register}>
-                        {formTranslate({ id: 'link.signUp' })}
+                        {formatMessage({ id: 'link.signUp' })}
                     </Link>
                 </Form>
             </div>

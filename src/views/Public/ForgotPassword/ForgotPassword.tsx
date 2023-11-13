@@ -5,6 +5,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import Star from '../../../components/Star/Star'
 
 import api from '../../../api'
+import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 import { forgotPassword } from './forgotPassword.type'
 import {
@@ -17,7 +18,6 @@ import {
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { formTranslate } from '../../../utils/functions/translation.function'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './ForgotPassword.scss'
@@ -26,6 +26,7 @@ const { Item } = Form
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
+    const { formatMessage } = useIntl()
 
     const onCompleted = ({ data }: any) => {
         if (data.statusCode === 404) {
@@ -63,13 +64,13 @@ const ForgotPassword = () => {
                     <LockOutlined className='forgot-password__icon' />
                     <Star />
                     <h2 className='forgot-password__title'>
-                        {formTranslate({ id: 'title.forgotPassword' })}
+                        {formatMessage({ id: 'title.forgotPassword' })}
                     </h2>
                     <p>
-                        {formTranslate({
+                        {formatMessage({
                             id: 'text.inputObj',
                             objVars: {
-                                field: formTranslate({ id: 'text.username' }),
+                                field: formatMessage({ id: 'text.username' }),
                             },
                         })}
                     </p>
@@ -86,7 +87,7 @@ const ForgotPassword = () => {
                         <Input
                             className='forgot-password__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formTranslate({ id: 'text.username' })}
+                            placeholder={formatMessage({ id: 'text.username' })}
                         />
                     </Item>
                     <Button
@@ -94,13 +95,13 @@ const ForgotPassword = () => {
                         type='primary'
                         htmlType='submit'
                     >
-                        {formTranslate({ id: 'button.send' })}
+                        {formatMessage({ id: 'button.send' })}
                     </Button>
                     <Link
                         to={RP.login}
                         className='forgot-password__link-forgot-password'
                     >
-                        {formTranslate({ id: 'link.signIn' })}
+                        {formatMessage({ id: 'link.signIn' })}
                     </Link>
                 </Form>
             </div>

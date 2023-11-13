@@ -6,12 +6,13 @@ import enES from 'antd/lib/locale/es_ES'
 import { Radio, RadioChangeEvent } from 'antd'
 import { useTranslation } from 'react-i18next'
 
+import useIntl from '../../hooks/useIntl'
 import { Props } from './languageSelector.type'
-import { formTranslate } from '../../utils/functions/translation.function'
 
 dayjs.locale('en')
 
 export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
+    const { formatMessage } = useIntl()
     const { i18n } = useTranslation()
     const handleLocale = (e: RadioChangeEvent) => {
         const localeValue = e.target.value
@@ -30,10 +31,10 @@ export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
         <div style={{ marginBottom: 16 }}>
             <Radio.Group value={locale} onChange={handleLocale}>
                 <Radio.Button key='en' value={enUS}>
-                    {formTranslate({ id: 'text.english' })}
+                    {formatMessage({ id: 'text.english' })}
                 </Radio.Button>
                 <Radio.Button key='es' value={enES}>
-                    {formTranslate({ id: 'text.spanish' })}
+                    {formatMessage({ id: 'text.spanish' })}
                 </Radio.Button>
             </Radio.Group>
         </div>

@@ -30,12 +30,13 @@ import {
     errorNotification,
     successNotification,
 } from '../../../utils/notifications/notification.action'
-import { formTranslate } from '../../../utils/functions/translation.function'
 
 import './SignUp.scss'
+import useIntl from '../../../hooks/useIntl'
 
 export const SignUp: FC<SignUpProps> = () => {
     const navigate = useNavigate()
+    const { formatMessage } = useIntl()
     const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
@@ -116,7 +117,7 @@ export const SignUp: FC<SignUpProps> = () => {
                     <UserAddOutlined className='main-signUp__icon' />
                     <Star />
                     <h2 className='main-signUp__title'>
-                        {formTranslate({ id: 'title.signUp' })}
+                        {formatMessage({ id: 'title.signUp' })}
                     </h2>
                     <div className='main-signUp__steps'>
                         <Steps
@@ -144,7 +145,7 @@ export const SignUp: FC<SignUpProps> = () => {
                     </div>
 
                     <Link to={RP.login} className='main-signUp__link-login '>
-                        {formTranslate({ id: 'link.signIn' })}
+                        {formatMessage({ id: 'link.signIn' })}
                     </Link>
                 </Form>
             </div>

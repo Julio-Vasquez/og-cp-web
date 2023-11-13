@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CheckCircleFilled } from '@ant-design/icons'
 
@@ -18,12 +18,13 @@ import './ActiveAccount.scss'
 const ActivateAccount = () => {
     const { token } = useParams()
     const { formatMessage } = useIntl()
-    const navigate = useNavigate()
+    const [visible, setVisible] = useState(false)
+
     const validToken = ValidateToken(token ?? '')
 
     const onCompleted = (data: any) => {
         successNotification(data.data.message, 'top')
-        navigate(RP.login)
+        setVisible(true)
     }
 
     const [mutation] = useMutation(
@@ -42,15 +43,16 @@ const ActivateAccount = () => {
             <div className='active-account__form-data'>
                 <CheckCircleFilled className='active-account__icon' />
                 <Star />
-                <h2 className='active-account__title'>
-                    {formatMessage({
-                        id: 'title.verified',
-                        /*  objVars: formatMessage({ id: 'title.verified' }), */
-                    })}
-                </h2>
-                <Link to={RP.login} className='active-account__link '>
-                    {formatMessage({ id: 'link.signIn' })}
-                </Link>
+                {visible && (
+                    <>
+                        <h2 className='active-account__title'>
+                            {formatMessage({ id: 'title.verified' })}
+                        </h2>
+                        <Link to={RP.login} className='active-account__link '>
+                            {formatMessage({ id: 'link.signIn' })}
+                        </Link>
+                    </>
+                )}
             </div>
         </div>
     )

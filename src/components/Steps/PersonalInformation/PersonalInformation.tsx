@@ -6,18 +6,20 @@ import {
     PersonalInformationPropTypes,
     PersonalInformationDefaultProps,
 } from './personalInformation.type'
+import useIntl from '../../../hooks/useIntl'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { formTranslate } from '../../../utils/functions/translation.function'
 
 import './PersonalInformation.scss'
 
 const { Item } = Form
 
 export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) => {
+    const { formatMessage } = useIntl()
+
     return (
         <div className='personalInformation'>
             <Spin spinning={loading}>
@@ -32,7 +34,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     className='personalInformation__item'
                 >
                     <Input
-                        placeholder={formTranslate({ id: 'text.firstName' })}
+                        placeholder={formatMessage({ id: 'text.firstName' })}
                         className='personalInformation__input'
                     />
                 </Item>
@@ -42,7 +44,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     className='personalInformation__item'
                 >
                     <Input
-                        placeholder={formTranslate({ id: 'text.middleName' })}
+                        placeholder={formatMessage({ id: 'text.middleName' })}
                         className='personalInformation__input'
                     />
                 </Item>
@@ -58,7 +60,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                 >
                     <Input
                         className='personalInformation__input'
-                        placeholder={formTranslate({ id: 'text.firstLastName' })}
+                        placeholder={formatMessage({ id: 'text.firstLastName' })}
                     />
                 </Item>
                 <Item
@@ -72,7 +74,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     ]}
                 >
                     <Input
-                        placeholder={formTranslate({ id: 'text.middleLastName' })}
+                        placeholder={formatMessage({ id: 'text.middleLastName' })}
                         className='personalInformation__input'
                     />
                 </Item>

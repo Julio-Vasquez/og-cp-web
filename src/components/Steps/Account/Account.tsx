@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
+import useIntl from '../../../hooks/useIntl'
 import {
     emailField,
     matchPassword,
@@ -8,7 +9,6 @@ import {
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { formTranslate } from '../../../utils/functions/translation.function'
 import { AccountDefaultProps, AccountProps, AccountPropsTypes } from './account.type'
 
 import './Account.scss'
@@ -17,6 +17,7 @@ const { Item } = Form
 const { Password } = Input
 
 export const Account: FC<AccountProps> = ({ loading }) => {
+    const { formatMessage } = useIntl()
     return (
         <div className='account'>
             <Spin spinning={loading!}>
@@ -33,7 +34,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                 >
                     <Input
                         className='account__input'
-                        placeholder={formTranslate({ id: 'text.mail' })}
+                        placeholder={formatMessage({ id: 'text.mail' })}
                     />
                 </Item>
                 <Item
@@ -47,7 +48,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                     ]}
                 >
                     <Input
-                        placeholder={formTranslate({ id: 'text.username' })}
+                        placeholder={formatMessage({ id: 'text.username' })}
                         className='account__input'
                     />
                 </Item>
@@ -63,7 +64,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                 >
                     <Password
                         className='account__input'
-                        placeholder={formTranslate({ id: 'text.password' })}
+                        placeholder={formatMessage({ id: 'text.password' })}
                     />
                 </Item>
                 <Item
@@ -81,7 +82,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                 >
                     <Password
                         className='account__input'
-                        placeholder={formTranslate({ id: 'text.passwordConfirm' })}
+                        placeholder={formatMessage({ id: 'text.passwordConfirm' })}
                     />
                 </Item>
             </Spin>

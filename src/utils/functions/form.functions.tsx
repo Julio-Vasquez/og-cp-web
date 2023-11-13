@@ -33,7 +33,7 @@ const emailField = (): Rule => ({
     type: 'email',
     message: formTranslate({
         id: 'text.inputObj',
-        objVars: formTranslate({ id: 'text.mail' }),
+        objVars: { field: formTranslate({ id: 'text.mail' }) },
     }),
 })
 

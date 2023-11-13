@@ -6,20 +6,20 @@ import Star from '../../../components/Star/Star'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
+import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
-import { ValidateToken } from '../../../utils/storage/storage'
-import loginImg from '../../../assets/img/publicBackground.jpg'
-import {
-    errorNotification,
-    successNotification,
-} from '../../../utils/notifications/notification.action'
 import {
     matchPassword,
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { formTranslate } from '../../../utils/functions/translation.function'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
+import { ValidateToken } from '../../../utils/storage/storage'
+import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './SetPassword.scss'
@@ -30,6 +30,7 @@ const { Password } = Input
 export const SetPassword = () => {
     const { token } = useParams()
     const navigate = useNavigate()
+    const { formatMessage } = useIntl()
     const validateToken = ValidateToken(token!)
 
     const onCompleted = (data: any) => {
@@ -69,7 +70,7 @@ export const SetPassword = () => {
                     <LockOutlined className='set-password__icon' />
                     <Star />
                     <h2 className='set-password__title'>
-                        {formTranslate({ id: 'text.assignNewPassword' })}
+                        {formatMessage({ id: 'text.assignNewPassword' })}
                     </h2>
                     <Item
                         name='newPassword'
@@ -83,7 +84,7 @@ export const SetPassword = () => {
                     >
                         <Password
                             className='set-password__input'
-                            placeholder={formTranslate({
+                            placeholder={formatMessage({
                                 id: 'text.newPassword',
                             })}
                         />
@@ -106,7 +107,7 @@ export const SetPassword = () => {
                     >
                         <Password
                             className='set-password__input'
-                            placeholder={formTranslate({
+                            placeholder={formatMessage({
                                 id: 'text.confirmNewPassword',
                             })}
                         />
@@ -116,7 +117,7 @@ export const SetPassword = () => {
                         type='primary'
                         htmlType='submit'
                     >
-                        {formTranslate({ id: 'button.send' })}
+                        {formatMessage({ id: 'button.send' })}
                     </Button>
                 </Form>
             </div>

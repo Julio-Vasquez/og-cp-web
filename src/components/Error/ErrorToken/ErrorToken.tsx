@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom'
 
-import { formTranslate } from '../../../utils/functions/translation.function'
+import useIntl from '../../../hooks/useIntl'
 
 import './ErrorToken.scss'
 
 export const ErrorToken = () => {
+    const { formatMessage } = useIntl()
+
     return (
-        <div id='notFound'>
-            <div className='notFound'>
-                <div className='notFound-404'>
+        <div id='not-found'>
+            <div className='not-found'>
+                <div className='not-found__404'>
                     <h1>404</h1>
-                    <h2>{formTranslate({ id: 'subtitle.requestSend' })}</h2>
+                    <h2>{formatMessage({ id: 'subtitle.requestSend' })}</h2>
                 </div>
-                <Link to='/'>{formTranslate({ id: 'link.start' })}</Link>
+                <Link to='/'>{formatMessage({ id: 'link.start' })}</Link>
             </div>
         </div>
     )
