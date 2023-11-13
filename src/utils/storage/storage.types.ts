@@ -5,3 +5,8 @@ export type payload = {
 }
 
 export type key = Omit<payload, 'newItem'>
+
+export type Token = {
+    iat: number
+    exp: number
+}

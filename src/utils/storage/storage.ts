@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode'
 
-import { key, payload } from './storage.types'
+import { key, payload, Token } from './storage.types'
 import { JWT_KEY } from '../constants/environment.constant'
 
 export const SaveItem = ({
@@ -19,30 +19,18 @@ export const RemoveItem = ({ key = JWT_KEY, type = 'localStorage' }: payload) =>
         ? sessionStorage.removeItem(key)
         : localStorage.removeItem(key)
 
-export const TokenIsValid = () => {
-    try {
-        const token: string = jwtDecode(JWT_KEY)
-        return ![undefined, null, ''].includes(token)
-    } catch (e) {
-        return false
-    }
+export const ValidateToken = (token: string) => {
+    const tokenValid: Token = jwtDecode(token)
+    return tokenValid && tokenValid?.exp >= Math.round(new Date().getTime() / 1000)
 }
 
-export const ValidateToken = (token: string) => {
-    type Token = {
-        iat: number
-        exp: number
+export const TokenIsValid = () => {
+    const token = GetItem({})
+    if (token) {
+        const decode: Token = jwtDecode(token) ?? ''
+        return decode?.exp >= Math.round(new Date().getTime() / 1000)
     }
-    try {
-        const tokenValid: Token = jwtDecode(token)
-
-        return (
-            ![undefined, null, ''].includes(tokenValid?.exp.toString()) &&
-            tokenValid?.exp >= Math.round(new Date().getTime() / 1000)
-        )
-    } catch (e) {
-        return false
-    }
+    return false
 }
 
 export const ClearData = (key = JWT_KEY) => localStorage.removeItem(key)

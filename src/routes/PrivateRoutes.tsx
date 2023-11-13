@@ -17,10 +17,14 @@ export const PrivateRoutes: FC = () => {
                 <LayoutPrivate>
                     <Routes>
                         <Route path={RP.dashboard} element={<Dashboard />} />
+                        <Route path={RP.default} element={<Dashboard />} />
                         <Route path={RP.ranking} element={<Ranking />} />
                         <Route path={RP.statistics} element={<Statistics />} />
                         <Route path={RP.error404} element={<Error404 />} />
-                        <Route path='/*' element={<Navigate replace to='/' />} />
+                        <Route
+                            path='*'
+                            element={<Navigate replace to={RP.error404} />}
+                        />
                     </Routes>
                 </LayoutPrivate>
             </BrowserRouter>

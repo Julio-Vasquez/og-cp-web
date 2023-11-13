@@ -15,6 +15,8 @@ import { successNotification } from '../../../utils/notifications/notification.a
 
 import './ActiveAccount.scss'
 
+import { Loading } from '../../../components/Loading'
+
 const ActivateAccount = () => {
     const { token } = useParams()
     const { formatMessage } = useIntl()
@@ -23,8 +25,8 @@ const ActivateAccount = () => {
     const validToken = ValidateToken(token ?? '')
 
     const onCompleted = (data: any) => {
-        successNotification(data.data.message, 'top')
         setVisible(true)
+        successNotification(data.data.message, 'top')
     }
 
     const [mutation] = useMutation(
@@ -34,20 +36,21 @@ const ActivateAccount = () => {
 
     useEffect(() => {
         if (validToken) mutation({ token, activate: true })
-    }, [])
+    }, [validToken])
 
     if (!validToken) return <ErrorToken />
 
+    const text = formatMessage({ id: 'title.verified' })
     return (
         <div className='active-account'>
             <div className='active-account__form-data'>
-                <CheckCircleFilled className='active-account__icon' />
-                <Star />
-                {visible && (
+                {!visible ? (
+                    <Loading message='cargando csm' />
+                ) : (
                     <>
-                        <h2 className='active-account__title'>
-                            {formatMessage({ id: 'title.verified' })}
-                        </h2>
+                        <CheckCircleFilled className='active-account__icon' />
+                        <Star />
+                        <h2 className='active-account__title'>{text}</h2>
                         <Link to={RP.login} className='active-account__link '>
                             {formatMessage({ id: 'link.signIn' })}
                         </Link>

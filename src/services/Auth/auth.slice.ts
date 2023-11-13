@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { TokenIsValid } from '../../utils/storage'
+import { GetItem, TokenIsValid } from '../../utils/storage'
 import { AUTH } from '../../utils/constants/redux.constants'
 import { loginAction, loginFailedType, loginSuccessType, state } from './auth.types'
+
+console.log(TokenIsValid())
 
 export const initialState: state = {
     authentication: TokenIsValid(), //verification token
@@ -10,7 +12,7 @@ export const initialState: state = {
     loading: false,
     message: '',
     success: false,
-    token: '', //the token
+    token: GetItem({}) ?? '', //the token
     user: '',
 }
 
@@ -41,7 +43,16 @@ export const AuthSlice = createSlice({
             token: payload.token,
             message: payload.message,
         }),
-        logout: state => ({ ...state, ...initialState }),
+        logout: state => ({
+            ...state,
+            authentication: false,
+            error: false,
+            loading: false,
+            message: '',
+            success: false,
+            token: '', //the token
+            user: '',
+        }),
     },
 })
 
