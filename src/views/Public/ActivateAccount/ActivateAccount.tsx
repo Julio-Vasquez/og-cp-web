@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { CheckCircleFilled } from '@ant-design/icons'
 
 import Star from '../../../components/Star/Star'
@@ -16,9 +16,11 @@ import { successNotification } from '../../../utils/notifications/notification.a
 import './ActiveAccount.scss'
 
 import { Loading } from '../../../components/Loading'
+import { Button } from 'antd'
 
 const ActivateAccount = () => {
     const { token } = useParams()
+    const navigate = useNavigate()
     const { formatMessage } = useIntl()
     const [visible, setVisible] = useState(false)
 
@@ -51,9 +53,12 @@ const ActivateAccount = () => {
                         <CheckCircleFilled className='active-account__icon' />
                         <Star />
                         <h2 className='active-account__title'>{text}</h2>
-                        <Link to={RP.login} className='active-account__link '>
+                        <Button
+                            onClick={() => navigate(RP.login)}
+                            className='active-account__submit-form '
+                        >
                             {formatMessage({ id: 'link.signIn' })}
-                        </Link>
+                        </Button>
                     </>
                 )}
             </div>
