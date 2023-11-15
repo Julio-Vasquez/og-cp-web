@@ -37,7 +37,7 @@ export const Error404: FC<Error404Props> = () => {
                         alt='text 404'
                     />
                     <Link to={RP.login} className='btn-go-home'>
-                        {formatMessage({ id: 'link.goBackHome' })}
+                        {formatMessage({ id: 'link.home' })}
                     </Link>
                 </div>
                 <div className='object'>

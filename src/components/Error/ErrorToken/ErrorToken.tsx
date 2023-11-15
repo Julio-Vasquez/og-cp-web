@@ -12,9 +12,9 @@ export const ErrorToken = () => {
             <div className='not-found'>
                 <div className='not-found__404'>
                     <h1>404</h1>
-                    <h2>{formatMessage({ id: 'subtitle.requestSend' })}</h2>
+                    <h2>{formatMessage({ id: 'subTitle.requestInvalid' })}</h2>
                 </div>
-                <Link to='/'>{formatMessage({ id: 'link.start' })}</Link>
+                <Link to='/'>{formatMessage({ id: 'link.home' })}</Link>
             </div>
         </div>
     )

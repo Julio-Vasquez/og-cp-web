@@ -1,7 +1,6 @@
 .main-signUp {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
-        repeat: 'no-repeat';
         size: cover;
         position: center;
     }
@@ -47,6 +46,7 @@
         align-items: center;
     }
     &__submit-form {
+        width: 150px;
         border : {
             radius: 50px;
         }

@@ -5,7 +5,7 @@ import {
     UserAddOutlined,
 } from '@ant-design/icons'
 import { FC, useState } from 'react'
-import { Button, Form, Steps } from 'antd'
+import { Button, Form, Spin, Steps } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Star from '../../../components/Star/Star'
@@ -79,10 +79,12 @@ export const SignUp: FC<SignUpProps> = () => {
         }
     }
 
-    const [mutation] = useMutation(
+    const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.signUp },
         { onCompleted }
     )
+
+    console.log(loading)
 
     const onFinish = (values: any) => {
         if (!isLastStep) {
@@ -108,6 +110,7 @@ export const SignUp: FC<SignUpProps> = () => {
                     src={LoginImage}
                     alt='image'
                 />
+
                 <Form
                     className='main-signUp__form-data'
                     onFinish={onFinish}
@@ -126,22 +129,28 @@ export const SignUp: FC<SignUpProps> = () => {
                             className='main-signUp__steps-main'
                         />
                         {content}
-                        <div className='main-signUp__main-submit-form'>
-                            <Button
-                                className='main-signUp__submit-form'
-                                onClick={onPrev}
-                                disabled={isFirstStep}
-                            >
-                                <LeftOutlined />
-                            </Button>
+                        <Spin spinning={loading}>
+                            <div className='main-signUp__main-submit-form'>
+                                <Button
+                                    className='main-signUp__submit-form'
+                                    onClick={onPrev}
+                                    disabled={isFirstStep}
+                                >
+                                    <LeftOutlined />
+                                </Button>
 
-                            <Button
-                                className='main-signUp__submit-form'
-                                htmlType='submit'
-                            >
-                                {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
-                            </Button>
-                        </div>
+                                <Button
+                                    className='main-signUp__submit-form'
+                                    htmlType='submit'
+                                >
+                                    {!isLastStep ? (
+                                        <RightOutlined />
+                                    ) : (
+                                        <CheckOutlined />
+                                    )}
+                                </Button>
+                            </div>
+                        </Spin>
                     </div>
 
                     <Link to={RP.login} className='main-signUp__link-login '>
