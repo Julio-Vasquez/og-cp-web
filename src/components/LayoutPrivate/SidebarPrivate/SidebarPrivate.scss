@@ -1,6 +1,8 @@
 .main-sidebar-private {
     &__subtitle {
-        margin: 50px 0 0 35px;
+        display: grid;
+        place-items: center;
+        margin: 50px 6px;
         font-family: exo;
         font-size: 20px;
     }

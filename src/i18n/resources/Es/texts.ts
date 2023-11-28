@@ -13,6 +13,7 @@ export const Texts = {
     phoneNumber: 'Número de teléfono',
     typeDocument: 'Tipo de documento',
     middleLastName: 'Segundo apellido',
+    userOrEmail: '{{user}} / {{mail}}',
     passwordConfirm: 'Confirmar contraseña',
     numberField: 'Este campo debe ser número',
     identification: 'Número de identificación',

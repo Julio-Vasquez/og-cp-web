@@ -33,12 +33,12 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
         >
             <Logo collapsed={collapsed} />
 
-            {!collapsed ? (
+            {collapsed ? (
+                <h2 className='main-sidebar-private__subtitle' />
+            ) : (
                 <h2 className='main-sidebar-private__subtitle'>
                     {formatMessage({ id: 'title.mainMenu' })}
                 </h2>
-            ) : (
-                <h2 className='main-sidebar-private__subtitle' />
             )}
 
             <Menu

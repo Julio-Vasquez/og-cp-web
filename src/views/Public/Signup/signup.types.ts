@@ -1,10 +1,7 @@
 import propTypes from 'prop-types'
 import { ResponseFetch } from '../../../utils/api/api.util'
 
-export const SignUpPropTypes = {
-    loading: propTypes.bool.isRequired,
-    setLoading: propTypes.func.isRequired,
-}
+export const SignUpPropTypes = {}
 
 export const SignUpDefaultProps = {
     loading: false,

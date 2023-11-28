@@ -33,6 +33,10 @@ import {
 
 import './SignUp.scss'
 import useIntl from '../../../hooks/useIntl'
+import {
+    ApiResponseError,
+    ApiResponseSuccess,
+} from '../../../utils/types/response.type'
 
 export const SignUp: FC<SignUpProps> = () => {
     const navigate = useNavigate()
@@ -70,21 +74,19 @@ export const SignUp: FC<SignUpProps> = () => {
     const onPrev = () => previous()
     const onNext = () => next()
 
-    const onCompleted = (data: any) => {
-        if (data.data.statusCode === 201) {
-            successNotification(data.data.message)
-            navigate(RP.login)
-        } else {
-            errorNotification(data.data.message)
-        }
+    const onCompleted = ({ message }: ApiResponseSuccess<[]>) => {
+        successNotification(message)
+        navigate(RP.login)
+    }
+
+    const onError = ({ message }: ApiResponseError) => {
+        errorNotification(message)
     }
 
     const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.signUp },
-        { onCompleted }
+        { onCompleted, onError }
     )
-
-    console.log(loading)
 
     const onFinish = (values: any) => {
         if (!isLastStep) {
@@ -129,28 +131,24 @@ export const SignUp: FC<SignUpProps> = () => {
                             className='main-signUp__steps-main'
                         />
                         {content}
-                        <Spin spinning={loading}>
-                            <div className='main-signUp__main-submit-form'>
-                                <Button
-                                    className='main-signUp__submit-form'
-                                    onClick={onPrev}
-                                    disabled={isFirstStep}
-                                >
-                                    <LeftOutlined />
-                                </Button>
 
-                                <Button
-                                    className='main-signUp__submit-form'
-                                    htmlType='submit'
-                                >
-                                    {!isLastStep ? (
-                                        <RightOutlined />
-                                    ) : (
-                                        <CheckOutlined />
-                                    )}
-                                </Button>
-                            </div>
-                        </Spin>
+                        <div className='main-signUp__main-submit-form'>
+                            <Button
+                                className='main-signUp__submit-form'
+                                onClick={onPrev}
+                                disabled={isFirstStep}
+                            >
+                                <LeftOutlined />
+                            </Button>
+
+                            <Button
+                                htmlType='submit'
+                                loading={loading}
+                                className='main-signUp__submit-form'
+                            >
+                                {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
+                            </Button>
+                        </div>
                     </div>
 
                     <Link to={RP.login} className='main-signUp__link-login '>
@@ -162,7 +160,6 @@ export const SignUp: FC<SignUpProps> = () => {
     )
 }
 
-SignUp.propTypes = SignUpPropTypes
 SignUp.defaultProps = SignUpDefaultProps
 
 export default SignUp

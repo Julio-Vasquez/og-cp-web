@@ -1,6 +1,5 @@
 import { query } from '../../api/core/api.types'
 import { URL_API } from '../constants/environment.constant'
-import { RESPONSE_API } from '../constants/response.constant'
 
 export const getHeader = (token: string | null) => {
     const exists = token !== null && { Authorization: `Bearer ${token}` }
@@ -22,14 +21,6 @@ export const getUrl = ({ url, params }: query): URL => {
             _url.searchParams.append(key, params[key])
         )
     return _url
-}
-
-export enum Methods {
-    delete = 'DELETE',
-    get = 'GET',
-    patch = 'PATCH',
-    post = 'POST',
-    put = 'PUT',
 }
 
 export const validateResponse = (status: string) => {}

@@ -17,6 +17,8 @@ import useData from '../../../../hooks/useData'
 import { logout } from '../../../../services/Auth/auth.slice'
 import { AUTH } from '../../../../utils/constants/redux.constants'
 
+import './ItemsHeader.scss'
+
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const { user } = useData({ reducer: AUTH })
     const dispatch = useDispatch()
@@ -24,17 +26,10 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const handleLogOut = () => {
         dispatch(logout())
     }
+
     return (
-        <div
-            className='main-items-header'
-            style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '350px',
-                alignItems: 'center',
-            }}
-        >
-            <Space size='middle'>
+        <div className='main-items__header'>
+            <Space size='middle' className='main-items__icons'>
                 <Badge count={5} color='#6744c6'>
                     <Avatar
                         shape='square'
@@ -59,24 +54,11 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
                 </Badge>
             </Space>
 
-            <Space
-                style={{
-                    display: 'flex',
-                }}
-            >
+            <Space className='main-items__space'>
                 <Avatar src={iconUser} alt='icon-user' size='large' />
-                <div>
-                    <h4
-                        style={{
-                            fontSize: '16px',
-                            lineHeight: '1.6em',
-                        }}
-                    >
-                        {!user ? 'Username' : user}
-                    </h4>
-                    <p style={{ fontSize: '12px', lineHeight: '0em' }}>
-                        Super Admin
-                    </p>
+                <div className='main-items__name-roles'>
+                    <h4>{user ? user : 'Username'}</h4>
+                    <p>Super Admin</p>
                 </div>
             </Space>
         </div>

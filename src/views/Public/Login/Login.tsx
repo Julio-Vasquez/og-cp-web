@@ -59,9 +59,16 @@ export const Login = () => {
                         className='login__item'
                     >
                         <Input
+                            autoComplete='true'
                             className='login__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({ id: 'text.username' })}
+                            placeholder={formatMessage({
+                                id: 'text.userOrEmail',
+                                objVars: {
+                                    user: formatMessage({ id: 'text.username' }),
+                                    mail: formatMessage({ id: 'text.mail' }),
+                                },
+                            })}
                         />
                     </Item>
                     <Item
@@ -75,6 +82,7 @@ export const Login = () => {
                         ]}
                     >
                         <Password
+                            autoComplete='true'
                             className='login__input'
                             prefix={<LockOutlined />}
                             placeholder={formatMessage({ id: 'title.password' })}

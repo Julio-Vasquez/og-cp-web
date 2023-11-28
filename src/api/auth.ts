@@ -1,5 +1,5 @@
 import { Query, Mutation } from './core'
-import { Methods } from '../utils/api/api.util'
+import { Methods } from '../utils/types/response.type'
 import { loginType } from '../services/Auth/auth.types'
 import { type forgotPassword } from '../views/Public/ForgotPassword/forgotPassword.type'
 import { type setPassword } from '../views/Public/SetPassword/setPassword.type'

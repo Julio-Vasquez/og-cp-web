@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { errorNotification } from '../../utils/notifications/notification.action'
 
 import { state, queryType, func } from './api.types'
+import { HttpStatus } from '../../utils/types/response.type'
 
 export const useGet = <T>(
     { functionFetch }: func,
@@ -23,7 +24,13 @@ export const useGet = <T>(
         setReq({ data: {} as T, loading: true, error: false })
         try {
             const data = await functionFetch(fetchVariables)
-            setReq({ data, loading: false })
+            if ([HttpStatus.OK]) {
+                setReq({ data, loading: false })
+                return data
+            } else {
+                setReq({ data: {} as T, loading: false, error: true })
+                return undefined
+            }
         } catch (error: any) {
             if (!cancelError) errorNotification(error)
             setReq({ data: {} as T, loading: false, error: true })

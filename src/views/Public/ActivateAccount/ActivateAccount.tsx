@@ -16,7 +16,7 @@ import { successNotification } from '../../../utils/notifications/notification.a
 import './ActiveAccount.scss'
 
 import { Loading } from '../../../components/Loading'
-import { Button } from 'antd'
+import { Button, Spin } from 'antd'
 
 const ActivateAccount = () => {
     const { token } = useParams()
@@ -31,7 +31,7 @@ const ActivateAccount = () => {
         successNotification(data.data.message, 'top')
     }
 
-    const [mutation] = useMutation(
+    const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.activateAccount },
         { onCompleted }
     )
@@ -44,25 +44,21 @@ const ActivateAccount = () => {
 
     const text = formatMessage({ id: 'title.verified' })
     return (
-        <div className='active-account'>
-            <div className='active-account__form-data'>
-                {!visible ? (
-                    <Loading message='cargando csm' />
-                ) : (
-                    <>
-                        <CheckCircleFilled className='active-account__icon' />
-                        <Star />
-                        <h2 className='active-account__title'>{text}</h2>
-                        <Button
-                            onClick={() => navigate(RP.login)}
-                            className='active-account__submit-form '
-                        >
-                            {formatMessage({ id: 'link.signIn' })}
-                        </Button>
-                    </>
-                )}
+        <Spin spinning={loading}>
+            <div className='active-account'>
+                <div className='active-account__form-data'>
+                    <CheckCircleFilled className='active-account__icon' />
+                    <Star />
+                    <h2 className='active-account__title'>{text}</h2>
+                    <Button
+                        onClick={() => navigate(RP.login)}
+                        className='active-account__submit-form '
+                    >
+                        {formatMessage({ id: 'link.signIn' })}
+                    </Button>
+                </div>
             </div>
-        </div>
+        </Spin>
     )
 }
 

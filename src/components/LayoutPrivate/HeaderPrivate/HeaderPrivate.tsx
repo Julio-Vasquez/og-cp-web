@@ -8,8 +8,9 @@ import {
     HeaderPrivatePropsTypes,
 } from './headerPrivate.type'
 
-import './HeaderPrivate.scss'
 import { ItemsHeader } from './itemsHeaderPrivate/ItemsHeader'
+
+import './HeaderPrivate.scss'
 
 const { Header } = Layout
 
@@ -30,12 +31,13 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
         >
             <Button
                 type='text'
-                className='main-header-private__btn'
                 onClick={() => setCollapsed(!collapsed)}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             />
 
-            <h1>{pathname.toUpperCase().split('/')}</h1>
+            <h1 className='main-header-private__title'>
+                {pathname.toUpperCase().split('/')}
+            </h1>
 
             <ItemsHeader />
         </Header>
