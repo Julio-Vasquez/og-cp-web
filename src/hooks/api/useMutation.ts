@@ -8,16 +8,21 @@ export const useMutation = <T>(
     { functionFetch }: func,
     { onCompleted, cancelError, onError }: mutationType
 ): [Function, state<T>] => {
-    const [req, setReq] = useState<state>({
+    const [req, setReq] = useState<state<T>>({
         loading: false,
         error: false,
+        data: undefined,
     })
 
     const execFunction = async (variables: T) => {
         setReq({ loading: true, error: false })
         try {
             const data = await functionFetch(variables)
-            if ([HttpStatus.ACCEPTED, HttpStatus.OK].includes(data.statusCode)) {
+            if (
+                [HttpStatus.ACCEPTED, HttpStatus.OK, HttpStatus.CREATED].includes(
+                    data.statusCode
+                )
+            ) {
                 setReq({ data, loading: false })
                 if (onCompleted) onCompleted({ data, variables })
                 return data

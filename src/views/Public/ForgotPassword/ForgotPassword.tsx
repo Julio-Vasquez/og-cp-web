@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 
 import Star from '../../../components/Star/Star'
+import LoginImg from '../../../assets/img/publicBackground.jpg'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
@@ -12,13 +13,16 @@ import {
     successNotification,
     errorNotification,
 } from '../../../utils/notifications/notification.action'
-import loginImg from '../../../assets/img/publicBackground.jpg'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import {
+    ApiResponseError,
+    ApiResponseSuccess,
+} from '../../../utils/types/response.type'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './ForgotPassword.scss'
 
@@ -28,18 +32,18 @@ const ForgotPassword = () => {
     const navigate = useNavigate()
     const { formatMessage } = useIntl()
 
-    const onCompleted = ({ data }: any) => {
-        if (data.statusCode === 404) {
-            errorNotification(data.message)
-        } else {
-            successNotification(data.message)
-            navigate(RP.login)
-        }
+    const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
+        successNotification(message)
+        navigate(RP.login)
+    }
+
+    const onError = ({ message }: ApiResponseError) => {
+        errorNotification(message)
     }
 
     const [mutation] = useMutation<forgotPassword>(
         { functionFetch: api.auth.forgotPassword },
-        { onCompleted, cancelError: false }
+        { onCompleted, onError, cancelError: false }
     )
 
     const onFinish = (values: forgotPassword) => {
@@ -51,7 +55,7 @@ const ForgotPassword = () => {
             <div className='forgot-password__container'>
                 <img
                     className='forgot-password__image-container'
-                    src={loginImg}
+                    src={LoginImg}
                     alt='image'
                 />
                 <Form
@@ -94,6 +98,7 @@ const ForgotPassword = () => {
                         className='forgot-password__submit-form'
                         type='primary'
                         htmlType='submit'
+                        loading
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>

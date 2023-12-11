@@ -3,3 +3,19 @@
 @forward './utils/main';
 
 @import './vendors/antd';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Oleo Script';
+}
+
+span,
+input,
+label,
+legend {
+    font-family: sans-serif;
+}

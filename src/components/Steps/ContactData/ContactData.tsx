@@ -16,7 +16,7 @@ import {
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
+import { SignUpGenders } from '../../../views/Public/SignUp2/signUp.types'
 
 import './ContactData.scss'
 

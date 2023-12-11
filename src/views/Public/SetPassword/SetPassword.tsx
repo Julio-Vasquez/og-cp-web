@@ -23,6 +23,10 @@ import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './SetPassword.scss'
+import {
+    ApiResponseError,
+    ApiResponseSuccess,
+} from '../../../utils/types/response.type'
 
 const { Item } = Form
 const { Password } = Input
@@ -33,16 +37,16 @@ export const SetPassword = () => {
     const { formatMessage } = useIntl()
     const validateToken = ValidateToken(token!)
 
-    const onCompleted = (data: any) => {
-        if (data.data.statusCode === 200) {
-            successNotification(data.data.message)
-            navigate(RP.login)
-        } else errorNotification(data.data.message)
+    const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
+        successNotification(message)
+        navigate(RP.login)
     }
+
+    const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
     const [mutation] = useMutation(
         { functionFetch: api.auth.setPassword },
-        { onCompleted }
+        { onCompleted, onError, cancelError: false }
     )
 
     const onFinish = (values: any) => {

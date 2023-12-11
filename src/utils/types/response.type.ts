@@ -72,4 +72,9 @@ interface Error {
 }
 
 export type ApiResponseError = BaseResponse & Error
-export type ApiResponseSuccess<T = unknown> = BaseResponse & Success<T>
+type ApiResponse<T = unknown> = BaseResponse & Success<T>
+
+export type ApiResponseSuccess<T = unknown, V = unknown> = {
+    data: ApiResponse<T>
+    variables: V
+}

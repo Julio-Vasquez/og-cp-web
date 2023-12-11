@@ -6,7 +6,7 @@ import { HttpStatus } from '../../utils/types/response.type'
 
 export const useGet = <T>(
     { functionFetch }: func,
-    { cancelFirstEffect, cancelError, onError, variables }: queryType<T>
+    { cancelFirstEffect, cancelError, onError, variables }: queryType<T> = {}
 ) => {
     const [req, setReq] = useState<state<T>>({
         data: {} as T,
@@ -24,7 +24,7 @@ export const useGet = <T>(
         setReq({ data: {} as T, loading: true, error: false })
         try {
             const data = await functionFetch(fetchVariables)
-            if ([HttpStatus.OK]) {
+            if ([HttpStatus.OK, HttpStatus.NO_CONTENT]) {
                 setReq({ data, loading: false })
                 return data
             } else {

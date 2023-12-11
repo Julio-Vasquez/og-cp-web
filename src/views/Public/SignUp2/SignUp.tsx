@@ -5,7 +5,7 @@ import {
     UserAddOutlined,
 } from '@ant-design/icons'
 import { FC, useState } from 'react'
-import { Button, Form, Spin, Steps } from 'antd'
+import { Button, Form, Steps } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Star from '../../../components/Star/Star'
@@ -15,7 +15,6 @@ import PersonalInformation from '../../../components/Steps/PersonalInformation/P
 
 import {
     SignUpDefaultProps,
-    SignUpPropTypes,
     SignUpProps,
     SignUpRoles,
     availableDataTypes,
@@ -52,12 +51,10 @@ export const SignUp: FC<SignUpProps> = () => {
     const steps: StepType[] = [
         {
             key: 1,
-            title: '',
             component: <PersonalInformation loading={loadingAvailableData} />,
         },
         {
             key: 2,
-            title: '',
             component: (
                 <ContactData
                     loading={loadingAvailableData}
@@ -66,15 +63,17 @@ export const SignUp: FC<SignUpProps> = () => {
                 />
             ),
         },
-        { key: 3, title: '', component: <Account loading={loadingAvailableData} /> },
+        { key: 3, component: <Account loading={loadingAvailableData} /> },
     ]
 
     const { currentStep, content, isFirstStep, isLastStep, next, previous } =
         useStep(steps)
+
     const onPrev = () => previous()
+
     const onNext = () => next()
 
-    const onCompleted = ({ message }: ApiResponseSuccess<[]>) => {
+    const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
         successNotification(message)
         navigate(RP.login)
     }
@@ -112,7 +111,6 @@ export const SignUp: FC<SignUpProps> = () => {
                     src={LoginImage}
                     alt='image'
                 />
-
                 <Form
                     className='main-signUp__form-data'
                     onFinish={onFinish}
@@ -131,7 +129,6 @@ export const SignUp: FC<SignUpProps> = () => {
                             className='main-signUp__steps-main'
                         />
                         {content}
-
                         <div className='main-signUp__main-submit-form'>
                             <Button
                                 className='main-signUp__submit-form'
@@ -140,7 +137,6 @@ export const SignUp: FC<SignUpProps> = () => {
                             >
                                 <LeftOutlined />
                             </Button>
-
                             <Button
                                 htmlType='submit'
                                 loading={loading}
@@ -150,7 +146,6 @@ export const SignUp: FC<SignUpProps> = () => {
                             </Button>
                         </div>
                     </div>
-
                     <Link to={RP.login} className='main-signUp__link-login '>
                         {formatMessage({ id: 'link.signIn' })}
                     </Link>

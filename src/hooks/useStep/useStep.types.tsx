@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-export type StepType = { component: ReactElement; key: number; title: string }
+export type StepType = { component: ReactElement; key: number; title?: string }
 
 export type StepReturnType = {
     next: Function

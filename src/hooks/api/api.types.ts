@@ -1,7 +1,7 @@
 export type state<T> = {
     loading: boolean
     error?: boolean
-    data: T
+    data?: T
 }
 
 export type mutationType = {
