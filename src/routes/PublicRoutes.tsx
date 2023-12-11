@@ -5,7 +5,7 @@ import { Loading } from './../components/Loading'
 import { ROUTES_PUBLIC as RP } from '../utils/constants/routes.constants'
 
 const Login = lazy(() => import('../views/Public/Login'))
-const SignUp = lazy(() => import('../views/Public/SignUp2'))
+const SignUp = lazy(() => import('../views/Public/SignUp'))
 const ForgotPassword = lazy(
     () => import('../views/Public/ForgotPassword/ForgotPassword')
 )
