@@ -41,7 +41,7 @@ const ForgotPassword = () => {
         errorNotification(message)
     }
 
-    const [mutation] = useMutation<forgotPassword>(
+    const [mutation, { loading }] = useMutation<forgotPassword>(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
@@ -98,7 +98,7 @@ const ForgotPassword = () => {
                         className='forgot-password__submit-form'
                         type='primary'
                         htmlType='submit'
-                        loading
+                        loading={loading}
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>

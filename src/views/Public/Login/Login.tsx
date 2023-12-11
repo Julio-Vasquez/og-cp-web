@@ -12,16 +12,15 @@ import {
     requiredField,
 } from '../../../utils/functions/form.functions'
 import { login } from './../../../services/Auth/auth.slice'
-import { loginType } from '../../../services/Auth/auth.types'
+import { loginType, state } from '../../../services/Auth/auth.types'
 import loginImg from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Login.scss'
-
 const { Item } = Form
 const { Password } = Input
 
-export const Login = () => {
+export const Login = ({ loading }: state) => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
 
@@ -92,6 +91,7 @@ export const Login = () => {
                         className='login__submit-form'
                         type='primary'
                         htmlType='submit'
+                        loading={loading}
                     >
                         {formatMessage({ id: 'button.login' })}
                     </Button>

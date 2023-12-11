@@ -1,5 +1,5 @@
+import { Button } from 'antd'
 import { useEffect } from 'react'
-import { Button, Spin } from 'antd'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { CheckCircleFilled } from '@ant-design/icons'
@@ -13,14 +13,13 @@ import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
-    errorNotification,
-    successNotification,
-} from '../../../utils/notifications/notification.action'
-
-import {
     ApiResponseError,
     ApiResponseSuccess,
 } from '../../../utils/types/response.type'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
 
 import './ActiveAccount.scss'
 
@@ -50,21 +49,20 @@ const ActivateAccount = () => {
     if (!validToken) return <ErrorToken />
 
     return (
-        <Spin spinning={loading}>
-            <div className='active-account'>
-                <div className='active-account__form-data'>
-                    <CheckCircleFilled className='active-account__icon' />
-                    <Star />
-                    <h2 className='active-account__title'>{text}</h2>
-                    <Button
-                        onClick={() => navigate(RP.login)}
-                        className='active-account__submit-form '
-                    >
-                        {formatMessage({ id: 'link.signIn' })}
-                    </Button>
-                </div>
+        <div className='active-account'>
+            <div className='active-account__form-data'>
+                <CheckCircleFilled className='active-account__icon' />
+                <Star />
+                <h2 className='active-account__title'>{text}</h2>
+                <Button
+                    onClick={() => navigate(RP.login)}
+                    className='active-account__submit-form '
+                    loading={loading}
+                >
+                    {formatMessage({ id: 'link.signIn' })}
+                </Button>
             </div>
-        </Spin>
+        </div>
     )
 }
 

@@ -21,12 +21,12 @@ import {
 import { ValidateToken } from '../../../utils/storage/storage'
 import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
-
-import './SetPassword.scss'
 import {
     ApiResponseError,
     ApiResponseSuccess,
 } from '../../../utils/types/response.type'
+
+import './SetPassword.scss'
 
 const { Item } = Form
 const { Password } = Input
@@ -44,7 +44,7 @@ export const SetPassword = () => {
 
     const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    const [mutation] = useMutation(
+    const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.setPassword },
         { onCompleted, onError, cancelError: false }
     )
@@ -120,6 +120,7 @@ export const SetPassword = () => {
                         className='set-password__submit-form'
                         type='primary'
                         htmlType='submit'
+                        loading={loading}
                     >
                         {formatMessage({ id: 'button.send' })}
                     </Button>
