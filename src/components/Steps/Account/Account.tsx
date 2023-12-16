@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
 import useIntl from '../../../hooks/useIntl'
+import { AccountDefaultProps, AccountProps, AccountPropsTypes } from './account.type'
 import {
     emailField,
     matchPassword,
@@ -9,7 +10,6 @@ import {
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { AccountDefaultProps, AccountProps, AccountPropsTypes } from './account.type'
 
 import './Account.scss'
 
@@ -20,7 +20,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
     const { formatMessage } = useIntl()
     return (
         <div className='account'>
-            <Spin spinning={loading!}>
+            <Spin spinning={loading}>
                 <Item
                     name='mail'
                     hasFeedback
@@ -68,7 +68,7 @@ export const Account: FC<AccountProps> = ({ loading }) => {
                     />
                 </Item>
                 <Item
-                    name='confirm'
+                    name='confirmPassword'
                     dependencies={['password']}
                     hasFeedback
                     className='account__item'

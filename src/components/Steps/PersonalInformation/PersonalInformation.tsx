@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
+import useIntl from '../../../hooks/useIntl'
 import {
     PersonalInformationProps,
     PersonalInformationPropTypes,
     PersonalInformationDefaultProps,
 } from './personalInformation.type'
-import useIntl from '../../../hooks/useIntl'
 import {
     maxLength,
     minLength,
@@ -42,6 +42,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     name='middleName'
                     hasFeedback
                     className='personalInformation__item'
+                    rules={[maxLength({ field: 'text.middleName', max: 55 })]}
                 >
                     <Input
                         placeholder={formatMessage({ id: 'text.middleName' })}
@@ -69,7 +70,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     className='personalInformation__item'
                     rules={[
                         requiredField({ field: 'text.middleLastName' }),
-                        maxLength({ field: 'text.middleLastName', max: 60 }),
+                        maxLength({ field: 'text.middleLastName', max: 65 }),
                         minLength({ field: 'text.middleLastName', min: 3 }),
                     ]}
                 >

@@ -34,6 +34,7 @@
         border-radius: 20px;
         display: flex;
     }
+
     &__input {
         width: 100%;
         height: 35px;
@@ -41,6 +42,7 @@
         font-size: 15px;
     }
 }
+
 .ant-form-item {
     margin-bottom: 0;
 }
@@ -53,17 +55,20 @@
                 display: flex;
                 align-items: center;
             }
+
             &__type-doc {
                 width: 100%;
                 height: 35px;
                 min-width: 155px;
             }
+
             &__item {
                 display: flex;
                 align-items: center;
                 width: 50%;
             }
         }
+
         &__item {
             width: 100%;
             height: auto;
@@ -72,19 +77,19 @@
             margin: 0;
             margin: 5px 0;
         }
+
         &__date {
             border-radius: 20px;
             width: 100%;
             height: 35px;
             display: flex;
-
             justify-content: center;
         }
+
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-
             font-size: 15px;
         }
     }
@@ -97,17 +102,20 @@
                 display: flex;
                 align-items: center;
             }
+
             &__type-doc {
                 width: 100%;
                 height: 35px;
                 min-width: 155px;
             }
+
             &__item {
                 display: flex;
                 align-items: center;
                 width: 50%;
             }
         }
+
         &__item {
             width: 100%;
             height: auto;
@@ -116,23 +124,24 @@
             margin: 0;
             margin: 5px 0;
         }
+
         &__date {
             border-radius: 20px;
             width: 315px;
             height: 35px;
             display: flex;
-
             justify-content: center;
         }
+
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-
             font-size: 15px;
         }
     }
 }
+
 @media only screen and (max-width: 992px) {
     .main-contactData {
         .compact {
@@ -141,17 +150,20 @@
                 display: flex;
                 align-items: center;
             }
+
             &__type-doc {
                 width: 100%;
                 height: 35px;
                 min-width: 155px;
             }
+
             &__item {
                 display: flex;
                 align-items: center;
                 width: 50%;
             }
         }
+
         &__item {
             width: 100%;
             height: auto;
@@ -160,6 +172,7 @@
             margin: 0;
             margin: 5px 0;
         }
+
         &__date {
             border-radius: 20px;
             width: 315px;
@@ -167,6 +180,7 @@
             display: flex;
             justify-content: center;
         }
+
         &__input {
             width: 100%;
             height: 35px;
@@ -184,17 +198,20 @@
                 display: flex;
                 align-items: center;
             }
+
             &__type-doc {
                 width: 100%;
                 height: 35px;
                 min-width: 155px;
             }
+
             &__item {
                 display: flex;
                 align-items: center;
                 width: 50%;
             }
         }
+
         &__item {
             width: 100%;
             height: auto;
@@ -203,19 +220,19 @@
             margin: 0;
             margin: 5px 0;
         }
+
         &__date {
             border-radius: 20px;
             width: 315px;
             height: 35px;
             display: flex;
-
             justify-content: center;
         }
+
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-
             font-size: 15px;
         }
     }
@@ -224,22 +241,26 @@
     .main-contactData {
         .compact {
             border: solid;
+
             &__select {
                 width: 50%;
                 display: flex;
                 align-items: center;
             }
+
             &__type-doc {
                 width: 100%;
                 height: 35px;
                 min-width: 155px;
             }
+
             &__item {
                 display: flex;
                 align-items: center;
                 width: 50%;
             }
         }
+
         &__item {
             width: 100%;
             height: auto;
@@ -248,19 +269,19 @@
             margin: 0;
             margin: 5px 0;
         }
+
         &__date {
             border-radius: 20px;
             width: 315px;
             height: 35px;
             display: flex;
-
             justify-content: center;
         }
+
         &__input {
             width: 100%;
             height: 35px;
             border-radius: 2vh;
-
             font-size: 15px;
         }
     }

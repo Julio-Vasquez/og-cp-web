@@ -3,9 +3,9 @@ import { ReactElement } from 'react'
 export type StepType = { component: ReactElement; key: number; title?: string }
 
 export type StepReturnType = {
-    next: Function
-    previous: Function
-    resetSteps: Function
+    next: () => void
+    previous: () => void
+    resetSteps: () => void
     isFirstStep: boolean
     isLastStep: boolean
     currentStep: number

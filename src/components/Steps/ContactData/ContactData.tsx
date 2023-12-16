@@ -1,22 +1,22 @@
 import dayjs from 'dayjs'
 import { FC } from 'react'
-import type { RangePickerProps } from 'antd/es/date-picker'
+import type { RangePickerProps } from 'antd/lib/date-picker'
 import { Form, Input, Select, DatePicker, Spin } from 'antd'
 
 import CustomInput from '../../Fields/CustomInput/CustomInput'
 
+import useIntl from '../../../hooks/useIntl'
+import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 import {
     ContactDataDefaultProps,
     ContactDataProps,
     ContactDataPropTypes,
 } from './ContactData.type'
-import useIntl from '../../../hooks/useIntl'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 
 import './ContactData.scss'
 
@@ -33,9 +33,8 @@ export const ContactData: FC<ContactDataProps> = ({
         a!.abbr.localeCompare(b!.abbr)
     )
 
-    const disabledDate: RangePickerProps['disabledDate'] = current => {
-        return current && current >= dayjs().endOf('day')
-    }
+    const disabledDate: RangePickerProps['disabledDate'] = current =>
+        current && current >= dayjs().endOf('day')
 
     return (
         <div className='main-contactData'>
@@ -51,11 +50,8 @@ export const ContactData: FC<ContactDataProps> = ({
                 >
                     <CustomInput
                         data={sortedTypeDocument}
-                        name={'typeDocument'}
-                        customMap={{
-                            value: 'typeDocument',
-                            label: 'typeDocument',
-                        }}
+                        name='typeDocument'
+                        customMap={{ value: 'typeDocument', label: 'typeDocument' }}
                     />
                 </Item>
                 <Item

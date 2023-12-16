@@ -1,41 +1,41 @@
+import { FC, useState } from 'react'
+import { Button, Form, Steps } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     CheckOutlined,
     LeftOutlined,
     RightOutlined,
     UserAddOutlined,
 } from '@ant-design/icons'
-import { FC, useState } from 'react'
-import { Button, Form, Steps } from 'antd'
-import { Link, useNavigate } from 'react-router-dom'
 
 import Star from '../../../components/Star/Star'
 import Account from '../../../components/Steps/Account/Account'
 import ContactData from '../../../components/Steps/ContactData/ContactData'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
-import {
-    SignUpDefaultProps,
-    SignUpProps,
-    SignUpRoles,
-    availableDataTypes,
-} from './signUp.types'
 import api from '../../../api'
+import useIntl from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
-    errorNotification,
-    successNotification,
-} from '../../../utils/notifications/notification.action'
-
-import './SignUp.scss'
-import useIntl from '../../../hooks/useIntl'
-import {
     ApiResponseError,
     ApiResponseSuccess,
 } from '../../../utils/types/response.type'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
+import {
+    SignUpDefaultProps,
+    SignUpProps,
+    SignUpRoles,
+    availableDataTypes,
+} from './signUp.types'
+
+import './SignUp.scss'
 
 export const SignUp: FC<SignUpProps> = () => {
     const navigate = useNavigate()
@@ -43,10 +43,7 @@ export const SignUp: FC<SignUpProps> = () => {
     const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
-        useGet<availableDataTypes>(
-            { functionFetch: api.defaultData.availableData },
-            {}
-        )
+        useGet<availableDataTypes>({ functionFetch: api.defaultData.availableData })
 
     const steps: StepType[] = [
         {
@@ -78,9 +75,7 @@ export const SignUp: FC<SignUpProps> = () => {
         navigate(RP.login)
     }
 
-    const onError = ({ message }: ApiResponseError) => {
-        errorNotification(message)
-    }
+    const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
     const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.signUp },
@@ -142,7 +137,7 @@ export const SignUp: FC<SignUpProps> = () => {
                                 loading={loading}
                                 className='main-signUp__submit-form'
                             >
-                                {!isLastStep ? <RightOutlined /> : <CheckOutlined />}
+                                {isLastStep ? <CheckOutlined /> : <RightOutlined />}
                             </Button>
                         </div>
                     </div>
