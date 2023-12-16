@@ -42,6 +42,8 @@ const ActivateAccount = () => {
         { onCompleted, onError, cancelError: false }
     )
 
+    const handleClickActiveAccount = () => navigate(RP.login)
+
     useEffect(() => {
         if (validToken) mutation({ token, activate: true })
     }, [validToken])
@@ -55,7 +57,7 @@ const ActivateAccount = () => {
                 <Star />
                 <h2 className='active-account__title'>{text}</h2>
                 <Button
-                    onClick={() => navigate(RP.login)}
+                    onClick={handleClickActiveAccount}
                     className='active-account__submit-form '
                     loading={loading}
                 >
