@@ -18,6 +18,7 @@ import useIntl from '../../../hooks/useIntl'
 import { useMutation, useGet } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
+import { Status } from '../../../utils/constants/status.enum'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
@@ -32,6 +33,7 @@ import {
     SignUpDefaultProps,
     SignUpProps,
     SignUpRoles,
+    SignUpTypeDocument,
     availableDataTypes,
 } from './signUp.types'
 
@@ -45,6 +47,9 @@ export const SignUp: FC<SignUpProps> = () => {
     const { data: availableData, loading: loadingAvailableData } =
         useGet<availableDataTypes>({ functionFetch: api.defaultData.availableData })
 
+    const checkStatus = (key: 'roles' | 'genders' | 'typeDocuments') =>
+        availableData?.status === Status.success ? availableData.payload?.[key] : []
+
     const steps: StepType[] = [
         {
             key: 1,
@@ -55,8 +60,10 @@ export const SignUp: FC<SignUpProps> = () => {
             component: (
                 <ContactData
                     loading={loadingAvailableData}
-                    genders={availableData?.payload?.genders}
-                    typeDocuments={availableData?.payload?.typeDocuments}
+                    genders={checkStatus('genders')}
+                    typeDocuments={
+                        checkStatus('typeDocuments') as SignUpTypeDocument[]
+                    }
                 />
             ),
         },
@@ -87,15 +94,12 @@ export const SignUp: FC<SignUpProps> = () => {
             onNext()
             setPersonaInformation({ ...personaInformation, ...values })
         } else {
-            const isAdmin = availableData?.payload?.roles.find(
-                (item: SignUpRoles) => item.role === ROLES.Admin
-            )
-            const { role } = isAdmin
-            mutation({
-                ...personaInformation,
-                ...values,
-                role: role || ROLES.Admin,
-            })
+            const admin = checkStatus('roles') as SignUpRoles[]
+            const role =
+                admin.find((item: SignUpRoles) => item.role === ROLES.Admin)?.role ??
+                ROLES.Admin
+
+            mutation({ ...personaInformation, ...values, role })
         }
     }
     return (

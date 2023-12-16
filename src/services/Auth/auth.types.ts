@@ -1,23 +1,33 @@
-type loginType = {
+type Actions = {
+    create: boolean
+    read: boolean
+    update: boolean
+    delete: boolean
+}
+
+type Menu = Record<string, Actions> | null
+
+type LoginType = {
     username: string
     password: string
 }
 
-type loginAction = {
-    payload: loginType
+type LoginAction = {
+    payload: LoginType
     type: string
 }
 
-type loginSuccessType = {
+type LoginSuccessType = {
     payload: {
         token: string
         message: string
         success: boolean
+        menu: Menu
     }
     type: string
 }
 
-type loginFailedType = {
+type LoginFailedType = {
     payload: {
         error: boolean
         message: string
@@ -25,7 +35,7 @@ type loginFailedType = {
     type: string
 }
 
-type state = {
+type State = {
     authentication: boolean | Promise<boolean>
     error: boolean
     loading: boolean
@@ -33,6 +43,7 @@ type state = {
     success: boolean
     token: string
     user: string
+    menu: Menu
 }
 
-export type { loginAction, loginSuccessType, loginFailedType, state, loginType }
+export type { LoginAction, LoginSuccessType, LoginFailedType, State, LoginType }

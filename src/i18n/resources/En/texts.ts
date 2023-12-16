@@ -26,4 +26,5 @@ export const Texts = {
     maxLengthObj: '{{field}} should be less than {{max}} digits',
     minLengthObj: '{{field}} should be {{min}} characters at least',
     passwordDoMatch: 'The two passwords that you entered do not match!',
+    onlyLetters: 'Only letters',
 }

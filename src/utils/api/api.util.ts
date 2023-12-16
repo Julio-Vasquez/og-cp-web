@@ -1,5 +1,6 @@
 import { query } from '../../api/core/api.types'
 import { URL_API } from '../constants/environment.constant'
+import { HttpStatus } from '../types/response.type'
 
 export const getHeader = (token: string | null) => {
     const exists = token !== null && { Authorization: `Bearer ${token}` }
@@ -25,18 +26,18 @@ export const getUrl = ({ url, params }: query): URL => {
 
 export const validateResponse = (status: string) => {}
 
-export interface IResponse {
-    error?: boolean
+interface BaseResponse {
     message: string
-    payload: [] | {} | any
-    statusCode?: number
-    success?: boolean
+    statusCode: HttpStatus
 }
 
-export interface ResponseFetch<T> {
-    error?: boolean
-    message: string
-    payload: T | [] | {} | any
-    statusCode?: number
-    success?: boolean
+interface Success<T> {
+    payload: T
+    status: 'success'
 }
+
+interface Error {
+    status: 'error'
+}
+
+export type ResponseFetch<T = unknown> = BaseResponse & (Success<T> | Error)

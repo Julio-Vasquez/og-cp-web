@@ -1,8 +1,8 @@
 import { put, takeLatest, all } from 'redux-saga/effects'
 
 import api from '../../api'
-import { loginAction } from './auth.types'
-import { IResponse } from '../../utils/api/api.util'
+import { LoginAction, State } from './auth.types'
+import { ResponseFetch } from '../../utils/api/api.util'
 import { ClearData, SaveItem } from '../../utils/storage'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 import {
@@ -10,16 +10,17 @@ import {
     successMessage,
 } from '../../utils/notifications/message.action'
 
-function* fetchLogin({ payload }: loginAction) {
+function* fetchLogin({ payload }: LoginAction) {
     try {
-        const res: IResponse = yield api.auth.login(payload)
+        const res: ResponseFetch<State> = yield api.auth.login(payload)
         console.log(res)
-        if (res && !res.error && res?.payload) {
+        if (res && res.status === 'success' && res?.payload) {
             yield put(
                 loginSuccess({
-                    token: res?.payload.token,
-                    message: res?.message,
+                    token: res.payload.token,
+                    message: res.message,
                     success: true,
+                    menu: res.payload.menu,
                 })
             )
             SaveItem({ newItem: res?.payload.token })

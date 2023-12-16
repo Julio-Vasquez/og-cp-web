@@ -11,6 +11,7 @@ import {
     maxLength,
     minLength,
     requiredField,
+    textField,
 } from '../../../utils/functions/form.functions'
 
 import './PersonalInformation.scss'
@@ -30,6 +31,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                         requiredField({ field: 'text.firstName' }),
                         maxLength({ field: 'text.firstName', max: 50 }),
                         minLength({ field: 'text.firstName', min: 3 }),
+                        textField(),
                     ]}
                     className='personalInformation__item'
                 >
@@ -42,7 +44,11 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                     name='middleName'
                     hasFeedback
                     className='personalInformation__item'
-                    rules={[maxLength({ field: 'text.middleName', max: 55 })]}
+                    rules={[
+                        minLength({ field: 'text.middleName', min: 3 }),
+                        maxLength({ field: 'text.middleName', max: 55 }),
+                        textField(),
+                    ]}
                 >
                     <Input
                         placeholder={formatMessage({ id: 'text.middleName' })}
@@ -56,6 +62,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                         requiredField({ field: 'text.firstLastName' }),
                         maxLength({ field: 'text.firstLastName', max: 60 }),
                         minLength({ field: 'text.firstLastName', min: 3 }),
+                        textField(),
                     ]}
                     className='personalInformation__item'
                 >
@@ -72,6 +79,7 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
                         requiredField({ field: 'text.middleLastName' }),
                         maxLength({ field: 'text.middleLastName', max: 65 }),
                         minLength({ field: 'text.middleLastName', min: 3 }),
+                        textField(),
                     ]}
                 >
                     <Input

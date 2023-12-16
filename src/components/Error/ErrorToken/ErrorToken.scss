@@ -2,6 +2,7 @@
     background: #030005;
     height: 100vh;
     position: relative;
+
     .not-found {
         left: 50%;
         line-height: 1.4;
@@ -12,17 +13,20 @@
         transform: translate(-50%, -50%);
         user-select: none;
         width: 100%;
+
         &__404 {
             position: relative;
             height: 180px;
             margin-bottom: 20px;
             z-index: -1;
+
             h1,
             h2 {
                 font-family: 'Montserrat', sans-serif;
                 text-transform: uppercase;
                 position: absolute;
             }
+
             h1 {
                 left: 50%;
                 top: 50%;
@@ -40,6 +44,7 @@
                 text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #ff005a;
                 letter-spacing: -20px;
             }
+
             h2 {
                 left: 0;
                 right: 0;
@@ -54,6 +59,7 @@
                 margin: 0;
             }
         }
+
         a {
             font: {
                 family: 'Montserrat', sans-serif;
@@ -78,21 +84,17 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .not-found {
-        &__404 {
-            h2 {
-                font-size: 24px;
-            }
+    .not-found__404 {
+        h2 {
+            font-size: 24px;
         }
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .not-found {
-        &__404 {
-            h1 {
-                font-size: 182px;
-            }
+    .not-found__404 {
+        h1 {
+            font-size: 182px;
         }
     }
 }

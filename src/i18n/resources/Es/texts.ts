@@ -26,4 +26,5 @@ export const Texts = {
     maxLengthObj: '{{field}} debe tener menos de {{max}} caracteres',
     minLengthObj: '{{field}} debe tener al menos {{min}} caracteres',
     passwordDoMatch: '¡Las dos contraseñas que ingresaste no coinciden!',
+    onlyLetters: 'Solo se permiten letras',
 }

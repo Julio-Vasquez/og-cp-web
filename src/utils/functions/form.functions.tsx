@@ -52,6 +52,11 @@ const numberField = () => ({
     message: formTranslate({ id: 'text.numberField' }),
 })
 
+const textField = () => ({
+    pattern: /^[a-zA-Z]+$/,
+    message: formTranslate({ id: 'text.onlyLetters' }),
+})
+
 const checkValidation = (err: any) =>
     errorMessage({ error: err.errorFields[0].errors[0] })
 
@@ -122,4 +127,5 @@ export {
     selectFilterOptions,
     selectFilterSort,
     matchPassword,
+    textField,
 }
