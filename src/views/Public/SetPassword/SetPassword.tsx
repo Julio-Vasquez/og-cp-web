@@ -3,28 +3,28 @@ import { LockOutlined } from '@ant-design/icons'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Star from '../../../components/Star/Star'
+import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
+import { ValidateToken } from '../../../utils/storage/storage'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
+import {
+    ApiResponseError,
+    ApiResponseSuccess,
+} from '../../../utils/types/response.type'
 import {
     matchPassword,
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import {
-    errorNotification,
-    successNotification,
-} from '../../../utils/notifications/notification.action'
-import { ValidateToken } from '../../../utils/storage/storage'
-import loginImg from '../../../assets/img/publicBackground.jpg'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
-import {
-    ApiResponseError,
-    ApiResponseSuccess,
-} from '../../../utils/types/response.type'
 
 import './SetPassword.scss'
 
@@ -82,8 +82,8 @@ export const SetPassword = () => {
                         className='set-password__item'
                         rules={[
                             requiredField({ field: 'text.newPassword' }),
-                            maxLength({ field: 'text.newPassword', max: 60 }),
-                            minLength({ field: 'text.newPassword', min: 6 }),
+                            maxLength({ field: 'text.newPassword', max: 45 }),
+                            minLength({ field: 'text.newPassword', min: 4 }),
                         ]}
                     >
                         <Password
@@ -100,8 +100,8 @@ export const SetPassword = () => {
                         className='set-password__item'
                         rules={[
                             requiredField({ field: 'text.confirmNewPassword' }),
-                            maxLength({ field: 'text.confirmNewPassword', max: 60 }),
-                            minLength({ field: 'text.confirmNewPassword', min: 6 }),
+                            maxLength({ field: 'text.newPassword', max: 45 }),
+                            minLength({ field: 'text.newPassword', min: 4 }),
                             ({ getFieldValue }) =>
                                 matchPassword({
                                     getFieldValue,
