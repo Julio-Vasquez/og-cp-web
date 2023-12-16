@@ -1,28 +1,32 @@
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd'
 import { LockOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons'
 
 import Star from '../../../components/Star/Star'
 
-import { useDispatch } from 'react-redux'
 import useIntl from '../../../hooks/useIntl'
+import useData from '../../../hooks/useData'
+import { login } from './../../../services/Auth/auth.slice'
+import { loginType } from '../../../services/Auth/auth.types'
+import { AUTH } from '../../../utils/constants/redux.constants'
+import loginImg from './../../../assets/img/publicBackground.jpg'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
-import { login } from './../../../services/Auth/auth.slice'
-import { loginType, state } from '../../../services/Auth/auth.types'
-import loginImg from './../../../assets/img/publicBackground.jpg'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Login.scss'
+
 const { Item } = Form
 const { Password } = Input
 
-export const Login = ({ loading }: state) => {
+export const Login = () => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
+    const { loading } = useData({ reducer: AUTH })
 
     const onFinish = (values: loginType) => {
         dispatch(login(values))
