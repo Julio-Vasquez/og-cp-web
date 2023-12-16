@@ -9,15 +9,15 @@ import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 import { forgotPassword } from './forgotPassword.type'
-import {
-    successNotification,
-    errorNotification,
-} from '../../../utils/notifications/notification.action'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
     ApiResponseError,
     ApiResponseSuccess,
 } from '../../../utils/types/response.type'
+import {
+    successNotification,
+    errorNotification,
+} from '../../../utils/notifications/notification.action'
 import {
     maxLength,
     minLength,
@@ -37,18 +37,14 @@ const ForgotPassword = () => {
         navigate(RP.login)
     }
 
-    const onError = ({ message }: ApiResponseError) => {
-        errorNotification(message)
-    }
+    const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
     const [mutation, { loading }] = useMutation<forgotPassword>(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: forgotPassword) => {
-        mutation({ ...values })
-    }
+    const onFinish = (values: forgotPassword) => mutation({ ...values })
 
     return (
         <div className='forgot-password'>
@@ -56,7 +52,7 @@ const ForgotPassword = () => {
                 <img
                     className='forgot-password__image-container'
                     src={LoginImg}
-                    alt='image'
+                    alt='Logo form forgot password'
                 />
                 <Form
                     className='forgot-password__form-data'

@@ -8,6 +8,7 @@ import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
+import { FormValues } from './setPassword.type'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
@@ -49,10 +50,8 @@ export const SetPassword = () => {
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: any) => {
-        const { newPassword } = values
+    const onFinish = ({ newPassword }: FormValues) =>
         mutation({ newPassword, token })
-    }
 
     if (!validateToken) return <ErrorToken />
 
@@ -62,7 +61,7 @@ export const SetPassword = () => {
                 <img
                     className='set-password__image-container'
                     src={loginImg}
-                    alt='image'
+                    alt='Logo form set new password'
                 />
                 <Form
                     className='set-password__form-data'
@@ -94,7 +93,7 @@ export const SetPassword = () => {
                         />
                     </Item>
                     <Item
-                        name='confirm'
+                        name='confirmNewPassword'
                         dependencies={['newPassword']}
                         hasFeedback
                         className='set-password__item'
