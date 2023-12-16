@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { errorNotification } from '../../utils/notifications/notification.action'
 
 import { state, queryType, func } from './api.types'
 import { HttpStatus } from '../../utils/types/response.type'
+import { errorNotification } from '../../utils/notifications/notification.action'
 
 export const useGet = <T>(
     { functionFetch }: func,

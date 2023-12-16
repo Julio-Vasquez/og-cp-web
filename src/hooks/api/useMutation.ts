@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { errorNotification } from '../../utils/notifications/notification.action'
 
 import { mutationType, state, func } from './api.types'
 import { HttpStatus } from '../../utils/types/response.type'
+import { errorNotification } from '../../utils/notifications/notification.action'
 
 export const useMutation = <T>(
     { functionFetch }: func,
