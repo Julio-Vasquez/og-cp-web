@@ -37,7 +37,7 @@ export const ContactData: FC<ContactDataProps> = ({
         current && current >= dayjs().endOf('day')
 
     return (
-        <div className='main-contactData'>
+        <div className='main-contact-data'>
             <Spin spinning={loading}>
                 <Item
                     hasFeedback
@@ -57,24 +57,24 @@ export const ContactData: FC<ContactDataProps> = ({
                 <Item
                     hasFeedback
                     name='birthDate'
-                    className='main-contactData__item'
+                    className='main-contact-data__item'
                     rules={[requiredField({ field: 'text.birthDate' })]}
                 >
                     <DatePicker
-                        className='main-contactData__date'
+                        className='main-contact-data__date'
                         disabledDate={disabledDate}
                     />
                 </Item>
                 <Item
                     hasFeedback
                     name='gender'
-                    className='main-contactData__item'
+                    className='main-contact-data__item'
                     rules={[requiredField({ field: 'text.gender' })]}
                 >
                     <Select
                         allowClear
                         bordered={false}
-                        className='main-contactData__option'
+                        className='main-contact-data__option'
                         placeholder={formatMessage({ id: 'text.gender' })}
                         options={genders?.sort()?.map((item: SignUpGenders) => ({
                             value: item.gender,
@@ -90,12 +90,12 @@ export const ContactData: FC<ContactDataProps> = ({
                         maxLength({ field: 'text.phoneNumber', max: 10 }),
                         minLength({ field: 'text.phoneNumber', min: 10 }),
                     ]}
-                    className='main-contactData__item'
+                    className='main-contact-data__item'
                 >
                     <Input
                         type='number'
                         placeholder={formatMessage({ id: 'text.phoneNumber' })}
-                        className='main-contactData__input'
+                        className='main-contact-data__input'
                     />
                 </Item>
             </Spin>

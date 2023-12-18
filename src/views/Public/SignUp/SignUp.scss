@@ -84,17 +84,9 @@
 
     &__steps {
         width: 80%;
-        height: auto;
 
         .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
             background: #6744c6;
-            font-size: 2vh;
-            height: 3vh;
-            width: 3vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
         }
 
         .ant-steps-item-finish .ant-steps-item-icon {
