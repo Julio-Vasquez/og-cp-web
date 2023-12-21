@@ -8,7 +8,7 @@ import Star from '../../../components/Star/Star'
 import useIntl from '../../../hooks/useIntl'
 import useData from '../../../hooks/useData'
 import { login } from './../../../services/Auth/auth.slice'
-import { loginType } from '../../../services/Auth/auth.types'
+import { LoginType } from '../../../services/Auth/auth.types'
 import { AUTH } from '../../../utils/constants/redux.constants'
 import loginImg from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
@@ -28,7 +28,7 @@ export const Login = () => {
     const { formatMessage } = useIntl()
     const { loading } = useData({ reducer: AUTH })
 
-    const onFinish = (values: loginType) => {
+    const onFinish = (values: LoginType) => {
         dispatch(login(values))
     }
 
