@@ -1,0 +1,31 @@
+:where(.css-dev-only-do-not-override-k7429z).ant-select:not(
+        .ant-select-disabled
+    ):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover
+    .ant-select-selector {
+    border-color: #4096ff;
+    border-radius: 20px 0 0 20px;
+}
+
+.custom-input {
+    span {
+        border-radius: 20px;
+    }
+
+    &__prefix {
+        width: 150px !important;
+    }
+}
+
+.custom-input .ant-input-group-addon {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.custom-input .ant-input-group-addon:active {
+    border: none;
+}
+
+.custom-input .ant-input {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

@@ -1,8 +1,18 @@
 import { notification } from 'antd'
 
-const placement = 'bottomRight'
+const defaultPlacement = 'bottomRight'
+type Placement =
+    | 'top'
+    | 'topLeft'
+    | 'topRight'
+    | 'bottom'
+    | 'bottomLeft'
+    | 'bottomRight'
 
-const successNotification = (description: string) => {
+const successNotification = (
+    description: string,
+    placement: Placement = defaultPlacement
+) => {
     notification.open({
         type: 'success',
         message: 'Success',
@@ -11,7 +21,10 @@ const successNotification = (description: string) => {
     })
 }
 
-const infoNotification = (description: string) => {
+const infoNotification = (
+    description: string,
+    placement: Placement = defaultPlacement
+) => {
     notification.open({
         type: 'info',
         message: 'Info',
@@ -20,7 +33,7 @@ const infoNotification = (description: string) => {
     })
 }
 
-const errorNotification = (error: any) => {
+const errorNotification = (error: any, placement: Placement = defaultPlacement) => {
     notification.open({
         type: 'error',
         message: 'Error',

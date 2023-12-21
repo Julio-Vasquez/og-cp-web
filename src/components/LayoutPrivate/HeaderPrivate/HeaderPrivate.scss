@@ -1,0 +1,16 @@
+.main-header-private {
+    padding: 0 30px;
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: exo;
+
+    &__title {
+        margin: auto;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,9 @@
+.main-layout {
+    height: 100vh;
+
+    &__content {
+        margin: 24px 16px;
+        padding: 24px;
+        min-height: 280px;
+    }
+}

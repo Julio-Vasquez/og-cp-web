@@ -1,0 +1,13 @@
+.personalInformation {
+    margin-top: 10px;
+
+    &__item {
+        margin: 5px;
+    }
+
+    &__input {
+        width: 100%;
+        border-radius: 2vh;
+        font-size: 15px;
+    }
+}

@@ -1,18 +1,23 @@
-export type state = {
+import {
+    ApiResponseError,
+    ApiResponseSuccess,
+} from '../../utils/types/response.type'
+
+export type state<T> = {
     loading: boolean
     error?: boolean
-    data?: []
+    data?: T
 }
 
 export type mutationType = {
     cancelError?: boolean
-    onCompleted: Function
-    onError?: Function
+    onCompleted: ({ data, variables }: ApiResponseSuccess) => void
+    onError?: ({ message, status, statusCode }: ApiResponseError) => void
 }
 
 export type queryType<T> = Omit<mutationType, 'onCompleted'> & {
     variables?: T
-    cancelFirstEffect: Function
+    cancelFirstEffect?: boolean
 }
 
 export type func = { functionFetch: Function }

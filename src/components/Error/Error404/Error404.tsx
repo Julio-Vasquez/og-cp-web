@@ -1,6 +1,11 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
-import { Error404Props, Error404DefaultProps, Error404PropTypes } from './error.types'
+import {
+    Error404Props,
+    Error404DefaultProps,
+    Error404PropTypes,
+} from './error.types'
 
 import moon from './../../../assets/img/404/moon.svg'
 import logo from './../../../assets/img/404/logo.svg'
@@ -9,9 +14,13 @@ import error404 from './../../../assets/img/404/404.svg'
 import rocket from './../../../assets/img/404/rocket.svg'
 import astronaut from './../../../assets/img/404/astronaut.svg'
 
+import useIntl from '../../../hooks/useIntl'
+import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+
 import './Error404.scss'
 
-export const Error404: FC<Error404Props> = ({ redirect, title }) => {
+export const Error404: FC<Error404Props> = () => {
+    const { formatMessage } = useIntl()
     return (
         <div className='bg-purple'>
             <div className='stars'>
@@ -27,7 +36,9 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
                         width='300px'
                         alt='text 404'
                     />
-                    <a className='btn-go-home'>GO BACK HOME</a>
+                    <Link to={RP.login} className='btn-go-home'>
+                        {formatMessage({ id: 'link.home' })}
+                    </Link>
                 </div>
                 <div className='object'>
                     <img
@@ -60,11 +71,11 @@ export const Error404: FC<Error404Props> = ({ redirect, title }) => {
                     </div>
                 </div>
                 <div className='glowing_stars'>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
-                    <div className='star'></div>
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
+                    <div className='star' />
                 </div>
             </div>
         </div>

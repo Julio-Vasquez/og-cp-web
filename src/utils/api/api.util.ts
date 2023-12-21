@@ -1,6 +1,6 @@
 import { query } from '../../api/core/api.types'
 import { URL_API } from '../constants/environment.constant'
-import { RESPONSE_API } from '../constants/response.constant'
+import { HttpStatus } from '../types/response.type'
 
 export const getHeader = (token: string | null) => {
     const exists = token !== null && { Authorization: `Bearer ${token}` }
@@ -15,6 +15,7 @@ export const getHeader = (token: string | null) => {
 }
 
 export const getUrl = ({ url, params }: query): URL => {
+    console.log('url', URL_API)
     const _url = new URL(`${URL_API}/${url}`)
     if (params)
         Object.keys(params).forEach(key =>
@@ -23,20 +24,20 @@ export const getUrl = ({ url, params }: query): URL => {
     return _url
 }
 
-export enum Methods {
-    delete = 'DELETE',
-    get = 'GET',
-    patch = 'PATCH',
-    post = 'POST',
-    put = 'PUT',
-}
-
 export const validateResponse = (status: string) => {}
 
-export interface IResponse {
-    error?: boolean
+interface BaseResponse {
     message: string
-    payload: [] | {} | any
-    statusCode?: number
-    success?: boolean
+    statusCode: HttpStatus
 }
+
+interface Success<T> {
+    payload: T
+    status: 'success'
+}
+
+interface Error {
+    status: 'error'
+}
+
+export type ResponseFetch<T = unknown> = BaseResponse & (Success<T> | Error)

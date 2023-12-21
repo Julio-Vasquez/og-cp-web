@@ -4,6 +4,7 @@
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
         U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
+
 @keyframes rocket-movement {
     100% {
         transform: translate(1200px, -600px);
@@ -59,22 +60,27 @@
     font-family: 'Dosis', sans-serif;
     font-weight: 300;
     user-select: none;
+
     .stars {
         background: url(./../../../assets/img/404/overlay_stars.svg);
         background-repeat: repeat;
         background-size: contain;
         background-position: left top;
+
         .custom-navbar {
             padding-top: 15px;
+
             .brand-logo {
                 margin-left: 25px;
                 margin-top: 5px;
                 display: inline-block;
             }
         }
+
         .central-body {
             padding: 17% 5% 10% 5%;
             text-align: center;
+
             .btn-go-home {
                 position: relative;
                 z-index: 200;
@@ -98,6 +104,7 @@
                     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
                 }
             }
+
             .image-404 {
                 position: relative;
                 z-index: 100;
@@ -109,11 +116,13 @@
                 z-index: 90;
                 pointer-events: none;
             }
+
             &_rocket,
             &_earth,
             &_moon {
                 position: absolute;
             }
+
             &_rocket {
                 z-index: 95;
                 transform: translateX(-50px);
@@ -121,15 +130,18 @@
                 pointer-events: none;
                 animation: rocket-movement 200s linear infinite both running;
             }
+
             &_earth {
                 top: 20%;
                 left: 15%;
                 z-index: 90;
             }
+
             &_moon {
                 top: 12%;
                 left: 25%;
             }
+
             &__astronaut {
                 animation: rotate-astronaut 200s infinite linear both alternate;
             }
@@ -186,6 +198,7 @@
 @media only screen and (max-width: 600px) {
     .custom-navbar {
         text-align: center;
+
         .brand-logo img {
             width: 120px;
         }

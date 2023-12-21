@@ -2,6 +2,7 @@ import { Drawer } from 'antd'
 import { cloneElement, FC } from 'react'
 
 import {
+    Placement,
     ControlledDrawerDefaultProps,
     ControlledDrawerProps,
     ControlledDrawerPropTypes,
@@ -10,11 +11,10 @@ import {
 const ControlledDrawer: FC<ControlledDrawerProps> = ({
     visibleState,
     children,
-    placement,
-    width,
-    destroyOnClose,
+    placement = 'right',
+    width = 450,
+    destroyOnClose = true,
 }) => {
-    const newPlacement: any = placement
     const { visible, closeDialog } = visibleState
 
     const newChildren = cloneElement(children || <></>, {
@@ -24,10 +24,10 @@ const ControlledDrawer: FC<ControlledDrawerProps> = ({
     return (
         <Drawer
             open={visible}
-            destroyOnClose={destroyOnClose}
+            destroyOnClose={destroyOnClose ?? true}
             onClose={closeDialog}
-            width={width}
-            placement={newPlacement}
+            width={width ?? 450}
+            placement={placement as Placement}
         >
             {newChildren}
         </Drawer>

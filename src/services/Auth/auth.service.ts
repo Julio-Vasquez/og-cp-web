@@ -1,11 +1,12 @@
 import api from '../../api'
-import { loginType } from './auth.types'
+import { LoginType } from './auth.types'
 import { useMutation } from '../../hooks/api'
+import { ApiResponseSuccess } from '../../utils/types/response.type'
 
-type props = { onCompleted: Function }
+type props = { onCompleted: ({ data, variables }: ApiResponseSuccess) => void }
 //listado de ejecucion de endpoint,
 export const loginService = ({ onCompleted }: props) => {
-    const mutation = useMutation<loginType>(
+    const mutation = useMutation<LoginType>(
         { functionFetch: api.auth.login },
         { onCompleted }
     )

@@ -1,15 +1,15 @@
 import propTypes from 'prop-types'
-type Placement = 'left' | 'right' | 'top' | 'bottom'
+export type Placement = 'left' | 'right' | 'top' | 'bottom'
 export const ControlledDrawerPropTypes = {
     visibleState: propTypes.shape({
         visible: propTypes.bool.isRequired,
         closeDialog: propTypes.func.isRequired,
         openDialog: propTypes.func,
     }).isRequired,
-    placement: propTypes.oneOf(['left', 'right', 'top', 'bottom']).isRequired,
+    placement: propTypes.oneOf(['left', 'right', 'top', 'bottom']),
     children: propTypes.element.isRequired,
-    width: propTypes.number.isRequired,
-    destroyOnClose: propTypes.bool.isRequired,
+    width: propTypes.number,
+    destroyOnClose: propTypes.bool,
 }
 
 export const ControlledDrawerDefaultProps = {

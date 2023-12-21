@@ -1,30 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { TokenIsValid } from '../../utils/storage'
+import { GetItem, TokenIsValid } from '../../utils/storage'
 import { AUTH } from '../../utils/constants/redux.constants'
-import { loginAction, loginFailedType, loginSuccessType, state } from './auth.types'
+import { LoginAction, LoginFailedType, LoginSuccessType, State } from './auth.types'
 
-export const initialState: state = {
+export const initialState: State = {
     authentication: TokenIsValid(), //verification token
     error: false,
     loading: false,
     message: '',
     success: false,
-    token: '', //the token
+    token: GetItem({}) ?? '', //the token
     user: '',
+    menu: null,
 }
 
 export const AuthSlice = createSlice({
     name: AUTH,
     initialState,
     reducers: {
-        login: (state, { payload }: loginAction) => ({
+        login: (state, { payload }: LoginAction) => ({
             ...state,
             error: false,
             loading: true,
             user: payload.username,
         }),
-        loginFailed: (state, { payload }: loginFailedType) => ({
+        loginFailed: (state, { payload }: LoginFailedType) => ({
             ...state,
             error: payload.error,
             success: false,
@@ -32,7 +33,7 @@ export const AuthSlice = createSlice({
             message: payload.message,
             user: '',
         }),
-        loginSuccess: (state, { payload }: loginSuccessType) => ({
+        loginSuccess: (state, { payload }: LoginSuccessType) => ({
             ...state,
             authentication: true,
             error: false,
@@ -40,8 +41,19 @@ export const AuthSlice = createSlice({
             success: payload.success,
             token: payload.token,
             message: payload.message,
+            menu: payload.menu,
         }),
-        logout: state => ({ ...state, ...initialState }),
+        logout: state => ({
+            ...state,
+            authentication: false,
+            error: false,
+            loading: false,
+            message: '',
+            success: false,
+            token: '', //the token
+            user: '',
+            menu: null,
+        }),
     },
 })
 
