@@ -14,6 +14,7 @@ import useIntl from '../../../hooks/useIntl'
 import dashboard from '../../../assets/svg/dashboard.svg'
 import statistics from '../../../assets/svg/statistics.svg'
 import ranking from '../../../assets/svg/ranking.svg'
+import profile from '../../../assets/svg/iconPerfil.svg'
 
 import './SidebarPrivate.scss'
 
@@ -50,6 +51,15 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                     {
                         key: '1',
                         label: (
+                            <Link to={RP.profile}>
+                                {formatMessage({ id: 'title.profile' })}
+                            </Link>
+                        ),
+                        icon: <img src={profile} width={25} />,
+                    },
+                    {
+                        key: '2',
+                        label: (
                             <Link to={RP.dashboard}>
                                 {formatMessage({ id: 'title.dashboard' })}
                             </Link>
@@ -57,7 +67,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                         icon: <img src={dashboard} width={25} />,
                     },
                     {
-                        key: '2',
+                        key: '3',
                         icon: <img src={statistics} width={25} />,
                         label: (
                             <Link to={RP.statistics}>
@@ -66,7 +76,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                         ),
                     },
                     {
-                        key: '3',
+                        key: '4',
                         icon: <img src={ranking} width={25} />,
                         label: (
                             <Link to={RP.ranking}>
