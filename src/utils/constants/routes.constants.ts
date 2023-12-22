@@ -8,6 +8,7 @@ export const ROUTES_PUBLIC = {
     default: '/',
 }
 export const ROUTES_PRIVATE = {
+    profile: '/profile',
     error404: '/404',
     default: '/',
     dashboard: '/dashboard',

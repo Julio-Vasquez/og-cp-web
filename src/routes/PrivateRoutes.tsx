@@ -9,6 +9,7 @@ const Statistics = lazy(() => import('../views/Private/Statistics/Statistics'))
 const Ranking = lazy(() => import('../views/Private/Ranking/Ranking'))
 const Error404 = lazy(() => import('./../components/Error/Error404'))
 const LayoutPrivate = lazy(() => import('../components/LayoutPrivate'))
+const Profile = lazy(() => import('../views/Private/Profile'))
 
 export const PrivateRoutes: FC = () => {
     return (
@@ -20,6 +21,7 @@ export const PrivateRoutes: FC = () => {
                         <Route path={RP.default} element={<Dashboard />} />
                         <Route path={RP.ranking} element={<Ranking />} />
                         <Route path={RP.statistics} element={<Statistics />} />
+                        <Route path={RP.profile} element={<Profile />} />
                         <Route path={RP.error404} element={<Error404 />} />
                         <Route
                             path='*'
