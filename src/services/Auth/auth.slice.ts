@@ -11,8 +11,9 @@ export const initialState: State = {
     message: '',
     success: false,
     token: GetItem({}) ?? '', //the token
-    user: '',
+    username: '',
     menu: null,
+    fullName: '',
 }
 
 export const AuthSlice = createSlice({
@@ -23,7 +24,6 @@ export const AuthSlice = createSlice({
             ...state,
             error: false,
             loading: true,
-            user: payload.username,
         }),
         loginFailed: (state, { payload }: LoginFailedType) => ({
             ...state,
@@ -31,7 +31,7 @@ export const AuthSlice = createSlice({
             success: false,
             loading: false,
             message: payload.message,
-            user: '',
+            username: '',
         }),
         loginSuccess: (state, { payload }: LoginSuccessType) => ({
             ...state,
@@ -42,6 +42,8 @@ export const AuthSlice = createSlice({
             token: payload.token,
             message: payload.message,
             menu: payload.menu,
+            fullName: payload.fullName,
+            username: payload.username,
         }),
         logout: state => ({
             ...state,
@@ -51,7 +53,7 @@ export const AuthSlice = createSlice({
             message: '',
             success: false,
             token: '', //the token
-            user: '',
+            username: '',
             menu: null,
         }),
     },

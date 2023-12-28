@@ -1,0 +1,15 @@
+.main-modals {
+    position: static;
+    display: flex;
+    justify-content: end;
+    &__btn {
+        font-family: 'exo';
+        color: white;
+        width: 20%;
+        height: 40px;
+        background-color: #6744c6;
+    }
+    &__modals {
+        padding-bottom: 0;
+    }
+}

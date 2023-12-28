@@ -8,21 +8,24 @@ import {
     ItemsNavBarProps,
 } from './itemsHeader.type'
 
+import api from '../../../../api'
+import { useGet } from '../../../../hooks/api'
+import { logout } from '../../../../services/Auth/auth.slice'
+import { DataUser } from '../../../../utils/types/userData.type'
+
 import iconUser from '../../../../assets/svg/iconUser.svg'
 import iconLogOut from '../../../../assets/svg/iconLogOut.svg'
 import iconLanguage from '../../../../assets/svg/iconLanguage.svg'
 import iconNotification from '../../../../assets/svg/iconNotification.svg'
 
-import useData from '../../../../hooks/useData'
-import { logout } from '../../../../services/Auth/auth.slice'
-import { AUTH } from '../../../../utils/constants/redux.constants'
-
 import './ItemsHeader.scss'
 
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {
-    const { user } = useData({ reducer: AUTH })
+    const { data: userMe } = useGet<DataUser>({
+        functionFetch: api.defaultData.userMe,
+    })
     const dispatch = useDispatch()
-
+    const { payload } = userMe!
     const handleLogOut = () => {
         dispatch(logout())
     }
@@ -57,8 +60,8 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
             <Space className='main-items__space'>
                 <Avatar src={iconUser} alt='icon-user' size='large' />
                 <div className='main-items__name-roles'>
-                    <h4>{user ? user : 'Username'}</h4>
-                    <p>Super Admin</p>
+                    <h4>{payload?.username ?? 'Username'}</h4>
+                    <p>{payload?.role}</p>
                 </div>
             </Space>
         </div>

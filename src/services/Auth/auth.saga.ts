@@ -21,6 +21,8 @@ function* fetchLogin({ payload }: LoginAction) {
                     message: res.message,
                     success: true,
                     menu: res.payload.menu,
+                    fullName: res.payload.fullName,
+                    username: res.payload.username,
                 })
             )
             SaveItem({ newItem: res?.payload.token })

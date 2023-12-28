@@ -1,5 +1,8 @@
 export const Texts = {
     gender: 'Género',
+    role: 'Rol',
+    editUser: 'Editar {{field}}',
+    fullName: 'Nombre completo',
     english: 'Inglés',
     spanish: 'Español',
     username: 'Usuario',
