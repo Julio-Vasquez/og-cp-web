@@ -2,13 +2,14 @@ import { FC } from 'react'
 import { Button, Layout, theme } from 'antd'
 import { useLocation } from 'react-router-dom'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+
+import { ItemsHeader } from './itemsHeaderPrivate/ItemsHeader'
+
 import {
     HeaderPrivateProps,
     HeaderPrivateDefaultProps,
     HeaderPrivatePropsTypes,
 } from './headerPrivate.type'
-
-import { ItemsHeader } from './itemsHeaderPrivate/ItemsHeader'
 
 import './HeaderPrivate.scss'
 
@@ -24,6 +25,8 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
 
     const { pathname } = useLocation()
 
+    const title = pathname.toUpperCase().split('/')
+
     return (
         <Header
             className='main-header-private'
@@ -34,11 +37,7 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
                 onClick={() => setCollapsed(!collapsed)}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             />
-
-            <h1 className='main-header-private__title'>
-                {pathname.toUpperCase().split('/')}
-            </h1>
-
+            <h1 className='main-header-private__title'>{title}</h1>
             <ItemsHeader />
         </Header>
     )

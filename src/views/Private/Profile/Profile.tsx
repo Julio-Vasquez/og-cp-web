@@ -1,27 +1,27 @@
 import { Divider, Space, Spin } from 'antd'
 
 import { Modals } from '../../../components/Modal'
+import iconUser from '../../../assets/svg/iconUser.svg'
 
 import api from '../../../api'
 import { useGet } from '../../../hooks/api'
 import useIntl from '../../../hooks/useIntl'
 import { useVisible } from '../../../hooks/useVisible'
+import { ResponseFetch } from '../../../utils/api/api.util'
 import { DataUser } from '../../../utils/types/userData.type'
-
-import iconUser from '../../../assets/svg/iconUser.svg'
 
 import './Profile.scss'
 
 export const Profile = () => {
     const { visible, openDialog, closeDialog } = useVisible()
 
-    const { data: userMe, loading: loadingUserMe } = useGet<DataUser>({
-        functionFetch: api.defaultData.userMe,
-    })
+    const { data: userMe, loading: loadingUserMe } = useGet<ResponseFetch<DataUser>>(
+        { functionFetch: api.defaultData.userMe }
+    )
 
     const { formatMessage } = useIntl()
 
-    const { payload } = userMe!
+    const payload = userMe.status === 'success' ? userMe.payload : undefined
 
     return (
         <Spin spinning={loadingUserMe}>
