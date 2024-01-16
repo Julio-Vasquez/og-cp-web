@@ -1,8 +1,9 @@
 .main-profile {
-    width: 80%;
-    height: auto;
-    margin: 0 auto;
-
+    width: 70%;
+    height: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 3;
     &__photo {
         width: 100%;
         height: 200px;
@@ -11,18 +12,50 @@
         display: flex;
     }
     &__data {
-        margin: auto;
-        width: 70%;
-        max-height: 700px;
-        padding: 50px 0;
-        display: flex;
+        display: grid;
+        height: 300px;
+        grid-template-columns: 2;
+        grid-template-rows: 25% 25% 25% 25%;
         font-size: 20px;
-        justify-content: space-around;
+
         &__name {
             font-size: x-large;
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
-        &__items {
-            color: rgba(100, 100, 100, 0.39);
+        &__user {
+            grid-column-start: 1;
+            grid-row-start: 2;
+        }
+        &__mail {
+            grid-column-start: 1;
+            grid-row-start: 3;
+        }
+        &__birth-date {
+            grid-column-start: 1;
+            grid-row-start: 4;
+        }
+        &__role {
+            color: rgba(37, 37, 37, 0.39);
+            grid-column-start: 2;
+            grid-row-start: 2;
+            padding-left: 20%;
+        }
+        p {
+            font-family: 'Oleo Script';
+            margin: 0;
+        }
+        div {
+            display: flex;
+            width: 50%;
+            margin: auto;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
