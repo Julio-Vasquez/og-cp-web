@@ -31,7 +31,6 @@ export const Profile = () => {
                     alt='photo profile'
                     className='main-profile__photo'
                 />
-                <Divider />
                 <div className='main-profile__data'>
                     <h1 className='main-profile__data__name'>
                         {payload?.fullName ?? formatMessage({ id: 'text.fullName' })}
@@ -53,13 +52,13 @@ export const Profile = () => {
                         <span>{payload?.role}</span>
                     </div>
                 </div>
+                <Modals
+                    isOpen={visible}
+                    openModal={openDialog}
+                    closeModal={closeDialog}
+                    children={<h1>hi!</h1>}
+                />
             </div>
-            <Modals
-                isOpen={visible}
-                openModal={openDialog}
-                closeModal={closeDialog}
-                children={<h1>hi!</h1>}
-            />
         </Spin>
     )
 }
