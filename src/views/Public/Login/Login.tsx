@@ -19,6 +19,7 @@ import {
 } from '../../../utils/functions/form.functions'
 
 import './Login.scss'
+import { CustomButton } from '../../../components/CustomButton/CustomButton'
 
 const { Item } = Form
 const { Password } = Input
@@ -91,14 +92,13 @@ export const Login = () => {
                             placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
-                    <Button
-                        className='login__submit-form'
-                        type='primary'
+                    <CustomButton
                         htmlType='submit'
+                        type='primary'
+                        children={formatMessage({ id: 'button.login' })}
                         loading={loading}
-                    >
-                        {formatMessage({ id: 'button.login' })}
-                    </Button>
+                    />
+
                     <Link className='login__link ' to={RP.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>
