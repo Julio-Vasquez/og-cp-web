@@ -52,6 +52,7 @@ export const Profile = () => {
                         <span>{payload?.role}</span>
                     </div>
                 </div>
+
                 <Modals
                     isOpen={visible}
                     openModal={openDialog}

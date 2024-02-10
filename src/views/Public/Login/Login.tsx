@@ -1,9 +1,10 @@
+import { Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { Button, Form, Input } from 'antd'
 import { LockOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons'
 
 import Star from '../../../components/Star/Star'
+import { CustomButton } from '../../../components/CustomButton/CustomButton'
 
 import useIntl from '../../../hooks/useIntl'
 import useData from '../../../hooks/useData'
@@ -19,7 +20,6 @@ import {
 } from '../../../utils/functions/form.functions'
 
 import './Login.scss'
-import { CustomButton } from '../../../components/CustomButton/CustomButton'
 
 const { Item } = Form
 const { Password } = Input
@@ -76,7 +76,7 @@ export const Login = () => {
                         />
                     </Item>
                     <Item
-                        className='login__item'
+                        className='login__item-pass'
                         name='password'
                         hasFeedback
                         rules={[
@@ -97,6 +97,7 @@ export const Login = () => {
                         type='primary'
                         children={formatMessage({ id: 'button.login' })}
                         loading={loading}
+                        width='70%'
                     />
 
                     <Link className='login__link ' to={RP.forgotPassword}>

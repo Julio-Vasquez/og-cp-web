@@ -1,7 +1,7 @@
 .main-profile {
     height: auto;
     box-sizing: border-box;
-    padding: 5%;
+    padding: 20px;
     box-shadow: 10px 10px 30px -19px rgba(0, 0, 0, 1);
     margin: auto;
     display: grid;
@@ -23,34 +23,36 @@
         display: grid;
         width: 100%;
         grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: 20% 20% 20% 20% 20%;
 
         font-size: 20px;
         &__name {
             font-size: x-large;
             display: grid;
             place-items: center;
-            grid-column-start: 1;
+            grid-column-start: 3;
             grid-column-end: 3;
         }
         &__user {
-            grid-column-start: 1;
+            grid-column-start: 2;
             grid-row-start: 2;
         }
         &__mail {
-            grid-column-start: 1;
+            grid-column-start: 2;
             grid-row-start: 3;
         }
         &__birth-date {
-            grid-column-start: 1;
+            grid-column-start: 2;
             grid-row-start: 4;
         }
         &__role {
             color: rgba(37, 37, 37, 0.39);
-            grid-column-start: 2;
+            grid-column-start: 4;
             grid-row-start: 2;
         }
         p {
             font-family: 'Oleo Script';
+            margin: 0;
         }
     }
 }

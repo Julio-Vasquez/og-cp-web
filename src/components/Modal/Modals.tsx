@@ -5,6 +5,7 @@ import useIntl from '../../hooks/useIntl'
 import { ModalsProps } from './modals.type'
 
 import './Modals.scss'
+import { CustomButton } from '../CustomButton/CustomButton'
 
 export const Modals: FC<ModalsProps> = ({
     isOpen,
@@ -16,12 +17,13 @@ export const Modals: FC<ModalsProps> = ({
 
     return (
         <div className='main-modals'>
-            <Button onClick={openModal} className='main-modals__btn'>
-                {formatMessage({
+            <CustomButton
+                onClick={openModal}
+                children={formatMessage({
                     id: 'text.editUser',
                     objVars: { field: formatMessage({ id: 'text.username' }) },
                 })}
-            </Button>
+            />
             <Modal
                 title='Edit User'
                 className='main-modals__modals'

@@ -4,6 +4,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons'
 
 import Star from '../../../components/Star/Star'
 import LoginImg from '../../../assets/img/publicBackground.jpg'
+import CustomButton from '../../../components/CustomButton/CustomButton'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
@@ -90,14 +91,14 @@ const ForgotPassword = () => {
                             placeholder={formatMessage({ id: 'text.username' })}
                         />
                     </Item>
-                    <Button
-                        className='forgot-password__submit-form'
+                    <CustomButton
                         type='primary'
                         htmlType='submit'
                         loading={loading}
-                    >
-                        {formatMessage({ id: 'button.send' })}
-                    </Button>
+                        children={formatMessage({ id: 'button.send' })}
+                        width='70%'
+                    />
+
                     <Link
                         to={RP.login}
                         className='forgot-password__link-forgot-password'

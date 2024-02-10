@@ -11,6 +11,7 @@ import {
 import Star from '../../../components/Star/Star'
 import Account from '../../../components/Steps/Account/Account'
 import ContactData from '../../../components/Steps/ContactData/ContactData'
+import CustomButton from '../../../components/CustomButton/CustomButton'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
 import api from '../../../api'
@@ -127,22 +128,30 @@ export const SignUp: FC<SignUpProps> = () => {
                             items={steps}
                             className='main-signUp__steps-main'
                         />
-                        {content}
-                        <div className='main-signUp__main-submit-form'>
-                            <Button
-                                className='main-signUp__submit-form'
+                        <div className='main-signUp__content'>{content}</div>
+                        <div className='main-signUp__btn-prev'>
+                            <CustomButton
                                 onClick={onPrev}
-                                disabled={isFirstStep}
-                            >
-                                <LeftOutlined />
-                            </Button>
-                            <Button
+                                disable={isFirstStep}
+                                children={<LeftOutlined />}
+                                width='60%'
+                                hight='auto'
+                            />
+                        </div>
+                        <div className='main-signUp__btn-next'>
+                            <CustomButton
+                                width='60%'
+                                hight='auto'
                                 htmlType='submit'
                                 loading={loading}
-                                className='main-signUp__submit-form'
-                            >
-                                {isLastStep ? <CheckOutlined /> : <RightOutlined />}
-                            </Button>
+                                children={
+                                    isLastStep ? (
+                                        <CheckOutlined />
+                                    ) : (
+                                        <RightOutlined />
+                                    )
+                                }
+                            />
                         </div>
                     </div>
                     <Link to={RP.login} className='main-signUp__link-login '>
