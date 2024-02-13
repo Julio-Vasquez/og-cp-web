@@ -1,1 +1,1 @@
-export {LayoutPrivate, default} from './LayoutPrivate'
+export { LayoutPrivate, default } from './LayoutPrivate'

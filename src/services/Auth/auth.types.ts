@@ -7,6 +7,15 @@ type Actions = {
 
 type Menu = Record<string, Actions> | null
 
+type Payload = {
+    token: string
+    message: string
+    success: boolean
+    menu: Menu
+    fullName: string
+    username: string
+}
+
 type LoginType = {
     username: string
     password: string
@@ -18,12 +27,7 @@ type LoginAction = {
 }
 
 type LoginSuccessType = {
-    payload: {
-        token: string
-        message: string
-        success: boolean
-        menu: Menu
-    }
+    payload: Payload
     type: string
 }
 
@@ -39,11 +43,6 @@ type State = {
     authentication: boolean | Promise<boolean>
     error: boolean
     loading: boolean
-    message: string
-    success: boolean
-    token: string
-    user: string
-    menu: Menu
-}
+} & Payload
 
 export type { LoginAction, LoginSuccessType, LoginFailedType, State, LoginType }

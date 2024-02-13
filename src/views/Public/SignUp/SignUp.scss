@@ -1,3 +1,15 @@
+:where(.css-dev-only-do-not-override-k7429z).ant-steps.ant-steps-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 20%);
+    place-items: center;
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+    height: 35px;
+    margin: auto 20px;
+}
+/*  */
 .main-signUp {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
@@ -6,27 +18,28 @@
     }
     width: 100%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
     &__container {
-        display: flex;
+        display: grid;
+        grid-template-columns: 50% 50%;
         border-radius: 20px;
         width: 50%;
-        height: 600px;
+        height: auto;
         color: white;
     }
 
     &__img-container {
-        width: 50%;
+        width: 100%;
+        height: 600px;
         border-radius: 20px 0px 0px 20px;
     }
 
     &__form-data {
         background-color: white;
         padding: 6px;
-        width: 50%;
+        width: 100%;
         max-height: 100vh;
         border-radius: 0 20px 20px 0;
         display: flex;
@@ -41,50 +54,26 @@
         color: black;
     }
 
-    &__main-submit-form {
-        display: flex;
-        width: 100%;
-        margin: 30px auto;
-        height: auto;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__submit-form {
-        width: 150px;
-        border : {
-            radius: 50px;
-        }
-
-        background: #6744c6;
-        height: 35px;
-        width: 50%;
-        margin: 0 5px;
-        color: white;
-        font-size: 2vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
     &__link-login {
         color: #6744c6;
         font-size: 2vh;
     }
 
     &__steps-main {
-        height: 4vh;
+        height: auto;
         display: flex;
-        flex-direction: row !important;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        margin: 10px auto;
+        margin: auto;
     }
 
     &__steps {
-        width: 80%;
-
+        width: 100%;
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        grid-template-rows: 20% 80%;
+        margin-bottom: 20px;
         .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
             background: #6744c6;
         }
@@ -105,7 +94,41 @@
             background-color: #6744c6;
         }
     }
-
+    &__steps-main {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    &__btn-prev {
+        display: flex;
+        margin: auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    &__btn-next {
+        display: flex;
+        margin: auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    &__content {
+        grid-row-start: 2;
+        grid-row-end: 2;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        margin-top: 10px;
+    }
     &__icon {
         font-size: 4vh;
         color: rgba(0, 0, 0, 0.849);
@@ -116,21 +139,20 @@
 }
 @media only screen and (max-width: 1400px) {
     .main-signUp {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
         &__title {
             font-size: 30px;
         }
-
         &__container {
-            width: 100%;
-            height: 600px;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            border-radius: 20px;
+            width: 70%;
+            height: auto;
+            color: white;
         }
 
         &__form-data {
-            width: 400px;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
@@ -142,20 +164,20 @@
 @media only screen and (max-width: 1200px) {
     .main-signUp {
         width: 100%;
-        display: grid;
-        place-items: center;
 
         &__title {
             font-size: 30px;
         }
-
         &__container {
-            width: 100%;
-            height: 600px;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            border-radius: 20px;
+            width: 70%;
+            height: auto;
+            color: white;
         }
-
         &__form-data {
-            width: 400px;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
@@ -166,26 +188,26 @@
 }
 @media only screen and (max-width: 992px) {
     .main-signUp {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
         &__title {
             font-size: 30px;
-        }
-
-        &__container {
-            width: 100%;
-            height: 600px;
         }
 
         &__img-container {
             display: none;
         }
+        &__container {
+            display: grid;
+            grid-template-columns: 100%;
+            border-radius: 20px;
+            width: 70%;
+            height: auto;
+            color: white;
+        }
 
         &__form-data {
-            width: 400px;
-            height: 100%;
+            width: 70%;
+            margin: auto;
+            height: 600px;
             display: flex;
             justify-content: center;
             padding: 5% 0;
@@ -204,8 +226,13 @@
         }
 
         &__container {
+            display: grid;
+            grid-template-columns: 100%;
+            border-radius: 20px;
             width: 100%;
-            height: 600px;
+            height: auto;
+            height: auto;
+            color: white;
         }
 
         &__img-container {
@@ -213,8 +240,8 @@
         }
 
         &__form-data {
-            width: 400px;
-            height: 100%;
+            width: 60%;
+            height: 600px;
             display: flex;
             justify-content: center;
             padding: 5% 0;
@@ -224,26 +251,24 @@
 }
 @media only screen and (max-width: 576px) {
     .main-signUp {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
         &__title {
             font-size: 25px;
         }
-
         &__container {
-            width: 100%;
-            height: 600px;
+            display: grid;
+            grid-template-columns: 100%;
+            border-radius: 20px;
+            width: 70%;
+            height: auto;
+            color: white;
         }
-
         &__img-container {
             display: none;
         }
 
         &__form-data {
-            width: 400px;
-            height: 100%;
+            width: 100%;
+            height: 600px;
             display: flex;
             justify-content: center;
             padding: 5% 0;

@@ -1,5 +1,6 @@
 export const Title = {
     mail: 'Correo',
+    profile: 'Perfil',
     dashboard: 'Panel',
     username: 'Usuario',
     signUp: 'Registrarse',

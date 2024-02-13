@@ -2,4 +2,6 @@ import { Query } from './core'
 
 const availableData = () => Query({ url: 'default-data/available-data' })
 
-export default { availableData }
+const userMe = () => Query({ url: 'user/me' })
+
+export default { availableData, userMe }

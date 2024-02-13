@@ -1,5 +1,6 @@
 export const Title = {
     mail: 'E-mail',
+    profile: 'Profile',
     signIn: 'Sign in',
     signUp: 'Sign Up',
     ranking: 'Ranking',

@@ -7,4 +7,5 @@ export const HeaderPrivatePropsTypes = {
 }
 
 export const HeaderPrivateDefaultProps = {}
+
 export type HeaderPrivateProps = propTypes.InferProps<typeof HeaderPrivatePropsTypes>

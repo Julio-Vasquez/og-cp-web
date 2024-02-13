@@ -28,6 +28,7 @@ import {
 } from '../../../utils/functions/form.functions'
 
 import './SetPassword.scss'
+import CustomButton from '../../../components/CustomButton'
 
 const { Item } = Form
 const { Password } = Input
@@ -115,14 +116,13 @@ export const SetPassword = () => {
                             })}
                         />
                     </Item>
-                    <Button
-                        className='set-password__submit-form'
+                    <CustomButton
                         type='primary'
                         htmlType='submit'
                         loading={loading}
-                    >
-                        {formatMessage({ id: 'button.send' })}
-                    </Button>
+                        children={formatMessage({ id: 'button.send' })}
+                        width='70%'
+                    />
                 </Form>
             </div>
         </div>
