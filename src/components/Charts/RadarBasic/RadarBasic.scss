@@ -1,0 +1,12 @@
+.main-radar-basic {
+    display: grid;
+    place-items: center;
+    padding-top: 30px;
+    font-family: 'exo';
+
+    canvas {
+        margin: auto;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

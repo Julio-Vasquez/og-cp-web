@@ -1,0 +1,12 @@
+.main-shape-liquid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    canvas {
+        margin: auto;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

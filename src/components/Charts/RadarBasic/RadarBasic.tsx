@@ -4,6 +4,7 @@ import { Radar } from '@ant-design/plots'
 import { ChartDefaultProps, ChartProps, ChartPropTypes } from './radarBasic.type'
 
 import './RadarBasic.scss'
+import useIntl from '../../../hooks/useIntl'
 
 export const Chart: FC<ChartProps> = ({
     area,
@@ -16,6 +17,7 @@ export const Chart: FC<ChartProps> = ({
     shapeField,
     style,
 }) => {
+    const { formatMessage } = useIntl()
     const config = {
         data: data.map(d => ({ ...d, start: Math.sqrt(d.percentage) })),
         xField,
@@ -45,8 +47,9 @@ export const Chart: FC<ChartProps> = ({
         },
     }
     return (
-        <div className='main'>
-            <Radar autoFit={true} {...config} />
+        <div className='main-radar-basic'>
+            <p>{formatMessage({ id: 'subTitle.skills' })}</p>
+            <Radar {...config} />
         </div>
     )
 }

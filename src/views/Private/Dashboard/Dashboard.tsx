@@ -1,7 +1,11 @@
-import './Dashboard.scss'
+import { Chart } from '../../../components/Charts/RadarBasic/RadarBasic'
+import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
+import useIntl from '../../../hooks/useIntl'
 import iconUser from '../../../assets/svg/iconUser.svg'
-import { Chart } from '../../../components/Charts/RadarBasic'
+import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
+
+import './Dashboard.scss'
 
 const Dashboard = () => {
     const data = [
@@ -13,6 +17,8 @@ const Dashboard = () => {
         { name: 'Resolución de Problemas', type: 'a', percentage: 885 },
         { name: 'G2Plot', type: 'b', percentage: 1626 },
     ]
+
+    const { formatMessage } = useIntl()
     return (
         <div className='main-dashboard'>
             <div className='main-dashboard__div0'>
@@ -43,7 +49,39 @@ const Dashboard = () => {
                     style={{ lineWidth: 2 }}
                 />
             </div>
-            <div className='main-dashboard__progress'> progress</div>
+            <div className='main-dashboard__progress'>
+                <p>{formatMessage({ id: 'text.username' })}</p>
+
+                <ShapeLiquid
+                    percent={0.8}
+                    style={{ shape: funcShapeLiquid }}
+                    outLineBorder={4}
+                    outLineDistance={8}
+                    waveLength={128}
+                    str='subTitle.perceptual'
+                />
+
+                {/*  <div className='reading-writing-learning'>
+                    <ShapeLiquid
+                        percent={0.3}
+                        style={{ shape: funcShapeLiquid }}
+                        outLineBorder={4}
+                        outLineDistance={8}
+                        waveLength={128}
+                        str='subTitle.readingWriting'
+                    />
+                </div>
+                <div className='discriminative-learning'>
+                    <ShapeLiquid
+                        percent={0.5}
+                        style={{ shape: funcShapeLiquid }}
+                        outLineBorder={4}
+                        outLineDistance={8}
+                        waveLength={128}
+                        str='subTitle.discriminative'
+                    />
+                </div> */}
+            </div>
             <div className='main-dashboard__div2'> div2</div>
             <div className='main-dashboard__div3'>div3</div>
             <div className='main-dashboard__div4'>div4</div>
