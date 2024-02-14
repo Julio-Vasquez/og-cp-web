@@ -30,8 +30,9 @@
             font-size: x-large;
             display: grid;
             place-items: center;
-            grid-column-start: 3;
-            grid-column-end: 3;
+            place-content: center;
+            grid-column-start: 2;
+            grid-column-end: 5;
         }
         &__user {
             grid-column-start: 2;
