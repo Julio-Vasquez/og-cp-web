@@ -24,10 +24,7 @@ export const Chart: FC<ChartProps> = ({
         shapeField: shapeField!,
         area: { style: { fillOpacity: area.style.fillOpacity } },
         scaleX: {
-            x: {
-                padding: scale.x.padding,
-                align: scale.x.align,
-            },
+            x: { padding: scale.x.padding, align: scale.x.align },
             y: {
                 nice: scale.y.nice,
                 tickCount: scale.y.domainMax,
