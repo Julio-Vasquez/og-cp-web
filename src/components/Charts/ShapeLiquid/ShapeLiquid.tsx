@@ -13,26 +13,25 @@ export const ShapeLiquid: FC<ShapeProps> = ({
     str,
     percent,
     style,
-    outLineBorder,
-    outLineDistance,
+    outLine,
     waveLength,
+    theme,
 }) => {
     const { formatMessage } = useIntl()
 
     const config = {
         percent,
-        style: {
-            shape: style.shape,
-            backgroundFill: 'white',
-            colorFill: 'red',
-        },
-        outLineBorder,
-        outLineDistance,
+        style,
+        outLine,
         waveLength,
+        theme,
     }
+
+    console.log(config)
+
     return (
         <div className='main-shape-liquid'>
-            <Liquid colorField='red' {...config} />
+            <Liquid {...config} />
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',

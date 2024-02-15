@@ -6,4 +6,5 @@ export const SubTitle = {
     perceptual: ' Perceptivo',
     discriminative: ' de Discriminación',
     readingWriting: ' de Lectura y Escritura',
+    progress: ' Progreso',
 }

@@ -7,6 +7,7 @@ import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
 import CustomCarousel from '../../../components/Carousel/Carousel'
+import { theme } from 'antd'
 
 const Dashboard = () => {
     const data = [
@@ -51,39 +52,63 @@ const Dashboard = () => {
                 />
             </div>
             <div className='main-dashboard__progress'>
-                <p>Progreso</p>
-                <CustomCarousel>
+                <p>{formatMessage({ id: 'subTitle.progress' })}</p>
+                {/*   <CustomCarousel>
                     <div style={{ border: 'solid 2px black' }}>
                         <ShapeLiquid
                             percent={0.8}
                             style={{ shape: funcShapeLiquid }}
-                            outLineBorder={4}
-                            outLineDistance={8}
+                            outLine={{
+                                border: 2,
+                                distance: 4,
+                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                            }}
                             waveLength={128}
+                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
                             str='subTitle.perceptual'
                         />
                     </div>
                     <div style={{ border: 'solid 2px black' }}>
                         <ShapeLiquid
-                            percent={0.3}
+                            percent={0.8}
                             style={{ shape: funcShapeLiquid }}
-                            outLineBorder={4}
-                            outLineDistance={8}
+                            outLine={{
+                                border: 2,
+                                distance: 4,
+                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                            }}
                             waveLength={128}
-                            str='subTitle.readingWriting'
+                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
+                            str='subTitle.perceptual'
                         />
                     </div>
                     <div style={{ border: 'solid 2px black' }}>
                         <ShapeLiquid
-                            percent={0.5}
+                            percent={0.8}
                             style={{ shape: funcShapeLiquid }}
-                            outLineBorder={4}
-                            outLineDistance={8}
+                            outLine={{
+                                border: 2,
+                                distance: 4,
+                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                            }}
                             waveLength={128}
-                            str='subTitle.discriminative'
+                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
+                            str='subTitle.perceptual'
                         />
                     </div>
-                </CustomCarousel>
+                </CustomCarousel> */}
+                <ShapeLiquid
+                    percent={0.8}
+                    style={{ shape: funcShapeLiquid }}
+                    outLine={{
+                        border: 2,
+                        distance: 4,
+                        style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                    }}
+                    waveLength={128}
+                    theme={{ styleSheet: { brandColor: '#FAAD14' } }}
+                    str='subTitle.perceptual'
+                />
             </div>
             <div className='main-dashboard__div2'> div2</div>
             <div className='main-dashboard__div3'>div3</div>
