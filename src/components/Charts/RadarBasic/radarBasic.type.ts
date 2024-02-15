@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 
-export const ChartPropTypes = {
+export const RadarBasicPropTypes = {
     data: propTypes.arrayOf(propTypes.any.isRequired).isRequired,
     xField: propTypes.string.isRequired,
     yField: propTypes.string.isRequired,
@@ -40,6 +40,6 @@ export const ChartPropTypes = {
     shapeField: propTypes.string,
 }
 
-export const ChartDefaultProps = {}
+export const RadarBasicDefaultProps = {}
 
-export type ChartProps = propTypes.InferProps<typeof ChartPropTypes>
+export type RadarBasicProps = propTypes.InferProps<typeof RadarBasicPropTypes>

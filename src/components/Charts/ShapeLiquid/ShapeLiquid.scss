@@ -3,9 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'exo';
 
+    p {
+        display: flex;
+        font-size: xx-large;
+        font-weight: 100;
+    }
     canvas {
-        margin: auto;
         width: 100% !important;
         height: 100% !important;
     }

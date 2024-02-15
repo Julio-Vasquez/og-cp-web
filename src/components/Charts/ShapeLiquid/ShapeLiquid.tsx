@@ -1,6 +1,10 @@
 import { FC } from 'react'
 import useIntl from '../../../hooks/useIntl'
-import { ShapeProps } from './shapeLiquid.type'
+import {
+    ShapeLiquidDefaultProps,
+    ShapeLiquidPropTypes,
+    ShapeProps,
+} from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
 import { Liquid } from '@ant-design/charts'
@@ -28,6 +32,7 @@ export const ShapeLiquid: FC<ShapeProps> = ({
     }
     return (
         <div className='main-shape-liquid'>
+            <Liquid colorField='red' {...config} />
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',
@@ -36,9 +41,11 @@ export const ShapeLiquid: FC<ShapeProps> = ({
                     },
                 })}
             </p>
-            <Liquid colorField='red' {...config} />
         </div>
     )
 }
+
+ShapeLiquid.propTypes = ShapeLiquidPropTypes
+ShapeLiquid.defaultProps = ShapeLiquidDefaultProps
 
 export default ShapeLiquid

@@ -1,4 +1,4 @@
-import { Chart } from '../../../components/Charts/RadarBasic/RadarBasic'
+import RadarBasic from '../../../components/Charts/RadarBasic/RadarBasic'
 import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
 import useIntl from '../../../hooks/useIntl'
@@ -6,6 +6,7 @@ import iconUser from '../../../assets/svg/iconUser.svg'
 import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
+import CustomCarousel from '../../../components/Carousel/Carousel'
 
 const Dashboard = () => {
     const data = [
@@ -23,10 +24,10 @@ const Dashboard = () => {
         <div className='main-dashboard'>
             <div className='main-dashboard__div0'>
                 <img src={iconUser} alt='user-image' />
-                <p>Nombre de niño</p>
+                <h3>Nombre de niño</h3>
             </div>
             <div className='main-dashboard__skills'>
-                <Chart
+                <RadarBasic
                     data={data}
                     xField='name'
                     yField='percentage'
@@ -50,37 +51,39 @@ const Dashboard = () => {
                 />
             </div>
             <div className='main-dashboard__progress'>
-                <p>{formatMessage({ id: 'text.username' })}</p>
-
-                <ShapeLiquid
-                    percent={0.8}
-                    style={{ shape: funcShapeLiquid }}
-                    outLineBorder={4}
-                    outLineDistance={8}
-                    waveLength={128}
-                    str='subTitle.perceptual'
-                />
-
-                {/*  <div className='reading-writing-learning'>
-                    <ShapeLiquid
-                        percent={0.3}
-                        style={{ shape: funcShapeLiquid }}
-                        outLineBorder={4}
-                        outLineDistance={8}
-                        waveLength={128}
-                        str='subTitle.readingWriting'
-                    />
-                </div>
-                <div className='discriminative-learning'>
-                    <ShapeLiquid
-                        percent={0.5}
-                        style={{ shape: funcShapeLiquid }}
-                        outLineBorder={4}
-                        outLineDistance={8}
-                        waveLength={128}
-                        str='subTitle.discriminative'
-                    />
-                </div> */}
+                <p>Progreso</p>
+                <CustomCarousel>
+                    <div style={{ border: 'solid 2px black' }}>
+                        <ShapeLiquid
+                            percent={0.8}
+                            style={{ shape: funcShapeLiquid }}
+                            outLineBorder={4}
+                            outLineDistance={8}
+                            waveLength={128}
+                            str='subTitle.perceptual'
+                        />
+                    </div>
+                    <div style={{ border: 'solid 2px black' }}>
+                        <ShapeLiquid
+                            percent={0.3}
+                            style={{ shape: funcShapeLiquid }}
+                            outLineBorder={4}
+                            outLineDistance={8}
+                            waveLength={128}
+                            str='subTitle.readingWriting'
+                        />
+                    </div>
+                    <div style={{ border: 'solid 2px black' }}>
+                        <ShapeLiquid
+                            percent={0.5}
+                            style={{ shape: funcShapeLiquid }}
+                            outLineBorder={4}
+                            outLineDistance={8}
+                            waveLength={128}
+                            str='subTitle.discriminative'
+                        />
+                    </div>
+                </CustomCarousel>
             </div>
             <div className='main-dashboard__div2'> div2</div>
             <div className='main-dashboard__div3'>div3</div>

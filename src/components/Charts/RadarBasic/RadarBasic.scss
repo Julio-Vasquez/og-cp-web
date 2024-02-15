@@ -3,7 +3,11 @@
     place-items: center;
     padding-top: 30px;
     font-family: 'exo';
-
+    p {
+        display: flex;
+        font-size: xx-large;
+        font-weight: 100;
+    }
     canvas {
         margin: auto;
         width: 100% !important;

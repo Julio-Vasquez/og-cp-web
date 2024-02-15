@@ -1,12 +1,16 @@
 import { FC } from 'react'
 import { Radar } from '@ant-design/plots'
 
-import { ChartDefaultProps, ChartProps, ChartPropTypes } from './radarBasic.type'
+import {
+    RadarBasicDefaultProps,
+    RadarBasicProps,
+    RadarBasicPropTypes,
+} from './radarBasic.type'
 
 import './RadarBasic.scss'
 import useIntl from '../../../hooks/useIntl'
 
-export const Chart: FC<ChartProps> = ({
+export const RadarBasic: FC<RadarBasicProps> = ({
     area,
     data,
     scale,
@@ -54,6 +58,7 @@ export const Chart: FC<ChartProps> = ({
     )
 }
 
-Chart.defaultProps = ChartDefaultProps
+RadarBasic.propTypes = RadarBasicPropTypes
+RadarBasic.defaultProps = RadarBasicDefaultProps
 
-export default Chart
+export default RadarBasic
