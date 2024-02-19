@@ -3,19 +3,19 @@ import useIntl from '../../../hooks/useIntl'
 import {
     ShapeLiquidDefaultProps,
     ShapeLiquidPropTypes,
-    ShapeProps,
+    ShapeLiquidProps,
 } from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
 import { Liquid } from '@ant-design/charts'
 
-export const ShapeLiquid: FC<ShapeProps> = ({
+export const ShapeLiquid: FC<ShapeLiquidProps> = ({
     str,
     percent,
     style,
     outLine,
-    waveLength,
     theme,
+    waveLength,
 }) => {
     const { formatMessage } = useIntl()
 
@@ -26,8 +26,6 @@ export const ShapeLiquid: FC<ShapeProps> = ({
         waveLength,
         theme,
     }
-
-    console.log(config)
 
     return (
         <div className='main-shape-liquid'>

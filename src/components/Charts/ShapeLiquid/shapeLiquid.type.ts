@@ -1,4 +1,4 @@
-import propTypes, { shape } from 'prop-types'
+import propTypes from 'prop-types'
 
 export const ShapeLiquidPropTypes = {
     str: propTypes.string.isRequired,
@@ -17,12 +17,10 @@ export const ShapeLiquidPropTypes = {
     }).isRequired,
     waveLength: propTypes.number.isRequired,
     theme: propTypes.shape({
-        styleSheet: propTypes.shape({
-            brandColor: propTypes.string.isRequired,
-        }).isRequired,
+        color: propTypes.string.isRequired,
     }).isRequired,
 }
 
 export const ShapeLiquidDefaultProps = {}
 
-export type ShapeProps = propTypes.InferProps<typeof ShapeLiquidPropTypes>
+export type ShapeLiquidProps = propTypes.InferProps<typeof ShapeLiquidPropTypes>

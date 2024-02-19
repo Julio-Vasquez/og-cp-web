@@ -53,18 +53,32 @@ const Dashboard = () => {
             </div>
             <div className='main-dashboard__progress'>
                 <p>{formatMessage({ id: 'subTitle.progress' })}</p>
-                {/*   <CustomCarousel>
+                <CustomCarousel>
                     <div style={{ border: 'solid 2px black' }}>
                         <ShapeLiquid
-                            percent={0.8}
+                            percent={0.3}
                             style={{ shape: funcShapeLiquid }}
                             outLine={{
                                 border: 2,
-                                distance: 4,
-                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                                distance: 19,
+                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
                             }}
                             waveLength={128}
-                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
+                            theme={{ color: '#FAAD14' }}
+                            str='subTitle.readingWriting'
+                        />
+                    </div>
+                    <div style={{ border: 'solid 2px black' }}>
+                        <ShapeLiquid
+                            percent={0.5}
+                            style={{ shape: funcShapeLiquid }}
+                            outLine={{
+                                border: 2,
+                                distance: 19,
+                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
+                            }}
+                            waveLength={128}
+                            theme={{ color: 'red' }}
                             str='subTitle.perceptual'
                         />
                     </div>
@@ -74,41 +88,25 @@ const Dashboard = () => {
                             style={{ shape: funcShapeLiquid }}
                             outLine={{
                                 border: 2,
-                                distance: 4,
-                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
+                                distance: 19,
+                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
                             }}
                             waveLength={128}
-                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
-                            str='subTitle.perceptual'
+                            theme={{ color: 'purple' }}
+                            str='subTitle.discriminative'
                         />
                     </div>
-                    <div style={{ border: 'solid 2px black' }}>
-                        <ShapeLiquid
-                            percent={0.8}
-                            style={{ shape: funcShapeLiquid }}
-                            outLine={{
-                                border: 2,
-                                distance: 4,
-                                style: { stroke: '#FFC100', strokeOpacity: 0.65 },
-                            }}
-                            waveLength={128}
-                            theme={{ styleSheet: { brandColor: '#FAAD14' } }}
-                            str='subTitle.perceptual'
-                        />
-                    </div>
-                </CustomCarousel> */}
-                <ShapeLiquid
+                </CustomCarousel>
+                {/*  <ShapeLiquid
                     percent={0.8}
                     style={{ shape: funcShapeLiquid }}
-                    outLine={{
-                        border: 2,
-                        distance: 4,
-                        style: { stroke: '#FFC100', strokeOpacity: 0.65 },
-                    }}
+                    outLineBorder={100}
+                    outLineDistance={4}
+                    outLineStyle={{ stroke: '#FFC100', strokeOpacity: 0.65 }}
                     waveLength={128}
                     theme={{ styleSheet: { brandColor: '#FAAD14' } }}
                     str='subTitle.perceptual'
-                />
+                /> */}
             </div>
             <div className='main-dashboard__div2'> div2</div>
             <div className='main-dashboard__div3'>div3</div>
