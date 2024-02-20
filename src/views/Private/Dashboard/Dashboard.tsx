@@ -7,7 +7,7 @@ import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
 import CustomCarousel from '../../../components/Carousel/Carousel'
-import { theme } from 'antd'
+import { Select, theme } from 'antd'
 
 const Dashboard = () => {
     const data = [
@@ -20,12 +20,24 @@ const Dashboard = () => {
         { name: 'G2Plot', type: 'b', percentage: 1626 },
     ]
 
+    const child = ['Juan Miguel', 'Juan José', 'Juan Manuel']
+
+    console.log(child)
+
     const { formatMessage } = useIntl()
     return (
         <div className='main-dashboard'>
             <div className='main-dashboard__div0'>
+                <Select
+                    allowClear
+                    bordered={false}
+                    placeholder='Children name'
+                    options={child?.map(item => ({
+                        value: item,
+                        label: item,
+                    }))}
+                />
                 <img src={iconUser} alt='user-image' />
-                <h3>Nombre de niño</h3>
             </div>
             <div className='main-dashboard__skills'>
                 <RadarBasic
@@ -40,19 +52,17 @@ const Dashboard = () => {
                         y: { nice: true, domainMax: 80, tickCount: 5 },
                     }}
                     axis={{
-                        x: { title: false, grid: true },
+                        x: { title: true, grid: true },
                         y: {
                             gridAreaFill: 'rgba(0, 0, 0, 0.03)',
                             label: true,
                             title: false,
-                            zIndex: 10,
                         },
                     }}
                     style={{ lineWidth: 2 }}
                 />
             </div>
             <div className='main-dashboard__progress'>
-                <p>{formatMessage({ id: 'subTitle.progress' })}</p>
                 <CustomCarousel>
                     <div style={{ border: 'solid 2px black' }}>
                         <ShapeLiquid
@@ -97,20 +107,11 @@ const Dashboard = () => {
                         />
                     </div>
                 </CustomCarousel>
-                {/*  <ShapeLiquid
-                    percent={0.8}
-                    style={{ shape: funcShapeLiquid }}
-                    outLineBorder={100}
-                    outLineDistance={4}
-                    outLineStyle={{ stroke: '#FFC100', strokeOpacity: 0.65 }}
-                    waveLength={128}
-                    theme={{ styleSheet: { brandColor: '#FAAD14' } }}
-                    str='subTitle.perceptual'
-                /> */}
             </div>
             <div className='main-dashboard__div2'> div2</div>
             <div className='main-dashboard__div3'>div3</div>
             <div className='main-dashboard__div4'>div4</div>
+            <div className='main-dashboard__div5'>div5</div>
         </div>
     )
 }
