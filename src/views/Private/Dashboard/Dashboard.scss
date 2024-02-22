@@ -2,6 +2,8 @@
     margin: auto;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 200px 200px 200px 200px;
+    height: 100%;
 
     &__div0 {
         display: flex;
@@ -14,24 +16,6 @@
             width: 50px;
         }
     }
-
-    &__progress {
-        box-sizing: border-box;
-        box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
-        grid-row-start: 2;
-        grid-row-end: 5;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        display: flexbox;
-    }
-    &__skills {
-        box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
-        box-sizing: border-box;
-        grid-row-start: 1;
-        grid-row-end: 5;
-        grid-column-start: 2;
-        grid-column-end: 4;
-    }
     &__div2 {
         box-sizing: border-box;
         box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
@@ -40,7 +24,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        grid-column-start: 4;
+        grid-column-start: 2;
         grid-column-end: 6;
         grid-row-start: 1;
         grid-row-end: 2;
@@ -53,9 +37,9 @@
         justify-content: center;
         align-items: center;
         grid-column-start: 4;
-        grid-column-end: 6;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 5;
     }
 
     &__div4 {
@@ -66,22 +50,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        grid-column-start: 4;
-        grid-column-end: 6;
-        grid-row-start: 3;
-        grid-row-end: 4;
-    }
-    &__div5 {
-        box-sizing: border-box;
-        box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-column-start: 4;
-        grid-column-end: 6;
+        grid-column-start: 2;
+        grid-column-end: 4;
         grid-row-start: 4;
         grid-row-end: 5;
+    }
+
+    &__progress {
+        box-sizing: border-box;
+        box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &__skills {
+        box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
+        box-sizing: border-box;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        border: solid;
     }
 }

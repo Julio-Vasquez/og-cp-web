@@ -30,7 +30,6 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({
     return (
         <div className='main-shape-liquid'>
             <p>{formatMessage({ id: 'subTitle.progress' })}</p>
-            <Liquid {...config} />
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',
@@ -39,6 +38,7 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({
                     },
                 })}
             </p>
+            <Liquid {...config} />
         </div>
     )
 }

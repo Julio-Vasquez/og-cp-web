@@ -1,16 +1,44 @@
 .main-radar-basic {
-    display: grid;
-    place-items: center;
-    padding-top: 30px;
+    box-sizing: border-box;
     font-family: 'exo';
-    p {
-        display: flex;
-        font-size: xx-large;
-        font-weight: 100;
-    }
-    canvas {
-        margin: auto;
-        width: 100% !important;
-        height: 100% !important;
-    }
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    margin: auto;
 }
+
+canvas {
+    margin: auto;
+    display: flex;
+}
+
+/* const data = [
+    { name: 'Adaptabilidad', type: 'b', percentage: 10371 },
+    { name: ' Colaboración', type: 'a', percentage: 7380 },
+    { name: ' Comunicación', type: 'b', percentage: 7414 },
+    { name: ' Creatividad', type: 'a', percentage: 2140 },
+    { name: ' Pensamiento crítico', type: 'b', percentage: 660 },
+    { name: 'Resolución de Problemas', type: 'a', percentage: 885 },
+    { name: 'G2Plot', type: 'b', percentage: 1626 },
+]
+<RadarBasic
+data={data}
+xField='name'
+yField='percentage'
+colorField='type'
+shapeField='smooth'
+area={{ style: { fillOpacity: 0.2 } }}
+scale={{
+    x: { padding: 0.5, align: 0 },
+    y: { nice: true, domainMax: 80, tickCount: 5 },
+}}
+axis={{
+    x: { title: false, grid: true },
+    y: {
+        gridAreaFill: 'rgba(0, 0, 0, 0.03)',
+        label: true,
+        title: false,
+    },
+}}
+style={{ lineWidth: 2 }}
+/> */

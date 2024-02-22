@@ -88,14 +88,26 @@ const ForgotPassword = () => {
                         <Input
                             className='forgot-password__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({ id: 'text.username' })}
+                            placeholder={formatMessage({
+                                id: 'text.userOrEmail',
+                                objVars: {
+                                    user: formatMessage({ id: 'text.username' }),
+                                    mail: formatMessage({ id: 'text.mail' }),
+                                },
+                            })}
                         />
                     </Item>
                     <CustomButton
                         type='primary'
                         htmlType='submit'
                         loading={loading}
-                        children={formatMessage({ id: 'button.send' })}
+                        children={formatMessage({
+                            id: 'button.setPassword',
+                            objVars: {
+                                user: formatMessage({ id: 'button.change' }),
+                                mail: formatMessage({ id: 'button.password' }),
+                            },
+                        })}
                         width='70%'
                     />
 

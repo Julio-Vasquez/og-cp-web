@@ -1,5 +1,5 @@
 .main-profile {
-    height: auto;
+    height: 100%;
     box-sizing: border-box;
     padding: 20px;
     box-shadow: 10px 10px 30px -19px rgba(0, 0, 0, 1);
@@ -43,6 +43,8 @@
         }
         &__birth-date {
             grid-column-start: 2;
+            grid-column-end: 5;
+            grid-column-end: 5;
             grid-row-start: 4;
         }
         &__role {

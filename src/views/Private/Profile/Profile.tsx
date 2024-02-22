@@ -11,6 +11,7 @@ import { ResponseFetch } from '../../../utils/api/api.util'
 import { DataUser } from '../../../utils/types/userData.type'
 
 import './Profile.scss'
+import { OPTIONS } from '../../../utils/constants/options.constant'
 
 export const Profile = () => {
     const { visible, openDialog, closeDialog } = useVisible()
@@ -45,7 +46,9 @@ export const Profile = () => {
                     </div>
                     <div className='main-profile__data__birth-date'>
                         <p>{formatMessage({ id: 'text.birthDate' })}</p>
-                        <span>{payload?.birthDate}</span>
+                        <span>
+                            {new Intl.DateTimeFormat('es-Es', OPTIONS).format()}
+                        </span>
                     </div>
                     <div className='main-profile__data__role'>
                         <p>{formatMessage({ id: 'text.role' })}</p>

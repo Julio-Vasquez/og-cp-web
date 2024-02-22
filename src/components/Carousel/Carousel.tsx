@@ -10,7 +10,7 @@ import {
 
 const CustomCarousel: FC<CustomCarouselProps> = ({ children }) => {
     return (
-        <Carousel autoplaySpeed={3000} className='custom-carousel' autoplay>
+        <Carousel autoplaySpeed={5000} className='custom-carousel' autoplay>
             {children}
         </Carousel>
     )

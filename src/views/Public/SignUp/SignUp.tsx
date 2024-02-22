@@ -140,7 +140,7 @@ export const SignUp: FC<SignUpProps> = () => {
                         </div>
                         <div className='main-signUp__btn-next'>
                             <CustomButton
-                                width='60%'
+                                width={loading ? '100%' : '60%'}
                                 hight='auto'
                                 htmlType='submit'
                                 loading={loading}

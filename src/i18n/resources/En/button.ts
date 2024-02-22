@@ -14,4 +14,6 @@ export const Button = {
     forgotPassword: 'Forgot password?',
     confirmPassword: 'Confirm password',
     signUpToContinue: 'Sign up to continue',
+    change: 'Change',
+    setPassword: '{{user}} {{mail}}',
 }

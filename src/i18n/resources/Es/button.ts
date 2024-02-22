@@ -14,4 +14,6 @@ export const Button = {
     confirmPassword: 'Confirmar contraseña',
     forgotPassword: '¿Olvido su contraseña?',
     signUpToContinue: 'Registrarse para continuar',
+    change: 'Cambiar',
+    setPassword: '{{user}} {{mail}}',
 }
