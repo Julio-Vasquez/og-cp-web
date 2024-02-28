@@ -1,0 +1,13 @@
+.bar-chart {
+    margin: auto;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    canvas {
+        margin: auto;
+        width: 100% !important;
+    }
+}

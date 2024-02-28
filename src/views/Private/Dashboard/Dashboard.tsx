@@ -1,18 +1,22 @@
-import RadarBasic from '../../../components/Charts/RadarBasic/RadarBasic'
+import { Select } from 'antd'
 import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
-import useIntl from '../../../hooks/useIntl'
 import iconUser from '../../../assets/svg/iconUser.svg'
-import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
+import PieChart from '../../../components/Charts/PieChart'
+import AreaChart from '../../../components/Charts/AreaChart'
+import BarChart from '../../../components/Charts/BarChart/BarChart'
+import CustomCarousel from '../../../components/Carousel/Carousel'
+
+import {
+    funcAreaChart,
+    funcShapeLiquid,
+} from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
-import CustomCarousel from '../../../components/Carousel/Carousel'
-import { Select, theme } from 'antd'
 
 const Dashboard = () => {
     const child = ['Juan Miguel', 'Juan José', 'Juan Manuel']
 
-    const { formatMessage } = useIntl()
     return (
         <div className='main-dashboard'>
             <div className='main-dashboard__div0'>
@@ -27,56 +31,80 @@ const Dashboard = () => {
                 />
                 <img src={iconUser} alt='user-image' />
             </div>
-            <div className='main-dashboard__skills'></div>
+            <div className='main-dashboard__skills'>
+                <AreaChart
+                    data={{
+                        type: 'fetch',
+                        value: 'https://assets.antv.antgroup.com/g2/stocks.json',
+                        transform: [
+                            {
+                                type: 'filter',
+                                callback: (d: any) => d.symbol === 'GOOG',
+                            },
+                        ],
+                    }}
+                    xField={funcAreaChart}
+                    yField='price'
+                    style={{
+                        fill: 'linear-gradient(-90deg, white 0%, darkgreen 100%)',
+                    }}
+                    axis={{ y: { labelFormatter: '~s' } }}
+                    line={{ style: { stroke: 'lila', strokeWidth: 2 } }}
+                />
+            </div>
             <div className='main-dashboard__progress'>
                 <CustomCarousel>
-                    <div style={{ border: 'solid 2px black' }}>
+                    <div>
                         <ShapeLiquid
                             percent={0.3}
                             style={{ shape: funcShapeLiquid }}
                             outLine={{
                                 border: 2,
                                 distance: 19,
-                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
+                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
                             }}
                             waveLength={128}
-                            theme={{ color: '#FAAD14' }}
+                            theme={{ color: '#6744c6a6' }}
                             str='subTitle.readingWriting'
                         />
                     </div>
-                    <div style={{ border: 'solid 2px black' }}>
+                    <div>
                         <ShapeLiquid
                             percent={0.5}
                             style={{ shape: funcShapeLiquid }}
                             outLine={{
                                 border: 2,
                                 distance: 19,
-                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
+                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
                             }}
                             waveLength={128}
-                            theme={{ color: 'red' }}
+                            theme={{ color: '#6744c6a6' }}
                             str='subTitle.perceptual'
                         />
                     </div>
-                    <div style={{ border: 'solid 2px black' }}>
+                    <div>
                         <ShapeLiquid
-                            percent={0.8}
+                            percent={0.4}
                             style={{ shape: funcShapeLiquid }}
                             outLine={{
                                 border: 2,
                                 distance: 19,
-                                style: { stroke: '#FAAD14', strokeOpacity: 0.65 },
+                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
                             }}
                             waveLength={128}
-                            theme={{ color: 'purple' }}
+                            theme={{ color: '#6744c6a6' }}
                             str='subTitle.discriminative'
                         />
                     </div>
                 </CustomCarousel>
             </div>
-            <div className='main-dashboard__div2'> div2</div>
-            <div className='main-dashboard__div3'>div3</div>
-            <div className='main-dashboard__div4'>div4</div>
+            <div className='main-dashboard__div2'></div>
+            <div className='main-dashboard__div5'>
+                <PieChart />
+            </div>
+            <div className='main-dashboard__div4'>
+                <BarChart />
+            </div>
         </div>
     )
 }

@@ -6,7 +6,7 @@ export const Title = {
     ranking: 'Ranking',
     username: 'Username',
     password: 'Password',
-    mainMenu: 'Main menu',
+    menu: 'Menu',
     dashboard: 'Dashboard',
     statistics: 'Statistics',
     forgotPassword: 'Forgot password',

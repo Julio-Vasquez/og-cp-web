@@ -4,13 +4,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: exo;
+    font-family: Oleo Script;
 
     &__title {
         margin: auto;
+        width: 60%;
         height: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #6744c6;
     }
 }

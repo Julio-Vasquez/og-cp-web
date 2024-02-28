@@ -1,11 +1,12 @@
 import { FC } from 'react'
-import { Button, Modal } from 'antd'
+import { Modal } from 'antd'
+
+import { CustomButton } from '../CustomButton/CustomButton'
 
 import useIntl from '../../hooks/useIntl'
 import { ModalsProps } from './modals.type'
 
 import './Modals.scss'
-import { CustomButton } from '../CustomButton/CustomButton'
 
 export const Modals: FC<ModalsProps> = ({
     isOpen,

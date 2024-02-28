@@ -17,3 +17,5 @@ export const funcShapeLiquid = (x: number, y: number, r: number) => {
     path.push(['Z'])
     return path
 }
+
+export const funcAreaChart = (d: any) => new Date(d?.date)

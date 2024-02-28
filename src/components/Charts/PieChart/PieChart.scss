@@ -1,0 +1,10 @@
+.main-pie-chart {
+    margin: auto;
+    height: 250px;
+    width: 100%;
+    padding: 0 8px;
+    canvas {
+        margin: 0;
+        width: 100% !important;
+    }
+}

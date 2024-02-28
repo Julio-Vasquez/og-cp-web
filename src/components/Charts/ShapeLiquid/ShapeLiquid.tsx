@@ -1,5 +1,7 @@
 import { FC } from 'react'
+import { Liquid } from '@ant-design/charts'
 import useIntl from '../../../hooks/useIntl'
+
 import {
     ShapeLiquidDefaultProps,
     ShapeLiquidPropTypes,
@@ -7,7 +9,6 @@ import {
 } from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
-import { Liquid } from '@ant-design/charts'
 
 export const ShapeLiquid: FC<ShapeLiquidProps> = ({
     str,
@@ -29,7 +30,6 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({
 
     return (
         <div className='main-shape-liquid'>
-            <p>{formatMessage({ id: 'subTitle.progress' })}</p>
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',
@@ -38,7 +38,8 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({
                     },
                 })}
             </p>
-            <Liquid {...config} />
+
+            <Liquid autoFit {...config} />
         </div>
     )
 }

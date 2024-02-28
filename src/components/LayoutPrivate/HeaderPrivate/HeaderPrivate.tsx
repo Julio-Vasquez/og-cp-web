@@ -12,6 +12,7 @@ import {
 } from './headerPrivate.type'
 
 import './HeaderPrivate.scss'
+import useIntl from '../../../hooks/useIntl'
 
 const { Header } = Layout
 
@@ -23,9 +24,7 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
         token: { colorBgContainer },
     } = theme.useToken()
 
-    const { pathname } = useLocation()
-
-    const title = pathname.toUpperCase().split('/')
+    const { formatMessage } = useIntl()
 
     return (
         <Header
@@ -37,7 +36,13 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
                 onClick={() => setCollapsed(!collapsed)}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             />
-            <h1 className='main-header-private__title'>{title}</h1>
+            <h1 className='main-header-private__title'>
+                {
+                    <h2 className='main-header__title'>
+                        {formatMessage({ id: 'title.innocentlyLearning' })}
+                    </h2>
+                }
+            </h1>
             <ItemsHeader />
         </Header>
     )

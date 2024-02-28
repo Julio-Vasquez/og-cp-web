@@ -7,7 +7,7 @@ export const Title = {
     password: 'Contraseña',
     signIn: 'Iniciar sesión',
     ranking: 'Clasificación',
-    mainMenu: 'Menu principal',
+    menu: 'Menu',
     statistics: 'Estadísticas',
     forgotPassword: '¿Olvido su contraseña?',
     innocentlyLearning: 'Aprendiendo inocentemente',

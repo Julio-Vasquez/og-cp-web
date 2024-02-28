@@ -6,7 +6,7 @@ import {
     CustomCarouselDefaultProp,
     CustomCarouselPropTypes,
     CustomCarouselProps,
-} from './customCarousel'
+} from './customCarousel.type'
 
 const CustomCarousel: FC<CustomCarouselProps> = ({ children }) => {
     return (
