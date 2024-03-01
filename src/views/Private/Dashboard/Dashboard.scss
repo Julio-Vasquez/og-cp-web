@@ -24,12 +24,12 @@
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
         grid-column-start: 2;
         grid-column-end: 5;
         grid-row-start: 1;
         grid-row-end: 2;
+        background-color: #6744c60e;
     }
     &__div4 {
         box-sizing: border-box;

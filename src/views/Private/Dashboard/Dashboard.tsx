@@ -13,6 +13,7 @@ import {
 } from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
+import CustomCard from '../../../components/Cards/CustomCard'
 
 const Dashboard = () => {
     const child = ['Juan Miguel', 'Juan José', 'Juan Manuel']
@@ -49,7 +50,7 @@ const Dashboard = () => {
                         fill: 'linear-gradient(-90deg, white 0%, darkgreen 100%)',
                     }}
                     axis={{ y: { labelFormatter: '~s' } }}
-                    line={{ style: { stroke: 'lila', strokeWidth: 2 } }}
+                    line={{ style: { stroke: '#6744c6a6', strokeWidth: 2 } }}
                 />
             </div>
             <div className='main-dashboard__progress'>
@@ -98,7 +99,12 @@ const Dashboard = () => {
                     </div>
                 </CustomCarousel>
             </div>
-            <div className='main-dashboard__div2'></div>
+            <div className='main-dashboard__div2'>
+                <CustomCard backGroundColor='#6744c60e' />
+                <CustomCard backGroundColor='#6744c63a' />
+                <CustomCard backGroundColor='#6744c665' />
+                <CustomCard backGroundColor='#6744c6a6' />
+            </div>
             <div className='main-dashboard__div5'>
                 <PieChart />
             </div>
