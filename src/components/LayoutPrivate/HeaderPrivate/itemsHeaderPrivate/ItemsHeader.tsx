@@ -8,10 +8,10 @@ import iconLanguage from '../../../../assets/svg/iconLanguage.svg'
 import iconNotification from '../../../../assets/svg/iconNotification.svg'
 
 import api from '../../../../api'
-import { useGet } from '../../../../hooks/api'
+import { useQuery } from '../../../../hooks/api'
 import { logout } from '../../../../services/Auth/auth.slice'
-import { ResponseFetch } from '../../../../utils/api/api.util'
 import { DataUser } from '../../../../utils/types/userData.type'
+import { Status } from '../../../../utils/constants/status.enum'
 import {
     ItemsNavBarDefaultProps,
     ItemsNavBarPropsTypes,
@@ -24,11 +24,11 @@ import './ItemsHeader.scss'
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const dispatch = useDispatch()
 
-    const { data: userMe, loading } = useGet<ResponseFetch<DataUser>>({
+    const { data: userMe, loading } = useQuery<DataUser>({
         functionFetch: api.defaultData.userMe,
     })
 
-    const payload = userMe.status === 'success' ? userMe.payload : undefined
+    const payload = userMe.status === Status.success ? userMe.payload : undefined
 
     const handleLogOut = () => dispatch(logout())
 

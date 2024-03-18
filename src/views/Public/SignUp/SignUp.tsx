@@ -16,7 +16,7 @@ import PersonalInformation from '../../../components/Steps/PersonalInformation/P
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
-import { useMutation, useGet } from '../../../hooks/api'
+import { useMutation, useQuery } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import { Status } from '../../../utils/constants/status.enum'
@@ -46,7 +46,9 @@ export const SignUp: FC<SignUpProps> = () => {
     const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
-        useGet<availableDataTypes>({ functionFetch: api.defaultData.availableData })
+        useQuery<availableDataTypes>({
+            functionFetch: api.defaultData.availableData,
+        })
 
     const checkStatus = (key: 'roles' | 'genders' | 'typeDocuments') =>
         availableData?.status === Status.success ? availableData.payload?.[key] : []
