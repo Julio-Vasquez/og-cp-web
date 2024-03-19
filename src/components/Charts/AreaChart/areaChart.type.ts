@@ -1,6 +1,7 @@
 import propTypes from 'prop-types'
 export const AreaChartPropTypes = {
-    data: propTypes.shape({
+    selectedChild: propTypes.string.isRequired,
+    /*     data: propTypes.shape({
         type: propTypes.string.isRequired,
         value: propTypes.string.isRequired,
         transform: propTypes.arrayOf(
@@ -22,7 +23,7 @@ export const AreaChartPropTypes = {
             stroke: propTypes.string.isRequired,
             strokeWidth: propTypes.number.isRequired,
         }).isRequired,
-    }).isRequired,
+    }).isRequired, */
 }
 
 export const AreaChartDefaultProps = {}
