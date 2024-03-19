@@ -6,7 +6,7 @@ import { type setPassword } from '../views/Public/SetPassword/setPassword.type'
 import { activateAccount } from '../views/Public/ActivateAccount/activateAccount.type'
 
 //listado de endpoints, que se usaran en authService
-const login = (body: Object) =>
+const login = (body: LoginType) =>
     Mutation({ method: Methods.post, url: 'auth/login', body })
 
 const signUp = (body: LoginType) =>

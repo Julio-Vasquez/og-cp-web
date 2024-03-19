@@ -4,6 +4,7 @@ import api from '../../api'
 import { LoginAction, State } from './auth.types'
 import { ResponseFetch } from '../../utils/api/api.util'
 import { ClearData, SaveItem } from '../../utils/storage'
+import { Status } from '../../utils/constants/status.enum'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 import {
     errorMessage,
@@ -14,7 +15,7 @@ function* fetchLogin({ payload }: LoginAction) {
     try {
         const res: ResponseFetch<State> = yield api.auth.login(payload)
         console.log(res)
-        if (res && res.status === 'success' && res?.payload) {
+        if (res && res.status === Status.success && res?.payload) {
             yield put(
                 loginSuccess({
                     token: res.payload.token,

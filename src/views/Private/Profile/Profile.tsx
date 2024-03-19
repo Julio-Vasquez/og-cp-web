@@ -4,25 +4,25 @@ import { Modals } from '../../../components/Modal'
 import iconUser from '../../../assets/svg/iconUser.svg'
 
 import api from '../../../api'
-import { useGet } from '../../../hooks/api'
+import { useQuery } from '../../../hooks/api'
 import useIntl from '../../../hooks/useIntl'
 import { useVisible } from '../../../hooks/useVisible'
-import { ResponseFetch } from '../../../utils/api/api.util'
+import { Status } from '../../../utils/constants/status.enum'
 import { DataUser } from '../../../utils/types/userData.type'
+import { OPTIONS } from '../../../utils/constants/options.constant'
 
 import './Profile.scss'
-import { OPTIONS } from '../../../utils/constants/options.constant'
 
 export const Profile = () => {
     const { visible, openDialog, closeDialog } = useVisible()
 
-    const { data: userMe, loading } = useGet<ResponseFetch<DataUser>>({
+    const { data: userMe, loading } = useQuery<DataUser>({
         functionFetch: api.defaultData.userMe,
     })
 
     const { formatMessage } = useIntl()
 
-    const payload = userMe.status === 'success' ? userMe.payload : undefined
+    const payload = userMe.status === Status.success ? userMe.payload : undefined
 
     return (
         <Spin spinning={loading}>
