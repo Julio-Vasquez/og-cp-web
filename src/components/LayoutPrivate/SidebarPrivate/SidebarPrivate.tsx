@@ -1,6 +1,6 @@
-import { FC, lazy } from 'react'
+import { FC, lazy, useEffect, useState } from 'react'
 import { Layout, Menu } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
     SidebarPrivateProps,
     SidebarPrivatePropsDefault,
@@ -24,6 +24,65 @@ const { Sider } = Layout
 
 export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
     const { formatMessage } = useIntl()
+    const [activeSide, setActiveSide] = useState(['2'])
+    const handleClick = (key: number) => setActiveSide([`${key}`])
+
+    //sacar el path, tener array de items, comparar el path con cada label de items
+    //guardo esa key, seteo el estado de setActiveSide dentro de useEffect,
+
+    const { pathname } = useLocation()
+
+    const items = [
+        {
+            key: '1',
+            label: (
+                <Link to={RP.profile}>{formatMessage({ id: 'title.profile' })}</Link>
+            ),
+            icon: <img src={profile} width={25} />,
+            onClick: () => handleClick(1),
+        },
+        {
+            key: '2',
+            label: (
+                <Link to={RP.dashboard}>
+                    {formatMessage({ id: 'title.dashboard' })}
+                </Link>
+            ),
+            icon: <img src={dashboard} width={25} />,
+            onClick: () => handleClick(2),
+        },
+        {
+            key: '3',
+            icon: <img src={statistics} width={25} />,
+            label: (
+                <Link to={RP.statistics}>
+                    {formatMessage({ id: 'title.statistics' })}
+                </Link>
+            ),
+            onClick: () => handleClick(3),
+        },
+        {
+            key: '4',
+            icon: <img src={ranking} width={25} />,
+            label: (
+                <Link to={RP.ranking}>
+                    {formatMessage({ id: 'title.ranking' })}{' '}
+                </Link>
+            ),
+            onClick: () => handleClick(4),
+        },
+    ]
+
+    const key = items.map(item => {
+        if (item.label.props.to === pathname) {
+            return item.key
+        }
+    })
+
+    useEffect(() => {
+        setActiveSide([`${key}`])
+    }, [])
+
     return (
         <Sider
             trigger={null}
@@ -46,45 +105,8 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                 className='main-sidebar-private__menu'
                 theme='light'
                 mode='inline'
-                defaultSelectedKeys={['1']}
-                items={[
-                    {
-                        key: '1',
-                        label: (
-                            <Link to={RP.profile}>
-                                {formatMessage({ id: 'title.profile' })}
-                            </Link>
-                        ),
-                        icon: <img src={profile} width={25} />,
-                    },
-                    {
-                        key: '2',
-                        label: (
-                            <Link to={RP.dashboard}>
-                                {formatMessage({ id: 'title.dashboard' })}
-                            </Link>
-                        ),
-                        icon: <img src={dashboard} width={25} />,
-                    },
-                    {
-                        key: '3',
-                        icon: <img src={statistics} width={25} />,
-                        label: (
-                            <Link to={RP.statistics}>
-                                {formatMessage({ id: 'title.statistics' })}
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: '4',
-                        icon: <img src={ranking} width={25} />,
-                        label: (
-                            <Link to={RP.ranking}>
-                                {formatMessage({ id: 'title.ranking' })}{' '}
-                            </Link>
-                        ),
-                    },
-                ]}
+                defaultSelectedKeys={activeSide}
+                items={items.map(item => item)}
             />
         </Sider>
     )

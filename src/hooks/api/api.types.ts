@@ -12,7 +12,10 @@ export type ResponseState<T> = {
 
 export type MutationType = {
     cancelError?: boolean
-    onCompleted: <T, V>({ data, variables }: ApiResponseSuccess<T, V>) => void
+    onCompleted: <T = unknown, V = unknown>({
+        data,
+        variables,
+    }: ApiResponseSuccess<T, V>) => void
     onError?: ({ message, status, statusCode }: ApiResponseError) => void
 }
 

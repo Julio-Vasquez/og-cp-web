@@ -25,7 +25,7 @@ export const PrivateRoutes: FC = () => {
                         <Route path={RP.error404} element={<Error404 />} />
                         <Route
                             path='/*'
-                            element={<Navigate replace to={RP.profile} />}
+                            element={<Navigate replace to={RP.dashboard} />}
                         />
                     </Routes>
                 </LayoutPrivate>

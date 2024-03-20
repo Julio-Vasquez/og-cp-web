@@ -1,22 +1,16 @@
 import { Select } from 'antd'
-import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
+import { useState } from 'react'
 
-import iconUser from '../../../assets/svg/iconUser.svg'
 import PieChart from '../../../components/Charts/PieChart'
 import AreaChart from '../../../components/Charts/AreaChart'
+import CustomCard from '../../../components/Cards/CustomCard'
 import BarChart from '../../../components/Charts/BarChart/BarChart'
 import CustomCarousel from '../../../components/Carousel/Carousel'
+import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
-import {
-    funcAreaChart,
-    funcShapeLiquid,
-} from '../../../utils/functions/funcShapeLiquid.func'
+import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
 
 import './Dashboard.scss'
-import CustomCard from '../../../components/Cards/CustomCard'
-import { useState } from 'react'
-import api from '../../../api'
-import { useMutation } from '../../../hooks/api'
 
 type Child = {
     _id: string
@@ -31,7 +25,7 @@ const child: Child[] = [
         avatar: 'https://images.pexels.com/photos/35537/child-children-girl-happy.jpg',
     },
     {
-        _id: '47e56d0c-403f-4593-a98e-fe6ced28ef0e    ',
+        _id: '47e56d0c-403f-4593-a98e-fe6ced28ef0e',
         name: 'Miguel',
         avatar: 'https://static.photocrowd.com/article-images/2015-12/article107/upl/H0/107-12-tips-photographing-children.RyAPvASBm0uWwX4OzlP-v2u12.jpeg',
     },
@@ -45,19 +39,10 @@ const child: Child[] = [
 const Dashboard = () => {
     const [selectedChild, setSelectedChild] = useState<Child>(child[0])
 
-    const onCompleted = (data: any) => {
-        console.log(data)
-    }
-
-    const [mutation, { loading }] = useMutation(
-        { functionFetch: api.charts.getActivityByDay },
-        { onCompleted, cancelError: false }
-    )
-
-    const handleOnChangeChild = (values: string) => {
+    const handleOnChangeChild = (values: string) =>
         setSelectedChild(child.find(item => item._id === values)!)
-        mutation({ _idChildren: values })
-    }
+
+    const options = child?.map(item => ({ value: item._id, label: item.name }))
 
     return (
         <div className='main-dashboard'>
@@ -68,10 +53,7 @@ const Dashboard = () => {
                     allowClear
                     bordered={false}
                     onChange={handleOnChangeChild}
-                    options={child?.map(item => ({
-                        value: item._id,
-                        label: item.name,
-                    }))}
+                    options={options}
                 />
             </div>
             <div className='main-dashboard__skills'>

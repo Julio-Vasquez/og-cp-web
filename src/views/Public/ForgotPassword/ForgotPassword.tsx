@@ -40,12 +40,13 @@ const ForgotPassword = () => {
 
     const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    const [mutation, { loading }] = useMutation<forgotPassword>(
+    const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: forgotPassword) => mutation({ ...values })
+    const onFinish = (values: forgotPassword) =>
+        mutation<forgotPassword>({ ...values })
 
     return (
         <div className='forgot-password'>

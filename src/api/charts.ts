@@ -1,7 +1,7 @@
 import { Mutation } from './core'
 import { Methods } from '../utils/types/response.type'
 
-const getActivityByDay = (body: String) =>
+const getActivityPerDay = (body: String) =>
     Mutation({ method: Methods.post, url: 'charts/activities-per-day', body })
 
 const getProgressByPhase = (body: String) =>
@@ -14,7 +14,7 @@ const gteStepsByPhase = () =>
     Mutation({ method: Methods.post, url: 'charts/steps-by-phase' })
 
 export default {
-    getActivityByDay,
+    getActivityPerDay,
     getProgressByPhase,
     getPhaseById,
     gteStepsByPhase,
