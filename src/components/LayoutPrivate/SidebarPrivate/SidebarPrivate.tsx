@@ -1,45 +1,38 @@
-import { FC, lazy, useEffect, useState } from 'react'
 import { Layout, Menu } from 'antd'
+import { FC, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
+import Logo from '../../Logo'
+import ranking from '../../../assets/svg/ranking.svg'
+import profile from '../../../assets/svg/iconPerfil.svg'
+import dashboard from '../../../assets/svg/dashboard.svg'
+import statistics from '../../../assets/svg/statistics.svg'
+
+import useIntl from '../../../hooks/useIntl'
 import {
     SidebarPrivateProps,
     SidebarPrivatePropsDefault,
     SidebarPrivatePropsTypes,
 } from './sidebarPrivate.type'
-
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
-
-import useIntl from '../../../hooks/useIntl'
-
-import dashboard from '../../../assets/svg/dashboard.svg'
-import statistics from '../../../assets/svg/statistics.svg'
-import ranking from '../../../assets/svg/ranking.svg'
-import profile from '../../../assets/svg/iconPerfil.svg'
 
 import './SidebarPrivate.scss'
 
-const Logo = lazy(() => import('../../Logo'))
-
 const { Sider } = Layout
 
+const getIcon = (path: string) => <img src={path} width={25} />
+
 export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
-    const { formatMessage } = useIntl()
-    const [activeSide, setActiveSide] = useState(['2'])
-    const handleClick = (key: number) => setActiveSide([`${key}`])
-
-    //sacar el path, tener array de items, comparar el path con cada label de items
-    //guardo esa key, seteo el estado de setActiveSide dentro de useEffect,
-
     const { pathname } = useLocation()
+    const { formatMessage } = useIntl()
 
-    const items = [
+    const Items = [
         {
             key: '1',
             label: (
                 <Link to={RP.profile}>{formatMessage({ id: 'title.profile' })}</Link>
             ),
-            icon: <img src={profile} width={25} />,
-            onClick: () => handleClick(1),
+            icon: getIcon(profile),
         },
         {
             key: '2',
@@ -48,40 +41,37 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                     {formatMessage({ id: 'title.dashboard' })}
                 </Link>
             ),
-            icon: <img src={dashboard} width={25} />,
-            onClick: () => handleClick(2),
+            icon: getIcon(dashboard),
         },
         {
             key: '3',
-            icon: <img src={statistics} width={25} />,
             label: (
                 <Link to={RP.statistics}>
                     {formatMessage({ id: 'title.statistics' })}
                 </Link>
             ),
-            onClick: () => handleClick(3),
+            icon: getIcon(statistics),
         },
         {
             key: '4',
-            icon: <img src={ranking} width={25} />,
             label: (
                 <Link to={RP.ranking}>
                     {formatMessage({ id: 'title.ranking' })}{' '}
                 </Link>
             ),
-            onClick: () => handleClick(4),
+            icon: getIcon(ranking),
         },
     ]
 
-    const key = items.map(item => {
-        if (item.label.props.to === pathname) {
-            return item.key
-        }
-    })
+    const key = Items.find(item => item.label.props.to === pathname)?.key
 
-    useEffect(() => {
-        setActiveSide([`${key}`])
-    }, [])
+    const [activeSide, setActiveSide] = useState([key ?? '2'])
+    const handleClick = (key: string) => setActiveSide([key])
+
+    const menu = Items.map((item, index) => ({
+        ...item,
+        onClick: () => handleClick(`${index + 1}`),
+    }))
 
     return (
         <Sider
@@ -93,20 +83,16 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
         >
             <Logo collapsed={collapsed} />
 
-            {collapsed ? (
-                <h2 className='main-sidebar-private__subtitle' />
-            ) : (
-                <h2 className='main-sidebar-private__subtitle'>
-                    {formatMessage({ id: 'title.menu' })}
-                </h2>
-            )}
+            <h2 className='main-sidebar-private__subtitle'>
+                {!collapsed && formatMessage({ id: 'title.menu' })}
+            </h2>
 
             <Menu
                 className='main-sidebar-private__menu'
                 theme='light'
                 mode='inline'
                 defaultSelectedKeys={activeSide}
-                items={items.map(item => item)}
+                items={menu}
             />
         </Sider>
     )
