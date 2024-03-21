@@ -12,14 +12,14 @@ import './AreaChart.scss'
 import { useMutation } from '../../../hooks/api'
 import api from '../../../api'
 import { Status } from '../../../utils/constants/status.enum'
-import { ApiResponseSuccess } from '../../../utils/types/response.type'
+import {
+    ApiResponseSuccess,
+    ChartResponse,
+} from '../../../utils/types/response.type'
 
 type T = { _idChildren: string }
-type ChartResponse = { qty: string | number; day: string }
 
 export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
-    console.log(selectedChild)
-
     const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
     // en el userMutation se pasa el tipo de respuesta
     const [mutation, { data: response }] = useMutation<ChartResponse[]>(

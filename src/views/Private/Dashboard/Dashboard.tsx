@@ -1,5 +1,5 @@
 import { Select } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import PieChart from '../../../components/Charts/PieChart'
 import AreaChart from '../../../components/Charts/AreaChart'
@@ -8,9 +8,11 @@ import BarChart from '../../../components/Charts/BarChart/BarChart'
 import CustomCarousel from '../../../components/Carousel/Carousel'
 import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
-import { funcShapeLiquid } from '../../../utils/functions/funcShapeLiquid.func'
-
 import './Dashboard.scss'
+import { useMutation } from '../../../hooks/api'
+import api from '../../../api'
+import { ApiResponseSuccess } from '../../../utils/types/response.type'
+import { Status } from '../../../utils/constants/status.enum'
 
 type Child = {
     _id: string
@@ -35,6 +37,8 @@ const child: Child[] = [
         avatar: 'https://anakoskaphotography.com/wp-content/uploads/2019/02/Girl-holding-a-yellow-flower-in-outdoor-session.jpg',
     },
 ]
+type T = { _idChildren: string }
+type ChartResponse = { name: string; pct: number }
 
 const Dashboard = () => {
     const [selectedChild, setSelectedChild] = useState<Child>(child[0])
@@ -43,6 +47,20 @@ const Dashboard = () => {
         setSelectedChild(child.find(item => item._id === values)!)
 
     const options = child?.map(item => ({ value: item._id, label: item.name }))
+    const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
+
+    const [mutation, { data: response }] = useMutation<ChartResponse[]>(
+        { functionFetch: api.charts.getProgressByPhase },
+        { onCompleted }
+    )
+    const data: ChartResponse[] =
+        response.status === Status.success
+            ? response.payload
+            : ([] as ChartResponse[])
+
+    useEffect(() => {
+        mutation<T>({ _idChildren: selectedChild._id })
+    }, [selectedChild._id])
 
     return (
         <div className='main-dashboard'>
@@ -56,66 +74,38 @@ const Dashboard = () => {
                     options={options}
                 />
             </div>
-            <div className='main-dashboard__skills'>
-                <AreaChart selectedChild={selectedChild._id} />
-            </div>
-            <div className='main-dashboard__progress'>
-                <CustomCarousel>
-                    <div>
-                        <ShapeLiquid
-                            percent={0.3}
-                            style={{ shape: funcShapeLiquid }}
-                            outLine={{
-                                border: 2,
-                                distance: 19,
-                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
-                            }}
-                            waveLength={128}
-                            theme={{ color: '#6744c6a6' }}
-                            str='subTitle.readingWriting'
-                        />
-                    </div>
-                    <div>
-                        <ShapeLiquid
-                            percent={0.5}
-                            style={{ shape: funcShapeLiquid }}
-                            outLine={{
-                                border: 2,
-                                distance: 19,
-                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
-                            }}
-                            waveLength={128}
-                            theme={{ color: '#6744c6a6' }}
-                            str='subTitle.perceptual'
-                        />
-                    </div>
-                    <div>
-                        <ShapeLiquid
-                            percent={0.4}
-                            style={{ shape: funcShapeLiquid }}
-                            outLine={{
-                                border: 2,
-                                distance: 19,
-                                style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
-                            }}
-                            waveLength={128}
-                            theme={{ color: '#6744c6a6' }}
-                            str='subTitle.discriminative'
-                        />
-                    </div>
-                </CustomCarousel>
-            </div>
             <div className='main-dashboard__div2'>
                 <CustomCard backGroundColor='#6744c60e' />
                 <CustomCard backGroundColor='#6744c63a' />
                 <CustomCard backGroundColor='#6744c665' />
                 <CustomCard backGroundColor='#6744c6a6' />
             </div>
+            <div className='main-dashboard__skills'>
+                <AreaChart selectedChild={selectedChild._id} />
+            </div>
+            <div className='main-dashboard__progress'>
+                <CustomCarousel>
+                    {data.map((item, index) => (
+                        <ShapeLiquid
+                            key={index}
+                            percent={item.pct}
+                            name={item.name}
+                        />
+                    ))}
+                </CustomCarousel>
+            </div>
+
             <div className='main-dashboard__div5'>
-                <PieChart />
+                <PieChart
+                    selectedChild={selectedChild._id}
+                    selectedPhase={selectedChild._id}
+                />
             </div>
             <div className='main-dashboard__div4'>
-                <BarChart />
+                <BarChart
+                    selectedChild={selectedChild._id}
+                    selectedPhase={selectedChild._id}
+                />
             </div>
         </div>
     )

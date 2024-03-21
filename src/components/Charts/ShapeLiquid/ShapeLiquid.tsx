@@ -9,23 +9,21 @@ import {
 } from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
+import { funcShapeLiquid } from '../../../utils/functions/charts.func'
 
-export const ShapeLiquid: FC<ShapeLiquidProps> = ({
-    str,
-    percent,
-    style,
-    outLine,
-    theme,
-    waveLength,
-}) => {
+export const ShapeLiquid: FC<ShapeLiquidProps> = ({ name, percent }) => {
     const { formatMessage } = useIntl()
 
     const config = {
         percent,
-        style,
-        outLine,
-        waveLength,
-        theme,
+        style: { shape: funcShapeLiquid },
+        outLine: {
+            border: 2,
+            distance: 19,
+            style: { stroke: '#6744c6a6', strokeOpacity: 0.65 },
+        },
+        waveLength: 128,
+        theme: { color: '#6744c6a6' },
     }
 
     return (
@@ -33,9 +31,7 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',
-                    objVars: {
-                        field: formatMessage({ id: str }),
-                    },
+                    objVars: { field: formatMessage({ id: name }) },
                 })}
             </p>
 

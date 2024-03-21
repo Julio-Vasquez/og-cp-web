@@ -5,17 +5,17 @@ const getActivityPerDay = (body: String) =>
     Mutation({ method: Methods.post, url: 'charts/activities-per-day', body })
 
 const getProgressByPhase = (body: String) =>
-    Mutation({ method: Methods.post, url: 'charts/progress-by-phase' })
+    Mutation({ method: Methods.post, url: 'charts/progress-by-phase', body })
 
-const getPhaseById = () =>
-    Mutation({ method: Methods.post, url: 'charts/phase-by-id' })
+const getPhaseById = (body: String) =>
+    Mutation({ method: Methods.post, url: 'charts/phase-by-id', body })
 
-const gteStepsByPhase = () =>
-    Mutation({ method: Methods.post, url: 'charts/steps-by-phase' })
+const getStepsByPhase = (body: String) =>
+    Mutation({ method: Methods.post, url: 'charts/steps-by-phase', body })
 
 export default {
     getActivityPerDay,
     getProgressByPhase,
     getPhaseById,
-    gteStepsByPhase,
+    getStepsByPhase,
 }
