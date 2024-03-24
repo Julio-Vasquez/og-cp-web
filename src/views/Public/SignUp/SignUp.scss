@@ -9,7 +9,7 @@
     height: 35px;
     margin: auto 20px;
 }
-/*  */
+
 .main-signUp {
     background: {
         image: url('./../../../assets/img/publicBackground.jpg');
@@ -100,6 +100,7 @@
         grid-row-start: 1;
         grid-row-end: 1;
     }
+
     &__btn-prev {
         display: flex;
         margin: auto;
@@ -111,6 +112,7 @@
         grid-row-start: 2;
         grid-row-end: 2;
     }
+
     &__btn-next {
         display: flex;
         margin: auto;
@@ -122,6 +124,7 @@
         grid-row-start: 2;
         grid-row-end: 2;
     }
+
     &__content {
         grid-row-start: 2;
         grid-row-end: 2;
@@ -129,6 +132,7 @@
         grid-column-end: 2;
         margin-top: 10px;
     }
+
     &__icon {
         font-size: 4vh;
         color: rgba(0, 0, 0, 0.849);
@@ -142,6 +146,7 @@
         &__title {
             font-size: 30px;
         }
+
         &__container {
             display: grid;
             grid-template-columns: 50% 50%;
@@ -168,6 +173,7 @@
         &__title {
             font-size: 30px;
         }
+
         &__container {
             display: grid;
             grid-template-columns: 50% 50%;
@@ -176,6 +182,7 @@
             height: auto;
             color: white;
         }
+
         &__form-data {
             width: 100%;
             height: 100%;
@@ -195,6 +202,7 @@
         &__img-container {
             display: none;
         }
+
         &__container {
             display: grid;
             grid-template-columns: 100%;
@@ -254,6 +262,7 @@
         &__title {
             font-size: 25px;
         }
+
         &__container {
             display: grid;
             grid-template-columns: 100%;
@@ -262,6 +271,7 @@
             height: auto;
             color: white;
         }
+
         &__img-container {
             display: none;
         }

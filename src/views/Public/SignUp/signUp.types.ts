@@ -33,4 +33,4 @@ export type response = {
     typeDocuments: SignUpTypeDocument[]
 }
 
-export type availableDataTypes = response
+export type AvailableDataTypes = response

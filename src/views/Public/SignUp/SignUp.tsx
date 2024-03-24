@@ -1,5 +1,5 @@
+import { Form, Steps } from 'antd'
 import { FC, useState } from 'react'
-import { Button, Form, Steps } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import {
     CheckOutlined,
@@ -10,8 +10,9 @@ import {
 
 import Star from '../../../components/Star/Star'
 import Account from '../../../components/Steps/Account/Account'
-import ContactData from '../../../components/Steps/ContactData/ContactData'
+import LoginImage from './../../../assets/img/publicBackground.jpg'
 import CustomButton from '../../../components/CustomButton/CustomButton'
+import ContactData from '../../../components/Steps/ContactData/ContactData'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
 import api from '../../../api'
@@ -20,7 +21,6 @@ import { useMutation, useQuery } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
 import { ROLES } from '../../../utils/constants/roles.enum'
 import { Status } from '../../../utils/constants/status.enum'
-import LoginImage from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
     ApiResponseError,
@@ -35,7 +35,7 @@ import {
     SignUpProps,
     SignUpRoles,
     SignUpTypeDocument,
-    availableDataTypes,
+    AvailableDataTypes,
 } from './signUp.types'
 
 import './SignUp.scss'
@@ -46,7 +46,7 @@ export const SignUp: FC<SignUpProps> = () => {
     const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
-        useQuery<availableDataTypes>({
+        useQuery<AvailableDataTypes>({
             functionFetch: api.defaultData.availableData,
         })
 
@@ -105,6 +105,7 @@ export const SignUp: FC<SignUpProps> = () => {
             mutation({ ...personaInformation, ...values, role })
         }
     }
+
     return (
         <div className='main-signUp'>
             <div className='main-signUp__container'>
