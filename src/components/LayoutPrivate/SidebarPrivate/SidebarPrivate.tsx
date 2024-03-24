@@ -2,11 +2,11 @@ import { Layout, Menu } from 'antd'
 import { FC, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-import Logo from '../../Logo'
 import ranking from '../../../assets/svg/ranking.svg'
 import profile from '../../../assets/svg/iconPerfil.svg'
 import dashboard from '../../../assets/svg/dashboard.svg'
 import statistics from '../../../assets/svg/statistics.svg'
+import { LogoDashboard } from '../../Avatars/LogoDashboard'
 
 import useIntl from '../../../hooks/useIntl'
 import {
@@ -81,7 +81,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
             theme='light'
             className='main-sidebar-private'
         >
-            <Logo collapsed={collapsed} />
+            <LogoDashboard collapsed={collapsed} />
 
             <h2 className='main-sidebar-private__subtitle'>
                 {!collapsed && formatMessage({ id: 'title.menu' })}

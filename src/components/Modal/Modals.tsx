@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Modal } from 'antd'
 
-import { CustomButton } from '../CustomButton/CustomButton'
+import { CustomButton } from '../Buttons/CustomButton/CustomButton'
 
 import useIntl from '../../hooks/useIntl'
 import { ModalsProps } from './modals.type'

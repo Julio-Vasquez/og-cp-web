@@ -8,10 +8,7 @@ i18n.use(initReactI18next).init({
     debug: true,
     fallbackLng: 'es',
     lng: 'es',
-    resources: {
-        en: { translation: EN },
-        es: { translation: ES },
-    },
+    resources: { en: { translation: EN }, es: { translation: ES } },
 })
 
 export default i18n

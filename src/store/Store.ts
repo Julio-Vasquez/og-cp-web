@@ -2,20 +2,17 @@ import { logger } from 'redux-logger'
 import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga'
 
-import appReducer from './Reducers'
 import rootSaga from './Sagas'
+import appReducer from './Reducers'
+import { IS_DEV } from '../utils/constants/environment.constant'
 
 const sagaMiddleware = createSagaMiddleware()
 
-let middleware: Array<SagaMiddleware | typeof logger> = [sagaMiddleware]
+const middleware: Array<SagaMiddleware | typeof logger> = IS_DEV
+    ? [sagaMiddleware, logger]
+    : [sagaMiddleware]
 
-if (true === true) middleware = [sagaMiddleware, logger]
-
-const Store = configureStore({
-    reducer: appReducer,
-    devTools: true,
-    middleware: middleware,
-})
+const Store = configureStore({ reducer: appReducer, devTools: true, middleware })
 
 export default Store
 

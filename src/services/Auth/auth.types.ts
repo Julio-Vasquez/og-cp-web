@@ -1,3 +1,5 @@
+import { ApiResponseSuccess } from '../../utils/types/response.type'
+
 type Actions = {
     create: boolean
     read: boolean
@@ -45,4 +47,15 @@ type State = {
     loading: boolean
 } & Payload
 
-export type { LoginAction, LoginSuccessType, LoginFailedType, State, LoginType }
+type LoginService = {
+    onCompleted: ({ data, variables }: ApiResponseSuccess) => void
+}
+
+export type {
+    LoginAction,
+    LoginSuccessType,
+    LoginFailedType,
+    State,
+    LoginType,
+    LoginService,
+}

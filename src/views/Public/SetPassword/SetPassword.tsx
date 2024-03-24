@@ -2,8 +2,8 @@ import { Form, Input } from 'antd'
 import { LockOutlined } from '@ant-design/icons'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import Star from '../../../components/Star/Star'
-import CustomButton from '../../../components/CustomButton'
+import Star from '../../../components/Avatars/Star/Star'
+import CustomButton from '../../../components/Buttons/CustomButton'
 import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 

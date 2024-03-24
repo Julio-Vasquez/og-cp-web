@@ -8,10 +8,10 @@ import {
     UserAddOutlined,
 } from '@ant-design/icons'
 
-import Star from '../../../components/Star/Star'
+import Star from '../../../components/Avatars/Star/Star'
 import Account from '../../../components/Steps/Account/Account'
 import LoginImage from './../../../assets/img/publicBackground.jpg'
-import CustomButton from '../../../components/CustomButton/CustomButton'
+import CustomButton from '../../../components/Buttons/CustomButton/CustomButton'
 import ContactData from '../../../components/Steps/ContactData/ContactData'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 

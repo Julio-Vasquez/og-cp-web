@@ -6,7 +6,7 @@ import enES from 'antd/lib/locale/es_ES'
 import { Radio, RadioChangeEvent } from 'antd'
 import { useTranslation } from 'react-i18next'
 
-import useIntl from '../../hooks/useIntl'
+import useIntl from '../../../hooks/useIntl'
 import { Props } from './languageSelector.type'
 
 dayjs.locale('en')

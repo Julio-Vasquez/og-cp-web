@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Color } from 'antd/es/color-picker'
 import { ColorPicker, Form } from 'antd'
+import { Color } from 'antd/es/color-picker'
 
 import { ThemeData, ThemeDataDefault } from './themeSelector.type'
 
@@ -14,10 +14,7 @@ export const ThemeSelector: FC<ThemeData> = ({ setData }) => {
             ? { colorPrimary: (allValues?.colorPrimary as Color)?.toHexString() }
             : {}
 
-        setData({
-            ...allValues,
-            ...colorObj,
-        })
+        setData({ ...allValues, ...colorObj })
     }
 
     return (

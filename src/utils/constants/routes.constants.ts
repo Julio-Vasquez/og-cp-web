@@ -1,17 +1,18 @@
 export const ROUTES_PUBLIC = {
+    activateAccount: '/activate-account/:token',
+    default: '/',
+    error404: '/404',
+    forgotPassword: '/forgot-password',
     login: '/login',
     register: '/register',
-    forgotPassword: '/forgot-password',
     setPassword: '/set-password/:token',
-    activateAccount: '/activate-account/:token',
-    error404: '/404',
-    default: '/',
 }
+
 export const ROUTES_PRIVATE = {
-    profile: '/profile',
-    error404: '/404',
-    default: '/',
     dashboard: '/dashboard',
-    statistics: '/statistics',
+    default: '/',
+    error404: '/404',
+    profile: '/profile',
     ranking: '/ranking',
+    statistics: '/statistics',
 }

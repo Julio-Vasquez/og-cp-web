@@ -1,6 +1,6 @@
 import { query } from '../../api/core/api.types'
-import { URL_API } from '../constants/environment.constant'
 import { HttpStatus } from '../types/response.type'
+import { URL_API } from '../constants/environment.constant'
 
 export const getHeader = (token: string | null) => {
     const exists = token !== null && { Authorization: `Bearer ${token}` }

@@ -4,7 +4,7 @@ import type { UploadChangeParam } from 'antd/es/upload'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
 
-import { getBase64, beforeUpload } from '../../hooks/useUpload/useUpload'
+import { getBase64, beforeUpload } from '../../utils/upload/upload'
 
 const UploadPhoto = () => {
     const [loading, setLoading] = useState(false)
