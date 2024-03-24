@@ -10,18 +10,15 @@ import './BarChart.scss'
 
 export const BarChart: FC<BarChartProps> = ({ selectedChild, selectedPhase }) => {
     const onCompleted = () => {}
-    const [mutation, { data: response }] = useMutation<BarChartResponse[]>(
+    const [mutation, { data: response }] = useMutation<BarChartResponse>(
         { functionFetch: api.charts.getStepsByPhase },
         { onCompleted }
     )
 
-    const data: BarChartResponse[] =
+    const data: BarChartResponse =
         response.status === Status.success
             ? response.payload
-            : ([] as BarChartResponse[])
-
-    const x = Object.values(data)
-    const y = x
+            : ({} as BarChartResponse)
 
     useEffect(() => {
         mutation<BarChartMutation>({
@@ -31,7 +28,7 @@ export const BarChart: FC<BarChartProps> = ({ selectedChild, selectedPhase }) =>
     }, [selectedChild])
 
     const config = {
-        data: y[1],
+        data: data.progress ?? [],
         xField: 'activity',
         yField: 'pctCompleted',
         style: {
@@ -55,7 +52,7 @@ export const BarChart: FC<BarChartProps> = ({ selectedChild, selectedPhase }) =>
         },
         axis: {
             y: {
-                labelFormatter: '.%',
+                // labelFormatter: '.%',
             },
         },
     }

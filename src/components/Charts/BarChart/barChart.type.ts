@@ -6,13 +6,17 @@ export const BarChartPropTypes = {
 }
 
 export type BarChartMutation = { _idChildren: string; _idPhase: string }
+
+type Progress = {
+    activity: string
+    pctCompleted: number
+}
+
 export type BarChartResponse = {
     phase: string
-    progress: {
-        activity: string
-        pctCompleted: number
-    }
+    progress: Progress[]
 }
+
 export const BarChartDefaultProps = {}
 
 export type BarChartProps = propTypes.InferProps<typeof BarChartPropTypes>

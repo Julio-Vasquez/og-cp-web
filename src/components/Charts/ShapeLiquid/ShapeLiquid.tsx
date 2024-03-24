@@ -31,7 +31,7 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({ name, percent }) => {
             <p>
                 {formatMessage({
                     id: 'subTitle.learning',
-                    objVars: { field: formatMessage({ id: name }) },
+                    objVars: { field: name },
                 })}
             </p>
 

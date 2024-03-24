@@ -1,7 +1,6 @@
 import propTypes from 'prop-types'
 
 export const ShapeLiquidPropTypes = {
-    key: propTypes.number.isRequired,
     name: propTypes.string.isRequired,
     percent: propTypes.number.isRequired,
 }

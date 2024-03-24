@@ -33,18 +33,17 @@ export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
     }, [selectedChild])
 
     const config = {
-        data,
+        data: data ?? [],
         xField: 'day',
         yField: 'qty',
         style: {
             fill: 'linear-gradient(-90deg, white 0%, #6744c6 100%)',
         },
         axis: {
-            y: { labelFormatter: '~s' },
+            // y: { labelFormatter: '~s' },
             x: {
-                labelFormatter: (d: any) => {
-                    return formatDate({ date: new Date(d), location: 'es' })
-                },
+                labelFormatter: (d: string) =>
+                    formatDate({ date: new Date(d), location: 'es-ES' }),
             },
         },
         line: {
