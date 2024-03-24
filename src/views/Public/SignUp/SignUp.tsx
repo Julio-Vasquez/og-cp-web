@@ -19,7 +19,6 @@ import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation, useQuery } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
-import { ROLES } from '../../../utils/constants/roles.enum'
 import { Status } from '../../../utils/constants/status.enum'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
@@ -33,7 +32,6 @@ import {
 import {
     SignUpDefaultProps,
     SignUpProps,
-    SignUpRoles,
     SignUpTypeDocument,
     AvailableDataTypes,
 } from './signUp.types'
@@ -96,14 +94,7 @@ export const SignUp: FC<SignUpProps> = () => {
         if (!isLastStep) {
             onNext()
             setPersonaInformation({ ...personaInformation, ...values })
-        } else {
-            const admin = checkStatus('roles') as SignUpRoles[]
-            const role =
-                admin.find((item: SignUpRoles) => item.role === ROLES.Admin)?.role ??
-                ROLES.Admin
-
-            mutation({ ...personaInformation, ...values, role })
-        }
+        } else mutation({ ...personaInformation, ...values })
     }
 
     return (

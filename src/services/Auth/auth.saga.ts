@@ -13,7 +13,7 @@ import {
 
 function* fetchLogin({ payload }: LoginAction) {
     try {
-        const res: ResponseFetch<State> = yield api.auth.login(payload)
+        const res: ResponseFetch<State> = yield api.auth.login(payload, 'Desktop')
         console.log(res)
         if (res && res.status === Status.success && res?.payload) {
             yield put(
