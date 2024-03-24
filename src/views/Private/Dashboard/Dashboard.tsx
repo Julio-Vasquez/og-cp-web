@@ -4,62 +4,41 @@ import { useEffect, useState } from 'react'
 import PieChart from '../../../components/Charts/PieChart'
 import AreaChart from '../../../components/Charts/AreaChart'
 import CustomCard from '../../../components/Cards/CustomCard'
-import BarChart from '../../../components/Charts/BarChart/BarChart'
 import CustomCarousel from '../../../components/Carousel/Carousel'
+import BarChart from '../../../components/Charts/BarChart/BarChart'
 import ShapeLiquid from '../../../components/Charts/ShapeLiquid/ShapeLiquid'
 
-import './Dashboard.scss'
-import { useMutation } from '../../../hooks/api'
 import api from '../../../api'
-import { ApiResponseSuccess } from '../../../utils/types/response.type'
+import { CHILDREN, Children } from './mock'
+import { useMutation } from '../../../hooks/api'
 import { Status } from '../../../utils/constants/status.enum'
+import { MutationProps, MutationResponse } from './dashboard.type'
+import { ApiResponseSuccess } from '../../../utils/types/response.type'
 
-type Child = {
-    _id: string
-    name: string
-    avatar: string
-}
-
-const child: Child[] = [
-    {
-        _id: 'b9435896-75a1-439e-ba44-d8babb0997b8',
-        name: 'Juan',
-        avatar: 'https://images.pexels.com/photos/35537/child-children-girl-happy.jpg',
-    },
-    {
-        _id: '47e56d0c-403f-4593-a98e-fe6ced28ef0e',
-        name: 'Miguel',
-        avatar: 'https://static.photocrowd.com/article-images/2015-12/article107/upl/H0/107-12-tips-photographing-children.RyAPvASBm0uWwX4OzlP-v2u12.jpeg',
-    },
-    {
-        _id: '7775847b-b199-4704-a203-8047666e7ec9',
-        name: 'Ana',
-        avatar: 'https://anakoskaphotography.com/wp-content/uploads/2019/02/Girl-holding-a-yellow-flower-in-outdoor-session.jpg',
-    },
-]
-type T = { _idChildren: string }
-type ChartResponse = { name: string; pct: number }
+import './Dashboard.scss'
 
 const Dashboard = () => {
-    const [selectedChild, setSelectedChild] = useState<Child>(child[0])
+    const [selectedChild, setSelectedChild] = useState<Children>(CHILDREN[0])
 
     const handleOnChangeChild = (values: string) =>
-        setSelectedChild(child.find(item => item._id === values)!)
+        setSelectedChild(CHILDREN.find(item => item._id === values)!)
 
-    const options = child?.map(item => ({ value: item._id, label: item.name }))
+    const options = CHILDREN.map(item => ({ value: item._id, label: item.name }))
+
     const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
 
-    const [mutation, { data: response }] = useMutation<ChartResponse[]>(
+    const [mutation, { data: response }] = useMutation<MutationResponse[]>(
         { functionFetch: api.charts.getProgressByPhase },
         { onCompleted }
     )
-    const data: ChartResponse[] =
+
+    const data: MutationResponse[] =
         response.status === Status.success
             ? response.payload
-            : ([] as ChartResponse[])
+            : ([] as MutationResponse[])
 
     useEffect(() => {
-        mutation<T>({ _idChildren: selectedChild._id })
+        mutation<MutationProps>({ _idChildren: selectedChild._id })
     }, [selectedChild._id])
 
     return (
@@ -75,10 +54,10 @@ const Dashboard = () => {
                 />
             </div>
             <div className='main-dashboard__div2'>
-                <CustomCard backGroundColor='#6744c60e' />
-                <CustomCard backGroundColor='#6744c63a' />
-                <CustomCard backGroundColor='#6744c665' />
-                <CustomCard backGroundColor='#6744c6a6' />
+                <CustomCard backGroundColor='#6744c60e' text='Custom Card 1' />
+                <CustomCard backGroundColor='#6744c63a' text='Custom Card 2' />
+                <CustomCard backGroundColor='#6744c665' text='Custom Card 3' />
+                <CustomCard backGroundColor='#6744c6a6' text='Custom Card 4' />
             </div>
             <div className='main-dashboard__skills'>
                 <AreaChart selectedChild={selectedChild._id} />
@@ -94,7 +73,6 @@ const Dashboard = () => {
                     ))}
                 </CustomCarousel>
             </div>
-
             <div className='main-dashboard__div5'>
                 <PieChart
                     selectedChild={selectedChild._id}

@@ -1,5 +1,3 @@
-const Ranking = () => {
-    return <div>Ranking</div>
-}
+const Ranking = () => <div>Ranking</div>
 
 export default Ranking
