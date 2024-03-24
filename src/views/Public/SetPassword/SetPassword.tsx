@@ -1,14 +1,15 @@
-import { Button, Form, Input } from 'antd'
+import { Form, Input } from 'antd'
 import { LockOutlined } from '@ant-design/icons'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Star from '../../../components/Star/Star'
+import CustomButton from '../../../components/CustomButton'
 import loginImg from '../../../assets/img/publicBackground.jpg'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
-import { FormValues } from './setPassword.type'
+import { FormValues, SetPasswordMutation } from './setPassword.type'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
@@ -28,7 +29,6 @@ import {
 } from '../../../utils/functions/form.functions'
 
 import './SetPassword.scss'
-import CustomButton from '../../../components/CustomButton'
 
 const { Item } = Form
 const { Password } = Input
@@ -51,10 +51,10 @@ export const SetPassword = () => {
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = ({ newPassword }: FormValues) =>
-        mutation({ newPassword, token })
+    if (!validateToken || !token) return <ErrorToken />
 
-    if (!validateToken) return <ErrorToken />
+    const onFinish = ({ newPassword }: FormValues) =>
+        mutation<SetPasswordMutation>({ newPassword, token })
 
     return (
         <div className='set-password'>

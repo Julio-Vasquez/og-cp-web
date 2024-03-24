@@ -29,9 +29,7 @@ export const Login = () => {
     const { formatMessage } = useIntl()
     const { loading } = useData({ reducer: AUTH })
 
-    const onFinish = (values: LoginType) => {
-        dispatch(login(values))
-    }
+    const onFinish = (values: LoginType) => dispatch(login(values))
 
     return (
         <div className='login'>
@@ -99,7 +97,6 @@ export const Login = () => {
                         loading={loading}
                         width='70%'
                     />
-
                     <Link className='login__link ' to={RP.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>

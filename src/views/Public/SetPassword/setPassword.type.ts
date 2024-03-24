@@ -1,4 +1,4 @@
-export type setPassword = {
+export type SetPasswordMutation = {
     newPassword: string
     token: string
 }

@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd'
+import { Form, Input } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 
@@ -9,7 +9,7 @@ import CustomButton from '../../../components/CustomButton/CustomButton'
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
-import { forgotPassword } from './forgotPassword.type'
+import { ForgotPassword } from './forgotPassword.type'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
     ApiResponseError,
@@ -45,8 +45,8 @@ const ForgotPassword = () => {
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: forgotPassword) =>
-        mutation<forgotPassword>({ ...values })
+    const onFinish = (values: ForgotPassword) =>
+        mutation<ForgotPassword>({ ...values })
 
     return (
         <div className='forgot-password'>

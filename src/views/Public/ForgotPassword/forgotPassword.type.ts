@@ -1,3 +1,3 @@
-export type forgotPassword = {
+export type ForgotPassword = {
     username: string
 }
