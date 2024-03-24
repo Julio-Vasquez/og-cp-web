@@ -43,7 +43,7 @@ const Dashboard = () => {
 
     return (
         <div className='main-dashboard'>
-            <div className='main-dashboard__div0'>
+            <div className='main-dashboard__children'>
                 <img src={selectedChild.avatar} alt='user-image' />
                 <Select
                     defaultValue={selectedChild.name}
@@ -53,7 +53,7 @@ const Dashboard = () => {
                     options={options}
                 />
             </div>
-            <div className='main-dashboard__div2'>
+            <div className='main-dashboard__custom-card'>
                 <CustomCard backGroundColor='#6744c60e' text='Custom Card 1' />
                 <CustomCard backGroundColor='#6744c63a' text='Custom Card 2' />
                 <CustomCard backGroundColor='#6744c665' text='Custom Card 3' />
@@ -73,13 +73,13 @@ const Dashboard = () => {
                     ))}
                 </CustomCarousel>
             </div>
-            <div className='main-dashboard__div5'>
+            <div className='main-dashboard__pie-chart'>
                 <PieChart
                     selectedChild={selectedChild._id}
                     selectedPhase={selectedChild._id}
                 />
             </div>
-            <div className='main-dashboard__div4'>
+            <div className='main-dashboard__bar-chart'>
                 <BarChart
                     selectedChild={selectedChild._id}
                     selectedPhase={selectedChild._id}

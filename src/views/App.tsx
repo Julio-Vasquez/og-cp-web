@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { I18nextProvider } from 'react-i18next'
 
 import { PrivateRoutes, PublicRoutes } from '../routes'
@@ -8,7 +7,7 @@ import useData from '../hooks/useData'
 import { AUTH } from '../utils/constants/redux.constants'
 import { ProviderAntd } from '../utils/config-provider/Provider'
 
-const App: FC = () => {
+const App = () => {
     const { authentication } = useData({ reducer: AUTH })
     return (
         <I18nextProvider i18n={i18n}>
