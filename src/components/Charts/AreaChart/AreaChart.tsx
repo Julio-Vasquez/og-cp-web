@@ -1,40 +1,35 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import { Area } from '@ant-design/charts'
 
+import api from '../../../api'
+import { useMutation } from '../../../hooks/api'
+import { formatDate } from '../../../utils/types/date.util'
+import { Status } from '../../../utils/constants/status.enum'
+import { ApiResponseSuccess } from '../../../utils/types/response.type'
 import {
     AreaChartDefaultProps,
+    AreaChartMutation,
     AreaChartPropTypes,
     AreaChartProps,
+    AreaChartResponse,
 } from './areaChart.type'
-import { formatDate } from '../../../utils/types/date.util'
-
 import './AreaChart.scss'
-import { useMutation } from '../../../hooks/api'
-import api from '../../../api'
-import { Status } from '../../../utils/constants/status.enum'
-import {
-    ApiResponseSuccess,
-    ChartResponse,
-} from '../../../utils/types/response.type'
-
-type T = { _idChildren: string }
 
 export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
     const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
-    // en el userMutation se pasa el tipo de respuesta
-    const [mutation, { data: response }] = useMutation<ChartResponse[]>(
+
+    const [mutation, { data: response }] = useMutation<AreaChartResponse[]>(
         { functionFetch: api.charts.getActivityPerDay },
         { onCompleted }
     )
 
-    const data: ChartResponse[] =
+    const data: AreaChartResponse[] =
         response.status === Status.success
             ? response.payload
-            : ([] as ChartResponse[])
+            : ([] as AreaChartResponse[])
 
     useEffect(() => {
-        // se pasan las propiedades requeridas  para la mutación
-        mutation<T>({ _idChildren: selectedChild })
+        mutation<AreaChartMutation>({ _idChildren: selectedChild })
     }, [selectedChild])
 
     const config = {

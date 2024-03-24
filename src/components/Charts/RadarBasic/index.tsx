@@ -1,1 +1,1 @@
-export { Chart, default } from './RadarBasic'
+export { RadarBasic, default } from './RadarBasic'

@@ -19,6 +19,11 @@ const { Item } = Form
  */
 
 const CustomInput: FC<CustomInputProps> = ({ data, name, customMap, ...props }) => {
+    const options = data.map((item: any) => ({
+        value: item[customMap.value],
+        label: item[customMap.label],
+    }))
+
     const CustomSelect = () => {
         return (
             <Item
@@ -29,10 +34,7 @@ const CustomInput: FC<CustomInputProps> = ({ data, name, customMap, ...props }) 
                 <Select
                     className='custom-input__prefix'
                     placeholder='Select'
-                    options={data.map((item: any) => ({
-                        value: item[customMap.value],
-                        label: item[customMap.label],
-                    }))}
+                    options={options}
                 />
             </Item>
         )

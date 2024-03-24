@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { LogoProps, LogoPropsDefault, LogoPropsTypes } from './logo.type'
 
-import image from '../../assets/img/image.png'
+import image from '../../../assets/img/image.png'
 
 import './Logo.scss'
 

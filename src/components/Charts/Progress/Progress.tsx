@@ -1,4 +1,5 @@
 import { Tiny } from '@ant-design/plots'
+
 export const Progress = () => {
     const progress = 0.7
 

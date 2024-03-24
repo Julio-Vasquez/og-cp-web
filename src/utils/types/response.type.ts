@@ -78,14 +78,3 @@ export type ApiResponseSuccess<T = unknown, V = unknown> = {
     data: ApiResponse<T>
     variables: V
 }
-
-export type ChartResponse =
-    | { qty: string | number; day: string }
-    | { name: string; pct: number }
-    | {
-          phase: string
-          progress: {
-              activity: string
-              pctCompleted: number
-          }
-      }

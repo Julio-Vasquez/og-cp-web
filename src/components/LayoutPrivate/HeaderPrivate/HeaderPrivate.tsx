@@ -37,11 +37,7 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             />
             <h1 className='main-header-private__title'>
-                {
-                    <h2 className='main-header__title'>
-                        {formatMessage({ id: 'title.innocentlyLearning' })}
-                    </h2>
-                }
+                {formatMessage({ id: 'title.innocentlyLearning' })}
             </h1>
             <ItemsHeader />
         </Header>

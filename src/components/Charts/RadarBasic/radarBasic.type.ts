@@ -5,9 +5,8 @@ export const RadarBasicPropTypes = {
     xField: propTypes.string.isRequired,
     yField: propTypes.string.isRequired,
     area: propTypes.shape({
-        style: propTypes.shape({
-            fillOpacity: propTypes.number.isRequired,
-        }).isRequired,
+        style: propTypes.shape({ fillOpacity: propTypes.number.isRequired })
+            .isRequired,
     }).isRequired,
     scale: propTypes.shape({
         x: propTypes.shape({
@@ -32,10 +31,7 @@ export const RadarBasicPropTypes = {
             zIndex: propTypes.number,
         }).isRequired,
     }),
-
-    style: propTypes.shape({
-        lineWidth: propTypes.number,
-    }),
+    style: propTypes.shape({ lineWidth: propTypes.number }),
     colorField: propTypes.string,
     shapeField: propTypes.string,
 }

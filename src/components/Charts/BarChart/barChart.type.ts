@@ -5,8 +5,14 @@ export const BarChartPropTypes = {
     selectedPhase: propTypes.string.isRequired,
 }
 
-export type ApiSend = { _idChildren: string; _idPhase: string }
-
+export type BarChartMutation = { _idChildren: string; _idPhase: string }
+export type BarChartResponse = {
+    phase: string
+    progress: {
+        activity: string
+        pctCompleted: number
+    }
+}
 export const BarChartDefaultProps = {}
 
 export type BarChartProps = propTypes.InferProps<typeof BarChartPropTypes>

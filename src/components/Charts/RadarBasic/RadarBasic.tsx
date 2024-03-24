@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Radar } from '@ant-design/plots'
 
+import useIntl from '../../../hooks/useIntl'
 import {
     RadarBasicDefaultProps,
     RadarBasicProps,
@@ -8,7 +9,6 @@ import {
 } from './radarBasic.type'
 
 import './RadarBasic.scss'
-import useIntl from '../../../hooks/useIntl'
 
 export const RadarBasic: FC<RadarBasicProps> = ({
     area,
@@ -26,8 +26,8 @@ export const RadarBasic: FC<RadarBasicProps> = ({
         data: data.map(d => ({ ...d, start: Math.sqrt(d.percentage) })),
         xField,
         yField,
-        colorField: colorField!,
-        shapeField: shapeField!,
+        colorField,
+        shapeField,
         area: { style: { fillOpacity: area.style.fillOpacity } },
         scaleX: {
             x: { padding: scale.x.padding, align: scale.x.align },

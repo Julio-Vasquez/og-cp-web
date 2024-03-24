@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Liquid } from '@ant-design/charts'
-import useIntl from '../../../hooks/useIntl'
 
+import useIntl from '../../../hooks/useIntl'
+import { funcShapeLiquid } from '../../../utils/functions/charts.func'
 import {
     ShapeLiquidDefaultProps,
     ShapeLiquidPropTypes,
@@ -9,7 +10,6 @@ import {
 } from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
-import { funcShapeLiquid } from '../../../utils/functions/charts.func'
 
 export const ShapeLiquid: FC<ShapeLiquidProps> = ({ name, percent }) => {
     const { formatMessage } = useIntl()

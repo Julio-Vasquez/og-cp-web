@@ -1,81 +1,81 @@
-import { Pie } from '@ant-design/plots'
-import './PieChart.scss'
-import {
-    ApiResponseSuccess,
-    ChartResponse,
-} from '../../../utils/types/response.type'
-import api from '../../../api'
-import { Status } from '../../../utils/constants/status.enum'
 import { FC, useEffect } from 'react'
+import { Pie } from '@ant-design/plots'
+
+import api from '../../../api'
 import { useMutation } from '../../../hooks/api'
+import { Status } from '../../../utils/constants/status.enum'
+import { ApiResponseSuccess } from '../../../utils/types/response.type'
 import {
     PieChartDefaultProps,
+    PieChartMutation,
     PieChartPropTypes,
     PieChartProps,
-} from './pieChart-type'
+    PieChartResponse,
+} from './pieChart.type'
 
-type T = { _idChildren: string; _idPhase: string }
+import './PieChart.scss'
+
+const basicConfig = {
+    angleField: 'pct',
+    colorField: 'name',
+    paddingRight: 0,
+    innerRadius: 0.8,
+    style: { stroke: '#fff', inset: 1, radius: 10 },
+    scale: {
+        color: { palette: 'spectral', offset: (t: any) => t * 0.8 + 0.6 },
+    },
+    legend: {
+        color: { title: true, position: 'left', rowPadding: 5 },
+    },
+    annotations: [
+        {
+            type: 'text',
+            style: {
+                text: '13',
+                x: '50%',
+                y: '45%',
+                textAlign: 'center',
+                fontSize: 50,
+                fontStyle: 'bold',
+                fontFamily: 'exo',
+            },
+        },
+        {
+            type: 'text',
+            style: {
+                text: 'de 15',
+                x: '50%',
+                y: '58%',
+                textAlign: 'center',
+                fontSize: 16,
+                fontStyle: 'normal',
+            },
+        },
+    ],
+}
 
 export const PieChart: FC<PieChartProps> = ({ selectedChild, selectedPhase }) => {
     const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
-    // en el userMutation se pasa el tipo de respuesta
-    const [mutation, { data: response }] = useMutation<ChartResponse[]>(
+
+    const [mutation, { data: response }] = useMutation<PieChartResponse[]>(
         { functionFetch: api.charts.getPhaseById },
         { onCompleted }
     )
 
-    const data: ChartResponse[] =
+    const data: PieChartResponse[] =
         response.status === Status.success
             ? response.payload
-            : ([] as ChartResponse[])
+            : ([] as PieChartResponse[])
 
     useEffect(() => {
-        mutation<T>({ _idChildren: selectedChild, _idPhase: selectedPhase })
+        mutation<PieChartMutation>({
+            _idChildren: selectedChild,
+            _idPhase: selectedPhase,
+        })
     }, [selectedChild])
 
-    const config = {
-        data,
-        angleField: 'pct',
-        colorField: 'name',
-        paddingRight: 0,
-        innerRadius: 0.8,
-        style: {
-            stroke: '#fff',
-            inset: 1,
-            radius: 10,
-        },
-        scale: {
-            color: { palette: 'spectral', offset: (t: any) => t * 0.8 + 0.6 },
-        },
-        legend: {
-            color: { title: true, position: 'left', rowPadding: 5 },
-        },
-        annotations: [
-            {
-                type: 'text',
-                style: {
-                    text: '13',
-                    x: '50%',
-                    y: '45%',
-                    textAlign: 'center',
-                    fontSize: 50,
-                    fontStyle: 'bold',
-                    fontFamily: 'exo',
-                },
-            },
-            {
-                type: 'text',
-                style: {
-                    text: 'de 15',
-                    x: '50%',
-                    y: '58%',
-                    textAlign: 'center',
-                    fontSize: 16,
-                    fontStyle: 'normal',
-                },
-            },
-        ],
-    }
+    const config = { data, ...basicConfig }
+
     return (
         <div className='main-pie-chart'>
             <Pie {...config} />

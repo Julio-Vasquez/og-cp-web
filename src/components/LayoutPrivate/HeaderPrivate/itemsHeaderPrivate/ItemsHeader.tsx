@@ -25,7 +25,7 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const dispatch = useDispatch()
 
     const { data: userMe, loading } = useQuery<DataUser>({
-        functionFetch: api.defaultData.userMe,
+        functionFetch: api.user.userMe,
     })
 
     const payload = userMe.status === Status.success ? userMe.payload : undefined
