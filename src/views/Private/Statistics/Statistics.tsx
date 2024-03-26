@@ -1,22 +1,15 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Select, Table, Tag } from 'antd'
+import { Select, Table } from 'antd'
 
 import { CHILD, DATA } from './mock'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Progress } from '../../../components/Charts/Progress/Progress'
 import { DataType, TablePaginationPosition, Columns } from './statistic.type'
+import CustomAvatar from '../../../components/CustomAvatar'
 
 const renderRating = (tags: string[]) =>
-    tags.map(tag => {
-        const color =
-            tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'
-        return (
-            <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-            </Tag>
-        )
-    })
+    tags.map(tag => <CustomAvatar percent={71} key={tag} />)
 
 const columns: Columns<DataType> = [
     {
@@ -26,7 +19,7 @@ const columns: Columns<DataType> = [
         render: text => <Link to='#'>{text}</Link>,
     },
     { title: 'Descripción', dataIndex: 'address', key: 'address' },
-    { title: 'progreso', key: 'action', render: (_, record) => <Progress /> },
+    { title: 'progreso', key: 'action', render: _ => <Progress /> },
     { title: 'Calificación', key: 'tags', dataIndex: 'tags', render: renderRating },
 ]
 

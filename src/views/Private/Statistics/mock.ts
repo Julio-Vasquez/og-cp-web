@@ -7,7 +7,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['nice', 'developer'],
+        tags: ['nice'],
     },
     {
         key: '2',
