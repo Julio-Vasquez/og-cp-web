@@ -23,7 +23,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['cool', 'teacher'],
+        tags: ['cool'],
     },
     {
         key: '14',
@@ -31,7 +31,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['nice', 'developer'],
+        tags: ['nice'],
     },
     {
         key: '25',
@@ -47,7 +47,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['cool', 'teacher'],
+        tags: ['cool'],
     },
     {
         key: '1',
@@ -55,7 +55,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['nice', 'developer'],
+        tags: ['nice'],
     },
     {
         key: '2',
@@ -71,7 +71,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['cool', 'teacher'],
+        tags: ['cool'],
     },
     {
         key: '14',
@@ -79,7 +79,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['nice', 'developer'],
+        tags: ['nice'],
     },
     {
         key: '25',
@@ -95,7 +95,7 @@ export const DATA: DataType[] = [
         percentage: 32,
         address:
             'Lorem ipsum dolor sit amet consectetur adipiscing, elit duis consequat ridiculus mus, rhoncus nisl taciti litora at. ',
-        tags: ['cool', 'teacher'],
+        tags: ['cool'],
     },
 ]
 

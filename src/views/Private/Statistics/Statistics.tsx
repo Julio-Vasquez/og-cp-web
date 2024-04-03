@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Select, Table } from 'antd'
 
+import CustomAvatar from '../../../components/CustomAvatar'
+
 import { CHILD, DATA } from './mock'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Progress } from '../../../components/Charts/Progress/Progress'
 import { DataType, TablePaginationPosition, Columns } from './statistic.type'
-import CustomAvatar from '../../../components/CustomAvatar'
 
 const renderRating = (tags: string[]) =>
     tags.map(tag => <CustomAvatar percent={71} key={tag} />)
