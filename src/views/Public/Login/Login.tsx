@@ -29,7 +29,8 @@ export const Login = () => {
     const { formatMessage } = useIntl()
     const { loading } = useData({ reducer: AUTH })
 
-    const onFinish = (values: LoginType) => dispatch(login(values))
+    const onFinish = (values: Omit<LoginType, 'device'>) =>
+        dispatch(login({ ...values, device: 'Desktop' }))
 
     return (
         <div className='login'>

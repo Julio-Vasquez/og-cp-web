@@ -5,7 +5,7 @@ export const Texts = {
     fullName: 'Nombre completo',
     english: 'Inglés',
     spanish: 'Español',
-    username: 'Usuario',
+    username: 'Nombre de usuario',
     password: 'Contraseña',
     firstName: 'Primer nombre',
     mail: 'Correo electrónico',

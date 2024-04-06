@@ -11,5 +11,6 @@ export const Title = {
     statistics: 'Estadísticas',
     forgotPassword: '¿Olvido su contraseña?',
     innocentlyLearning: 'Aprendiendo inocentemente',
-    verified: 'Has verificado exitosamente la cuenta.',
+    verified: 'Has verificado exitosamente la cuenta',
+    editObj: 'Editar {{obj}}',
 }

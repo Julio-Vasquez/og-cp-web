@@ -12,4 +12,5 @@ export const Title = {
     forgotPassword: 'Forgot password',
     innocentlyLearning: 'Innocently Learning',
     verified: 'Your have successfully verified the account',
+    editObj: 'Edit {{obj}}',
 }

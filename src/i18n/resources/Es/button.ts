@@ -8,7 +8,6 @@ export const Button = {
     password: 'Contraseña',
     login: 'Iniciar sesión',
     email: 'Correo electrónico',
-    username: 'Nombre de usuario',
     activeAccount: 'Activar cuenta',
     insertObj: 'Insertar un {{obj}}',
     confirmPassword: 'Confirmar contraseña',
@@ -16,4 +15,7 @@ export const Button = {
     signUpToContinue: 'Registrarse para continuar',
     change: 'Cambiar',
     setPassword: '{{user}} {{mail}}',
+    save: 'Guardar',
+    saveObj: 'Guardar {{obj}}',
+    changes: 'Cambios',
 }
