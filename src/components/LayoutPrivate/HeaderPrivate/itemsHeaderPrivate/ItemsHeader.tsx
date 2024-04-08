@@ -20,6 +20,7 @@ import {
 } from './itemsHeader.type'
 
 import './ItemsHeader.scss'
+import { CustomDropDown } from '../../../CustomDropDown/CustomDropDown'
 
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {
     const dispatch = useDispatch()
@@ -30,12 +31,9 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
 
     const payload = userMe.status === Status.success ? userMe.payload : undefined
 
-    const handleLogOut = () => dispatch(logout())
-
     const data: Data[] = [
         { src: iconNotification, count: 5, color: '#6744c6' },
         { src: iconLanguage },
-        { src: iconLogOut, onClick: handleLogOut },
     ]
 
     return (
@@ -53,11 +51,7 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
                     ))}
                 </Space>
                 <Space className='main-items__space'>
-                    <Avatar src={iconUser} alt='icon-user' size='large' />
-                    <div className='main-items__name-roles'>
-                        <h4>{payload?.username ?? 'Username'}</h4>
-                        <p>{payload?.role}</p>
-                    </div>
+                    <CustomDropDown iconUser={iconUser} payload={payload} />
                 </Space>
             </div>
         </Spin>

@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import { Form, Spin } from 'antd'
 
+import CustomButton from '../../../components/Buttons/CustomButton'
+import PersonalInformation from '../../../components/Steps/PersonalInformation'
 import { CardPresentation } from '../../../components/CardPresentation/CardPresentation'
 
 import api from '../../../api'
@@ -9,12 +12,9 @@ import { Status } from '../../../utils/constants/status.enum'
 import { DataUser } from '../../../utils/types/userData.type'
 
 import './Profile.scss'
-import PersonalInformation from '../../../components/Steps/PersonalInformation'
-import CustomButton from '../../../components/Buttons/CustomButton'
-import { useState } from 'react'
 
 export const Profile = () => {
-    const [active, setActive] = useState<boolean>(false)
+    const [active, setActive] = useState<boolean>(true)
     const { data: userMe, loading } = useQuery<DataUser>({
         functionFetch: api.user.userMe,
     })
