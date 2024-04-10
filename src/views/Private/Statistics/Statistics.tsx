@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Select, Table } from 'antd'
 
-import CustomAvatar from '../../../components/CustomAvatar'
+import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
 import { CHILD, DATA } from './mock'
 import iconUser from '../../../assets/svg/iconUser.svg'

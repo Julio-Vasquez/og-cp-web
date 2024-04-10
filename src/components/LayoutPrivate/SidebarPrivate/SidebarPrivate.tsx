@@ -2,6 +2,7 @@ import { Layout, Menu } from 'antd'
 import { FC, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+import users from '../../../assets/svg/users.svg'
 import ranking from '../../../assets/svg/ranking.svg'
 import profile from '../../../assets/svg/iconPerfil.svg'
 import dashboard from '../../../assets/svg/dashboard.svg'
@@ -60,6 +61,13 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
                 </Link>
             ),
             icon: getIcon(ranking),
+        },
+        {
+            key: '5',
+            label: (
+                <Link to={RP.users}>{formatMessage({ id: 'title.users' })} </Link>
+            ),
+            icon: getIcon(users),
         },
     ]
 

@@ -12,4 +12,5 @@ export const Title = {
     forgotPassword: '¿Olvido su contraseña?',
     innocentlyLearning: 'Aprendiendo inocentemente',
     verified: 'Has verificado exitosamente la cuenta.',
+    users: 'Usuarios',
 }
