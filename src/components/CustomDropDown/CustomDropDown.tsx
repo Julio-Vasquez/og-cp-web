@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Avatar, Button, Dropdown, MenuProps } from 'antd'
+import { Avatar, Dropdown, MenuProps } from 'antd'
 
 import { useDispatch } from 'react-redux'
 import { logout } from '../../services/Auth/auth.slice'
@@ -20,13 +20,13 @@ export const CustomDropDown: FC<CustomDropDownProps> = ({ iconUser, payload }) =
     ]
     return (
         <Dropdown menu={{ items }} placement='bottom' arrow>
-            <Button className='main-drop-down'>
+            <div className='main-drop-down'>
                 <Avatar src={iconUser} alt='icon-user' size='large' />
                 <div>
                     <h4>{payload?.username ?? 'Username'}</h4>
                     <p>{payload?.role}</p>
                 </div>
-            </Button>
+            </div>
         </Dropdown>
     )
 }
