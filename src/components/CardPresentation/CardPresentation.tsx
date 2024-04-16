@@ -8,6 +8,7 @@ import { OPTIONS } from '../../utils/constants/options.constant'
 
 import './CardPresentation.scss'
 import { Space } from 'antd'
+import { formatDate } from '../../utils/types/date.util'
 
 export const CardPresentation: FC<CardPresentationProps> = ({ payload }) => {
     const { formatMessage } = useIntl()
@@ -42,10 +43,10 @@ export const CardPresentation: FC<CardPresentationProps> = ({ payload }) => {
                     />
                     <CustomGroupPaint
                         pString={`${formatMessage({ id: 'text.birthDate' })}`}
-                        spanString={`${new Intl.DateTimeFormat(
-                            'es-Es',
-                            OPTIONS
-                        ).format()}`}
+                        spanString={formatDate({
+                            date: new Date(payload.birthDate),
+                            location: 'es-Es',
+                        })}
                     />
                 </div>
             </div>

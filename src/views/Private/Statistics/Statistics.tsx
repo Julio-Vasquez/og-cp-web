@@ -5,9 +5,10 @@ import { Select, Table } from 'antd'
 import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
 import { CHILD, DATA } from './mock'
+import { DataType } from './statistic.type'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Progress } from '../../../components/Charts/Progress/Progress'
-import { DataType, TablePaginationPosition, Columns } from './statistic.type'
+import { TablePaginationPosition, Columns } from '../../../utils/types/table.type'
 
 const renderRating = (tags: string[]) =>
     tags.map(tag => <CustomAvatar percent={71} key={tag} />)

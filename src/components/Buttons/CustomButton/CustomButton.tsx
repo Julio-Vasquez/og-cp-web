@@ -17,11 +17,12 @@ export const CustomButton: FC<CustomButtonProps> = ({
     onClick,
     disable,
     width,
+    hight,
 }) => {
     return (
         <div className='main-custom-button'>
             <Button
-                style={{ width: `${width}` }}
+                style={{ width: `${width}`, height: `${hight}` }}
                 className='main-custom-button__custom-button'
                 htmlType={htmlType}
                 loading={loading!}
