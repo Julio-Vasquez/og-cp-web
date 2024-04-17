@@ -7,6 +7,7 @@ import { Person, UserList } from './usersList.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { Status } from '../../../utils/constants/status.enum'
 import { Columns, TablePaginationPosition } from '../../../utils/types/table.type'
+import { RolTag } from '../../../components/Tags/RolTag'
 
 const columns: Columns<UserList> = [
     {
@@ -36,6 +37,7 @@ const columns: Columns<UserList> = [
         title: 'Role',
         dataIndex: ['role', 'role'],
         key: 'role',
+        render: role => <RolTag value={role} />,
     },
 
     {

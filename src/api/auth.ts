@@ -6,8 +6,8 @@ import { type SetPasswordMutation } from '../views/Public/SetPassword/setPasswor
 import { type ForgotPassword } from '../views/Public/ForgotPassword/forgotPassword.type'
 
 //listado de endpoints, que se usaran en authService
-const login = (body: LoginType, device: string) =>
-    Mutation({ method: Methods.post, url: 'auth/login', body: { ...body, device } })
+const login = (body: LoginType) =>
+    Mutation({ method: Methods.post, url: 'auth/login', body })
 
 const signUp = (body: LoginType) =>
     Mutation({ method: Methods.post, url: 'auth/signup', body })

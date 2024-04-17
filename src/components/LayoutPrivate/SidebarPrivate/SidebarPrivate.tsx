@@ -31,7 +31,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
         {
             key: '1',
             label: (
-                <Link to={RP.profile}>{formatMessage({ id: 'title.profile' })}</Link>
+                <Link to={RP.profile}>{formatMessage({ id: 'text.profile' })}</Link>
             ),
             icon: getIcon(profile),
         },
@@ -39,7 +39,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
             key: '2',
             label: (
                 <Link to={RP.dashboard}>
-                    {formatMessage({ id: 'title.dashboard' })}
+                    {formatMessage({ id: 'text.dashboard' })}
                 </Link>
             ),
             icon: getIcon(dashboard),
@@ -48,7 +48,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
             key: '3',
             label: (
                 <Link to={RP.statistics}>
-                    {formatMessage({ id: 'title.statistics' })}
+                    {formatMessage({ id: 'text.statistics' })}
                 </Link>
             ),
             icon: getIcon(statistics),
@@ -56,17 +56,13 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
         {
             key: '4',
             label: (
-                <Link to={RP.ranking}>
-                    {formatMessage({ id: 'title.ranking' })}{' '}
-                </Link>
+                <Link to={RP.ranking}>{formatMessage({ id: 'text.ranking' })} </Link>
             ),
             icon: getIcon(ranking),
         },
         {
             key: '5',
-            label: (
-                <Link to={RP.users}>{formatMessage({ id: 'title.users' })} </Link>
-            ),
+            label: <Link to={RP.users}>{formatMessage({ id: 'text.users' })} </Link>,
             icon: getIcon(users),
         },
     ]

@@ -1,16 +1,11 @@
 export const Title = {
     mail: 'Correo',
-    profile: 'Perfil',
-    dashboard: 'Panel',
     username: 'Usuario',
     signUp: 'Registrarse',
     password: 'Contraseña',
-    signIn: 'Iniciar sesión',
-    ranking: 'Clasificación',
     menu: 'Menu',
-    statistics: 'Estadísticas',
     forgotPassword: '¿Olvido su contraseña?',
     innocentlyLearning: 'Aprendiendo inocentemente',
-    verified: 'Has verificado exitosamente la cuenta.',
-    users: 'Usuarios',
+    verified: 'Has verificado exitosamente la cuenta',
+    editObj: 'Editar {{obj}}',
 }

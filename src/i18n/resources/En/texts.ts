@@ -30,4 +30,9 @@ export const Texts = {
     minLengthObj: '{{field}} should be {{min}} characters at least',
     passwordDoMatch: 'The two passwords that you entered do not match!',
     onlyLetters: 'Only letters',
+    users: 'Users',
+    profile: 'Profile',
+    ranking: 'Ranking',
+    dashboard: 'Dashboard',
+    statistics: 'Statistics',
 }

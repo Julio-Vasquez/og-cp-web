@@ -8,7 +8,7 @@ import {
     DefaultStatusTagPropTypes,
 } from './status.type'
 
-const StatusTag = ({ status }: StatusTagProps) => {
+export const StatusTag = ({ status }: StatusTagProps) => {
     const { formatMessage } = useIntl()
 
     const statusValue = STATUS.find(ele => ele.text === status) ?? {
@@ -22,5 +22,3 @@ const StatusTag = ({ status }: StatusTagProps) => {
 StatusTag.defaultProps = DefaultStatusTagPropTypes
 
 StatusTag.propTypes = StatusTagPropTypes
-
-export default StatusTag

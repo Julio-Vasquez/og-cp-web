@@ -21,6 +21,7 @@ type Payload = {
 type LoginType = {
     username: string
     password: string
+    device: 'Desktop' | 'Mobile'
 }
 
 type LoginAction = {
