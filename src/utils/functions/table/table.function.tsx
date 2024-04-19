@@ -1,4 +1,4 @@
-import { Button, Input, InputRef } from 'antd'
+import { Button, Input, InputRef, TableColumnType } from 'antd'
 import Highlighter from 'react-highlight-words'
 import { useState, useRef, ChangeEvent } from 'react'
 import { FilterDropdownProps, Key } from 'antd/lib/table/interface'
@@ -6,8 +6,12 @@ import { FilterDropdownProps, Key } from 'antd/lib/table/interface'
 import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 
 import { props, tableConfig, filter, params } from './table.types'
+import { UserList } from '../../../views/Private/UsersList/usersList.type'
 
-const useColumnSearch = ({ dataIndex, title }: props) => {
+const getColumnSearch = <T,>({
+    dataIndex,
+    title,
+}: props<T>): TableColumnType<UserList> => {
     const inputRef = useRef<InputRef>(null)
     const [searchText, setSearchText] = useState<any>('')
 
@@ -50,7 +54,9 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
                     Search
                 </Button>
                 <Button
-                    onClick={() => clearFilters && handleReset(clearFilters, confirm)}
+                    onClick={() =>
+                        clearFilters && handleReset(clearFilters, confirm)
+                    }
                     size='small'
                     style={{ width: 90 }}
                 >
@@ -60,9 +66,11 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
             </div>
         ),
         filterIcon: (filtered: boolean) => (
-            <SearchOutlined style={{ color: filtered ? 'var(--primary)' : undefined }} />
+            <SearchOutlined
+                style={{ color: filtered ? 'var(--primary)' : undefined }}
+            />
         ),
-        onFilter: (value: string, record: string[]): boolean =>
+        onFilter: (value: string | number | boolean, record: any): boolean =>
             record[dataIndex]
                 ?.toString()
                 .toLowerCase()
@@ -81,7 +89,11 @@ const useColumnSearch = ({ dataIndex, title }: props) => {
     }
 }
 
-const getTableConfig = ({ recordKey, scrollX = 'max-content', pagSize }: tableConfig) => {
+const getTableConfig = ({
+    recordKey,
+    scrollX = 'max-content',
+    pagSize,
+}: tableConfig) => {
     let rowKey = (record: any) => record?._id
     const pagination = pagSize
         ? { pagination: { pageSize: pagSize } }
@@ -119,4 +131,4 @@ const sorterColumn = ({ isDate = false, tag, subTag = undefined }: params) => {
     return { sorter: def }
 }
 
-export { useColumnSearch, getTableConfig, filterColumn, sorterColumn }
+export { getColumnSearch, getTableConfig, filterColumn, sorterColumn }

@@ -1,4 +1,4 @@
-interface User {
+export interface User {
     username: string
     mail: string
     publicKey: string
@@ -22,5 +22,5 @@ export interface Person {
 export interface UserList {
     user: User
     role: Role
-    person: Person
+    person?: Person
 }

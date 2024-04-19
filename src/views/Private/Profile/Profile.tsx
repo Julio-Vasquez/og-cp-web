@@ -11,6 +11,7 @@ import { Status } from '../../../utils/constants/status.enum'
 import { DataUser } from '../../../utils/types/userData.type'
 import { DATE_FORMAT } from '../../../utils/constants/date.constant'
 import { ApiResponseSuccess } from '../../../utils/types/response.type'
+import { successNotification } from '../../../utils/notifications/notification.action'
 import {
     maxLength,
     minLength,
@@ -19,7 +20,6 @@ import {
 } from '../../../utils/functions/form.functions'
 
 import './Profile.scss'
-import { successNotification } from '../../../utils/notifications/notification.action'
 
 const { Item, useForm } = Form
 
