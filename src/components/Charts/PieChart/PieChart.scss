@@ -4,7 +4,46 @@
     width: 100%;
     padding: 0 8px;
     canvas {
-        margin: 0;
         width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 992px) {
+    .main-pie-chart {
+        height: 100%;
+        padding-top: 10px;
+        canvas {
+            margin: auto !important;
+            width: 100% !important;
+            height: 150px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-pie-chart {
+        height: 100%;
+        padding-top: 10px;
+        canvas {
+            margin: auto !important;
+            width: 100% !important;
+            height: 150px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .main-pie-chart {
+        height: 188px;
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
     }
 }

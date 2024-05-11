@@ -38,15 +38,15 @@ const Dashboard = () => {
             : ([] as MutationResponse[])
 
     useEffect(() => {
-        mutation<MutationProps>({ _idChildren: selectedChild._id })
-    }, [selectedChild._id])
+        mutation<MutationProps>({ _idChildren: selectedChild?._id })
+    }, [selectedChild?._id])
 
     return (
         <div className='main-dashboard'>
             <div className='main-dashboard__children'>
-                <img src={selectedChild.avatar} alt='user-image' />
+                <img src={selectedChild?.avatar} alt='user-image' />
                 <Select
-                    defaultValue={selectedChild.name}
+                    defaultValue={selectedChild?.name}
                     allowClear
                     bordered={false}
                     onChange={handleOnChangeChild}
@@ -60,7 +60,7 @@ const Dashboard = () => {
                 <CustomCard backGroundColor='#6744c6a6' text='Custom Card 4' />
             </div>
             <div className='main-dashboard__skills'>
-                <AreaChart selectedChild={selectedChild._id} />
+                <AreaChart selectedChild={selectedChild?._id} />
             </div>
             <div className='main-dashboard__progress'>
                 <CustomCarousel>
@@ -75,14 +75,14 @@ const Dashboard = () => {
             </div>
             <div className='main-dashboard__pie-chart'>
                 <PieChart
-                    selectedChild={selectedChild._id}
-                    selectedPhase={selectedChild._id}
+                    selectedChild={selectedChild?._id}
+                    selectedPhase={selectedChild?._id}
                 />
             </div>
             <div className='main-dashboard__bar-chart'>
                 <BarChart
-                    selectedChild={selectedChild._id}
-                    selectedPhase={selectedChild._id}
+                    selectedChild={selectedChild?._id}
+                    selectedPhase={selectedChild?._id}
                 />
             </div>
         </div>

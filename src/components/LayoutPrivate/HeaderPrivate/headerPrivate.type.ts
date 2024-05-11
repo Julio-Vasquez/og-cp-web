@@ -6,6 +6,8 @@ export const HeaderPrivatePropsTypes = {
     setCollapsed: propTypes.func.isRequired,
 }
 
-export const HeaderPrivateDefaultProps = {}
+export const HeaderPrivateDefaultProps = {
+    collapsed: true,
+}
 
 export type HeaderPrivateProps = propTypes.InferProps<typeof HeaderPrivatePropsTypes>

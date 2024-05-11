@@ -1,19 +1,66 @@
 .main-shape-liquid {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-family: 'exo';
-    box-sizing: border-box;
     font-weight: bold;
     text-align: center;
     height: 250px;
-
     p {
-        margin-top: 30px;
+        padding-top: 20px;
     }
     canvas {
         margin: auto;
         display: flex;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 992px) {
+    .main-shape-liquid {
+        height: auto;
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 120px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-shape-liquid {
+        height: auto;
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 120px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .main-shape-liquid {
+        height: auto;
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 140px !important;
+        }
     }
 }

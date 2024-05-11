@@ -8,19 +8,14 @@
 
     &__children,
     &__custom-card,
-    &__bar-chart,
-    &__pie-chart,
-    &__progress,
-    &__skills {
+    &__bar-chart {
         align-items: center;
         box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
         box-sizing: border-box;
         display: flex;
         height: 100%;
         justify-content: center;
-        width: 100%;
     }
-
     &__children {
         padding: 5px;
 
@@ -65,5 +60,148 @@
         grid-row-end: 4;
         grid-column-start: 1;
         grid-column-end: 5;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 992px) {
+    .main-dashboard {
+        grid-template-rows: auto 300px 170px auto;
+        &__children {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        &__custom-card {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        &__skills {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            display: flex;
+        }
+        &__progress {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            padding: 1%;
+        }
+        &__pie-chart {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        &__bar-chart {
+            height: 200px;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-dashboard {
+        grid-template-rows: auto 300px 170px auto;
+        &__children {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        &__custom-card {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        &__skills {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            display: flex;
+        }
+        &__progress {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        &__pie-chart {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        &__bar-chart {
+            height: 200px;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .main-dashboard {
+        grid-template-rows: auto auto auto 200px auto;
+        &__children {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+        &__skills {
+            margin: auto;
+            height: 200px;
+        }
+        &__bar-chart {
+            height: 200px;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        &__pie-chart {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+        &__progress {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+            padding: 1%;
+        }
+
+        &__skills {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 5;
+            padding: 2%;
+        }
+        &__custom-card {
+            grid-column-start: 1;
+            grid-column-end: 5;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            display: flex;
+            flex-direction: column;
+        }
     }
 }

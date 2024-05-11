@@ -1,7 +1,3 @@
-import { ResponseFetch } from '../api/api.util'
-import { Status } from '../constants/status.enum'
-import { ChartResponse } from '../types/response.type'
-
 export const funcShapeLiquid = (x: number, y: number, r: number) => {
     const path = []
     const w = r * 2

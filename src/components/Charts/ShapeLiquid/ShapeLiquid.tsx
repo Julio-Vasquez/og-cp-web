@@ -35,7 +35,7 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({ name, percent }) => {
                 })}
             </p>
 
-            <Liquid autoFit {...config} />
+            <Liquid {...config} />
         </div>
     )
 }

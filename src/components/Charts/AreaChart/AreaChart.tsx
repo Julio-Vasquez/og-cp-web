@@ -32,7 +32,7 @@ export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
         mutation<AreaChartMutation>({ _idChildren: selectedChild })
     }, [selectedChild])
 
-    const config = {
+    const config: any = {
         data: data ?? [],
         xField: 'day',
         yField: 'qty',
@@ -40,7 +40,7 @@ export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
             fill: 'linear-gradient(-90deg, white 0%, #6744c6 100%)',
         },
         axis: {
-            // y: { labelFormatter: '~s' },
+            y: { labelFormatter: '~s' },
             x: {
                 labelFormatter: (d: string) =>
                     formatDate({ date: new Date(d), location: 'es-ES' }),

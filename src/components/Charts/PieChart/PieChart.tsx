@@ -15,45 +15,6 @@ import {
 
 import './PieChart.scss'
 
-const basicConfig = {
-    angleField: 'pct',
-    colorField: 'name',
-    paddingRight: 0,
-    innerRadius: 0.8,
-    style: { stroke: '#fff', inset: 1, radius: 10 },
-    scale: {
-        color: { palette: 'spectral', offset: (t: any) => t * 0.8 + 0.6 },
-    },
-    legend: {
-        color: { title: true, position: 'left', rowPadding: 5 },
-    },
-    annotations: [
-        {
-            type: 'text',
-            style: {
-                text: '13',
-                x: '50%',
-                y: '45%',
-                textAlign: 'center',
-                fontSize: 50,
-                fontStyle: 'bold',
-                fontFamily: 'exo',
-            },
-        },
-        {
-            type: 'text',
-            style: {
-                text: 'de 15',
-                x: '50%',
-                y: '58%',
-                textAlign: 'center',
-                fontSize: 16,
-                fontStyle: 'normal',
-            },
-        },
-    ],
-}
-
 export const PieChart: FC<PieChartProps> = ({ selectedChild, selectedPhase }) => {
     const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
 
@@ -73,7 +34,44 @@ export const PieChart: FC<PieChartProps> = ({ selectedChild, selectedPhase }) =>
             _idPhase: selectedPhase,
         })
     }, [selectedChild])
-
+    const basicConfig = {
+        angleField: 'pct',
+        colorField: 'name',
+        paddingRight: 0,
+        innerRadius: 0.8,
+        style: { stroke: '#fff', inset: 1, radius: 10 },
+        scale: {
+            color: { palette: 'spectral', offset: (t: any) => t * 0.8 + 0.6 },
+        },
+        legend: {
+            color: { title: true, position: 'top', rowPadding: 5 },
+        },
+        annotations: [
+            {
+                type: 'text',
+                style: {
+                    text: `${data.length}`,
+                    x: '50%',
+                    y: '45%',
+                    textAlign: 'center',
+                    fontSize: 15,
+                    fontStyle: 'bold',
+                    fontFamily: 'exo',
+                },
+            },
+            {
+                type: 'text',
+                style: {
+                    text: `de ${data.length + 10}`,
+                    x: '50%',
+                    y: '58%',
+                    textAlign: 'center',
+                    fontSize: 16,
+                    fontStyle: 'normal',
+                },
+            },
+        ],
+    }
     const config = { data, ...basicConfig }
 
     return (
