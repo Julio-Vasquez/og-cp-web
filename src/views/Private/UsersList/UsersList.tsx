@@ -5,64 +5,64 @@ import { RolTag } from '../../../components/Tags/RolTag'
 import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade'
 
 import api from '../../../api'
+import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
-import { Person, UserList } from './usersList.type'
+import { Person, Stated, UserList } from './usersList.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
 import { Status } from '../../../utils/constants/status.enum'
+import { getColumnSearch } from '../../../utils/functions/table/table.function'
 import { Columns, TablePaginationPosition } from '../../../utils/types/table.type'
 import { successNotification } from '../../../utils/notifications/notification.action'
-import { getColumnSearch } from '../../../utils/functions/table/table.function'
-
-type Stated = 'success' | 'error' | 'processing'
-
-const colors: Record<State, Stated> = {
-    Activo: 'success',
-    Inactivo: 'error',
-    Pendiente: 'processing',
-}
 
 export const UsersList = () => {
+    const { formatMessage } = useIntl()
+    const colors: Record<State, Stated> = {
+        Activo: 'success',
+        Inactivo: 'error',
+        Pendiente: 'processing',
+    }
     const columns: Columns<UserList> = [
         {
-            title: 'Nombres y Apellidos',
+            title: `${formatMessage({ id: 'text.fullName' })}`,
             dataIndex: 'person',
             key: 'person',
             render: ({ publicKey, birthDate, ...values }: Person) =>
                 Object.values(values).join(' '),
         },
         {
-            title: 'Fecha de nacimiento',
+            title: `${formatMessage({ id: 'text.birthDate' })}`,
             dataIndex: ['person', 'birthDate'],
             key: 'birthDate',
             render: item => formatDate({ date: new Date(item), location: 'es-Es' }),
         },
         {
-            title: 'Correo Electrónico',
+            title: `${formatMessage({ id: 'text.mail' })}`,
             dataIndex: ['user', 'mail'],
             key: 'mail',
         },
         {
-            title: 'Usuario',
+            title: `${formatMessage({ id: 'text.username' })}`,
             dataIndex: ['user', 'username'],
             key: 'username',
+            filterSearch: true,
             ...getColumnSearch({ dataIndex: 'username', title: 'username' }),
         },
         {
-            title: 'Role',
+            title: `${formatMessage({ id: 'text.role' })}`,
             dataIndex: ['role', 'role'],
             key: 'role',
             render: role => <RolTag value={role} />,
         },
 
         {
-            title: 'State',
+            title: `${formatMessage({ id: 'text.state' })}`,
             dataIndex: ['user', 'state'],
             key: 'state',
             render: (state: State) => <Badge status={colors[state]} text={state} />,
         },
         {
-            title: 'Actions',
+            title: `${formatMessage({ id: 'text.action' })}`,
             key: 'actions',
             fixed: 'right',
             width: 200,

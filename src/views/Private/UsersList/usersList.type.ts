@@ -24,3 +24,5 @@ export interface UserList {
     role: Role
     person?: Person
 }
+
+export type Stated = 'success' | 'error' | 'processing'

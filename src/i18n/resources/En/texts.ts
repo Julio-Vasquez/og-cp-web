@@ -35,4 +35,6 @@ export const Texts = {
     ranking: 'Ranking',
     dashboard: 'Dashboard',
     statistics: 'Statistics',
+    action: 'Action',
+    state: 'State',
 }

@@ -36,4 +36,6 @@ export const Texts = {
     signIn: 'Iniciar sesión',
     ranking: 'Clasificación',
     statistics: 'Estadísticas',
+    action: 'Acción',
+    state: 'Estado',
 }
