@@ -37,4 +37,5 @@ export const Texts = {
     statistics: 'Statistics',
     action: 'Action',
     state: 'State',
+    signOut: 'Sign Out',
 }

@@ -10,6 +10,7 @@ import iconUser from '../../../assets/svg/iconUser.svg'
 import { Progress } from '../../../components/Charts/Progress/Progress'
 import { TablePaginationPosition, Columns } from '../../../utils/types/table.type'
 
+import './Statistics.scss'
 const renderRating = (tags: string[]) =>
     tags.map(tag => <CustomAvatar percent={71} key={tag} />)
 
@@ -26,23 +27,25 @@ const columns: Columns<DataType> = [
 ]
 
 const Statistics = () => {
-    const [bottom, setBottom] = useState<TablePaginationPosition>('bottomCenter')
+    const [page, setPage] = useState<TablePaginationPosition>('bottomCenter')
 
     return (
-        <div>
-            <div className='main-dashboard__div0'>
-                <img src={iconUser} alt='user-percentage' />
-                <Select
-                    allowClear
-                    bordered={false}
-                    placeholder='Children name'
-                    options={CHILD}
-                />
+        <div className='main-statistics'>
+            <div className='main-statistics__children'>
+                <div>
+                    <img src={iconUser} alt='user-percentage' />
+                    <Select
+                        allowClear
+                        bordered={false}
+                        placeholder='Children name'
+                        options={CHILD}
+                    />
+                </div>
+                <h1>Etapa 1</h1>
             </div>
-            <h1>Etapa 1</h1>
             <Table
                 columns={columns}
-                pagination={{ position: [bottom] }}
+                pagination={{ position: [page] }}
                 dataSource={DATA}
             />
         </div>

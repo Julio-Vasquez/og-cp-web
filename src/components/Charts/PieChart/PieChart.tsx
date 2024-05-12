@@ -34,6 +34,7 @@ export const PieChart: FC<PieChartProps> = ({ selectedChild, selectedPhase }) =>
             _idPhase: selectedPhase,
         })
     }, [selectedChild])
+
     const basicConfig = {
         angleField: 'pct',
         colorField: 'name',

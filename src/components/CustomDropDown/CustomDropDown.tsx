@@ -1,18 +1,19 @@
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
 import { Avatar, Badge, Dropdown, MenuProps, Space } from 'antd'
 
-import { useDispatch } from 'react-redux'
+import useIntl from '../../hooks/useIntl'
 import { logout } from '../../services/Auth/auth.slice'
 import { CustomDropDownProps } from './customDropDown.type'
 import iconLanguage from '../../assets/svg/iconLanguage.svg'
 import iconNotification from '../../assets/svg/iconNotification.svg'
+import { Data } from '../LayoutPrivate/HeaderPrivate/itemsHeaderPrivate/itemsHeader.type'
 
 import './CustomDropDown.scss'
-import { Data } from '../LayoutPrivate/HeaderPrivate/itemsHeaderPrivate/itemsHeader.type'
 
 export const CustomDropDown: FC<CustomDropDownProps> = ({ payload }) => {
     const dispatch = useDispatch()
-
+    const { formatMessage } = useIntl()
     const handleLogOut = () => dispatch(logout())
     const data: Data[] = [
         { src: iconNotification, count: 5, color: '#6744c6' },
@@ -39,7 +40,11 @@ export const CustomDropDown: FC<CustomDropDownProps> = ({ payload }) => {
         },
         {
             key: '2',
-            label: <div onClick={handleLogOut}>cerrar sesión</div>,
+            label: (
+                <div onClick={handleLogOut}>
+                    {formatMessage({ id: 'text.signOut' })}
+                </div>
+            ),
         },
     ]
     return (

@@ -7,7 +7,8 @@ import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
-import { Person, Stated, UserList } from './usersList.type'
+import type { UserState } from './usersList.type'
+import { Person, UserList } from './usersList.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
 import { Status } from '../../../utils/constants/status.enum'
@@ -17,7 +18,7 @@ import { successNotification } from '../../../utils/notifications/notification.a
 
 export const UsersList = () => {
     const { formatMessage } = useIntl()
-    const colors: Record<State, Stated> = {
+    const colors: Record<State, UserState> = {
         Activo: 'success',
         Inactivo: 'error',
         Pendiente: 'processing',
@@ -47,11 +48,14 @@ export const UsersList = () => {
             key: 'username',
             filterSearch: true,
             ...getColumnSearch({ dataIndex: 'username', title: 'username' }),
+            onFilterDropdownOpenChange(visible) {},
         },
         {
             title: `${formatMessage({ id: 'text.role' })}`,
             dataIndex: ['role', 'role'],
             key: 'role',
+            width: 100,
+
             render: role => <RolTag value={role} />,
         },
 
@@ -64,7 +68,7 @@ export const UsersList = () => {
         {
             title: `${formatMessage({ id: 'text.action' })}`,
             key: 'actions',
-            fixed: 'right',
+
             width: 200,
             align: 'center',
             render: (data: UserList) => {
