@@ -1,59 +1,28 @@
 import { FC } from 'react'
-import { useDispatch } from 'react-redux'
-import { Avatar, Badge, Space, Spin } from 'antd'
+import { Spin } from 'antd'
 
-import iconUser from '../../../../assets/svg/iconUser.svg'
-import iconLogOut from '../../../../assets/svg/iconLogOut.svg'
-import iconLanguage from '../../../../assets/svg/iconLanguage.svg'
-import iconNotification from '../../../../assets/svg/iconNotification.svg'
+import { CustomDropDown } from '../../../CustomDropDown/CustomDropDown'
 
 import api from '../../../../api'
 import { useQuery } from '../../../../hooks/api'
-import { logout } from '../../../../services/Auth/auth.slice'
 import { DataUser } from '../../../../utils/types/userData.type'
 import { Status } from '../../../../utils/constants/status.enum'
 import {
     ItemsNavBarDefaultProps,
     ItemsNavBarPropsTypes,
     ItemsNavBarProps,
-    Data,
 } from './itemsHeader.type'
 
-import './ItemsHeader.scss'
-import { CustomDropDown } from '../../../CustomDropDown/CustomDropDown'
-
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {
-    const dispatch = useDispatch()
-
     const { data: userMe, loading } = useQuery<DataUser>({
         functionFetch: api.user.userMe,
     })
 
     const payload = userMe.status === Status.success ? userMe.payload : undefined
 
-    const data: Data[] = [
-        { src: iconNotification, count: 5, color: '#6744c6' },
-        { src: iconLanguage },
-    ]
-
     return (
         <Spin spinning={loading}>
-            <div className='main-items__header'>
-                <Space size='middle' className='main-items__icons'>
-                    {data.map(({ src, ...opts }) => (
-                        <Badge {...opts} key={src}>
-                            <Avatar
-                                shape='square'
-                                src={src}
-                                alt='imag-notification'
-                            />
-                        </Badge>
-                    ))}
-                </Space>
-                <Space className='main-items__space'>
-                    <CustomDropDown iconUser={iconUser} payload={payload} />
-                </Space>
-            </div>
+            <CustomDropDown payload={payload} />
         </Spin>
     )
 }

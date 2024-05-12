@@ -1,7 +1,15 @@
 export type CustomDropDownProps = {
-    iconUser: any
-    payload: {
-        username: string
-        role: string
-    }
+    payload:
+        | {
+              birthDate: string
+              lastNameOne: string
+              lastNameTwo: string
+              mail: string
+              middleName: string
+              name: string
+              phoneNumber: string | number
+              role: string
+              username: string
+          }
+        | undefined
 }
