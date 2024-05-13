@@ -14,6 +14,5 @@ export type DataType = {
     key: string
     name: string
     percentage: number
-    address: string
-    tags: string[]
+    description: string
 }
