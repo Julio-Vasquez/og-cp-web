@@ -9,8 +9,8 @@ import CustomButton from '../../../components/Buttons/CustomButton/CustomButton'
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
-import { ForgotPassword } from './forgotPassword.type'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { type ForgotPassword as ForgotPasswordForm } from './forgotPassword.type'
 import {
     ApiResponseError,
     ApiResponseSuccess,
@@ -45,8 +45,8 @@ const ForgotPassword = () => {
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: ForgotPassword) =>
-        mutation<ForgotPassword>({ ...values })
+    const onFinish = (values: ForgotPasswordForm) =>
+        mutation<ForgotPasswordForm>({ ...values })
 
     return (
         <div className='forgot-password'>
