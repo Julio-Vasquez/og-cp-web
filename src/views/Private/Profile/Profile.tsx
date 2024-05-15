@@ -38,7 +38,7 @@ export const Profile = () => {
     const hiddenMiddleName = payload.middleName === '' ?? true
     const title = formatMessage({
         id: 'title.editObj',
-        objVars: { obj: formatMessage({ id: 'title.profile' }) },
+        objVars: { obj: formatMessage({ id: 'text.profile' }) },
     })
 
     const onCompleted = ({ data }: ApiResponseSuccess) => {

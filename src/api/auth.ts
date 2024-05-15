@@ -1,7 +1,7 @@
 import { Query, Mutation } from './core'
 import { Methods } from '../utils/types/response.type'
 import { LoginType } from '../services/Auth/auth.types'
-import { activateAccount } from '../views/Public/ActivateAccount/activateAccount.type'
+import { ActivateAccount } from '../views/Public/ActivateAccount/activateAccount.type'
 import { type SetPasswordMutation } from '../views/Public/SetPassword/setPassword.type'
 import { type ForgotPassword } from '../views/Public/ForgotPassword/forgotPassword.type'
 
@@ -18,7 +18,7 @@ const forgotPassword = (body: ForgotPassword) =>
 const setPassword = (body: SetPasswordMutation) =>
     Mutation({ method: Methods.patch, url: 'auth/set-password', body })
 
-const activateAccount = (body: activateAccount) =>
+const activateAccount = (body: ActivateAccount) =>
     Mutation({ method: Methods.post, url: 'auth/active-account', body })
 
 export default { login, signUp, forgotPassword, setPassword, activateAccount }

@@ -13,8 +13,10 @@ import {
 
 function* fetchLogin({ payload }: LoginAction) {
     try {
-        const res: ResponseFetch<State> = yield api.auth.login(payload, 'Desktop')
-        console.log(res)
+        const res: ResponseFetch<State> = yield api.auth.login({
+            ...payload,
+            device: 'Desktop',
+        })
         if (res && res.status === Status.success && res?.payload) {
             yield put(
                 loginSuccess({

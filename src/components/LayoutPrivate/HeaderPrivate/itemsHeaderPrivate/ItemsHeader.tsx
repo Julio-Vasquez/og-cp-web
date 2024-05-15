@@ -18,7 +18,8 @@ export const ItemsHeader: FC<ItemsNavBarProps> = () => {
         functionFetch: api.user.userMe,
     })
 
-    const payload = userMe.status === Status.success ? userMe.payload : undefined
+    const payload =
+        userMe.status === Status.success ? userMe.payload : ({} as DataUser)
 
     return (
         <Spin spinning={loading}>

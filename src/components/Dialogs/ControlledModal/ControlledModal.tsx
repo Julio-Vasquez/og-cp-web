@@ -11,7 +11,7 @@ const ControlledModal: FC<ControlledModalProps> = ({
     width,
     centered,
     title,
-    footer,
+
     inheritCloseToChildren,
 }) => {
     const { visible, closeDialog } = visibleState
@@ -24,11 +24,10 @@ const ControlledModal: FC<ControlledModalProps> = ({
         <Modal
             open={visible}
             onCancel={closeDialog}
-            destroyOnClose={destroyOnClose}
+            destroyOnClose={destroyOnClose ?? true}
             centered={centered}
             title={title}
-            width={width}
-            footer={footer}
+            width={width ?? 450}
         >
             {newChildren}
         </Modal>
