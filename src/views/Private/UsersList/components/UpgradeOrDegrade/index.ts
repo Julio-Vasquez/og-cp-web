@@ -1,1 +1,1 @@
-export { UpgradeDegrade, default } from './UpgradeOrDegrade'
+export { UpgradeOrDegrade, default } from './UpgradeOrDegrade'
