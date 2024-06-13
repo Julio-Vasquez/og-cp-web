@@ -15,7 +15,7 @@ import './Layout.scss'
 const { Content } = Layout
 
 export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
-    const [collapsed, setCollapsed] = useState(false)
+    const [collapsed, setCollapsed] = useState(true)
 
     const {
         token: { colorBgContainer },

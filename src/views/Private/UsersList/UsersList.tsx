@@ -98,9 +98,10 @@ export const UsersList = () => {
         data.status === Status.success ? data.payload : ([] as UserList[])
 
     return (
-        <div>
+        <div className='main-table'>
             <h1>Lista de Usuarios</h1>
             <Table
+                className='main-table__table'
                 columns={columns}
                 pagination={{ position: [page] }}
                 dataSource={payload}
