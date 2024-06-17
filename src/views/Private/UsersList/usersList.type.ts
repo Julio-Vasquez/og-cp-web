@@ -1,16 +1,16 @@
-export interface User {
+export interface USER {
     username: string
     mail: string
     publicKey: string
     state: string
 }
 
-interface Role {
+interface ROLE {
     publicKey: string
     role: string
 }
 
-export interface Person {
+export interface PERSON {
     publicKey: string
     name: string
     middleName: string
@@ -19,10 +19,10 @@ export interface Person {
     birthDate: string
 }
 
-export interface UserList {
-    user: User
-    role: Role
-    person?: Person
+export interface USER_LIST {
+    user: USER
+    role: ROLE
+    person?: PERSON
 }
 
 export type UserState = 'success' | 'error' | 'processing'

@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { Badge, Table } from 'antd'
 
 import { RolTag } from '../../../components/Tags/RolTag'
+import { DownloaderCSV } from '../../../components/DownloaderCSV/DownloaderCSV'
 import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
 import type { UserState } from './usersList.type'
-import { Person, UserList } from './usersList.type'
+import { PERSON, USER_LIST } from './usersList.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
 import { Status } from '../../../utils/constants/status.enum'
@@ -23,12 +24,13 @@ export const UsersList = () => {
         Inactivo: 'error',
         Pendiente: 'processing',
     }
-    const columns: Columns<UserList> = [
+    const [csv, setCsv] = useState([])
+    const columns: Columns<USER_LIST> = [
         {
             title: `${formatMessage({ id: 'text.fullName' })}`,
             dataIndex: 'person',
             key: 'person',
-            render: ({ publicKey, birthDate, ...values }: Person) =>
+            render: ({ publicKey, birthDate, ...values }: PERSON) =>
                 Object.values(values).join(' '),
         },
         {
@@ -71,7 +73,7 @@ export const UsersList = () => {
 
             width: 200,
             align: 'center',
-            render: (data: UserList) => {
+            render: (data: USER_LIST) => {
                 return (
                     <UpgradeOrDegrade
                         username={data.user.username}
@@ -85,7 +87,7 @@ export const UsersList = () => {
 
     const [page, setPage] = useState<TablePaginationPosition>('bottomCenter')
 
-    const { data, loading, refetch } = useQuery<UserList[]>({
+    const { data, loading, refetch } = useQuery<USER_LIST[]>({
         functionFetch: api.user.userList,
     })
 
@@ -95,11 +97,12 @@ export const UsersList = () => {
     }
 
     const payload =
-        data.status === Status.success ? data.payload : ([] as UserList[])
+        data.status === Status.success ? data.payload : ([] as USER_LIST[])
 
     return (
         <div className='main-table'>
             <h1>Lista de Usuarios</h1>
+            <DownloaderCSV data={payload} columns={columns} />
             <Table
                 className='main-table__table'
                 columns={columns}
