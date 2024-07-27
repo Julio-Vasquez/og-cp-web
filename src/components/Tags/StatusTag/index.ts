@@ -1,1 +1,1 @@
-export { StatusTag } from './StatusTag'
+export { StatusTag, default } from './StatusTag'

@@ -22,3 +22,5 @@ export const StatusTag = ({ status }: StatusTagProps) => {
 StatusTag.defaultProps = DefaultStatusTagPropTypes
 
 StatusTag.propTypes = StatusTagPropTypes
+
+export default StatusTag

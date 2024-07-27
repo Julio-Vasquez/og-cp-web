@@ -39,4 +39,6 @@ export const Texts = {
     action: 'Acción',
     state: 'Estado',
     signOut: 'Cerrar sesión',
+    user: 'Usuario',
+    upload: 'Subir',
 }

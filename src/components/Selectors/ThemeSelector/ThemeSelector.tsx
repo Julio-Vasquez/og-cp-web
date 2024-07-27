@@ -33,3 +33,5 @@ export const ThemeSelector: FC<ThemeData> = ({ setData }) => {
 
 ThemeSelector.propTypes = ThemeData
 ThemeSelector.defaultProps = ThemeDataDefault
+
+export default ThemeSelector

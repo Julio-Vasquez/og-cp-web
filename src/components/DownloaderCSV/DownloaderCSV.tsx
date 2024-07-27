@@ -1,11 +1,13 @@
+import { FC } from 'react'
+import { Button } from 'antd'
 import CsvDownload from 'react-csv-downloader'
 
 import { COLUMNS, CSV } from './Downloader.type'
 import { USER_LIST } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
-import { Button } from 'antd'
-export const DownloaderCSV = ({ data, columns }: CSV) => {
+
+export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
     const headers = columns.map(({ title }: COLUMNS) => {
         const data = { id: title, displayName: title }
         return data
@@ -38,3 +40,5 @@ export const DownloaderCSV = ({ data, columns }: CSV) => {
         </CsvDownload>
     )
 }
+
+export default CsvDownload

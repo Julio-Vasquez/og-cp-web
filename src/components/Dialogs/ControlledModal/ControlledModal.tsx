@@ -4,7 +4,7 @@ import { cloneElement, FC } from 'react'
 import { ControlledModalDefaultProps, ControlledModalProps } from './modal.types'
 import { ControlledDrawerPropTypes } from '../ControlledDrawer/drawer.types'
 
-const ControlledModal: FC<ControlledModalProps> = ({
+export const ControlledModal: FC<ControlledModalProps> = ({
     visibleState,
     children,
     destroyOnClose,

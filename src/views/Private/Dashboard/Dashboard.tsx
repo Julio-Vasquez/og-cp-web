@@ -11,6 +11,7 @@ import { CustomCarousel } from '../../../components/Carousels/CustomCarousel'
 import api from '../../../api'
 import { CHILDREN, Children } from './mock'
 import { useMutation } from '../../../hooks/api'
+import userIcon from '../../../assets/svg/iconUser.svg'
 import { Status } from '../../../utils/constants/status.enum'
 import { MutationProps, MutationResponse } from './dashboard.type'
 import { ApiResponseSuccess } from '../../../utils/types/response.type'
@@ -44,7 +45,10 @@ const Dashboard = () => {
     return (
         <div className='main-dashboard'>
             <div className='main-dashboard__children'>
-                <img src={selectedChild?.avatar} alt='user-image' />
+                <img
+                    src={selectedChild ? selectedChild?.avatar : userIcon}
+                    alt='user-image'
+                />
                 <Select
                     defaultValue={selectedChild?.name}
                     allowClear

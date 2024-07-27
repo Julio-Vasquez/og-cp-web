@@ -7,7 +7,7 @@ import {
     ControlledPopoverProps,
 } from './popover.types'
 
-const ControlledPopover: FC<ControlledPopoverProps> = ({
+export const ControlledPopover: FC<ControlledPopoverProps> = ({
     visibleState,
     children,
     destroyOnClose,

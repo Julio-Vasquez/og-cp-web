@@ -42,7 +42,7 @@ export const Profile = () => {
     })
 
     const onCompleted = ({ data }: ApiResponseSuccess) => {
-        successNotification('Update successful')
+        successNotification(`Update successful ${data.message}`)
         refetch()
     }
 

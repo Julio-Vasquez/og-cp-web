@@ -38,4 +38,6 @@ export const Texts = {
     action: 'Action',
     state: 'State',
     signOut: 'Sign Out',
+    user: 'User',
+    upload: 'Upload',
 }

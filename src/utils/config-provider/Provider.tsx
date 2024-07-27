@@ -4,9 +4,6 @@ import { ConfigProvider } from 'antd'
 import enUS from 'antd/lib/locale/en_US'
 import type { Locale } from 'antd/es/locale'
 
-import { ThemeSelector } from '../../components/Selectors/ThemeSelector/ThemeSelector'
-import { LanguageSelector } from '../../components/Selectors/LanguageSelector/LanguageSelector'
-
 import { ProviderProps } from './provider.type'
 
 import 'dayjs/locale/en'

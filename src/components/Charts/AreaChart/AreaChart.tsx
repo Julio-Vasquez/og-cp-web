@@ -13,6 +13,7 @@ import {
     AreaChartProps,
     AreaChartResponse,
 } from './areaChart.type'
+
 import './AreaChart.scss'
 
 export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {

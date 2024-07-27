@@ -1,12 +1,13 @@
 import { Upload } from 'antd'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import type { UploadChangeParam } from 'antd/es/upload'
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
+
+import { UploadButton } from './components'
 
 import { getBase64, beforeUpload } from '../../utils/upload/upload'
 
-const UploadPhoto = () => {
+export const UploadPhoto: FC<UploadProps> = () => {
     const [loading, setLoading] = useState(false)
     const [imageUrl, setImageUrl] = useState<string>()
 
@@ -25,12 +26,6 @@ const UploadPhoto = () => {
         }
     }
 
-    const uploadButton = (
-        <div>
-            {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            <div style={{ marginTop: 8 }}>Upload</div>
-        </div>
-    )
     return (
         <Upload
             name='avatar'
@@ -43,7 +38,7 @@ const UploadPhoto = () => {
             {imageUrl ? (
                 <img src={imageUrl} alt='avatar' className='avatar' />
             ) : (
-                uploadButton
+                <UploadButton loading={loading} />
             )}
         </Upload>
     )

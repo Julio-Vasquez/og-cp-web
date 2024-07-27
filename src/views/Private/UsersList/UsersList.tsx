@@ -24,7 +24,7 @@ export const UsersList = () => {
         Inactivo: 'error',
         Pendiente: 'processing',
     }
-    const [csv, setCsv] = useState([])
+
     const columns: Columns<USER_LIST> = [
         {
             title: `${formatMessage({ id: 'text.fullName' })}`,

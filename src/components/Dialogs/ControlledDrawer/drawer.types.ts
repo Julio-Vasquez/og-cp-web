@@ -1,5 +1,7 @@
 import propTypes from 'prop-types'
+
 export type Placement = 'left' | 'right' | 'top' | 'bottom'
+
 export const ControlledDrawerPropTypes = {
     visibleState: propTypes.shape({
         visible: propTypes.bool.isRequired,

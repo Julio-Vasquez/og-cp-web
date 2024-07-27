@@ -12,11 +12,11 @@ import { Props } from './languageSelector.type'
 dayjs.locale('en')
 
 export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
-    const { formatMessage } = useIntl()
     const { i18n } = useTranslation()
+    const { formatMessage } = useIntl()
+
     const handleLocale = (e: RadioChangeEvent) => {
         const localeValue = e.target.value
-        console.log(e.target.value)
         setLocal(localeValue)
         if (!localeValue) {
             i18n.changeLanguage('en')
@@ -40,3 +40,5 @@ export const LanguageSelector: FC<Props> = ({ setLocal, locale }) => {
         </div>
     )
 }
+
+export default LanguageSelector

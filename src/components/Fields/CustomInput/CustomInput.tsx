@@ -18,7 +18,12 @@ const { Item } = Form
  * *
  */
 
-const CustomInput: FC<CustomInputProps> = ({ data, name, customMap, ...props }) => {
+export const CustomInput: FC<CustomInputProps> = ({
+    data,
+    name,
+    customMap,
+    ...props
+}) => {
     const options = data?.map((item: any) => ({
         value: item[customMap.value],
         label: item[customMap.label],
