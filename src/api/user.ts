@@ -10,7 +10,7 @@ const updateProfile = (body: DataUser) =>
     Mutation({
         method: Methods.put,
         body,
-        url: '/user/edit-profile',
+        url: 'user/edit-profile',
     })
 
 const updateRole = (body: any) =>
