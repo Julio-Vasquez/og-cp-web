@@ -40,4 +40,6 @@ export const Texts = {
     signOut: 'Sign Out',
     user: 'User',
     upload: 'Upload',
+    notifications: 'Notifications',
+    language: 'Language',
 }

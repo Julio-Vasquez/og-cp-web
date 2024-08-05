@@ -41,4 +41,6 @@ export const Texts = {
     signOut: 'Cerrar sesión',
     user: 'Usuario',
     upload: 'Subir',
+    notifications: 'Notificaciones',
+    language: 'Idioma',
 }
