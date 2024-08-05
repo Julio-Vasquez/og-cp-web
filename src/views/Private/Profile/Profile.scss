@@ -1,6 +1,6 @@
 .profile {
     width: 65%;
-    margin: 0 auto;
+    margin: 60px auto;
     &__content {
         display: flex;
         gap: 20px;
@@ -36,7 +36,7 @@
     }
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .profile {
         width: 94%;
         &__content {
