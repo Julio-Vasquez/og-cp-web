@@ -1,31 +1,56 @@
 .custom-card {
-    width: 100%;
+    width: 70%;
+    height: 72px;
+    margin: 5px;
+    font-size: 100%;
 }
 
 @media only screen and (max-width: 1400px) {
 }
 
 @media only screen and (max-width: 1200px) {
+    .custom-card {
+        margin: 2px 5px;
+        height: auto;
+        max-height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media only screen and (max-width: 992px) {
+    .custom-card {
+        margin: 2px 5px;
+        height: auto;
+        max-height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .custom-card {
-        margin: 0 5px;
+        margin: 2px 5px;
         height: 30px;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100% !important;
     }
 }
 
 @media only screen and (max-width: 576px) {
     .custom-card {
-        margin: 5px 0;
-        height: 30px;
+        font-size: 80%;
+        margin: 2px 5px;
+        height: auto;
+        overflow-y: hidden;
+        max-height: 35px;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;

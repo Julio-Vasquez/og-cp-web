@@ -44,24 +44,43 @@ const Dashboard = () => {
 
     return (
         <div className='main-dashboard'>
-            <div className='main-dashboard__children'>
-                <img
-                    src={selectedChild ? selectedChild?.avatar : userIcon}
-                    alt='user-image'
-                />
-                <Select
-                    defaultValue={selectedChild?.name}
-                    allowClear
-                    bordered={false}
-                    onChange={handleOnChangeChild}
-                    options={options}
-                />
-            </div>
-            <div className='main-dashboard__custom-card'>
-                <CustomCard backGroundColor='#6744c60e' text='Custom Card 1' />
-                <CustomCard backGroundColor='#6744c63a' text='Custom Card 2' />
-                <CustomCard backGroundColor='#6744c665' text='Custom Card 3' />
-                <CustomCard backGroundColor='#6744c6a6' text='Custom Card 4' />
+            <div className='main-dashboard__header'>
+                <div className='main-dashboard__children'>
+                    <img
+                        src={selectedChild ? selectedChild?.avatar : userIcon}
+                        alt='user-image'
+                    />
+                    <Select
+                        className='main-dashboard__select'
+                        defaultValue={selectedChild?.name}
+                        allowClear
+                        bordered={false}
+                        onChange={handleOnChangeChild}
+                        options={options}
+                    />
+                </div>
+                <div className='main-dashboard__cards-content'>
+                    <div className='main-dashboard__cards'>
+                        <CustomCard
+                            backGroundColor='#6744c60e'
+                            text='Custom Card 1'
+                        />
+                        <CustomCard
+                            backGroundColor='#6744c63a'
+                            text='Custom Card 2'
+                        />
+                    </div>
+                    <div className='main-dashboard__cards'>
+                        <CustomCard
+                            backGroundColor='#6744c665'
+                            text='Custom Card 3'
+                        />
+                        <CustomCard
+                            backGroundColor='#6744c6a6'
+                            text='Custom Card 4'
+                        />
+                    </div>
+                </div>
             </div>
             <div className='main-dashboard__skills'>
                 <AreaChart selectedChild={selectedChild?._id} />
