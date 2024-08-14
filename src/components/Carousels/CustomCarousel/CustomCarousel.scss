@@ -1,5 +1,11 @@
 .custom-carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 20%;
+}
+
+@media only screen and (max-width: 992px) {
+    .custom-carousel {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -82,10 +82,9 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className='main-dashboard__skills'>
-                <AreaChart selectedChild={selectedChild?._id} />
-            </div>
-            <div className='main-dashboard__progress'>
+            <AreaChart selectedChild={selectedChild?._id} />
+
+            <div className='main-dashboard__charts'>
                 <CustomCarousel>
                     {data.map((item, index) => (
                         <ShapeLiquid
@@ -95,15 +94,11 @@ const Dashboard = () => {
                         />
                     ))}
                 </CustomCarousel>
-            </div>
-            <div className='main-dashboard__pie-chart'>
-                <PieChart
+                <BarChart
                     selectedChild={selectedChild?._id}
                     selectedPhase={selectedChild?._id}
                 />
-            </div>
-            <div className='main-dashboard__bar-chart'>
-                <BarChart
+                <PieChart
                     selectedChild={selectedChild?._id}
                     selectedPhase={selectedChild?._id}
                 />

@@ -10,9 +10,11 @@ import {
 import './CustomCarousel.scss'
 
 export const CustomCarousel: FC<CustomCarouselProps> = ({ children }) => (
-    <Carousel autoplaySpeed={5000} className='custom-carousel' autoplay>
-        {children}
-    </Carousel>
+    <div className='custom-carousel'>
+        <Carousel autoplaySpeed={5000} autoplay>
+            {children}
+        </Carousel>
+    </div>
 )
 
 CustomCarousel.propTypes = CustomCarouselPropTypes
