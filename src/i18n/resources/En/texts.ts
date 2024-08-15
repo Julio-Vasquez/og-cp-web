@@ -42,4 +42,5 @@ export const Texts = {
     upload: 'Upload',
     notifications: 'Notifications',
     language: 'Language',
+    listObj: '{{field}} list',
 }

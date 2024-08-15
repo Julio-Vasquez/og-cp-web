@@ -36,7 +36,9 @@ export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
             title='Informe usuarios'
             className='main-csv'
         >
-            <Button className='main-csv__btn'>Downloader CVS</Button>
+            <Button disabled={!data} className='main-csv__btn'>
+                Downloader CVS
+            </Button>
         </CsvDownload>
     )
 }
