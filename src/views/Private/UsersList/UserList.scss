@@ -7,5 +7,10 @@
 
 .main-table {
     display: flex;
+    flex-direction: column;
     table-layout: fixed;
+    text-align: center;
+    h1 {
+        font-size: large;
+    }
 }

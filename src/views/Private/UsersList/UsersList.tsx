@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Badge, Table } from 'antd'
+import { Badge, Table, Layout } from 'antd'
 
 import { RolTag } from '../../../components/Tags/RolTag'
 import { DownloaderCSV } from '../../../components/DownloaderCSV/DownloaderCSV'
@@ -17,6 +17,8 @@ import { getColumnSearch } from '../../../utils/functions/table/table.function'
 import { Columns, TablePaginationPosition } from '../../../utils/types/table.type'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
+import './UserList.scss'
+
 export const UsersList = () => {
     const { formatMessage } = useIntl()
     const colors: Record<State, UserState> = {
@@ -30,6 +32,7 @@ export const UsersList = () => {
             title: `${formatMessage({ id: 'text.fullName' })}`,
             dataIndex: 'person',
             key: 'person',
+
             render: ({ publicKey, birthDate, ...values }: PERSON) =>
                 Object.values(values).join(' '),
         },
@@ -70,7 +73,6 @@ export const UsersList = () => {
         {
             title: `${formatMessage({ id: 'text.action' })}`,
             key: 'actions',
-
             width: 200,
             align: 'center',
             render: (data: USER_LIST) => {
@@ -101,9 +103,15 @@ export const UsersList = () => {
 
     return (
         <div className='main-table'>
-            <h1>Lista de Usuarios</h1>
+            <h1>
+                {formatMessage({
+                    id: 'text.listObj',
+                    objVars: { field: formatMessage({ id: 'text.users' }) },
+                })}
+            </h1>
             <DownloaderCSV data={payload} columns={columns} />
             <Table
+                scroll={{ x: 100 }}
                 className='main-table__table'
                 columns={columns}
                 pagination={{ position: [page] }}

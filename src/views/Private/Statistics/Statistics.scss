@@ -1,11 +1,14 @@
 .main-statistics {
-    display: grid;
-    grid-template-rows: 50px auto;
+    display: flex;
+    flex-direction: column;
+    table-layout: fixed;
+    text-align: center;
     &__children {
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        margin-bottom: 20px;
     }
     &__table {
         border: solid red;

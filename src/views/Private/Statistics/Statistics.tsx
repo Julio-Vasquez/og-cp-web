@@ -69,6 +69,7 @@ const Statistics = () => {
                 <h1>Etapa 1</h1>
             </div>
             <Table
+                scroll={{ x: 100 }}
                 columns={columns}
                 pagination={{ position: [page] }}
                 dataSource={DATA}
