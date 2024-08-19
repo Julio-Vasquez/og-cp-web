@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Badge, Table, Layout } from 'antd'
+import { Badge, Table } from 'antd'
 
 import { RolTag } from '../../../components/Tags/RolTag'
 import { DownloaderCSV } from '../../../components/DownloaderCSV/DownloaderCSV'
@@ -103,7 +103,7 @@ export const UsersList = () => {
 
     return (
         <div className='main-table'>
-            <h1>
+            <h1 className='main-table__title'>
                 {formatMessage({
                     id: 'text.listObj',
                     objVars: { field: formatMessage({ id: 'text.users' }) },
