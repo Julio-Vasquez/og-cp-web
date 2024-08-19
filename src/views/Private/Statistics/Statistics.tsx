@@ -66,7 +66,7 @@ const Statistics = () => {
                         options={CHILD}
                     />
                 </div>
-                <h1>Etapa 1</h1>
+                <h1 className='main-statistics__title'>Etapa 1</h1>
             </div>
             <Table
                 scroll={{ x: 100 }}

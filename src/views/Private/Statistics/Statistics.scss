@@ -3,6 +3,10 @@
     flex-direction: column;
     table-layout: fixed;
     text-align: center;
+    &__title {
+        font-size: 32px;
+        color: #6744c6;
+    }
     &__children {
         width: 100%;
         display: flex;
@@ -14,8 +18,5 @@
         border: solid red;
         justify-content: center;
         align-items: center;
-        table {
-            max-height: 50px !important;
-        }
     }
 }
