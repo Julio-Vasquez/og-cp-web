@@ -1,8 +1,11 @@
 .custom-card {
-    width: 70%;
+    width: 100%;
     height: 72px;
     margin: 5px;
     font-size: 100%;
+    :hover {
+        cursor: pointer;
+    }
 }
 
 @media only screen and (max-width: 1400px) {
