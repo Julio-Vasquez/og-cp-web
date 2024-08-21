@@ -93,6 +93,7 @@ export const ContactData: FC<ContactDataProps> = ({
                     className='main-contact-data__item'
                 >
                     <Input
+                        defaultValue={3}
                         type='number'
                         placeholder={formatMessage({ id: 'text.phoneNumber' })}
                         className='main-contact-data__input'
