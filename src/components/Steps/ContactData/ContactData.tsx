@@ -51,7 +51,7 @@ export const ContactData: FC<ContactDataProps> = ({
                     <CustomInput
                         data={sortedTypeDocument}
                         name='typeDocument'
-                        customMap={{ value: 'typeDocument', label: 'typeDocument' }}
+                        customMap={{ value: 'typeDocument', label: 'abbr' }}
                     />
                 </Item>
                 <Item
