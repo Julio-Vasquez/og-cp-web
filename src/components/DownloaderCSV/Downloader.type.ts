@@ -1,6 +1,6 @@
 type CSV = {
-    data: any
-    columns: any
+    data: []
+    columns: []
 }
 
 type COLUMNS = {
