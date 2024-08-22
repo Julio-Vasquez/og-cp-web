@@ -6,10 +6,8 @@ export const CustomButtonPropTypes = {
     disable: propTypes.bool,
     loading: propTypes.bool,
     children: propTypes.any.isRequired,
-
     width: propTypes.string,
     hight: propTypes.string,
-
     onClick: propTypes.func,
 }
 
