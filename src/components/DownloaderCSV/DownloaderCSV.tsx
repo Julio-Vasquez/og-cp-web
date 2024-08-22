@@ -6,10 +6,13 @@ import { COLUMNS, CSV } from './Downloader.type'
 import { USER_LIST } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
+import useIntl from '../../hooks/useIntl'
 
 export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
+    const { formatMessage } = useIntl()
     const headers = columns.map(({ title }: COLUMNS) => {
         const data = { id: title, displayName: title }
+        if (title === 'Acción') return ''
         return data
     })
 
@@ -36,8 +39,8 @@ export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
             title='Informe usuarios'
             className='main-csv'
         >
-            <Button disabled={!data} className='main-csv__btn'>
-                Downloader CVS
+            <Button disabled={data.length === 0} className='main-csv__btn'>
+                {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
             </Button>
         </CsvDownload>
     )

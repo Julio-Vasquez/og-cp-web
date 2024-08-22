@@ -43,4 +43,5 @@ export const Texts = {
     notifications: 'Notifications',
     language: 'Language',
     listObj: '{{field}} list',
+    downloader: '{{field}} Downloader',
 }

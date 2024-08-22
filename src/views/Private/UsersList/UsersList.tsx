@@ -109,7 +109,7 @@ export const UsersList = () => {
                     objVars: { field: formatMessage({ id: 'text.users' }) },
                 })}
             </h1>
-            <DownloaderCSV data={payload} columns={columns} />
+            <DownloaderCSV data={Object(payload)} columns={Object(columns)} />
             <Table
                 scroll={{ x: 100 }}
                 className='main-table__table'
