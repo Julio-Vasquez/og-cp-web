@@ -1,28 +1,18 @@
+import { FC } from 'react'
 import { InputProps, Tag } from 'antd'
 
-import { ROL } from './RolTag.type'
-import { FC } from 'react'
 import useIntl from '../../../hooks/useIntl'
-import { formTranslate } from '../../../utils/functions/translation.function'
-
-const ROLES_COLOR: Record<ROL, string> = {
-    Administrador: '#87d068',
-    Terapeuta: '#f50',
-    Usuario: '#2db7f5',
-}
+import { ROL } from '../../../utils/types/roles.type'
+import { ROLES_COLOR } from '../../../utils/constants/roles.constants'
 
 export const RolTag: FC<InputProps> = ({ value, id }) => {
     const { formatMessage } = useIntl()
 
+    const rolColor =
+        ROLES_COLOR[(value?.toString() as ROL) ?? formatMessage({ id: 'text.user' })]
+
     return (
-        <Tag
-            id={id}
-            color={
-                ROLES_COLOR[
-                    (value?.toString() as ROL) ?? formatMessage({ id: 'text.user' })
-                ]
-            }
-        >
+        <Tag id={id} color={rolColor}>
             {value}
         </Tag>
     )
