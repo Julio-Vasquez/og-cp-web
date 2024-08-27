@@ -25,4 +25,4 @@ export interface USER_LIST {
     person?: PERSON
 }
 
-export type UserState = 'success' | 'error' | 'processing'
+export type userState = 'success' | 'error' | 'processing'

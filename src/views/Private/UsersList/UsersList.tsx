@@ -8,11 +8,11 @@ import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
-import type { UserState } from './usersList.type'
 import { PERSON, USER_LIST } from './usersList.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
 import { Status } from '../../../utils/constants/status.enum'
+import { colors } from '../../../utils/constants/statusColor.constants'
 import { getColumnSearch } from '../../../utils/functions/table/table.function'
 import { Columns, TablePaginationPosition } from '../../../utils/types/table.type'
 import { successNotification } from '../../../utils/notifications/notification.action'
@@ -21,18 +21,12 @@ import './UserList.scss'
 
 export const UsersList = () => {
     const { formatMessage } = useIntl()
-    const colors: Record<State, UserState> = {
-        Activo: 'success',
-        Inactivo: 'error',
-        Pendiente: 'processing',
-    }
 
     const columns: Columns<USER_LIST> = [
         {
             title: `${formatMessage({ id: 'text.fullName' })}`,
             dataIndex: 'person',
             key: 'person',
-
             render: ({ publicKey, birthDate, ...values }: PERSON) =>
                 Object.values(values).join(' '),
         },
@@ -53,27 +47,24 @@ export const UsersList = () => {
             key: 'username',
             filterSearch: true,
             ...getColumnSearch({ dataIndex: 'username', title: 'username' }),
-            onFilterDropdownOpenChange(visible) {},
         },
         {
             title: `${formatMessage({ id: 'text.role' })}`,
             dataIndex: ['role', 'role'],
             key: 'role',
             width: 100,
-
             render: role => <RolTag value={role} />,
         },
-
         {
             title: `${formatMessage({ id: 'text.state' })}`,
             dataIndex: ['user', 'state'],
             key: 'state',
+            align: 'center',
             render: (state: State) => <Badge status={colors[state]} text={state} />,
         },
         {
             title: `${formatMessage({ id: 'text.action' })}`,
             key: 'actions',
-            width: 200,
             align: 'center',
             render: (data: USER_LIST) => {
                 return (
