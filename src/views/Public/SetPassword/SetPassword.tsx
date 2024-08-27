@@ -9,14 +9,10 @@ import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
-import { FormValues, SetPasswordMutation } from './setPassword.type'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
+import { FormValues, SetPasswordMutation } from './setPassword.type'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
-import {
-    errorNotification,
-    successNotification,
-} from '../../../utils/notifications/notification.action'
 import {
     ApiResponseError,
     ApiResponseSuccess,
@@ -27,6 +23,10 @@ import {
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
+import {
+    errorNotification,
+    successNotification,
+} from '../../../utils/notifications/notification.action'
 
 import './SetPassword.scss'
 
