@@ -5,15 +5,12 @@ import { PrivateRoutes, PublicRoutes } from '../routes'
 import i18n from '../i18n/config'
 import useData from '../hooks/useData'
 import { AUTH } from '../utils/constants/redux.constants'
-import { ProviderAntd } from '../utils/config-provider/Provider'
 
 const App = () => {
     const { authentication } = useData({ reducer: AUTH })
     return (
         <I18nextProvider i18n={i18n}>
-            <ProviderAntd>
-                {authentication ? <PrivateRoutes /> : <PublicRoutes />}
-            </ProviderAntd>
+            {authentication ? <PrivateRoutes /> : <PublicRoutes />}
         </I18nextProvider>
     )
 }
