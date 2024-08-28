@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Select, Table } from 'antd'
+import { Link } from 'react-router-dom'
 
 import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
@@ -12,47 +12,48 @@ import { TablePaginationPosition, Columns } from '../../../utils/types/table.typ
 
 import './Statistics.scss'
 
-const renderRating = (_: any, i: any) => {
-    return <CustomAvatar percent={i.percentage} key={i.key} />
-}
-const renderProgress = (_: any, i: DataType) => {
-    return <PercentProgress percent={i.percentage} />
-}
-
-const columns: Columns<DataType> = [
-    {
-        title: 'Nombre Actividad',
-        align: 'center',
-        dataIndex: 'name',
-        width: '15%',
-        key: 'name',
-        render: text => <Link to='#'>{text}</Link>,
-    },
-    {
-        title: 'Descripción',
-        align: 'center',
-        width: '45%',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
-        title: 'progreso',
-        align: 'center',
-        width: '30%',
-        key: 'percent',
-        render: renderProgress,
-    },
-    {
-        title: 'Calificación',
-        align: 'center',
-        key: 'key',
-        dataIndex: 'percentage',
-        render: renderRating,
-    },
-]
-
 const Statistics = () => {
-    const [page, setPage] = useState<TablePaginationPosition>('bottomCenter')
+    const [page] = useState<TablePaginationPosition>('bottomCenter')
+
+    const renderRating = (_: any, i: any) => (
+        <CustomAvatar percent={i.percentage} key={i.key} />
+    )
+
+    const renderProgress = (_: any, i: DataType) => (
+        <PercentProgress percent={i.percentage} />
+    )
+
+    const columns: Columns<DataType> = [
+        {
+            title: 'Nombre Actividad',
+            align: 'center',
+            dataIndex: 'name',
+            width: '15%',
+            key: 'name',
+            render: text => <Link to='#'>{text}</Link>,
+        },
+        {
+            title: 'Descripción',
+            align: 'center',
+            width: '45%',
+            dataIndex: 'description',
+            key: 'description',
+        },
+        {
+            title: 'progreso',
+            align: 'center',
+            width: '30%',
+            key: 'percent',
+            render: renderProgress,
+        },
+        {
+            title: 'Calificación',
+            align: 'center',
+            key: 'key',
+            dataIndex: 'percentage',
+            render: renderRating,
+        },
+    ]
 
     return (
         <div className='main-statistics'>
@@ -71,7 +72,7 @@ const Statistics = () => {
             <Table
                 scroll={{ x: 100 }}
                 columns={columns}
-                pagination={{ position: [page] }}
+                pagination={{ pageSize: 10 }}
                 dataSource={DATA}
             />
         </div>

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Badge, Table } from 'antd'
 
 import { RolTag } from '../../../components/Tags/RolTag'
@@ -9,12 +8,12 @@ import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
 import { PERSON, USER_LIST } from './usersList.type'
+import { Columns } from '../../../utils/types/table.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
 import { Status } from '../../../utils/constants/status.enum'
 import { colors } from '../../../utils/constants/statusColor.constants'
 import { getColumnSearch } from '../../../utils/functions/table/table.function'
-import { Columns, TablePaginationPosition } from '../../../utils/types/table.type'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
 import './UserList.scss'
@@ -78,8 +77,6 @@ export const UsersList = () => {
         },
     ]
 
-    const [page, setPage] = useState<TablePaginationPosition>('bottomCenter')
-
     const { data, loading, refetch } = useQuery<USER_LIST[]>({
         functionFetch: api.user.userList,
     })
@@ -105,7 +102,7 @@ export const UsersList = () => {
                 scroll={{ x: 100 }}
                 className='main-table__table'
                 columns={columns}
-                pagination={{ position: [page] }}
+                pagination={{ pageSize: 10 }}
                 dataSource={payload}
                 loading={loading}
             />
