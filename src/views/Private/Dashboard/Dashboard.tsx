@@ -17,6 +17,7 @@ import { MutationProps, MutationResponse } from './dashboard.type'
 import { ApiResponseSuccess } from '../../../utils/types/response.type'
 
 import './Dashboard.scss'
+import { successNotification } from '../../../utils/notifications/notification.action'
 
 const Dashboard = () => {
     const [selectedChild, setSelectedChild] = useState<Children>(CHILDREN[0])
@@ -26,7 +27,8 @@ const Dashboard = () => {
 
     const options = CHILDREN.map(item => ({ value: item._id, label: item.name }))
 
-    const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
+    const onCompleted = ({ data }: ApiResponseSuccess) =>
+        successNotification(`${data.message}`, 'bottomRight')
 
     const [mutation, { data: response }] = useMutation<MutationResponse[]>(
         { functionFetch: api.charts.getProgressByPhase },

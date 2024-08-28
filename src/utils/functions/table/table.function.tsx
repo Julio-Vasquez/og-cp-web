@@ -6,12 +6,12 @@ import { FilterDropdownProps, Key } from 'antd/lib/table/interface'
 import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 
 import { props, tableConfig, filter, params } from './table.types'
-import { UserList } from '../../../views/Private/UsersList/usersList.type'
+import { USER_LIST } from '../../../views/Private/UsersList/usersList.type'
 
 const getColumnSearch = <T,>({
     dataIndex,
     title,
-}: props<T>): TableColumnType<UserList> => {
+}: props<T>): TableColumnType<USER_LIST> => {
     const inputRef = useRef<InputRef>(null)
     const [searchText, setSearchText] = useState<any>('')
 
