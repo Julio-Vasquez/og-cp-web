@@ -15,9 +15,12 @@ import {
 } from './areaChart.type'
 
 import './AreaChart.scss'
+import { successMessage } from '../../../utils/notifications/message.action'
 
 export const AreaChart: FC<AreaChartProps> = ({ selectedChild }) => {
-    const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
+    const onCompleted = ({ data }: ApiResponseSuccess) => {
+        successMessage(`uploaded data ${data.message}`)
+    }
 
     const [mutation, { data: response }] = useMutation<AreaChartResponse[]>(
         { functionFetch: api.charts.getActivityPerDay },

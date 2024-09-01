@@ -6,8 +6,8 @@ import { SidebarPrivate } from './SidebarPrivate'
 
 import {
     LayoutPrivateProps,
-    LayoutPrivateDefaultProps,
     LayoutPrivatePropsTypes,
+    LayoutPrivateDefaultProps,
 } from './layoutPrivate.types'
 
 import './Layout.scss'

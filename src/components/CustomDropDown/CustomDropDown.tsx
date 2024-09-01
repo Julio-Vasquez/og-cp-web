@@ -4,9 +4,9 @@ import { Avatar, Badge, Dropdown, MenuProps, Space } from 'antd'
 
 import useIntl from '../../hooks/useIntl'
 import { logout } from '../../services/Auth/auth.slice'
+import iconLogOut from '../../assets/svg/iconLogOut.svg'
 import { CustomDropDownProps } from './customDropDown.type'
 import iconLanguage from '../../assets/svg/iconLanguage.svg'
-import iconLogOut from '../../assets/svg/iconLogOut.svg'
 import iconNotification from '../../assets/svg/iconNotification.svg'
 import { Data } from '../LayoutPrivate/HeaderPrivate/itemsHeaderPrivate/itemsHeader.type'
 
@@ -16,6 +16,7 @@ export const CustomDropDown: FC<CustomDropDownProps> = ({ payload }) => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
     const handleLogOut = () => dispatch(logout())
+
     const data: Data[] = [
         { src: iconNotification, count: 5, color: '#6744c6' },
         { src: iconLanguage },

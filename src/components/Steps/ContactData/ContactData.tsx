@@ -8,9 +8,9 @@ import CustomInput from '../../Fields/CustomInput/CustomInput'
 import useIntl from '../../../hooks/useIntl'
 import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 import {
-    ContactDataDefaultProps,
     ContactDataProps,
     ContactDataPropTypes,
+    ContactDataDefaultProps,
 } from './ContactData.type'
 import {
     maxLength,

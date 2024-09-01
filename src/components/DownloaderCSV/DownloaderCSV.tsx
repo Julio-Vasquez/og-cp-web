@@ -2,11 +2,11 @@ import { FC } from 'react'
 import { Button } from 'antd'
 import CsvDownload from 'react-csv-downloader'
 
+import useIntl from '../../hooks/useIntl'
 import { COLUMNS, CSV } from './Downloader.type'
 import { USER_LIST } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
-import useIntl from '../../hooks/useIntl'
 
 export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
     const { formatMessage } = useIntl()

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 import {
     Error404Props,
-    Error404DefaultProps,
     Error404PropTypes,
+    Error404DefaultProps,
 } from './error.types'
 
 import moon from './../../../assets/img/404/moon.svg'

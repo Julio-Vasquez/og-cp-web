@@ -4,9 +4,9 @@ import { Liquid } from '@ant-design/charts'
 import useIntl from '../../../hooks/useIntl'
 import { funcShapeLiquid } from '../../../utils/functions/charts.func'
 import {
-    ShapeLiquidDefaultProps,
-    ShapeLiquidPropTypes,
     ShapeLiquidProps,
+    ShapeLiquidPropTypes,
+    ShapeLiquidDefaultProps,
 } from './shapeLiquid.type'
 
 import './ShapeLiquid.scss'
@@ -34,7 +34,6 @@ export const ShapeLiquid: FC<ShapeLiquidProps> = ({ name, percent }) => {
                     objVars: { field: name },
                 })}
             </p>
-
             <Liquid {...config} />
         </div>
     )

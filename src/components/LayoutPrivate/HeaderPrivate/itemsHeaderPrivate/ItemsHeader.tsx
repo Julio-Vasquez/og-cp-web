@@ -8,9 +8,9 @@ import { useQuery } from '../../../../hooks/api'
 import { DataUser } from '../../../../utils/types/userData.type'
 import { Status } from '../../../../utils/constants/status.enum'
 import {
-    ItemsNavBarDefaultProps,
-    ItemsNavBarPropsTypes,
     ItemsNavBarProps,
+    ItemsNavBarPropsTypes,
+    ItemsNavBarDefaultProps,
 } from './itemsHeader.type'
 
 export const ItemsHeader: FC<ItemsNavBarProps> = () => {

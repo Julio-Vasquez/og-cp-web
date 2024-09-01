@@ -4,12 +4,16 @@ import { Bar } from '@ant-design/plots'
 import api from '../../../api'
 import { useMutation } from '../../../hooks/api'
 import { Status } from '../../../utils/constants/status.enum'
+import { ApiResponseSuccess } from '../../../utils/types/response.type'
+import { successMessage } from '../../../utils/notifications/message.action'
 import { BarChartMutation, BarChartProps, BarChartResponse } from './barChart.type'
 
 import './BarChart.scss'
 
 export const BarChart: FC<BarChartProps> = ({ selectedChild, selectedPhase }) => {
-    const onCompleted = () => {}
+    const onCompleted = ({ data }: ApiResponseSuccess) => {
+        successMessage(`uploaded data ${data.message}`)
+    }
     const [mutation, { data: response }] = useMutation<BarChartResponse>(
         { functionFetch: api.charts.getStepsByPhase },
         { onCompleted }
@@ -48,11 +52,6 @@ export const BarChart: FC<BarChartProps> = ({ selectedChild, selectedPhase }) =>
                         ? '#fff'
                         : '#000',
                 dx: (d: any) => (+d.pctCompleted > 1 ? -8 : 5),
-            },
-        },
-        axis: {
-            y: {
-                // labelFormatter: '.%',
             },
         },
     }

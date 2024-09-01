@@ -13,7 +13,6 @@ export const ThemeSelector: FC<ThemeData> = ({ setData }) => {
         const colorObj = changedValues?.colorPrimary
             ? { colorPrimary: (allValues?.colorPrimary as Color)?.toHexString() }
             : {}
-
         setData({ ...allValues, ...colorObj })
     }
 

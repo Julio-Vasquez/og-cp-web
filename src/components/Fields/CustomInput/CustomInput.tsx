@@ -3,8 +3,8 @@ import { Input, Select, Form } from 'antd'
 
 import {
     CustomInputProps,
-    CustomInputDefaultProps,
     CustomInputPropTypes,
+    CustomInputDefaultProps,
 } from './custom.type'
 import './CustomInput.scss'
 

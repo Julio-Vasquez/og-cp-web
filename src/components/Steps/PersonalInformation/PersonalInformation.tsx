@@ -10,8 +10,8 @@ import {
 import {
     maxLength,
     minLength,
-    requiredField,
     textField,
+    requiredField,
 } from '../../../utils/functions/form.functions'
 
 import './PersonalInformation.scss'

@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { Card } from 'antd'
 
 import {
-    CustomCardDefaultProps,
-    CustomCardPropTypes,
     CustomCardProps,
+    CustomCardPropTypes,
+    CustomCardDefaultProps,
 } from './customCard.type'
 
 import './CustomCard.scss'

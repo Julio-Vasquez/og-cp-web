@@ -3,8 +3,8 @@ import { Tag } from 'antd'
 import { STATUS } from './status.mock'
 import { useIntl } from './../../../hooks/useIntl'
 import {
-    StatusTagPropTypes,
     StatusTagProps,
+    StatusTagPropTypes,
     DefaultStatusTagPropTypes,
 } from './status.type'
 

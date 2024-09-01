@@ -6,17 +6,20 @@ import { useMutation } from '../../../hooks/api'
 import { Status } from '../../../utils/constants/status.enum'
 import { ApiResponseSuccess } from '../../../utils/types/response.type'
 import {
-    PieChartDefaultProps,
-    PieChartMutation,
-    PieChartPropTypes,
     PieChartProps,
+    PieChartMutation,
     PieChartResponse,
+    PieChartPropTypes,
+    PieChartDefaultProps,
 } from './pieChart.type'
 
 import './PieChart.scss'
+import { successMessage } from '../../../utils/notifications/message.action'
 
 export const PieChart: FC<PieChartProps> = ({ selectedChild, selectedPhase }) => {
-    const onCompleted = ({ data, variables }: ApiResponseSuccess) => {}
+    const onCompleted = ({ data }: ApiResponseSuccess) => {
+        successMessage(`uploaded data ${data.message}`)
+    }
 
     const [mutation, { data: response }] = useMutation<PieChartResponse[]>(
         { functionFetch: api.charts.getPhaseById },

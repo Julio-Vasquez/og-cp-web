@@ -12,8 +12,8 @@ import { LogoDashboard } from '../../Avatars/LogoDashboard'
 import useIntl from '../../../hooks/useIntl'
 import {
     SidebarPrivateProps,
-    SidebarPrivatePropsDefault,
     SidebarPrivatePropsTypes,
+    SidebarPrivatePropsDefault,
 } from './sidebarPrivate.type'
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
