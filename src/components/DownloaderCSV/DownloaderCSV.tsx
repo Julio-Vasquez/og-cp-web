@@ -4,42 +4,44 @@ import CsvDownload from 'react-csv-downloader'
 
 import useIntl from '../../hooks/useIntl'
 import { Columns, Csv } from './Downloader.type'
-import { USER_LIST } from '../../views/Private/UsersList/usersList.type'
+import { UserList2 } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
 
-export const DownloaderCSV: FC<Csv> = ({ data, columns }) => {
+export const DownloaderCSV: FC<Csv<UserList2>> = ({ data }) => {
     const { formatMessage } = useIntl()
-    const headers = columns.map(({ title }: Columns) => {
-        const data = { id: title, displayName: title }
-        if (title === 'Acción') return ''
-        return data
+
+    const datas = data.map(item => {
+        if ('person' in item) {
+            const { person, role, user } = item
+            const { publicKey, birthDate, ...values } = person
+            return {
+                [formatMessage({ id: 'text.fullName' })]:
+                    Object.values(values).join(' '),
+                [formatMessage({ id: 'text.birthDate' })]: birthDate,
+                [formatMessage({ id: 'text.mail' })]: user.mail,
+                [formatMessage({ id: 'text.username' })]: user.username,
+                [formatMessage({ id: 'text.role' })]: role.role,
+                [formatMessage({ id: 'text.state' })]: user.state,
+            }
+        }
+        return {}
     })
 
-    const datas = data.map(({ role, user, person }: USER_LIST) => {
-        const { publicKey, birthDate, ...values } = person!
-        return {
-            'Nombre completo': Object.values(values).join(' '),
-            'Fecha de nacimiento': birthDate,
-            'Correo electrónico': user.mail,
-            'Nombre de usuario': user.username,
-            Rol: role.role,
-            Estado: user.state,
-        }
-    })
+    const keys = Object.keys(datas[0])
 
     return (
         <CsvDownload
             extension='.csv'
             separator=';'
             wrapColumnChar=' '
-            columns={headers}
+            columns={keys}
             datas={datas}
             filename='reporte'
             title='Informe usuarios'
             className='main-csv'
         >
-            <Button disabled={data.length === 0} className='main-csv__btn'>
+            <Button className='main-csv__btn'>
                 {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
             </Button>
         </CsvDownload>

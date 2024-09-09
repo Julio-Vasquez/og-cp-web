@@ -1,6 +1,5 @@
-type Csv = {
-    data: []
-    columns: []
+type Csv<D = unknown> = {
+    data: D[]
 }
 
 type Columns = {
