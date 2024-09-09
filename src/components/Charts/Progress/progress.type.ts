@@ -1,4 +1,5 @@
 import propTypes from 'prop-types'
+
 export const ProgressPropTypes = {
     percent: propTypes.number.isRequired,
 }

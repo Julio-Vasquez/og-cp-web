@@ -1,9 +1,9 @@
-type CSV = {
+type Csv = {
     data: []
     columns: []
 }
 
-type COLUMNS = {
+type Columns = {
     align: string
     key: string
     render: any
@@ -11,4 +11,4 @@ type COLUMNS = {
     width: number
 }
 
-export type { CSV, COLUMNS }
+export type { Csv, Columns }

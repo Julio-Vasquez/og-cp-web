@@ -3,14 +3,14 @@ import { Button } from 'antd'
 import CsvDownload from 'react-csv-downloader'
 
 import useIntl from '../../hooks/useIntl'
-import { COLUMNS, CSV } from './Downloader.type'
+import { Columns, Csv } from './Downloader.type'
 import { USER_LIST } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
 
-export const DownloaderCSV: FC<CSV> = ({ data, columns }) => {
+export const DownloaderCSV: FC<Csv> = ({ data, columns }) => {
     const { formatMessage } = useIntl()
-    const headers = columns.map(({ title }: COLUMNS) => {
+    const headers = columns.map(({ title }: Columns) => {
         const data = { id: title, displayName: title }
         if (title === 'Acción') return ''
         return data
