@@ -3,30 +3,15 @@ import { Button } from 'antd'
 import CsvDownload from 'react-csv-downloader'
 
 import useIntl from '../../hooks/useIntl'
-import { Columns, Csv } from './Downloader.type'
+import { Csv } from './Downloader.type'
 import { UserList2 } from '../../views/Private/UsersList/usersList.type'
 
 import './Downloader.scss'
+import { translateDatas } from '../../utils/functions/keys.function'
 
 export const DownloaderCSV: FC<Csv<UserList2>> = ({ data }) => {
     const { formatMessage } = useIntl()
-
-    const datas = data.map(item => {
-        if ('person' in item) {
-            const { person, role, user } = item
-            const { publicKey, birthDate, ...values } = person
-            return {
-                [formatMessage({ id: 'text.fullName' })]:
-                    Object.values(values).join(' '),
-                [formatMessage({ id: 'text.birthDate' })]: birthDate,
-                [formatMessage({ id: 'text.mail' })]: user.mail,
-                [formatMessage({ id: 'text.username' })]: user.username,
-                [formatMessage({ id: 'text.role' })]: role.role,
-                [formatMessage({ id: 'text.state' })]: user.state,
-            }
-        }
-        return {}
-    })
+    const datas = translateDatas(data, formatMessage)
 
     const keys = Object.keys(datas[0])
 

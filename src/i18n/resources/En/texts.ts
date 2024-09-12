@@ -18,7 +18,7 @@ export const Texts = {
     middleLastName: 'Middle last name',
     passwordConfirm: 'Confirm password',
     inputObj: '¡Please enter {{field}}!',
-    userOrEmail: '{{field}} / {{field}}',
+    userOrEmail: '{{user}} / {{mail}}',
     identification: 'Number identification',
     assignNewPassword: 'Assign new password',
     numberField: 'This Field should be number',
