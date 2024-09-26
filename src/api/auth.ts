@@ -1,4 +1,4 @@
-import { Query, Mutation } from './core'
+import { Mutation } from './core'
 import { Methods } from '../utils/types/response.type'
 import { LoginType } from '../services/Auth/auth.types'
 import { ActivateAccount } from '../views/Public/ActivateAccount/activateAccount.type'

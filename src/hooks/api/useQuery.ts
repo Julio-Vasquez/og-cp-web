@@ -23,6 +23,7 @@ export const useQuery = <T>(
 
     const getData = async <N = unknown>(newVariables?: N) => {
         const fetchVariables = newVariables ?? variables
+        console.log(fetchVariables)
 
         setReq({ data: {} as ResponseFetch<T>, loading: true, error: false })
         try {

@@ -15,7 +15,6 @@ export const getHeader = (token: string | null) => {
 }
 
 export const getUrl = ({ url, params }: query): URL => {
-    console.log('url', URL_API)
     const _url = new URL(`${URL_API}/${url}`)
     if (params)
         Object.keys(params).forEach(key =>
