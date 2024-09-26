@@ -15,5 +15,6 @@ export const ROUTES_PRIVATE = {
     profile: '/profile',
     ranking: '/ranking',
     statistics: '/statistics',
+    activityDetail: '/statistics/detail/:id',
     users: '/users',
 }

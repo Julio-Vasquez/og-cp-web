@@ -10,25 +10,30 @@ const Error404 = lazy(() => import('./../components/Error/Error404'))
 const Ranking = lazy(() => import('../views/Private/Ranking/Ranking'))
 const LayoutPrivate = lazy(() => import('../components/LayoutPrivate'))
 const Dashboard = lazy(() => import('../views/Private/Dashboard/Dashboard'))
+const ActivityDetail = lazy(() => import('../views/Private/ActivityDetail'))
 const Statistics = lazy(() => import('../views/Private/Statistics/Statistics'))
 
 export const PrivateRoutes: FC = () => {
     return (
-        <Suspense fallback={<Loading message='loading' />}>
+        <Suspense fallback={<Loading message='loading...' />}>
             <BrowserRouter>
                 <LayoutPrivate>
                     <Routes>
-                        <Route path={RP.dashboard} element={<Dashboard />} />
-                        <Route path={RP.default} element={<Dashboard />} />
-                        <Route path={RP.ranking} element={<Ranking />} />
-                        <Route path={RP.statistics} element={<Statistics />} />
+                        <Route
+                            path={RP.activityDetail}
+                            element={<ActivityDetail />}
+                        />
                         <Route path={RP.profile} element={<Profile />} />
                         <Route path={RP.users} element={<UsersList />} />
-                        <Route path={RP.error404} element={<Error404 />} />
+                        <Route path={RP.ranking} element={<Ranking />} />
                         <Route
                             path='/*'
-                            element={<Navigate replace to={RP.dashboard} />}
+                            element={<Navigate replace to={RP.error404} />}
                         />
+                        <Route path={RP.error404} element={<Error404 />} />
+                        <Route path={RP.default} element={<Dashboard />} />
+                        <Route path={RP.dashboard} element={<Dashboard />} />
+                        <Route path={RP.statistics} element={<Statistics />} />
                     </Routes>
                 </LayoutPrivate>
             </BrowserRouter>
