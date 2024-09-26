@@ -3,16 +3,28 @@
     flex-direction: column;
     table-layout: fixed;
     text-align: center;
-    &__title {
-        font-size: 32px;
-        color: #6744c6;
-    }
     &__children {
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         margin-bottom: 20px;
+    }
+    &__category {
+        width: 40%;
+        display: flex;
+        span {
+            font-size: 20px;
+            padding-inline: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+            svg {
+                font-size: 15px;
+            }
+        }
     }
     &__table {
         border: solid red;

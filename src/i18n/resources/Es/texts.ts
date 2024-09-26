@@ -1,4 +1,5 @@
 export const Texts = {
+    name: 'Nombre',
     gender: 'Género',
     role: 'Rol',
     editUser: 'Editar {{field}}',
@@ -45,4 +46,6 @@ export const Texts = {
     language: 'Idioma',
     listObj: 'Lista de {{field}} ',
     downloader: 'Descargar {{field}}',
+    category: 'Categoría',
+    childBySelect: '{{field}} del Niño ',
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
+import { ResponseFetch } from '../../utils/api/api.util'
 import { ResponseState, QueryType, Func } from './api.types'
 import { HttpStatus } from '../../utils/types/response.type'
 import { errorNotification } from '../../utils/notifications/notification.action'
-import { ResponseFetch } from '../../utils/api/api.util'
 
 const validCases = [HttpStatus.OK, HttpStatus.NO_CONTENT]
 
@@ -23,7 +23,6 @@ export const useQuery = <T>(
 
     const getData = async <N = unknown>(newVariables?: N) => {
         const fetchVariables = newVariables ?? variables
-        console.log(fetchVariables)
 
         setReq({ data: {} as ResponseFetch<T>, loading: true, error: false })
         try {

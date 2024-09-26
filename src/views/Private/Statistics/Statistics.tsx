@@ -6,12 +6,18 @@ import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 import { DataType } from './statistic.type'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Columns } from '../../../utils/types/table.type'
-import { CHILD, DATA } from '../../../utils/mocks/mockStatistics'
+import {
+    CHILD,
+    DATA,
+    CATEGORIES_ACTIVITY,
+} from '../../../utils/mocks/mockStatistics'
 import { PercentProgress } from '../../../components/Charts/Progress/Progress'
 
 import './Statistics.scss'
+import useIntl from '../../../hooks/useIntl'
 
 const Statistics = () => {
+    const { formatMessage } = useIntl()
     const renderRating = (_: any, i: any) => (
         <CustomAvatar percent={i.percentage} key={i.key} />
     )
@@ -22,7 +28,7 @@ const Statistics = () => {
 
     const columns: Columns<DataType> = [
         {
-            title: 'Nombre Actividad',
+            title: 'Etapa',
             align: 'center',
             dataIndex: 'name',
             width: '15%',
@@ -60,19 +66,33 @@ const Statistics = () => {
                 <div>
                     <img src={iconUser} alt='user-percentage' />
                     <Select
+                        defaultValue={CHILD[0]}
                         allowClear
                         bordered={false}
-                        placeholder='Children name'
+                        placeholder={formatMessage({
+                            id: 'text.childBySelect',
+                            objVars: {
+                                field: formatMessage({ id: 'text.name' }),
+                            },
+                        })}
                         options={CHILD}
                     />
                 </div>
-                <h1 className='main-statistics__title'>Etapa 1</h1>
+                <Select
+                    bordered={false}
+                    defaultValue={CATEGORIES_ACTIVITY[0]}
+                    className='main-statistics__category'
+                    allowClear
+                    placeholder={formatMessage({ id: 'text.category' })}
+                    options={CATEGORIES_ACTIVITY}
+                />
             </div>
             <Table
                 scroll={{ x: 100 }}
                 columns={columns}
                 pagination={{ pageSize: 10 }}
                 dataSource={DATA}
+                rowKey={row => row.key}
             />
         </div>
     )
