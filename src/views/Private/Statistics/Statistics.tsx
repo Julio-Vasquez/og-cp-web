@@ -1,20 +1,17 @@
-import { useState } from 'react'
 import { Select, Table } from 'antd'
 import { Link } from 'react-router-dom'
 
 import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
-import { CHILD, DATA } from './mock'
 import { DataType } from './statistic.type'
 import iconUser from '../../../assets/svg/iconUser.svg'
+import { Columns } from '../../../utils/types/table.type'
+import { CHILD, DATA } from '../../../utils/mocks/mockStatistics'
 import { PercentProgress } from '../../../components/Charts/Progress/Progress'
-import { TablePaginationPosition, Columns } from '../../../utils/types/table.type'
 
 import './Statistics.scss'
 
 const Statistics = () => {
-    const [page] = useState<TablePaginationPosition>('bottomCenter')
-
     const renderRating = (_: any, i: any) => (
         <CustomAvatar percent={i.percentage} key={i.key} />
     )
@@ -30,7 +27,9 @@ const Statistics = () => {
             dataIndex: 'name',
             width: '15%',
             key: 'name',
-            render: text => <Link to='#'>{text}</Link>,
+            render: (text, record) => (
+                <Link to={'/statistics/detail/' + record.name}>{text}</Link>
+            ),
         },
         {
             title: 'Descripción',
