@@ -13,13 +13,17 @@ import { CHILDREN, Children } from './mock'
 import { useMutation } from '../../../hooks/api'
 import userIcon from '../../../assets/svg/iconUser.svg'
 import { Status } from '../../../utils/constants/status.enum'
+import { ACTIVITIES } from '../../../utils/mocks/mockActivities'
 import { MutationProps, MutationResponse } from './dashboard.type'
 import { ApiResponseSuccess } from '../../../utils/types/response.type'
-
-import './Dashboard.scss'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
+import './Dashboard.scss'
+
 const Dashboard = () => {
+    const {
+        APD: { etapa },
+    } = ACTIVITIES
     const [selectedChild, setSelectedChild] = useState<Children>(CHILDREN[0])
 
     const handleOnChangeChild = (values: string) =>
@@ -63,24 +67,14 @@ const Dashboard = () => {
                 </div>
                 <div className='main-dashboard__cards-content'>
                     <div className='main-dashboard__cards'>
-                        <CustomCard
-                            backGroundColor='#6744c60e'
-                            text='Custom Card 1'
-                        />
-                        <CustomCard
-                            backGroundColor='#6744c63a'
-                            text='Custom Card 2'
-                        />
-                    </div>
-                    <div className='main-dashboard__cards'>
-                        <CustomCard
-                            backGroundColor='#6744c665'
-                            text='Custom Card 3'
-                        />
-                        <CustomCard
-                            backGroundColor='#6744c6a6'
-                            text='Custom Card 4'
-                        />
+                        {etapa.map(res => (
+                            <CustomCard
+                                key={res.key}
+                                title={res.name}
+                                description={`${res.percentage}`}
+                                className={res.bg}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

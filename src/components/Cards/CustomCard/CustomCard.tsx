@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Card } from 'antd'
+import { Card, Tooltip } from 'antd'
 
 import {
     CustomCardProps,
@@ -8,12 +8,61 @@ import {
 } from './customCard.type'
 
 import './CustomCard.scss'
+import { PercentProgress } from '../../Charts/Progress'
 
-export const CustomCard: FC<CustomCardProps> = ({ backGroundColor, text }) => (
-    <Card className='custom-card' style={{ backgroundColor: `${backGroundColor}` }}>
-        {text}
-    </Card>
-)
+const { Meta } = Card
+
+export const CustomCard: FC<CustomCardProps> = ({
+    description,
+    backGroundColor,
+    className,
+    image,
+    title,
+    reducerString,
+}) => {
+    const titleCard = title ? <h3>{title}</h3> : ''
+
+    return (
+        <>
+            {image ? (
+                <Card
+                    title={titleCard}
+                    className={`${className}`}
+                    cover={<img src={`${image}`} alt='alt' />}
+                    actions={[]}
+                >
+                    <Meta
+                        description={
+                            <>
+                                {reducerString ? (
+                                    <p>
+                                        <Tooltip
+                                            title={description}
+                                            placement='bottomLeft'
+                                            color='#6744c665'
+                                        >
+                                            {reducerString()}
+                                        </Tooltip>
+                                    </p>
+                                ) : (
+                                    <p>{description}</p>
+                                )}
+                            </>
+                        }
+                    />
+                </Card>
+            ) : (
+                <Card
+                    title={title}
+                    className={`${className}`}
+                    style={{ backgroundColor: `${backGroundColor}` }}
+                >
+                    <PercentProgress percent={parseInt(`${description}`)} />
+                </Card>
+            )}
+        </>
+    )
+}
 
 CustomCard.propTypes = CustomCardPropTypes
 CustomCard.defaultProps = CustomCardDefaultProps

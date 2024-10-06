@@ -34,7 +34,7 @@ export const ContactData: FC<ContactDataProps> = ({
     )
 
     const disabledDate: RangePickerProps['disabledDate'] = current =>
-        current && current >= dayjs().endOf('day')
+        current && current >= dayjs().subtract(17, 'year')
 
     return (
         <div className='main-contact-data'>

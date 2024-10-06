@@ -15,4 +15,6 @@ export type DataType = {
     name: string
     percentage: number
     description: string
+    activities: []
+    img: string
 }

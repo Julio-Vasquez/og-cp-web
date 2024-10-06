@@ -4,23 +4,22 @@ import { Link } from 'react-router-dom'
 import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
 import { DataType } from './statistic.type'
+import useIntl from '../../../hooks/useIntl'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Columns } from '../../../utils/types/table.type'
-import {
-    CHILD,
-    DATA,
-    CATEGORIES_ACTIVITY,
-} from '../../../utils/mocks/mockStatistics'
+import { ACTIVITIES } from '../../../utils/mocks/mockActivities'
 import { PercentProgress } from '../../../components/Charts/Progress/Progress'
+import { CHILD, CATEGORIES_ACTIVITY } from '../../../utils/mocks/mockStatistics'
 
 import './Statistics.scss'
-import useIntl from '../../../hooks/useIntl'
 
 const Statistics = () => {
     const { formatMessage } = useIntl()
     const renderRating = (_: any, i: any) => (
         <CustomAvatar percent={i.percentage} key={i.key} />
     )
+
+    const { APD } = ACTIVITIES
 
     const renderProgress = (_: any, i: DataType) => (
         <PercentProgress percent={i.percentage} />
@@ -90,8 +89,8 @@ const Statistics = () => {
             <Table
                 scroll={{ x: 100 }}
                 columns={columns}
-                pagination={{ pageSize: 10 }}
-                dataSource={DATA}
+                pagination={{ pageSize: 5 }}
+                dataSource={APD.etapa}
                 rowKey={row => row.key}
             />
         </div>
