@@ -28,7 +28,7 @@ export const PrivateRoutes: FC = () => {
                         <Route path={RP.ranking} element={<Ranking />} />
                         <Route
                             path='/*'
-                            element={<Navigate replace to={RP.error404} />}
+                            element={<Navigate replace to={RP.default} />}
                         />
                         <Route path={RP.error404} element={<Error404 />} />
                         <Route path={RP.default} element={<Dashboard />} />
