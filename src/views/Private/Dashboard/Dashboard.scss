@@ -19,34 +19,13 @@
         width: 100%;
         display: flex;
         align-items: center;
-
-        .pct1,
-        .pct2,
-        .pct3,
-        .pct4,
-        .pct5 {
+        .pct1 {
             width: 100%;
             margin-inline: 0.2rem;
             height: 105px;
-        }
-
-        .pct1 {
-            background-color: #6744c60e;
-        }
-        .pct2 {
-            background-color: #6744c63a;
-        }
-        .pct3 {
-            background-color: #6744c665;
-        }
-        .pct4 {
-            background-color: #6744c6a6;
-        }
-        .pct5 {
-            background-color: #6744c6e1;
+            background-color: #7554d165;
         }
     }
-
     &__children {
         width: 50%;
         height: 105px;
@@ -73,7 +52,6 @@
         display: flex;
         justify-content: space-between;
     }
-
     &__progress {
         border: solid;
         width: 100px;
@@ -109,7 +87,6 @@
         }
     }
 }
-
 @media only screen and (max-width: 992px) {
     .main-dashboard {
         &__children {

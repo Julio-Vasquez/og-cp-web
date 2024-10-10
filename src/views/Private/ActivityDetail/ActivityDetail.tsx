@@ -2,14 +2,17 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import CustomCard from '../../../components/Cards/CustomCard'
 
-import { reduceString } from '../../../utils/types/string.util'
 import { ACTIVITIES } from '../../../utils/mocks/mockActivities'
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
 import './ActivityDetail.scss'
+import { Modal } from 'antd'
+import { useVisible } from '../../../hooks/useVisible'
 
 export const ActivityDetail = () => {
     const params = useParams()
+    const { closeDialog, openDialog, visible } = useVisible()
+
     const {
         APD: { etapa },
     } = ACTIVITIES
@@ -32,13 +35,6 @@ export const ActivityDetail = () => {
                             image={res.img}
                             title={`${params.id}`}
                             description={res.description}
-                            reducerString={() =>
-                                reduceString({
-                                    value: res.description,
-                                    maxLength: 400,
-                                    ellipsis: true,
-                                })
-                            }
                             className='activity-detail__stage'
                         />
                     ) : null
@@ -49,17 +45,13 @@ export const ActivityDetail = () => {
                             ? act.activities.map(res => {
                                   return (
                                       <CustomCard
+                                          visible={visible}
+                                          openDialog={openDialog}
                                           key={res.key}
                                           image={res.img}
                                           title={res.name}
                                           description={res.description}
-                                          reducerString={() =>
-                                              reduceString({
-                                                  value: res.description,
-                                                  maxLength: 40,
-                                                  ellipsis: true,
-                                              })
-                                          }
+                                          ellipsis
                                           className='activity-detail__card-activity'
                                       />
                                   )
@@ -68,6 +60,14 @@ export const ActivityDetail = () => {
                     )}
                 </div>
             </div>
+            <Modal
+                open={visible}
+                onCancel={closeDialog}
+                okButtonProps={{ hidden: true }}
+                cancelButtonProps={{ hidden: true }}
+            >
+                <h1>modal</h1>
+            </Modal>
         </div>
     )
 }

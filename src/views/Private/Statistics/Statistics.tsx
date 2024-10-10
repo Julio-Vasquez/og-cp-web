@@ -22,7 +22,7 @@ const Statistics = () => {
     const { APD } = ACTIVITIES
 
     const renderProgress = (_: any, i: DataType) => (
-        <PercentProgress percent={i.percentage} />
+        <PercentProgress percentage={i.percentage} />
     )
 
     const columns: Columns<DataType> = [

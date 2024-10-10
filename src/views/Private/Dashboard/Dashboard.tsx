@@ -71,15 +71,14 @@ const Dashboard = () => {
                             <CustomCard
                                 key={res.key}
                                 title={res.name}
-                                description={`${res.percentage}`}
-                                className={res.bg}
+                                percentage={res.percentage}
+                                className='pct1'
                             />
                         ))}
                     </div>
                 </div>
             </div>
             <AreaChart selectedChild={selectedChild?._id} />
-
             <div className='main-dashboard__charts'>
                 <CustomCarousel>
                     {data.map((item, index) => (

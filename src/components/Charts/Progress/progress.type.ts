@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 
 export const ProgressPropTypes = {
-    percent: propTypes.number.isRequired || propTypes.string.isRequired,
+    percentage: propTypes.number.isRequired,
 }
 
 export const ProgressDefaultProps = {}

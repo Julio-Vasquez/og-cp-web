@@ -1,63 +1,59 @@
 import { FC } from 'react'
-import { Card, Tooltip } from 'antd'
+import { Card, Tooltip, Modal } from 'antd'
+
+import { PercentProgress } from '../../Charts/Progress'
 
 import {
     CustomCardProps,
     CustomCardPropTypes,
     CustomCardDefaultProps,
 } from './customCard.type'
-
-import './CustomCard.scss'
-import { PercentProgress } from '../../Charts/Progress'
+import { reduceString } from '../../../utils/types/string.util'
 
 const { Meta } = Card
 
 export const CustomCard: FC<CustomCardProps> = ({
     description,
-    backGroundColor,
+    percentage,
     className,
     image,
-    title,
-    reducerString,
+    title = '',
+    ellipsis,
+    openDialog,
 }) => {
-    const titleCard = title ? <h3>{title}</h3> : ''
-
     return (
         <>
             {image ? (
                 <Card
-                    title={titleCard}
+                    title={<h3>{title}</h3>}
                     className={`${className}`}
                     cover={<img src={`${image}`} alt='alt' />}
-                    actions={[]}
+                    onClick={openDialog!}
+                    hoverable
                 >
                     <Meta
                         description={
-                            <>
-                                {reducerString ? (
-                                    <p>
-                                        <Tooltip
-                                            title={description}
-                                            placement='bottomLeft'
-                                            color='#6744c665'
-                                        >
-                                            {reducerString()}
-                                        </Tooltip>
-                                    </p>
-                                ) : (
-                                    <p>{description}</p>
-                                )}
-                            </>
+                            ellipsis ? (
+                                <Tooltip
+                                    title={description}
+                                    placement='bottom'
+                                    color='#6744c665'
+                                >
+                                    {reduceString({
+                                        value: `${description}`,
+                                        maxLength: 70,
+                                        ellipsis,
+                                    })}
+                                </Tooltip>
+                            ) : (
+                                <p>{description}</p>
+                            )
                         }
                     />
                 </Card>
             ) : (
-                <Card
-                    title={title}
-                    className={`${className}`}
-                    style={{ backgroundColor: `${backGroundColor}` }}
-                >
-                    <PercentProgress percent={parseInt(`${description}`)} />
+                <Card title={title} className={`${className}`}>
+                    <PercentProgress percentage={percentage!} />
                 </Card>
             )}
         </>
