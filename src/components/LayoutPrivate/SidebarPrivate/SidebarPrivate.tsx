@@ -1,20 +1,19 @@
 import { Layout, Menu } from 'antd'
 import { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
-import users from '../../../assets/svg/users.svg'
-import ranking from '../../../assets/svg/ranking.svg'
-import profile from '../../../assets/svg/iconPerfil.svg'
-import dashboard from '../../../assets/svg/dashboard.svg'
-import statistics from '../../../assets/svg/statistics.svg'
 import { LogoDashboard } from '../../Avatars/LogoDashboard'
 
-import useIntl from '../../../hooks/useIntl'
 import {
     SidebarPrivateProps,
     SidebarPrivatePropsTypes,
     SidebarPrivatePropsDefault,
 } from './sidebarPrivate.type'
+import useIntl from '../../../hooks/useIntl'
+import useData from '../../../hooks/useData'
+import { AUTH } from '../../../utils/constants/redux.constants'
+import { LANGS } from '../../../utils/constants/language.constant'
 import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
 import './SidebarPrivate.scss'
@@ -24,55 +23,36 @@ const { Sider } = Layout
 const getIcon = (path: string) => <img src={path} width={25} />
 
 export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
+    const { menu: itemMenu } = useData({ reducer: AUTH })
+    const tMenu = itemMenu ?? []
     const { pathname } = useLocation()
     const { formatMessage } = useIntl()
 
-    const Items = [
-        {
-            key: '1',
+    const { i18n } = useTranslation()
+    const lang = i18n.language === LANGS.en.value
+
+    const menuSide = tMenu.map((item, key) => {
+        return {
+            key,
             label: (
-                <Link to={RP.profile}>{formatMessage({ id: 'text.profile' })}</Link>
-            ),
-            icon: getIcon(profile),
-        },
-        {
-            key: '2',
-            label: (
-                <Link to={RP.dashboard}>
-                    {formatMessage({ id: 'text.dashboard' })}
+                <Link to={RP[item.en.toLowerCase() as keyof typeof RP]}>
+                    {lang ? item.en : item.es}
                 </Link>
             ),
-            icon: getIcon(dashboard),
-        },
-        {
-            key: '3',
-            label: (
-                <Link to={RP.statistics}>
-                    {formatMessage({ id: 'text.statistics' })}
-                </Link>
-            ),
-            icon: getIcon(statistics),
-        },
-        {
-            key: '4',
-            label: (
-                <Link to={RP.ranking}>{formatMessage({ id: 'text.ranking' })} </Link>
-            ),
-            icon: getIcon(ranking),
-        },
-        {
-            key: '5',
-            label: <Link to={RP.users}>{formatMessage({ id: 'text.users' })} </Link>,
-            icon: getIcon(users),
-        },
-    ]
+            icon: getIcon(item.icon),
+        }
+    })
 
-    const key = Items.find(item => item.label.props.to === pathname)?.key
+    const key = menuSide.find(item => item.label.props.to === pathname)?.key
 
-    const [activeSide, setActiveSide] = useState([key ?? '2'])
-    const handleClick = (key: string) => setActiveSide([key])
+    const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '1'])
+    const handleClick = (key: string) => {
+        console.log(key, activeSide)
 
-    const menu = Items.map((item, index) => ({
+        setActiveSide([key])
+    }
+
+    const menu = menuSide.map((item, index) => ({
         ...item,
         onClick: () => handleClick(`${index + 1}`),
     }))
