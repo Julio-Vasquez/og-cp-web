@@ -12,6 +12,7 @@ const LayoutPrivate = lazy(() => import('../components/LayoutPrivate'))
 const Dashboard = lazy(() => import('../views/Private/Dashboard/Dashboard'))
 const ActivityDetail = lazy(() => import('../views/Private/ActivityDetail'))
 const Statistics = lazy(() => import('../views/Private/Statistics/Statistics'))
+const Players = lazy(() => import('../views/Private/Players/Players'))
 
 export const PrivateRoutes: FC = () => {
     return (
@@ -24,7 +25,7 @@ export const PrivateRoutes: FC = () => {
                             element={<ActivityDetail />}
                         />
                         <Route path={RP.profile} element={<Profile />} />
-                        <Route path={RP.users} element={<UsersList />} />
+                        <Route path={RP.userlist} element={<UsersList />} />
                         <Route path={RP.ranking} element={<Ranking />} />
                         <Route
                             path='/*'
@@ -34,6 +35,7 @@ export const PrivateRoutes: FC = () => {
                         <Route path={RP.default} element={<Dashboard />} />
                         <Route path={RP.dashboard} element={<Dashboard />} />
                         <Route path={RP.statistics} element={<Statistics />} />
+                        <Route path={RP.players} element={<Players />} />
                     </Routes>
                 </LayoutPrivate>
             </BrowserRouter>
