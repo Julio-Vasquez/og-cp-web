@@ -1,15 +1,17 @@
 import { ApiResponseSuccess } from '../../utils/types/response.type'
 
-type Actions = {
-    create: boolean
-    read: boolean
-    update: boolean
-    delete: boolean
+export type Actions = {
+    create: boolean | 'partial'
+    read: boolean | 'partial'
+    update: boolean | 'partial'
+    delete: boolean | 'partial'
 }
 
-type Menu = Record<string, Actions> | null
+export type Menu =
+    | { actions: Actions; en: string; es: string; icon: string }[]
+    | null
 
-type Payload = {
+export type Payload = {
     token: string
     message: string
     success: boolean
