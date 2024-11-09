@@ -24,19 +24,19 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
 
     const { pathname } = useLocation()
     const { formatMessage } = useIntl()
-    const menuSideBard = useMenuItems(itemMenu)
+    const menuSidebar = useMenuItems(itemMenu)
 
-    const key = menuSideBard?.find(item => item?.label.props.to === pathname)?.key
+    const key = menuSidebar?.find(item => item?.label.props.to === pathname)?.key
 
     const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '1'])
     const handleClick = (key: string) => setActiveSide([key])
 
-    const menu = menuSideBard?.map((item, index) => ({
+    const menu = menuSidebar?.map((item, index) => ({
         ...item,
         onClick: () => handleClick(`${index + 1}`),
     }))
 
-    console.log(menuSideBard)
+    console.log(menuSidebar)
     return (
         <Sider
             trigger={null}
