@@ -18,9 +18,30 @@ import { getColumnSearch } from '../../../utils/functions/table/table.function'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
 import './UserList.scss'
+import useData from '../../../hooks/useData'
+import { AUTH } from '../../../utils/constants/redux.constants'
+import { GetInfoToken } from '../../../utils/storage/storage'
+import { isAdmin } from '../../../utils/role.util'
 
 export const UsersList = () => {
+    const { token } = useData({ reducer: AUTH })
+    const { role } = GetInfoToken(token)
     const { formatMessage } = useIntl()
+
+    const hasRender = isAdmin(role)
+        ? {
+              title: `${formatMessage({ id: 'text.action' })}`,
+              key: 'actions',
+              align: 'center' as 'center',
+              render: (data: UserList2) => (
+                  <UpgradeOrDegrade
+                      username={data.user.username}
+                      role={data.role.role}
+                      onCompleted={onCompleted}
+                  />
+              ),
+          }
+        : {}
 
     const columns: Columns<UserList2> = [
         {
@@ -62,20 +83,7 @@ export const UsersList = () => {
             align: 'center',
             render: (state: State) => <Badge status={colors[state]} text={state} />,
         },
-        {
-            title: `${formatMessage({ id: 'text.action' })}`,
-            key: 'actions',
-            align: 'center',
-            render: (data: UserList2) => {
-                return (
-                    <UpgradeOrDegrade
-                        username={data.user.username}
-                        role={data.role.role}
-                        onCompleted={onCompleted}
-                    />
-                )
-            },
-        },
+        hasRender,
     ]
 
     const { data, loading, refetch } = useQuery<UserList2[]>({

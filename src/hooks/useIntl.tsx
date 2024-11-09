@@ -6,12 +6,12 @@ type props = {
 }
 
 export const useIntl = () => {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
 
     const formatMessage = ({ id, objVars }: props): string =>
         objVars ? t(id, objVars) : t(id)
 
-    return { formatMessage }
+    return { formatMessage, lng: i18n.language }
 }
 
 export default useIntl

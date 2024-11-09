@@ -32,7 +32,7 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
         >
             <Button
                 type='text'
-                onClick={() => setCollapsed(!collapsed)}
+                onClick={() => setCollapsed(prev => !prev)}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             />
             <h1 className='main-header-private__title'>

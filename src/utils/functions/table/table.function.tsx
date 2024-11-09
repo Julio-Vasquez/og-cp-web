@@ -75,7 +75,7 @@ const getColumnSearch = <T,>({
                 ?.toString()
                 .toLowerCase()
                 .includes((value as string).toLowerCase()),
-        onFilterDropdownVisibleChange: (visible: boolean) => {
+        onFilterDropdownOpenChange: (visible: boolean) => {
             if (visible) setTimeout(() => inputRef?.current?.focus(), 100)
         },
         render: (text: string) => (

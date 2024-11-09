@@ -26,10 +26,8 @@ export const GetToken = (): string => {
     return obj.token
 }
 
-export const GetInfoToken = () => {
-    const token = GetToken()
-    return jwtDecode(token)
-}
+export const GetInfoToken = (currentToken?: string): Token =>
+    jwtDecode(currentToken ? currentToken : GetToken())
 
 export const RemoveItem = ({ key = JWT_KEY, type = 'localStorage' }: Key) =>
     type === 'sessionStorage'
