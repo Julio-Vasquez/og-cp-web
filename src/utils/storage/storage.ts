@@ -26,6 +26,11 @@ export const GetToken = (): string => {
     return obj.token
 }
 
+export const GetInfoToken = () => {
+    const token = GetToken()
+    return jwtDecode(token)
+}
+
 export const RemoveItem = ({ key = JWT_KEY, type = 'localStorage' }: Key) =>
     type === 'sessionStorage'
         ? sessionStorage.removeItem(key)
@@ -33,13 +38,13 @@ export const RemoveItem = ({ key = JWT_KEY, type = 'localStorage' }: Key) =>
 
 export const ValidateToken = (token: string) => {
     const tokenValid: Token = jwtDecode(token)
-    return tokenValid && tokenValid?.exp >= Math.round(new Date().getTime() / 1000)
+    return tokenValid && tokenValid?.exp! >= Math.round(new Date().getTime() / 1000)
 }
 
 export const TokenIsValid = (token: string) => {
     if (token) {
         const decode: Token = jwtDecode(token) ?? ''
-        return decode?.exp >= Math.round(new Date().getTime() / 1000)
+        return decode?.exp! >= Math.round(new Date().getTime() / 1000)
     }
     return false
 }

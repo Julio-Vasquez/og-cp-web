@@ -10,4 +10,8 @@ export type Payload<T> = {
 export type Token = {
     iat: number
     exp: number
+    publicKey: string
+    username: string
+    mail: string
+    role: string
 }

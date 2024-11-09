@@ -1,61 +1,42 @@
 import { Layout, Menu } from 'antd'
 import { FC, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Link, useLocation } from 'react-router-dom'
+
+import { useLocation } from 'react-router-dom'
 
 import { LogoDashboard } from '../../Avatars/LogoDashboard'
 
 import {
     SidebarPrivateProps,
-    SidebarPrivatePropsTypes,
     SidebarPrivatePropsDefault,
 } from './sidebarPrivate.type'
 import useIntl from '../../../hooks/useIntl'
 import useData from '../../../hooks/useData'
+
+import { useMenuItems } from '../../../hooks/useMenuItems'
 import { AUTH } from '../../../utils/constants/redux.constants'
-import { LANGS } from '../../../utils/constants/language.constant'
-import { ROUTES_PRIVATE as RP } from '../../../utils/constants/routes.constants'
 
 import './SidebarPrivate.scss'
 
 const { Sider } = Layout
 
-const getIcon = (path: string) => <img src={path} width={25} />
-
 export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
     const { menu: itemMenu } = useData({ reducer: AUTH })
-    const tMenu = itemMenu ?? []
+    const tMenu = itemMenu! ?? []
     const { pathname } = useLocation()
     const { formatMessage } = useIntl()
+    const menuSide = useMenuItems(tMenu)
 
-    const { i18n } = useTranslation()
-    const lang = i18n.language === LANGS.en.value
-
-    const menuSide = tMenu.map((item, key) => {
-        return {
-            key,
-            label: (
-                <Link to={RP[item.en.toLowerCase() as keyof typeof RP]}>
-                    {lang ? item.en : item.es}
-                </Link>
-            ),
-            icon: getIcon(item.icon),
-        }
-    })
-
-    const key = menuSide.find(item => item.label.props.to === pathname)?.key
+    const key = menuSide?.find(item => item?.label.props.to === pathname)?.key
 
     const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '1'])
-    const handleClick = (key: string) => {
-        console.log(key, activeSide)
+    const handleClick = (key: string) => setActiveSide([key])
 
-        setActiveSide([key])
-    }
-
-    const menu = menuSide.map((item, index) => ({
+    const menu = menuSide?.map((item, index) => ({
         ...item,
         onClick: () => handleClick(`${index + 1}`),
     }))
+
+    console.log(tMenu)
 
     return (
         <Sider
@@ -82,7 +63,6 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
     )
 }
 
-SidebarPrivate.propTypes = SidebarPrivatePropsTypes
 SidebarPrivate.defaultProps = SidebarPrivatePropsDefault
 
 export default SidebarPrivate

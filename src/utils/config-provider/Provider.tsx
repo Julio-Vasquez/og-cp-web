@@ -7,6 +7,7 @@ import type { Locale } from 'antd/es/locale'
 import { ProviderProps } from './provider.type'
 
 import 'dayjs/locale/en'
+import { Language } from '../../i18n/resources/En/language'
 
 dayjs.locale('en')
 
