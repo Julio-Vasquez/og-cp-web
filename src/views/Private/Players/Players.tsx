@@ -1,5 +1,8 @@
+import { useChildren } from '../../../hooks/useChildren'
+
 export const Players = () => {
-    return <div>Players</div>
+    const { values } = useChildren()
+    return <div>{JSON.stringify(values)}</div>
 }
 
 export default Players

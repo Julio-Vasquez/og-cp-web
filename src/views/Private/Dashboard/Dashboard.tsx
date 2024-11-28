@@ -12,6 +12,7 @@ import api from '../../../api'
 import { CHILDREN, Children } from './mock'
 import { useMutation } from '../../../hooks/api'
 import userIcon from '../../../assets/svg/iconUser.svg'
+import { useChildren } from '../../../hooks/useChildren'
 import { Status } from '../../../utils/constants/status.enum'
 import { ACTIVITIES } from '../../../utils/mocks/mockActivities'
 import { MutationProps, MutationResponse } from './dashboard.type'
@@ -19,12 +20,17 @@ import { ApiResponseSuccess } from '../../../utils/types/response.type'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
 import './Dashboard.scss'
+import useData from '../../../hooks/useData'
+import { AUTH } from '../../../utils/constants/redux.constants'
+import { ChildrenContextActions } from '../../../context/Children/types'
 
 const Dashboard = () => {
     const {
         APD: { etapa },
     } = ACTIVITIES
     const [selectedChild, setSelectedChild] = useState<Children>(CHILDREN[0])
+    const { dispatch } = useChildren()
+    const { username } = useData({ reducer: AUTH })
 
     const handleOnChangeChild = (values: string) =>
         setSelectedChild(CHILDREN.find(item => item._id === values)!)
@@ -46,7 +52,15 @@ const Dashboard = () => {
 
     useEffect(() => {
         mutation<MutationProps>({ _idChildren: selectedChild?._id })
-    }, [selectedChild?._id])
+        dispatch({
+            type: ChildrenContextActions.ADD_CHILDREN,
+            payload: {
+                username,
+                _idChildren: selectedChild._id,
+                nameChildren: selectedChild.name,
+            },
+        })
+    }, [selectedChild._id])
 
     return (
         <div className='main-dashboard'>

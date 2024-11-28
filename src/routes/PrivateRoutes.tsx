@@ -2,6 +2,8 @@ import { lazy, Suspense, FC } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { Loading } from './../components/Loading'
+import { initialState } from '../context/Children/reducer'
+import { ChildrenProvider } from '../context/Children/ChildrenProvider'
 import { ROUTES_PRIVATE as RP } from '../utils/constants/routes.constants'
 
 const Profile = lazy(() => import('../views/Private/Profile'))
@@ -18,26 +20,28 @@ export const PrivateRoutes: FC = () => {
     return (
         <Suspense fallback={<Loading message='loading...' />}>
             <BrowserRouter>
-                <LayoutPrivate>
-                    <Routes>
-                        <Route
-                            path={RP.activityDetail}
-                            element={<ActivityDetail />}
-                        />
-                        <Route path={RP.profile} element={<Profile />} />
-                        <Route path={RP.userlist} element={<UsersList />} />
-                        <Route path={RP.ranking} element={<Ranking />} />
-                        <Route
-                            path='/*'
-                            element={<Navigate replace to={RP.default} />}
-                        />
-                        <Route path={RP.error404} element={<Error404 />} />
-                        <Route path={RP.default} element={<Dashboard />} />
-                        <Route path={RP.dashboard} element={<Dashboard />} />
-                        <Route path={RP.statistics} element={<Statistics />} />
-                        <Route path={RP.players} element={<Players />} />
-                    </Routes>
-                </LayoutPrivate>
+                <ChildrenProvider value={initialState}>
+                    <LayoutPrivate>
+                        <Routes>
+                            <Route
+                                path={RP.activityDetail}
+                                element={<ActivityDetail />}
+                            />
+                            <Route path={RP.profile} element={<Profile />} />
+                            <Route path={RP.userlist} element={<UsersList />} />
+                            <Route path={RP.ranking} element={<Ranking />} />
+                            <Route
+                                path='/*'
+                                element={<Navigate replace to={RP.default} />}
+                            />
+                            <Route path={RP.error404} element={<Error404 />} />
+                            <Route path={RP.default} element={<Dashboard />} />
+                            <Route path={RP.dashboard} element={<Dashboard />} />
+                            <Route path={RP.statistics} element={<Statistics />} />
+                            <Route path={RP.players} element={<Players />} />
+                        </Routes>
+                    </LayoutPrivate>
+                </ChildrenProvider>
             </BrowserRouter>
         </Suspense>
     )

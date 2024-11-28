@@ -28,7 +28,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
 
     const key = menuSidebar?.find(item => item?.label.props.to === pathname)?.key
 
-    const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '1'])
+    const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '0'])
     const handleClick = (key: string) => setActiveSide([key])
 
     const menu = menuSidebar?.map((item, index) => ({
