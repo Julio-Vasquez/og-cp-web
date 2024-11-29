@@ -1,5 +1,5 @@
+import { Form, Steps } from 'antd'
 import { FC, useState } from 'react'
-import { Button, Form, Steps } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import {
     CheckOutlined,
@@ -8,19 +8,18 @@ import {
     UserAddOutlined,
 } from '@ant-design/icons'
 
-import Star from '../../../components/Star/Star'
+import Star from '../../../components/Avatars/Star/Star'
 import Account from '../../../components/Steps/Account/Account'
+import LoginImage from './../../../assets/img/publicBackground.jpg'
+import CustomButton from '../../../components/Buttons/CustomButton/CustomButton'
 import ContactData from '../../../components/Steps/ContactData/ContactData'
-import CustomButton from '../../../components/CustomButton/CustomButton'
 import PersonalInformation from '../../../components/Steps/PersonalInformation/PersonalInformation'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
-import { useMutation, useGet } from '../../../hooks/api'
+import { useMutation, useQuery } from '../../../hooks/api'
 import { StepType, useStep } from '../../../hooks/useStep'
-import { ROLES } from '../../../utils/constants/roles.enum'
 import { Status } from '../../../utils/constants/status.enum'
-import LoginImage from './../../../assets/img/publicBackground.jpg'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 import {
     ApiResponseError,
@@ -33,9 +32,8 @@ import {
 import {
     SignUpDefaultProps,
     SignUpProps,
-    SignUpRoles,
     SignUpTypeDocument,
-    availableDataTypes,
+    AvailableDataTypes,
 } from './signUp.types'
 
 import './SignUp.scss'
@@ -46,7 +44,9 @@ export const SignUp: FC<SignUpProps> = () => {
     const [personaInformation, setPersonaInformation] = useState({})
 
     const { data: availableData, loading: loadingAvailableData } =
-        useGet<availableDataTypes>({ functionFetch: api.defaultData.availableData })
+        useQuery<AvailableDataTypes>({
+            functionFetch: api.defaultData.availableData,
+        })
 
     const checkStatus = (key: 'roles' | 'genders' | 'typeDocuments') =>
         availableData?.status === Status.success ? availableData.payload?.[key] : []
@@ -94,15 +94,9 @@ export const SignUp: FC<SignUpProps> = () => {
         if (!isLastStep) {
             onNext()
             setPersonaInformation({ ...personaInformation, ...values })
-        } else {
-            const admin = checkStatus('roles') as SignUpRoles[]
-            const role =
-                admin.find((item: SignUpRoles) => item.role === ROLES.Admin)?.role ??
-                ROLES.Admin
-
-            mutation({ ...personaInformation, ...values, role })
-        }
+        } else mutation({ ...personaInformation, ...values })
     }
+
     return (
         <div className='main-signUp'>
             <div className='main-signUp__container'>
@@ -140,7 +134,7 @@ export const SignUp: FC<SignUpProps> = () => {
                         </div>
                         <div className='main-signUp__btn-next'>
                             <CustomButton
-                                width='60%'
+                                width={loading ? '100%' : '60%'}
                                 hight='auto'
                                 htmlType='submit'
                                 loading={loading}

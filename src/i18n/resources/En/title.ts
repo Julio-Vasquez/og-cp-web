@@ -1,15 +1,12 @@
 export const Title = {
     mail: 'E-mail',
-    profile: 'Profile',
     signIn: 'Sign in',
     signUp: 'Sign Up',
-    ranking: 'Ranking',
     username: 'Username',
     password: 'Password',
-    mainMenu: 'Main menu',
-    dashboard: 'Dashboard',
-    statistics: 'Statistics',
+    menu: 'Menu',
     forgotPassword: 'Forgot password',
     innocentlyLearning: 'Innocently Learning',
     verified: 'Your have successfully verified the account',
+    editObj: 'Edit {{obj}}',
 }

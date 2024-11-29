@@ -1,0 +1,40 @@
+.bar-chart {
+    margin: auto;
+    height: 250px;
+    width: 100%;
+    padding: 0 5px;
+    canvas {
+        margin: auto;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .bar-chart {
+        height: 200px;
+        canvas {
+            width: 100% !important;
+            height: 200px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .bar-chart {
+        height: 200px;
+        canvas {
+            width: 100% !important;
+            height: 200px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .bar-chart {
+        height: 200px;
+        canvas {
+            width: 100% !important;
+            height: 200px !important;
+        }
+    }
+}

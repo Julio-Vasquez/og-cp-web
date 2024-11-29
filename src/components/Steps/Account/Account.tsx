@@ -4,10 +4,10 @@ import { Form, Input, Spin } from 'antd'
 import useIntl from '../../../hooks/useIntl'
 import { AccountDefaultProps, AccountProps, AccountPropsTypes } from './account.type'
 import {
-    emailField,
-    matchPassword,
     maxLength,
     minLength,
+    emailField,
+    matchPassword,
     requiredField,
 } from '../../../utils/functions/form.functions'
 

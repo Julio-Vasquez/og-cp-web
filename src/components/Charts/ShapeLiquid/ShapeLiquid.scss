@@ -1,0 +1,64 @@
+.main-shape-liquid {
+    display: flex;
+    flex-direction: column;
+    font-family: 'exo';
+    font-weight: bold;
+    text-align: center;
+    height: 250px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    p {
+        padding-top: 20px;
+    }
+    canvas {
+        margin: auto;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .main-shape-liquid {
+        height: auto;
+
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100%;
+            height: 250px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-shape-liquid {
+        height: auto;
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 120px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .main-shape-liquid {
+        height: auto;
+        p {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 12px;
+        }
+        canvas {
+            width: 100% !important;
+            height: 140px !important;
+        }
+    }
+}

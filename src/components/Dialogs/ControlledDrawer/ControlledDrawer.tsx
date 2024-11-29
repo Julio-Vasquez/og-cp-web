@@ -8,7 +8,7 @@ import {
     ControlledDrawerPropTypes,
 } from './drawer.types'
 
-const ControlledDrawer: FC<ControlledDrawerProps> = ({
+export const ControlledDrawer: FC<ControlledDrawerProps> = ({
     visibleState,
     children,
     placement = 'right',

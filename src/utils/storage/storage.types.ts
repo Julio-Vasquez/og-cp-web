@@ -1,12 +1,17 @@
-export type payload = {
+export type Key = {
     key?: string
-    newItem: string
     type?: 'sessionStorage' | 'localStorage'
 }
 
-export type key = Omit<payload, 'newItem'>
+export type Payload<T> = {
+    newItem: T
+} & Key
 
 export type Token = {
     iat: number
     exp: number
+    publicKey: string
+    username: string
+    mail: string
+    role: string
 }

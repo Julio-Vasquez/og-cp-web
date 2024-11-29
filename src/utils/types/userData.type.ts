@@ -1,6 +1,10 @@
 export type DataUser = {
     birthDate: string
-    fullName: string
+    name: string
+    middleName: string
+    lastNameOne: string
+    lastNameTwo: string
+    phoneNumber: string | number
     role: string
     username: string
     mail: string

@@ -72,7 +72,7 @@ interface Error {
 }
 
 export type ApiResponseError = BaseResponse & Error
-type ApiResponse<T = unknown> = BaseResponse & Success<T>
+export type ApiResponse<T = unknown> = BaseResponse & Success<T>
 
 export type ApiResponseSuccess<T = unknown, V = unknown> = {
     data: ApiResponse<T>

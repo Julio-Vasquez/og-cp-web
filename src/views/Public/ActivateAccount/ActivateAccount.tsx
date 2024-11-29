@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { CheckCircleFilled } from '@ant-design/icons'
 
-import Star from '../../../components/Star/Star'
+import Star from '../../../components/Avatars/Star/Star'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'

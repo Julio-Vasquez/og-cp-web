@@ -1,10 +1,10 @@
 import { Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { LockOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
 
-import Star from '../../../components/Star/Star'
-import { CustomButton } from '../../../components/CustomButton/CustomButton'
+import Star from '../../../components/Avatars/Star/Star'
+import { CustomButton } from '../../../components/Buttons/CustomButton/CustomButton'
 
 import useIntl from '../../../hooks/useIntl'
 import useData from '../../../hooks/useData'
@@ -29,9 +29,8 @@ export const Login = () => {
     const { formatMessage } = useIntl()
     const { loading } = useData({ reducer: AUTH })
 
-    const onFinish = (values: LoginType) => {
-        dispatch(login(values))
-    }
+    const onFinish = (values: Omit<LoginType, 'device'>) =>
+        dispatch(login({ ...values, device: 'Desktop' }))
 
     return (
         <div className='login'>
@@ -47,7 +46,6 @@ export const Login = () => {
                     autoComplete='off'
                     layout='vertical'
                 >
-                    <LoginOutlined className='login__icon-signIn' />
                     <Star />
                     <h2 className='login__title-signIn'>
                         {formatMessage({ id: 'title.signIn' })}
@@ -99,7 +97,6 @@ export const Login = () => {
                         loading={loading}
                         width='70%'
                     />
-
                     <Link className='login__link ' to={RP.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
                     </Link>

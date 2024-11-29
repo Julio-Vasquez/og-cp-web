@@ -9,3 +9,9 @@ export const DefaultStatusTagPropTypes = {
 }
 
 export type StatusTagProps = InferProps<typeof StatusTagPropTypes>
+
+export type StatusType = {
+    key: string
+    color: string
+    text: string
+}

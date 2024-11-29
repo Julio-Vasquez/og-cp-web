@@ -1,13 +1,17 @@
-type Actions = {
-    create: boolean
-    read: boolean
-    update: boolean
-    delete: boolean
+import { ApiResponseSuccess } from '../../utils/types/response.type'
+
+export type Actions = {
+    create: boolean | 'partial'
+    read: boolean | 'partial'
+    update: boolean | 'partial'
+    delete: boolean | 'partial'
 }
 
-type Menu = Record<string, Actions> | null
+export type Menu =
+    | { actions: Actions; en: string; es: string; icon: string }[]
+    | null
 
-type Payload = {
+export type Payload = {
     token: string
     message: string
     success: boolean
@@ -19,6 +23,7 @@ type Payload = {
 type LoginType = {
     username: string
     password: string
+    device: 'Desktop' | 'Mobile'
 }
 
 type LoginAction = {
@@ -45,4 +50,15 @@ type State = {
     loading: boolean
 } & Payload
 
-export type { LoginAction, LoginSuccessType, LoginFailedType, State, LoginType }
+type LoginService = {
+    onCompleted: ({ data, variables }: ApiResponseSuccess) => void
+}
+
+export type {
+    LoginAction,
+    LoginSuccessType,
+    LoginFailedType,
+    State,
+    LoginType,
+    LoginService,
+}

@@ -1,0 +1,54 @@
+.area-chart {
+    margin: auto 0;
+    height: 400px;
+    width: 100%;
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .area-chart {
+        canvas {
+            width: 100% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .area-chart {
+        canvas {
+            width: 100% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .area-chart {
+        height: 300px !important;
+        canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .area-chart {
+        height: auto !important;
+        canvas {
+            width: 100% !important;
+            height: 250px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .area-chart {
+        height: 188px !important;
+        canvas {
+            width: 100% !important;
+            height: 200px !important;
+        }
+    }
+}

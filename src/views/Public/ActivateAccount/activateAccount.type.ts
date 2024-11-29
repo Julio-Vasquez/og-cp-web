@@ -1,6 +1,6 @@
-type activateAccount = {
+type ActivateAccount = {
     activate: boolean
     token: string
 }
 
-export type { activateAccount }
+export type { ActivateAccount }

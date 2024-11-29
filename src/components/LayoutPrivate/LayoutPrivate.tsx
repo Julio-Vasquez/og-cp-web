@@ -6,8 +6,8 @@ import { SidebarPrivate } from './SidebarPrivate'
 
 import {
     LayoutPrivateProps,
-    LayoutPrivateDefaultProps,
     LayoutPrivatePropsTypes,
+    LayoutPrivateDefaultProps,
 } from './layoutPrivate.types'
 
 import './Layout.scss'
@@ -15,7 +15,7 @@ import './Layout.scss'
 const { Content } = Layout
 
 export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
-    const [collapsed, setCollapsed] = useState(false)
+    const [collapsed, setCollapsed] = useState(true)
 
     const {
         token: { colorBgContainer },

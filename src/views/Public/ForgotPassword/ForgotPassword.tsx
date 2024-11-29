@@ -1,16 +1,16 @@
-import { Button, Form, Input } from 'antd'
+import { Form, Input } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 
-import Star from '../../../components/Star/Star'
+import Star from '../../../components/Avatars/Star/Star'
 import LoginImg from '../../../assets/img/publicBackground.jpg'
-import CustomButton from '../../../components/CustomButton/CustomButton'
+import CustomButton from '../../../components/Buttons/CustomButton/CustomButton'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
-import { forgotPassword } from './forgotPassword.type'
 import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { type ForgotPassword as ForgotPasswordForm } from './forgotPassword.type'
 import {
     ApiResponseError,
     ApiResponseSuccess,
@@ -40,12 +40,13 @@ const ForgotPassword = () => {
 
     const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    const [mutation, { loading }] = useMutation<forgotPassword>(
+    const [mutation, { loading }] = useMutation(
         { functionFetch: api.auth.forgotPassword },
         { onCompleted, onError, cancelError: false }
     )
 
-    const onFinish = (values: forgotPassword) => mutation({ ...values })
+    const onFinish = (values: ForgotPasswordForm) =>
+        mutation<ForgotPasswordForm>({ ...values })
 
     return (
         <div className='forgot-password'>
@@ -88,14 +89,26 @@ const ForgotPassword = () => {
                         <Input
                             className='forgot-password__input'
                             prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({ id: 'text.username' })}
+                            placeholder={formatMessage({
+                                id: 'text.userOrEmail',
+                                objVars: {
+                                    user: formatMessage({ id: 'text.username' }),
+                                    mail: formatMessage({ id: 'text.mail' }),
+                                },
+                            })}
                         />
                     </Item>
                     <CustomButton
                         type='primary'
                         htmlType='submit'
                         loading={loading}
-                        children={formatMessage({ id: 'button.send' })}
+                        children={formatMessage({
+                            id: 'button.setPassword',
+                            objVars: {
+                                user: formatMessage({ id: 'button.change' }),
+                                mail: formatMessage({ id: 'button.password' }),
+                            },
+                        })}
                         width='70%'
                     />
 

@@ -6,16 +6,14 @@ import { ROUTES_PUBLIC as RP } from '../utils/constants/routes.constants'
 
 const Login = lazy(() => import('../views/Public/Login'))
 const SignUp = lazy(() => import('../views/Public/SignUp'))
-const ForgotPassword = lazy(
-    () => import('../views/Public/ForgotPassword/ForgotPassword')
-)
 const Error404 = lazy(() => import('./../components/Error/Error404'))
 const SetPassword = lazy(() => import('../views/Public/SetPassword'))
+const ForgotPassword = lazy(() => import('../views/Public/ForgotPassword'))
 const ActivateAccount = lazy(() => import('../views/Public/ActivateAccount'))
 
 export const PublicRoutes: FC = () => {
     return (
-        <Suspense fallback={<Loading message='loading' />}>
+        <Suspense fallback={<Loading />}>
             <BrowserRouter>
                 <Routes>
                     <Route path={RP.login} element={<Login />} />

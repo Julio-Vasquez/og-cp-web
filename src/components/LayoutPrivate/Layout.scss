@@ -1,10 +1,7 @@
 .main-layout {
-    height: 100vh;
     &__content {
-        padding: 5%;
-        align-items: center;
-        justify-content: center;
+        padding: 15px;
         margin: 24px 16px;
-        min-height: 280px;
+        min-height: 816px;
     }
 }

@@ -8,11 +8,11 @@ export type ItemsNavBarProps = propTypes.InferProps<typeof ItemsNavBarPropsTypes
 
 type BaseData = {
     src: string
-}
+} & NotificationData
 
 type NotificationData = {
-    count: number
-    color: string
+    count?: number
+    color?: string
 }
 
 type LogoutData = {

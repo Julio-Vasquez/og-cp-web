@@ -4,12 +4,10 @@ import { ConfigProvider } from 'antd'
 import enUS from 'antd/lib/locale/en_US'
 import type { Locale } from 'antd/es/locale'
 
-import { ThemeSelector } from '../../components/ThemeSelector/ThemeSelector'
-import { LanguageSelector } from '../../components/LanguageSelector/LanguageSelector'
-
 import { ProviderProps } from './provider.type'
 
 import 'dayjs/locale/en'
+import { Language } from '../../i18n/resources/En/language'
 
 dayjs.locale('en')
 

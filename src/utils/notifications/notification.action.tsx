@@ -25,12 +25,7 @@ const infoNotification = (
     description: string,
     placement: Placement = defaultPlacement
 ) => {
-    notification.open({
-        type: 'info',
-        message: 'Info',
-        description,
-        placement,
-    })
+    notification.open({ type: 'info', message: 'Info', description, placement })
 }
 
 const errorNotification = (error: any, placement: Placement = defaultPlacement) => {

@@ -53,7 +53,7 @@ const numberField = () => ({
 })
 
 const textField = () => ({
-    pattern: /^[a-zA-Z]+$/,
+    pattern: /^[a-zA-ZáéíóúÁÉÍÓÚ]+$/,
     message: formTranslate({ id: 'text.onlyLetters' }),
 })
 

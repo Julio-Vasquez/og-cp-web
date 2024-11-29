@@ -1,11 +1,11 @@
 import { Key } from 'antd/lib/table/interface'
 
-type DataType = {}
-type DataIndex = keyof DataType
+type DataType<T> = T
+type DataIndex<T> = keyof DataType<T>
 
-export type props = {
+export type props<T> = {
     title: string
-    dataIndex: DataIndex
+    dataIndex: DataIndex<T>
 }
 
 export type tableConfig = {

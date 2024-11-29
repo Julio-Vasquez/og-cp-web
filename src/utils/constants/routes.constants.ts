@@ -1,17 +1,35 @@
 export const ROUTES_PUBLIC = {
+    activateAccount: '/activate-account/:token',
+    default: '/',
+    error404: '/404',
+    forgotPassword: '/forgot-password',
     login: '/login',
     register: '/register',
-    forgotPassword: '/forgot-password',
     setPassword: '/set-password/:token',
-    activateAccount: '/activate-account/:token',
-    error404: '/404',
-    default: '/',
 }
-export const ROUTES_PRIVATE = {
-    profile: '/profile',
-    error404: '/404',
-    default: '/',
-    dashboard: '/dashboard',
-    statistics: '/statistics',
-    ranking: '/ranking',
+
+enum Routes {
+    dashboard = '/dashboard',
+    default = '/',
+    error404 = '/404',
+    profile = '/profile',
+    ranking = '/ranking',
+    statistics = '/statistics',
+    activityDetail = '/statistics/detail/:id',
+    userList = '/user-list',
+    players = '/players',
+}
+
+type RoutesPrivate = Record<string, Routes>
+
+export const ROUTES_PRIVATE: RoutesPrivate = {
+    dashboard: Routes.dashboard,
+    default: Routes.default,
+    error404: Routes.error404,
+    profile: Routes.profile,
+    ranking: Routes.ranking,
+    statistics: Routes.statistics,
+    activityDetail: Routes.activityDetail,
+    userlist: Routes.userList,
+    players: Routes.players,
 }

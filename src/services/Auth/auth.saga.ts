@@ -1,9 +1,10 @@
 import { put, takeLatest, all } from 'redux-saga/effects'
 
 import api from '../../api'
-import { LoginAction, State } from './auth.types'
 import { ResponseFetch } from '../../utils/api/api.util'
 import { ClearData, SaveItem } from '../../utils/storage'
+import { Status } from '../../utils/constants/status.enum'
+import { LoginAction, State, Payload as Storage } from './auth.types'
 import { login, loginSuccess, loginFailed, logout } from './auth.slice'
 import {
     errorMessage,
@@ -12,20 +13,21 @@ import {
 
 function* fetchLogin({ payload }: LoginAction) {
     try {
-        const res: ResponseFetch<State> = yield api.auth.login(payload)
-        console.log(res)
-        if (res && res.status === 'success' && res?.payload) {
-            yield put(
-                loginSuccess({
-                    token: res.payload.token,
-                    message: res.message,
-                    success: true,
-                    menu: res.payload.menu,
-                    fullName: res.payload.fullName,
-                    username: res.payload.username,
-                })
-            )
-            SaveItem({ newItem: res?.payload.token })
+        const res: ResponseFetch<State> = yield api.auth.login({
+            ...payload,
+            device: 'Desktop',
+        })
+        if (res && res.status === Status.success && res?.payload) {
+            const data: Storage = {
+                token: res.payload.token,
+                message: res.message,
+                success: true,
+                menu: res.payload.menu,
+                fullName: res.payload.fullName,
+                username: res.payload.username,
+            }
+            yield put(loginSuccess(data))
+            SaveItem<Storage>({ newItem: data })
             successMessage(res.message)
         } else {
             yield put(loginFailed({ error: true, message: res.message }))

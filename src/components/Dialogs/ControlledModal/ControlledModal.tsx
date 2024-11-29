@@ -4,14 +4,14 @@ import { cloneElement, FC } from 'react'
 import { ControlledModalDefaultProps, ControlledModalProps } from './modal.types'
 import { ControlledDrawerPropTypes } from '../ControlledDrawer/drawer.types'
 
-const ControlledModal: FC<ControlledModalProps> = ({
+export const ControlledModal: FC<ControlledModalProps> = ({
     visibleState,
     children,
     destroyOnClose,
     width,
     centered,
     title,
-    footer,
+
     inheritCloseToChildren,
 }) => {
     const { visible, closeDialog } = visibleState
@@ -24,11 +24,10 @@ const ControlledModal: FC<ControlledModalProps> = ({
         <Modal
             open={visible}
             onCancel={closeDialog}
-            destroyOnClose={destroyOnClose}
+            destroyOnClose={destroyOnClose ?? true}
             centered={centered}
             title={title}
-            width={width}
-            footer={footer}
+            width={width ?? 450}
         >
             {newChildren}
         </Modal>

@@ -8,9 +8,9 @@ import CustomInput from '../../Fields/CustomInput/CustomInput'
 import useIntl from '../../../hooks/useIntl'
 import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 import {
-    ContactDataDefaultProps,
     ContactDataProps,
     ContactDataPropTypes,
+    ContactDataDefaultProps,
 } from './ContactData.type'
 import {
     maxLength,
@@ -34,7 +34,7 @@ export const ContactData: FC<ContactDataProps> = ({
     )
 
     const disabledDate: RangePickerProps['disabledDate'] = current =>
-        current && current >= dayjs().endOf('day')
+        current && current >= dayjs().subtract(17, 'year')
 
     return (
         <div className='main-contact-data'>
@@ -51,7 +51,7 @@ export const ContactData: FC<ContactDataProps> = ({
                     <CustomInput
                         data={sortedTypeDocument}
                         name='typeDocument'
-                        customMap={{ value: 'typeDocument', label: 'typeDocument' }}
+                        customMap={{ value: 'typeDocument', label: 'abbr' }}
                     />
                 </Item>
                 <Item
@@ -93,6 +93,7 @@ export const ContactData: FC<ContactDataProps> = ({
                     className='main-contact-data__item'
                 >
                     <Input
+                        defaultValue={3}
                         type='number'
                         placeholder={formatMessage({ id: 'text.phoneNumber' })}
                         className='main-contact-data__input'
