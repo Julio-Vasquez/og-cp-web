@@ -11,8 +11,8 @@ export type TablePaginationPosition = NonNullable<
 >[number]
 
 export type DataType = {
-    key: string
-    name: string
+    _id: string
+    nameCategory: string
     percentage: number
     description: string
     activities: []

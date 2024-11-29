@@ -13,7 +13,7 @@ const ActivateAccount = lazy(() => import('../views/Public/ActivateAccount'))
 
 export const PublicRoutes: FC = () => {
     return (
-        <Suspense fallback={<Loading message='loading' />}>
+        <Suspense fallback={<Loading />}>
             <BrowserRouter>
                 <Routes>
                     <Route path={RP.login} element={<Login />} />

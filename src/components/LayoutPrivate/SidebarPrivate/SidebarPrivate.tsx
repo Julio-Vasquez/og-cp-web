@@ -1,6 +1,5 @@
 import { Layout, Menu } from 'antd'
 import { FC, useState } from 'react'
-
 import { useLocation } from 'react-router-dom'
 
 import { LogoDashboard } from '../../Avatars/LogoDashboard'
@@ -11,7 +10,6 @@ import {
 } from './sidebarPrivate.type'
 import useIntl from '../../../hooks/useIntl'
 import useData from '../../../hooks/useData'
-
 import { useMenuItems } from '../../../hooks/useMenuItems'
 import { AUTH } from '../../../utils/constants/redux.constants'
 
@@ -36,7 +34,6 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
         onClick: () => handleClick(`${index + 1}`),
     }))
 
-    console.log(menuSidebar)
     return (
         <Sider
             trigger={null}

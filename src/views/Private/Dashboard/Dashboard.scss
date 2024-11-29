@@ -11,10 +11,7 @@
         display: flex;
         gap: 2px;
     }
-    &__cards-content {
-        display: flex;
-        width: 100%;
-    }
+
     &__cards {
         width: 100%;
         display: flex;
@@ -128,14 +125,20 @@
             display: flex;
             width: 100%;
             justify-content: space-between;
+            border: solid blue;
         }
         &__cards {
+            border: solid;
             width: 100%;
             padding: 0 5px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            justify-content: start;
+            flex-wrap: wrap;
+            gap: 1px;
+            .pct1 {
+                width: 160px;
+                height: 100px;
+            }
         }
     }
 }

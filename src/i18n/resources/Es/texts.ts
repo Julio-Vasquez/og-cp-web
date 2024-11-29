@@ -48,4 +48,11 @@ export const Texts = {
     downloader: 'Descargar {{field}}',
     category: 'Categoría',
     childBySelect: '{{field}} del Niño ',
+    loading: 'Cargando',
+    association: 'Asociación',
+    selection: 'Selección',
+    classification: 'Clasificación',
+    denomination: 'Denominación',
+    generalization: 'Generalización',
+    activities: 'Actividades',
 }

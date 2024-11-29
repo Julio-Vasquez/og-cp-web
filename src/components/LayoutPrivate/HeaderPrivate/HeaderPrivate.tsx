@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Button, Layout, theme } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 
-import { ItemsHeader } from './itemsHeaderPrivate/ItemsHeader'
+import { ItemsHeader } from './itemsHeaderPrivate'
 
 import {
     HeaderPrivateProps,

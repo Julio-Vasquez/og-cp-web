@@ -1,14 +1,16 @@
 import propTypes from 'prop-types'
 
 export const CustomCardPropTypes = {
-    title: propTypes.string,
-    description: propTypes.string,
-    percentage: propTypes.number,
     image: propTypes.string,
-    className: propTypes.string.isRequired,
-    ellipsis: propTypes.bool,
+    title: propTypes.string,
     visible: propTypes.bool,
+    ellipsis: propTypes.bool,
     openDialog: propTypes.func,
+    closeDialog: propTypes.func,
+    percentage: propTypes.number,
+    description: propTypes.string,
+    loading: propTypes.bool.isRequired,
+    className: propTypes.string.isRequired,
 }
 
 export const CustomCardDefaultProps = {}

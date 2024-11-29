@@ -79,17 +79,16 @@ const Dashboard = () => {
                         options={options}
                     />
                 </div>
-                <div className='main-dashboard__cards-content'>
-                    <div className='main-dashboard__cards'>
-                        {etapa.map(res => (
-                            <CustomCard
-                                key={res.key}
-                                title={res.name}
-                                percentage={res.percentage}
-                                className='pct1'
-                            />
-                        ))}
-                    </div>
+                <div className='main-dashboard__cards'>
+                    {etapa.map(res => (
+                        <CustomCard
+                            loading={false}
+                            key={res.key}
+                            title={res.name}
+                            percentage={res.percentage}
+                            className='pct1'
+                        />
+                    ))}
                 </div>
             </div>
             <AreaChart selectedChild={selectedChild?._id} />
