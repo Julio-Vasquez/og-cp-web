@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 
 import CustomAvatar from '../../../components/Avatars/CustomAvatar'
 
+import api from '../../../api'
 import { DataType } from './statistic.type'
 import useIntl from '../../../hooks/useIntl'
+import { useQuery } from '../../../hooks/api'
 import iconUser from '../../../assets/svg/iconUser.svg'
 import { Columns } from '../../../utils/types/table.type'
-import { ACTIVITIES } from '../../../utils/mocks/mockActivities'
+import { Status } from '../../../utils/constants/status.enum'
 import { PercentProgress } from '../../../components/Charts/Progress/Progress'
 import { CHILD, CATEGORIES_ACTIVITY } from '../../../utils/mocks/mockStatistics'
 
@@ -15,25 +17,44 @@ import './Statistics.scss'
 
 const Statistics = () => {
     const { formatMessage } = useIntl()
-    const renderRating = (_: any, i: any) => (
-        <CustomAvatar percent={i.percentage} key={i.key} />
-    )
 
-    const { APD } = ACTIVITIES
+    const renderRating = (_: any, i: any) => {
+        return <CustomAvatar percent={i.percentage} key={i.key} />
+    }
 
-    const renderProgress = (_: any, i: DataType) => (
-        <PercentProgress percentage={i.percentage} />
-    )
+    const renderProgress = (_: any, i: DataType) => {
+        return <PercentProgress percentage={i.percentage} />
+    }
+    const { data, loading } = useQuery({
+        functionFetch: api.categories.allCategories,
+    })
+
+    const payload =
+        data.status === Status.success
+            ? (data.payload as DataType[])
+            : ([] as DataType[])
+
+    const newData = payload.map((e: any) => ({
+        ...e,
+        percentage: Math.floor(Math.random() * 100),
+    }))
 
     const columns: Columns<DataType> = [
         {
             title: 'Etapa',
             align: 'center',
-            dataIndex: 'name',
+            dataIndex: 'nameCategory',
             width: '15%',
             key: 'name',
             render: (text, record) => (
-                <Link to={'/statistics/detail/' + record.name}>{text}</Link>
+                <Link
+                    to={
+                        '/statistics/detail/' +
+                        formatMessage({ id: `text.${record.nameCategory}` })
+                    }
+                >
+                    {formatMessage({ id: `text.${record.nameCategory}` })}
+                </Link>
             ),
         },
         {
@@ -67,7 +88,6 @@ const Statistics = () => {
                     <Select
                         defaultValue={CHILD[0]}
                         allowClear
-                        bordered={false}
                         placeholder={formatMessage({
                             id: 'text.childBySelect',
                             objVars: {
@@ -87,11 +107,12 @@ const Statistics = () => {
                 />
             </div>
             <Table
+                loading={loading}
                 scroll={{ x: 100 }}
                 columns={columns}
                 pagination={{ pageSize: 5 }}
-                dataSource={APD.etapa}
-                rowKey={row => row.key}
+                dataSource={newData}
+                rowKey={row => row._id}
             />
         </div>
     )

@@ -47,4 +47,11 @@ export const Texts = {
     downloader: '{{field}} Downloader',
     category: 'Category',
     childBySelect: 'Child {{field}}  ',
+    loading: 'Loading',
+    association: 'association',
+    selection: 'selection',
+    classification: 'classification',
+    denomination: 'denomination',
+    generalization: 'generalization',
+    activities: 'Activities',
 }

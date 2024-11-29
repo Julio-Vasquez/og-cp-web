@@ -1,13 +1,14 @@
-import auth from './auth'
-import defaultData from './default-data'
-import charts from './charts'
 import user from './user'
-
+import auth from './auth'
+import charts from './charts'
+import categories from './categories'
+import defaultData from './default-data'
 const api = {
-    auth,
-    defaultData,
-    charts,
     user,
+    auth,
+    charts,
+    categories,
+    defaultData,
 }
 
 export default api

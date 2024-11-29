@@ -27,8 +27,8 @@
         text-align: left;
         display: flex;
         flex-direction: column;
-        padding: 20px;
         align-items: center;
+        justify-content: space-evenly;
         h3 {
             display: flex;
             justify-content: center;
@@ -36,11 +36,7 @@
             font-size: 30px;
         }
         img {
-            height: 300px;
-            max-height: 300px;
-        }
-        p {
-            margin-top: auto;
+            height: 200px;
         }
     }
     &__activities {
@@ -49,28 +45,26 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+        justify-content: space-evenly;
     }
     &__card-activity {
         width: 200px;
-        height: 300px;
+        height: 350px;
+        padding: 5px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         text-align: left;
-        margin: 5px;
-        padding: 2px;
+        justify-content: space-evenly;
         h3 {
             display: flex;
             flex-wrap: wrap;
             height: auto;
             text-align: center;
-            margin: auto;
         }
         img {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 150px;
             margin: auto;
-            margin-top: 6px;
         }
         :hover {
             cursor: pointer;

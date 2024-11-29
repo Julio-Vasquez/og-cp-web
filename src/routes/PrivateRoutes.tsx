@@ -10,19 +10,19 @@ const Error404 = lazy(() => import('./../components/Error/Error404'))
 const Ranking = lazy(() => import('../views/Private/Ranking/Ranking'))
 const LayoutPrivate = lazy(() => import('../components/LayoutPrivate'))
 const Dashboard = lazy(() => import('../views/Private/Dashboard/Dashboard'))
-const ActivityDetail = lazy(() => import('../views/Private/ActivityDetail'))
+const ActivitiesList = lazy(() => import('../views/Private/ActivitiesList'))
 const Statistics = lazy(() => import('../views/Private/Statistics/Statistics'))
 const Players = lazy(() => import('../views/Private/Players/Players'))
 
 export const PrivateRoutes: FC = () => {
     return (
-        <Suspense fallback={<Loading message='loading...' />}>
+        <Suspense fallback={<Loading />}>
             <BrowserRouter>
                 <LayoutPrivate>
                     <Routes>
                         <Route
                             path={RP.activityDetail}
-                            element={<ActivityDetail />}
+                            element={<ActivitiesList />}
                         />
                         <Route path={RP.profile} element={<Profile />} />
                         <Route path={RP.userlist} element={<UsersList />} />

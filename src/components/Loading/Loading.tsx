@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { DefaultLoadingPropTypes, LoadingProps, LoadingPropTypes } from './types'
+import useIntl from '../../hooks/useIntl'
 
 import './Loading.scss'
 
-export const Loading: FC<LoadingProps> = ({ message }) => {
+export const Loading: FC = () => {
+    const { formatMessage } = useIntl()
     return (
         <div className='loading'>
             <div className='loading__content'>
@@ -13,10 +14,7 @@ export const Loading: FC<LoadingProps> = ({ message }) => {
                 <div className='shape shape-3'></div>
                 <div className='shape shape-4'></div>
             </div>
-            <p>{message}...</p>
+            <p>{formatMessage({ id: 'text.loading' })}...</p>
         </div>
     )
 }
-
-Loading.propTypes = LoadingPropTypes
-Loading.defaultProps = DefaultLoadingPropTypes

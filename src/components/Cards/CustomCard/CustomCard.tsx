@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { Card, Tooltip, Modal } from 'antd'
+import { Card } from 'antd'
 
+import { TooltipX } from '../../TooltipX/TooltipX'
 import { PercentProgress } from '../../Charts/Progress'
 
 import {
@@ -8,43 +9,54 @@ import {
     CustomCardPropTypes,
     CustomCardDefaultProps,
 } from './customCard.type'
-import { reduceString } from '../../../utils/types/string.util'
 
 const { Meta } = Card
 
 export const CustomCard: FC<CustomCardProps> = ({
-    description,
-    percentage,
-    className,
     image,
-    title = '',
+    loading,
     ellipsis,
+    className,
+    title,
+    percentage,
+    description,
+    visible,
     openDialog,
+    closeDialog,
 }) => {
     return (
         <>
             {image ? (
                 <Card
-                    title={<h3>{title}</h3>}
+                    hoverable
+                    loading={loading}
+                    onClick={openDialog!}
+                    title={
+                        <h3>
+                            <TooltipX
+                                ellipsis={ellipsis!}
+                                title={title!}
+                                color='#6744c665'
+                                placement='top'
+                                maxLength={15}
+                                value={`${title}`}
+                            />
+                        </h3>
+                    }
                     className={`${className}`}
                     cover={<img src={`${image}`} alt='alt' />}
-                    onClick={openDialog!}
-                    hoverable
                 >
                     <Meta
                         description={
                             ellipsis ? (
-                                <Tooltip
-                                    title={description}
-                                    placement='bottom'
+                                <TooltipX
+                                    ellipsis={ellipsis}
+                                    title={description!}
                                     color='#6744c665'
-                                >
-                                    {reduceString({
-                                        value: `${description}`,
-                                        maxLength: 70,
-                                        ellipsis,
-                                    })}
-                                </Tooltip>
+                                    placement='bottom'
+                                    maxLength={70}
+                                    value={`${description}`}
+                                />
                             ) : (
                                 <p>{description}</p>
                             )
@@ -52,7 +64,7 @@ export const CustomCard: FC<CustomCardProps> = ({
                     />
                 </Card>
             ) : (
-                <Card title={title} className={`${className}`}>
+                <Card loading={loading} title={title} className={`${className}`}>
                     <PercentProgress percentage={percentage!} />
                 </Card>
             )}
