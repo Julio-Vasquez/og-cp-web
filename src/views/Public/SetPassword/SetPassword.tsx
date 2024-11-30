@@ -88,9 +88,7 @@ export const SetPassword = () => {
                     >
                         <Password
                             className='set-password__input'
-                            placeholder={formatMessage({
-                                id: 'text.newPassword',
-                            })}
+                            placeholder={formatMessage({ id: 'text.newPassword' })}
                         />
                     </Item>
                     <Item

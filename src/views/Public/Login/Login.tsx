@@ -38,6 +38,7 @@ export const Login: FC = () => {
                     <Item
                         hasFeedback
                         name='username'
+                        className='login-form__item'
                         rules={[
                             requiredField({ field: 'text.username' }),
                             maxLength({ field: 'text.username', max: 45 }),
@@ -58,6 +59,7 @@ export const Login: FC = () => {
                     </Item>
                     <Item
                         name='password'
+                        className='login-form__item'
                         hasFeedback
                         rules={[
                             requiredField({ field: 'text.password' }),

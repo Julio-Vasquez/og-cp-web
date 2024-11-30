@@ -35,6 +35,10 @@
             font-size: 24px;
             padding-bottom: 80px;
         }
+        &__item,
+        .ant-form-item {
+            margin-bottom: 24px;
+        }
         &__input,
         &__button {
             height: 40px;
