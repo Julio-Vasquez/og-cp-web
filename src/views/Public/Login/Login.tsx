@@ -1,18 +1,13 @@
-import { Form, Input } from 'antd'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
-
-import Star from '../../../components/Avatars/Star/Star'
-import { CustomButton } from '../../../components/Buttons/CustomButton/CustomButton'
+import { Button, Form, Input } from 'antd'
+import { LockOutlined, UserOutlined, StarOutlined } from '@ant-design/icons'
 
 import useIntl from '../../../hooks/useIntl'
-import useData from '../../../hooks/useData'
-import { login } from './../../../services/Auth/auth.slice'
+import { login } from '../../../services/Auth/auth.slice'
 import { LoginType } from '../../../services/Auth/auth.types'
-import { AUTH } from '../../../utils/constants/redux.constants'
-import loginImg from './../../../assets/img/publicBackground.jpg'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC } from '../../../utils/constants/routes.constants'
 import {
     maxLength,
     minLength,
@@ -24,46 +19,34 @@ import './Login.scss'
 const { Item } = Form
 const { Password } = Input
 
-export const Login = () => {
+export const Login: FC = () => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
-    const { loading } = useData({ reducer: AUTH })
 
     const onFinish = (values: Omit<LoginType, 'device'>) =>
         dispatch(login({ ...values, device: 'Desktop' }))
 
     return (
         <div className='login'>
-            <div className='login__container'>
-                <img
-                    className='login__image-container'
-                    src={loginImg}
-                    alt='image-background'
-                />
-                <Form
-                    className='login__signIn-form'
-                    onFinish={onFinish}
-                    autoComplete='off'
-                    layout='vertical'
-                >
-                    <Star />
-                    <h2 className='login__title-signIn'>
-                        {formatMessage({ id: 'title.signIn' })}
-                    </h2>
+            <div className='login-image' />
+            <div className='login-form'>
+                <div className='login-form__header'>
+                    <StarOutlined />
+                    <h2>{formatMessage({ id: 'title.signIn' })}</h2>
+                </div>
+                <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
                     <Item
-                        name='username'
                         hasFeedback
+                        name='username'
                         rules={[
                             requiredField({ field: 'text.username' }),
                             maxLength({ field: 'text.username', max: 45 }),
                             minLength({ field: 'text.username', min: 4 }),
                         ]}
-                        className='login__item'
                     >
                         <Input
-                            autoComplete='true'
-                            className='login__input'
-                            prefix={<UserOutlined className='site-form-item-icon' />}
+                            className='login-form__input'
+                            prefix={<UserOutlined />}
                             placeholder={formatMessage({
                                 id: 'text.userOrEmail',
                                 objVars: {
@@ -74,7 +57,6 @@ export const Login = () => {
                         />
                     </Item>
                     <Item
-                        className='login__item-pass'
                         name='password'
                         hasFeedback
                         rules={[
@@ -84,25 +66,26 @@ export const Login = () => {
                         ]}
                     >
                         <Password
-                            autoComplete='true'
-                            className='login__input'
+                            className='login-form__input'
                             prefix={<LockOutlined />}
                             placeholder={formatMessage({ id: 'title.password' })}
                         />
                     </Item>
-                    <CustomButton
-                        htmlType='submit'
-                        type='primary'
-                        children={formatMessage({ id: 'button.login' })}
-                        loading={loading}
-                        width='55%'
-                    />
-                    <Link className='login__link ' to={RP.forgotPassword}>
-                        {formatMessage({ id: 'link.forgotPassword' })}
-                    </Link>
-                    <Link className='login__link-register ' to={RP.register}>
-                        {formatMessage({ id: 'link.signUp' })}
-                    </Link>
+                    <div className='login-form__actions'>
+                        <Button
+                            type='primary'
+                            htmlType='submit'
+                            className='login-form__button'
+                        >
+                            {formatMessage({ id: 'button.login' })}
+                        </Button>
+                        <Link to={ROUTES_PUBLIC.forgotPassword}>
+                            {formatMessage({ id: 'link.forgotPassword' })}
+                        </Link>
+                        <Link to={ROUTES_PUBLIC.register}>
+                            {formatMessage({ id: 'link.signUp' })}
+                        </Link>
+                    </div>
                 </Form>
             </div>
         </div>

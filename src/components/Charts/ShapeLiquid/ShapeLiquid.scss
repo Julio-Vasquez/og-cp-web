@@ -1,13 +1,15 @@
+@use '../../../sass/base/vars';
+@use '../../../sass/utils/mixins';
+
 .main-shape-liquid {
-    display: flex;
+    @include mixins.flex-center;
     flex-direction: column;
-    font-family: 'exo';
+    font-family: vars.$exo;
     font-weight: bold;
     text-align: center;
     height: 250px;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+
     p {
         padding-top: 20px;
     }

@@ -1,3 +1,5 @@
+@use './base/vars' as vars;
+
 @forward './base/main';
 
 @forward './utils/main';
@@ -10,5 +12,5 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Oleo Script';
+    font-family: vars.$oleo-script;
 }

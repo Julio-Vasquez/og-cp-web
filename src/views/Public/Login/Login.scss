@@ -1,211 +1,55 @@
+@use '../../../sass/base/vars';
+@use '../../../sass/utils/mixins';
+
 .login {
-    background: {
-        image: url('./../../../assets/img/publicBackground.jpg');
-        repeat: 'no-repeat';
-        size: cover;
-        position: center;
-    }
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
 
-    &__container {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        border-radius: 20px;
-        width: 50%;
-        height: 600px;
-        color: white;
-    }
+    min-height: 100vh;
+    background-color: #f6f7fc;
 
-    &__image-container {
-        width: 100%;
-        height: 600px;
-        border-radius: 20px 0px 0px 20px;
-        grid-column-start: 1;
-        grid-column-end: 2;
-    }
+    &-image {
+        flex: 3;
+        background-image: url('https://preview.colorlib.com/theme/bootstrap/login-form-02/images/bg_1.jpg.webp');
+        background-size: cover;
+        min-height: 100vh;
 
-    &__signIn-form {
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        grid-column-start: 2;
-        grid-column-end: 3;
-        width: 100%;
-        height: 100%;
-        padding: 8% 0 5% 0;
-        border-radius: 0 20px 20px 0;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
-    }
-
-    &__title-signIn {
-        display: flex;
-        font-size: 3vh;
-        color: black;
-    }
-
-    &__icon-signIn {
-        font-size: 4vh;
-        color: rgba(0, 0, 0, 0.849);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    &__input {
-        height: 36px;
-        border-radius: 50px;
-        display: flex;
-    }
-
-    &__item {
-        border-radius: 26px;
-        width: 80%;
-        height: auto;
-        margin: 5px auto 0 auto;
-    }
-    &__item-pass {
-        border-radius: 26px;
-        width: 80%;
-        height: auto;
-        margin: 5px auto 20px auto;
-    }
-
-    &__link-register {
-        margin: 0 auto;
-    }
-}
-
-@media only screen and (max-width: 1400px) {
-    .login {
-        display: grid;
-        place-items: center;
-
-        &__title-signIn {
-            font-size: 30px;
+        @media only screen and (max-width: vars.$bp-large) {
+            flex: 2;
         }
 
-        &__container {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 50% 50%;
+        @media only screen and (max-width: vars.$bp-medium) {
+            flex: 1;
         }
 
-        &__signIn-form {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 0px 20px 20px 0px;
-        }
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .login {
-        &__title-signIn {
-            font-size: 30px;
-        }
-
-        &__container {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 50% 50%;
-        }
-
-        &__signIn-form {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 0px 20px 20px 0px;
-        }
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .login {
-        &__title-signIn {
-            font-size: 30px;
-        }
-
-        &__container {
-            width: 100%;
-        }
-
-        &__image-container {
+        @media only screen and (max-width: vars.$bp-small) {
             display: none;
         }
-
-        &__signIn-form {
-            width: 100%;
-            height: 100%;
-            grid-column-start: 1;
-            grid-column-end: 3;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
-        }
     }
-}
 
-@media only screen and (max-width: 768px) {
-    .login {
-        &__title-signIn {
-            font-size: 30px;
+    &-form {
+        flex: 1;
+        margin: 80px;
+
+        &__header {
+            text-align: center;
+            font-size: 24px;
+            padding-bottom: 80px;
         }
-
-        &__container {
-            width: 100%;
+        &__input,
+        &__button {
+            height: 40px;
+            font-size: 16px;
         }
-
-        &__image-container {
-            display: none;
-        }
-
-        &__signIn-form {
-            width: 100%;
-            height: 100%;
-            grid-column-start: 1;
-            grid-column-end: 3;
+        &__actions {
             display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+            font-size: 16px;
         }
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    .login {
-        &__title-signIn {
-            font-size: 30px;
-        }
-
-        &__container {
-            display: grid;
-            grid-template-columns: 50% 50%;
-        }
-
-        &__image-container {
-            display: none;
-        }
-
-        &__signIn-form {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
+        &__button {
+            background-color: vars.$primary-color;
+            color: white;
         }
     }
 }
