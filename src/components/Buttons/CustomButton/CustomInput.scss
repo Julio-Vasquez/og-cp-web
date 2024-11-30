@@ -1,6 +1,6 @@
 .main-custom-button {
     width: 70%;
-    height: 30px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,8 +19,5 @@
         color: white;
         align-items: center;
         justify-content: center;
-        :hover {
-            background-color: #795acfb0;
-        }
     }
 }

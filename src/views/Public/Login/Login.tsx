@@ -95,7 +95,7 @@ export const Login = () => {
                         type='primary'
                         children={formatMessage({ id: 'button.login' })}
                         loading={loading}
-                        width='70%'
+                        width='55%'
                     />
                     <Link className='login__link ' to={RP.forgotPassword}>
                         {formatMessage({ id: 'link.forgotPassword' })}
