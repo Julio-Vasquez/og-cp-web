@@ -7,6 +7,7 @@ import {
     CustomInputDefaultProps,
 } from './custom.type'
 import './CustomInput.scss'
+import useIntl from '../../../hooks/useIntl'
 
 const { Item } = Form
 
@@ -24,6 +25,7 @@ export const CustomInput: FC<CustomInputProps> = ({
     customMap,
     ...props
 }) => {
+    const { formatMessage } = useIntl()
     const options = data?.map((item: any) => ({
         value: item[customMap.value],
         label: item[customMap.label],
@@ -38,7 +40,7 @@ export const CustomInput: FC<CustomInputProps> = ({
             >
                 <Select
                     className='custom-input__prefix'
-                    placeholder='Select'
+                    placeholder={formatMessage({ id: 'text.select' })}
                     options={options}
                 />
             </Item>

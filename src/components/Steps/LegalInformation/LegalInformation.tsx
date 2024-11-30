@@ -11,14 +11,14 @@ import {
     ContactDataProps,
     ContactDataPropTypes,
     ContactDataDefaultProps,
-} from './ContactData.type'
+} from './LegalInformation.type'
 import {
     maxLength,
     minLength,
     requiredField,
 } from '../../../utils/functions/form.functions'
 
-import './ContactData.scss'
+import './LegalInformation.scss'
 
 const { Item } = Form
 
@@ -36,8 +36,10 @@ export const ContactData: FC<ContactDataProps> = ({
     const disabledDate: RangePickerProps['disabledDate'] = current =>
         current && current >= dayjs().subtract(17, 'year')
 
+    const startDate = dayjs().subtract(17, 'year')
+
     return (
-        <div className='main-contact-data'>
+        <div className='contact-data'>
             <Spin spinning={loading}>
                 <Item
                     hasFeedback
@@ -57,26 +59,26 @@ export const ContactData: FC<ContactDataProps> = ({
                 <Item
                     hasFeedback
                     name='birthDate'
-                    className='main-contact-data__item'
+                    className='contact-data__item'
                     rules={[requiredField({ field: 'text.birthDate' })]}
                 >
                     <DatePicker
-                        className='main-contact-data__date'
+                        className='contact-data__date'
                         disabledDate={disabledDate}
+                        defaultPickerValue={startDate}
                     />
                 </Item>
                 <Item
                     hasFeedback
                     name='gender'
-                    className='main-contact-data__item'
+                    className='contact-data__item'
                     rules={[requiredField({ field: 'text.gender' })]}
                 >
                     <Select
                         allowClear
-                        bordered={false}
-                        className='main-contact-data__option'
+                        className='contact-data__option'
                         placeholder={formatMessage({ id: 'text.gender' })}
-                        options={genders?.sort()?.map((item: SignUpGenders) => ({
+                        options={genders.sort().map((item: SignUpGenders) => ({
                             value: item.gender,
                             label: item.gender,
                         }))}
@@ -90,13 +92,13 @@ export const ContactData: FC<ContactDataProps> = ({
                         maxLength({ field: 'text.phoneNumber', max: 10 }),
                         minLength({ field: 'text.phoneNumber', min: 10 }),
                     ]}
-                    className='main-contact-data__item'
+                    className='contact-data__item'
                 >
                     <Input
                         defaultValue={3}
                         type='number'
                         placeholder={formatMessage({ id: 'text.phoneNumber' })}
-                        className='main-contact-data__input'
+                        className='contact-data__input'
                     />
                 </Item>
             </Spin>

@@ -11,23 +11,21 @@ const SetPassword = lazy(() => import('../views/Public/SetPassword'))
 const ForgotPassword = lazy(() => import('../views/Public/ForgotPassword'))
 const ActivateAccount = lazy(() => import('../views/Public/ActivateAccount'))
 
-export const PublicRoutes: FC = () => {
-    return (
-        <Suspense fallback={<Loading />}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path={RP.login} element={<Login />} />
-                    <Route path={RP.default} element={<Login />} />
-                    <Route path={RP.register} element={<SignUp />} />
-                    <Route path={RP.setPassword} element={<SetPassword />} />
-                    <Route path={RP.forgotPassword} element={<ForgotPassword />} />
-                    <Route path={RP.activateAccount} element={<ActivateAccount />} />
-                    <Route path={RP.error404} element={<Error404 />} />
-                    <Route path='*' element={<Navigate replace to={RP.login} />} />
-                </Routes>
-            </BrowserRouter>
-        </Suspense>
-    )
-}
+export const PublicRoutes: FC = () => (
+    <Suspense fallback={<Loading />}>
+        <BrowserRouter>
+            <Routes>
+                <Route path={RP.login} element={<Login />} />
+                <Route path={RP.default} element={<Login />} />
+                <Route path={RP.register} element={<SignUp />} />
+                <Route path={RP.setPassword} element={<SetPassword />} />
+                <Route path={RP.forgotPassword} element={<ForgotPassword />} />
+                <Route path={RP.activateAccount} element={<ActivateAccount />} />
+                <Route path={RP.error404} element={<Error404 />} />
+                <Route path='*' element={<Navigate replace to={RP.login} />} />
+            </Routes>
+        </BrowserRouter>
+    </Suspense>
+)
 
 /**/

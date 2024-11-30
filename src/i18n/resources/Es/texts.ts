@@ -55,4 +55,5 @@ export const Texts = {
     denomination: 'Denominación',
     generalization: 'Generalización',
     activities: 'Actividades',
+    select: 'Seleccionar',
 }

@@ -11,7 +11,7 @@ export const useIntl = () => {
     const formatMessage = ({ id, objVars }: props): string =>
         objVars ? t(id, objVars) : t(id)
 
-    return { formatMessage, lng: i18n.language }
+    return { formatMessage, lng: i18n.language as 'en' | 'es' }
 }
 
 export default useIntl

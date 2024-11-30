@@ -1,0 +1,31 @@
+.contact-data {
+    padding: 10px 0;
+    &__item {
+        margin-top: 10px;
+        height: 40px;
+    }
+
+    &__date,
+    &__input {
+        width: 100%;
+    }
+
+    &__option,
+    &__date,
+    &__input {
+        height: 40px;
+    }
+}
+
+.ant-form-item {
+    margin-bottom: 0;
+}
+
+.ant-select-selector {
+    height: 40px !important;
+    align-items: center;
+}
+
+.ant-input-affix-wrapper .ant-input-affix-wrapper-has-feedback {
+    height: 40px !important;
+}
