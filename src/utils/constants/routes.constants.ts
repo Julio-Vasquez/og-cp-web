@@ -30,6 +30,6 @@ export const ROUTES_PRIVATE: RoutesPrivate = {
     ranking: Routes.ranking,
     statistics: Routes.statistics,
     activityDetail: Routes.activityDetail,
-    userlist: Routes.userList,
+    userList: Routes.userList,
     players: Routes.players,
 }

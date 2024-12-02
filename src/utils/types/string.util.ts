@@ -15,3 +15,6 @@ export const reduceString = ({ value, maxLength, ellipsis = true }: reduce) => {
     if (value?.length <= maxLength) return value
     return value.slice(0, maxLength).concat(ellipsis ? '...' : '')
 }
+
+export const prepareLabelUrl = (str: string): string =>
+    `${str.substring(0, 1).toLowerCase()}${str.substring(1, str.length)}`

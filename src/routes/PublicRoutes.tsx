@@ -22,7 +22,7 @@ export const PublicRoutes: FC = () => (
                 <Route path={RP.forgotPassword} element={<ForgotPassword />} />
                 <Route path={RP.activateAccount} element={<ActivateAccount />} />
                 <Route path={RP.error404} element={<Error404 />} />
-                <Route path='*' element={<Navigate replace to={RP.login} />} />
+                <Route path='*' element={<Navigate replace to={RP.error404} />} />
             </Routes>
         </BrowserRouter>
     </Suspense>

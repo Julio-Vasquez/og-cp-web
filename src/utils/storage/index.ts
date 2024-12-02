@@ -1,4 +1,9 @@
-import { GetItem, TokenIsValid, RemoveItem, SaveItem, ClearData } from './storage'
-
-export { GetItem, TokenIsValid, RemoveItem, SaveItem, ClearData }
-export default { GetItem, TokenIsValid, RemoveItem, SaveItem, ClearData }
+export {
+    GetItem,
+    GetToken,
+    ValidateToken,
+    GetInfoToken,
+    RemoveItem,
+    SaveItem,
+    ClearData,
+} from './storage'

@@ -1,7 +1,7 @@
-import { ROL } from '../types/roles.type'
+import { ROLES } from './roles.enum'
 
-export const ROLES_COLOR: Record<ROL, string> = {
-    Administrador: '#87d068',
-    Terapeuta: '#f50',
-    Usuario: '#2db7f5',
+export const ROLES_COLOR: Record<ROLES, string> = {
+    [ROLES.Admin]: '#87d068',
+    [ROLES.Analyst]: '#f50',
+    [ROLES.User]: '#2db7f5',
 }

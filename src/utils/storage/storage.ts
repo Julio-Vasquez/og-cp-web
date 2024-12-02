@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode'
 
 import { Key, Payload, Token } from './storage.types'
 import { JWT_KEY } from '../constants/environment.constant'
-import { Payload as Storage } from '../../services/Auth/auth.types'
+import type { Payload as Data } from '../../services/Auth/auth.types'
 
 export const SaveItem = <T = unknown>({
     key = JWT_KEY,
@@ -17,13 +17,23 @@ export const SaveItem = <T = unknown>({
 export const GetItem = ({ key = JWT_KEY }: Key) => localStorage.getItem(key)
 
 export const GetToken = (): string => {
-    const data = GetItem({})
+    const data = GetItem({ key: JWT_KEY })
 
     if (!data) return ''
 
-    const obj: Storage = JSON.parse(data)
+    const { token } = JSON.parse(data)
 
-    return obj.token
+    return token
+}
+
+export const getData = (): Data => {
+    const data = GetItem({ key: JWT_KEY })
+
+    if (!data) return {} as Data
+
+    const values = JSON.parse(data) as Data
+
+    return { ...values }
 }
 
 export const GetInfoToken = (currentToken?: string): Token =>
@@ -35,16 +45,15 @@ export const RemoveItem = ({ key = JWT_KEY, type = 'localStorage' }: Key) =>
         : localStorage.removeItem(key)
 
 export const ValidateToken = (token: string) => {
-    const tokenValid: Token = jwtDecode(token)
-    return tokenValid && tokenValid?.exp! >= Math.round(new Date().getTime() / 1000)
-}
+    try {
+        const tokenValid: Token = jwtDecode(token)
 
-export const TokenIsValid = (token: string) => {
-    if (token) {
-        const decode: Token = jwtDecode(token) ?? ''
-        return decode?.exp! >= Math.round(new Date().getTime() / 1000)
+        return (
+            tokenValid && tokenValid?.exp! >= Math.round(new Date().getTime() / 1000)
+        )
+    } catch (e) {
+        return false
     }
-    return false
 }
 
 export const ClearData = (key = JWT_KEY) => localStorage.removeItem(key)

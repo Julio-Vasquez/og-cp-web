@@ -1,63 +1,31 @@
+@use '../../../sass/utils/mixins';
+@use '../../../sass/base/vars';
+
 .main-header-private {
-    padding: 0 30px;
-    height: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: Oleo Script;
+    @include mixins.flex-between;
+    padding: 0 16px;
+    font-family: vars.$oleo-script;
+
     &__title {
         margin: auto;
         font-size: 22px;
-        height: 80px;
-        color: #6744c6;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        color: vars.$primary-color;
+        font-weight: vars.$font-weight-title;
+        @include mixins.flex-center;
     }
 }
-@media only screen and (max-width: 1400px) {
-    .main-header-private {
-        &__title {
-            font-size: 22px;
-            color: #6744c6;
-            font-weight: 500;
-        }
-    }
-}
-@media only screen and (max-width: 1200px) {
-    .main-header-private {
-        &__title {
-            font-size: 22px;
-            color: #6744c6;
-            font-weight: 500;
-        }
-    }
-}
-@media only screen and (max-width: 992px) {
-    .main-header-private {
-        &__title {
-            font-size: 22px;
-            color: #6744c6;
-            font-weight: 500;
-        }
-    }
-}
+
 @media only screen and (max-width: 768px) {
-    .main-header-private {
-        &__title {
-            padding: 0;
-            display: flex;
-            font-size: 16px;
-            color: #6744c6;
-            font-weight: 100;
-        }
+    .main-header-private__title {
+        padding: 0;
+        display: flex;
+        font-size: 16px;
+        color: vars.$primary-color;
     }
 }
+
 @media only screen and (max-width: 576px) {
-    .main-header-private {
-        &__title {
-            display: none;
-        }
+    .main-header-private__title {
+        display: none;
     }
 }

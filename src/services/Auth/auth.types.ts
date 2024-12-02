@@ -7,9 +7,7 @@ export type Actions = {
     delete: boolean | 'partial'
 }
 
-export type Menu =
-    | { actions: Actions; en: string; es: string; icon: string }[]
-    | null
+export type Menu = { actions: Actions; en: string; es: string; icon: string }[]
 
 export type Payload = {
     token: string

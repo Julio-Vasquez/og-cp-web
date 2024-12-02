@@ -4,58 +4,46 @@ import { useLocation } from 'react-router-dom'
 
 import { LogoDashboard } from '../../Avatars/LogoDashboard'
 
+import useData from '../../../hooks/useData'
+import { useMenuItems } from '../../../hooks/useMenuItems'
+import { AUTH } from '../../../utils/constants/redux.constants'
 import {
     SidebarPrivateProps,
     SidebarPrivatePropsDefault,
 } from './sidebarPrivate.type'
-import useIntl from '../../../hooks/useIntl'
-import useData from '../../../hooks/useData'
-import { useMenuItems } from '../../../hooks/useMenuItems'
-import { AUTH } from '../../../utils/constants/redux.constants'
 
 import './SidebarPrivate.scss'
 
-const { Sider } = Layout
+const { Sider: SideBar } = Layout
 
 export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
-    const { menu: itemMenu } = useData({ reducer: AUTH })
-
     const { pathname } = useLocation()
-    const { formatMessage } = useIntl()
+    const { menu: itemMenu } = useData({ reducer: AUTH })
     const menuSidebar = useMenuItems(itemMenu)
 
-    const key = menuSidebar?.find(item => item?.label.props.to === pathname)?.key
+    const key =
+        menuSidebar.find(item => item.label.props.to === pathname)?.key.toString() ||
+        '0'
 
-    const [activeSide, setActiveSide] = useState<string[]>([key?.toString() ?? '0'])
-    const handleClick = (key: string) => setActiveSide([key])
+    const [activeSide, setActiveSide] = useState<string[]>([key])
 
     const menu = menuSidebar?.map((item, index) => ({
         ...item,
-        onClick: () => handleClick(`${index + 1}`),
+        onClick: () => setActiveSide([`${index + 1}`]),
     }))
 
     return (
-        <Sider
-            trigger={null}
-            collapsible
-            collapsed={collapsed}
-            theme='light'
-            className='main-sidebar-private'
-        >
+        <SideBar collapsible collapsed={collapsed} theme='light' trigger={null}>
             <LogoDashboard collapsed={collapsed} />
 
-            <h2 className='main-sidebar-private__subtitle'>
-                {!collapsed && formatMessage({ id: 'title.menu' })}
-            </h2>
-
             <Menu
-                className='main-sidebar-private__menu'
+                className='main-sidebar-private'
                 theme='light'
                 mode='inline'
                 defaultSelectedKeys={activeSide}
                 items={menu}
             />
-        </Sider>
+        </SideBar>
     )
 }
 

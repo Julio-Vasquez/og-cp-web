@@ -1,14 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { AUTH } from '../../utils/constants/redux.constants'
-import {
-    baseState,
-    defaultState,
-    getInitialState,
-} from '../../utils/services/state.util'
-import { LoginAction, LoginFailedType, LoginSuccessType } from './auth.types'
+import { ValidateToken, GetToken } from '../../utils/storage'
+import type {
+    LoginAction,
+    LoginFailedType,
+    LoginSuccessType,
+    State,
+} from './auth.types'
+import { getData } from '../../utils/storage/storage'
 
-export const initialState = getInitialState()
+export const initialState: State = {
+    error: false,
+    loading: false,
+    authentication: ValidateToken(GetToken()),
+    message: '',
+    success: false,
+    token: '',
+    username: '',
+    menu: getData().menu,
+    fullName: '',
+}
 
 export const AuthSlice = createSlice({
     name: AUTH,
@@ -36,9 +48,10 @@ export const AuthSlice = createSlice({
             menu: payload.menu,
             fullName: payload.fullName,
             username: payload.username,
-            ...baseState,
+            error: false,
+            loading: false,
         }),
-        logout: state => ({ ...state, ...defaultState }),
+        logout: state => ({ ...state, ...initialState }),
     },
 })
 

@@ -1,15 +1,11 @@
+@use '../../../sass/utils/mixins';
+
 .main-logo {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    &__container-img {
-        background: #6744c6;
-        border-radius: 50%;
-        display: flex;
+    @include mixins.flex-center;
+    height: 64px;
+
+    &__img {
         height: 30px;
         width: 30px;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
     }
 }
