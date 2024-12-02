@@ -2,6 +2,8 @@ import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { Avatar, Dropdown, MenuProps, Space } from 'antd'
 
+import User from '../../Avatars/User'
+
 import useIntl from '../../../hooks/useIntl'
 import { UserActionsProps } from './userActions.type'
 import { logout } from '../../../services/Auth/auth.slice'
@@ -11,7 +13,6 @@ import iconNotification from '../../../assets/svg/iconNotification.svg'
 import { Data } from '../../LayoutPrivate/HeaderPrivate/itemsHeaderPrivate/itemsHeader.type'
 
 import './UserActions.scss'
-import User from '../../Avatars/User'
 
 export const CustomDropDown: FC<UserActionsProps> = ({ role, username }) => {
     const dispatch = useDispatch()
@@ -33,22 +34,9 @@ export const CustomDropDown: FC<UserActionsProps> = ({ role, username }) => {
                 </div>
             ),
         },
+
         {
             key: '2',
-            label: (
-                <>
-                    <Avatar
-                        shape='square'
-                        src={data[0].src}
-                        alt='imag-notification'
-                    />
-
-                    {formatMessage({ id: 'text.notifications' })}
-                </>
-            ),
-        },
-        {
-            key: '3',
             label: (
                 <Space onClick={handleLogOut}>
                     <Avatar

@@ -22,11 +22,7 @@ export interface Person {
 export interface UserList {
     user: User
     role: Role
-    person?: Person
+    person: Person
 }
-
-export type UserList2 =
-    | { user: User; role: Role }
-    | { user: User; role: Role; person: Person }
 
 export type userState = 'success' | 'error' | 'processing'

@@ -8,7 +8,7 @@ import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
 import { mock } from '../../../utils/mocks/mocksUser'
-import { Person, UserList2 } from './usersList.type'
+import { Person, UserList } from './usersList.type'
 import { Columns } from '../../../utils/types/table.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
@@ -33,7 +33,7 @@ export const UsersList = () => {
               title: `${formatMessage({ id: 'text.action' })}`,
               key: 'actions',
               align: 'center' as 'center',
-              render: (data: UserList2) => (
+              render: (data: UserList) => (
                   <UpgradeOrDegrade
                       username={data.user.username}
                       role={data.role.role}
@@ -43,7 +43,7 @@ export const UsersList = () => {
           }
         : {}
 
-    const columns: Columns<UserList2> = [
+    const columns: Columns<UserList> = [
         {
             title: `${formatMessage({ id: 'text.fullName' })}`,
             dataIndex: 'person',
@@ -86,7 +86,7 @@ export const UsersList = () => {
         hasRender,
     ]
 
-    const { data, loading, refetch } = useQuery<UserList2[]>({
+    const { data, loading, refetch } = useQuery<UserList[]>({
         functionFetch: api.user.userList,
     })
 
@@ -96,8 +96,14 @@ export const UsersList = () => {
     }
 
     const payload =
-        data.status === Status.success ? data.payload : ([] as UserList2[])
+        data.status === Status.success ? data.payload : ([] as UserList[])
 
+    const prepareData = payload.map(item => ({
+        ...item.user,
+        ...item.role,
+        ...item.person,
+    }))
+    console.log(prepareData)
     return (
         <div className='main-table'>
             <h1 className='main-table__title'>
@@ -106,7 +112,7 @@ export const UsersList = () => {
                     objVars: { field: formatMessage({ id: 'text.users' }) },
                 })}
             </h1>
-            <DownloaderCSV data={mock} />
+            <DownloaderCSV data={prepareData} />
             <Table
                 scroll={{ x: 100 }}
                 className='main-table__table'
