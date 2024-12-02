@@ -1,3 +1,7 @@
 .main-sidebar-private {
     font-size: 14px;
+    .ant-menu-item {
+        padding-inline: calc(50% - 12px - 4px);
+        border-radius: 0;
+    }
 }

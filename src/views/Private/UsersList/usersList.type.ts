@@ -25,4 +25,17 @@ export interface UserList {
     person: Person
 }
 
+export type Users = {
+    publicKey: string
+    name: string
+    middleName: string
+    lastNameOne: string
+    lastNameTwo: string
+    birthDate: string
+    role: string
+    username: string
+    mail: string
+    state: string
+}
+
 export type userState = 'success' | 'error' | 'processing'

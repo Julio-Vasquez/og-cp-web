@@ -10,16 +10,17 @@ import type {
 } from './auth.types'
 import { getData } from '../../utils/storage/storage'
 
+const { fullName, menu, token, username } = getData()
 export const initialState: State = {
     error: false,
     loading: false,
     authentication: ValidateToken(GetToken()),
     message: '',
     success: false,
-    token: '',
-    username: '',
-    menu: getData().menu,
-    fullName: '',
+    token,
+    username,
+    menu,
+    fullName,
 }
 
 export const AuthSlice = createSlice({

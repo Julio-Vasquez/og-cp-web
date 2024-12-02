@@ -5,8 +5,10 @@ import { Button, Form, Input } from 'antd'
 import { LockOutlined, UserOutlined, StarOutlined } from '@ant-design/icons'
 
 import useIntl from '../../../hooks/useIntl'
+import useData from '../../../hooks/useData'
 import { login } from '../../../services/Auth/auth.slice'
 import { LoginType } from '../../../services/Auth/auth.types'
+import { AUTH } from '../../../utils/constants/redux.constants'
 import { ROUTES_PUBLIC } from '../../../utils/constants/routes.constants'
 import {
     maxLength,
@@ -21,6 +23,7 @@ const { Password } = Input
 
 export const Login: FC = () => {
     const dispatch = useDispatch()
+    const { loading } = useData({ reducer: AUTH })
     const { formatMessage } = useIntl()
 
     const onFinish = (values: Omit<LoginType, 'device'>) =>
@@ -75,6 +78,7 @@ export const Login: FC = () => {
                     </Item>
                     <div className='login-form__actions'>
                         <Button
+                            loading={loading}
                             type='primary'
                             htmlType='submit'
                             className='login-form__button'

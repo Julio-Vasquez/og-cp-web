@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { CustomDropDown } from '../../../DropDown/UserActions/UserActions'
+import { UserActions } from '../../../DropDown/UserActions'
 
 import useData from '../../../../hooks/useData'
 import { GetInfoToken } from '../../../../utils/storage/storage'
@@ -10,7 +10,7 @@ export const ItemsHeader: FC = () => {
     const { username, token } = useData({ reducer: AUTH })
     const { role } = GetInfoToken(token)
 
-    return <CustomDropDown username={username} role={role} />
+    return <UserActions username={username} role={role} />
 }
 
 export default ItemsHeader

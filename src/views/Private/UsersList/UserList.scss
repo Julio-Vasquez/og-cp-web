@@ -1,17 +1,13 @@
-.btn {
-    border: none;
-}
+@use '../../../sass/base/vars';
+
 .up-down-icons {
     font-size: 20px;
 }
 .main-table {
-    display: flex;
-    flex-direction: column;
-    table-layout: fixed;
     text-align: center;
     &__title {
-        font-size: 32px;
-        color: #6744c6;
+        font-size: 20px;
+        color: vars.$primary-color;
     }
 }
 

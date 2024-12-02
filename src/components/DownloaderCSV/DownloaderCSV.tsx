@@ -15,9 +15,11 @@ export const DownloaderCSV: FC<Csv> = ({ data }) => {
     const handleClickDownload = () => jsonToCsvExport({ data, headers })
 
     return (
-        <Button className='main-csv__btn' onClick={handleClickDownload}>
-            {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
-        </Button>
+        <div className='main-csv'>
+            <Button className='main-csv__btn' onClick={handleClickDownload}>
+                {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
+            </Button>
+        </div>
     )
 }
 

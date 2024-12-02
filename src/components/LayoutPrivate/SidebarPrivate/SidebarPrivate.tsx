@@ -27,7 +27,7 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
 
     const [activeSide, setActiveSide] = useState<string[]>([key])
 
-    const menu = menuSidebar?.map((item, index) => ({
+    const menu = menuSidebar.map((item, index) => ({
         ...item,
         onClick: () => setActiveSide([`${index + 1}`]),
     }))

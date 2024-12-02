@@ -1,8 +1,10 @@
 .main-csv {
     display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+
     &__btn {
         background-color: rgb(255, 85, 0);
         color: white;
-        margin: 0 0 15px auto;
     }
 }

@@ -7,8 +7,7 @@ import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useQuery } from '../../../hooks/api'
-import { mock } from '../../../utils/mocks/mocksUser'
-import { Person, UserList } from './usersList.type'
+import type { Person, UserList } from './usersList.type'
 import { Columns } from '../../../utils/types/table.type'
 import { formatDate } from '../../../utils/types/date.util'
 import { State } from '../../../utils/constants/state.enum'
@@ -103,7 +102,7 @@ export const UsersList = () => {
         ...item.role,
         ...item.person,
     }))
-    console.log(prepareData)
+
     return (
         <div className='main-table'>
             <h1 className='main-table__title'>

@@ -14,7 +14,7 @@ import { Data } from '../../LayoutPrivate/HeaderPrivate/itemsHeaderPrivate/items
 
 import './UserActions.scss'
 
-export const CustomDropDown: FC<UserActionsProps> = ({ role, username }) => {
+export const UserActions: FC<UserActionsProps> = ({ role, username }) => {
     const dispatch = useDispatch()
     const { formatMessage } = useIntl()
 
@@ -29,12 +29,11 @@ export const CustomDropDown: FC<UserActionsProps> = ({ role, username }) => {
         {
             key: '1',
             label: (
-                <div>
-                    {username} | {role}
+                <div style={{ color: 'purple' }}>
+                    {username.toUpperCase()} | {role.toUpperCase()}
                 </div>
             ),
         },
-
         {
             key: '2',
             label: (
@@ -51,10 +50,16 @@ export const CustomDropDown: FC<UserActionsProps> = ({ role, username }) => {
     ]
 
     return (
-        <Dropdown menu={{ items }} placement='bottomRight' arrow trigger={['click']}>
+        <Dropdown
+            menu={{ items }}
+            placement='bottomRight'
+            arrow
+            trigger={['click']}
+            className='main-drop-down'
+        >
             <User username={username} />
         </Dropdown>
     )
 }
 
-export default CustomDropDown
+export default UserActions
