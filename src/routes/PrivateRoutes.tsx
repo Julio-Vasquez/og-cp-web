@@ -17,33 +17,27 @@ const Statistics = lazy(() => import('../views/Private/Statistics/Statistics'))
 const Players = lazy(() => import('../views/Private/Players/Players'))
 
 export const PrivateRoutes: FC = () => {
-    return (
-        <Suspense fallback={<Loading />}>
-            <BrowserRouter>
-                <ChildrenProvider value={initialState}>
-                    <LayoutPrivate>
-                        <Routes>
-                            <Route
-                                path={RP.activityDetail}
-                                element={<ActivitiesList />}
-                            />
-                            <Route path={RP.profile} element={<Profile />} />
-                            <Route path={RP.userList} element={<UsersList />} />
-                            <Route path={RP.ranking} element={<Ranking />} />
-                            <Route path={RP.default} element={<Dashboard />} />
-                            <Route path={RP.dashboard} element={<Dashboard />} />
-                            <Route path={RP.statistics} element={<Statistics />} />
-                            <Route path={RP.players} element={<Players />} />
+  return (
+    <Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <ChildrenProvider value={initialState}>
+          <LayoutPrivate>
+            <Routes>
+              <Route path={RP.activityDetail} element={<ActivitiesList />} />
+              <Route path={RP.profile} element={<Profile />} />
+              <Route path={RP.userList} element={<UsersList />} />
+              <Route path={RP.ranking} element={<Ranking />} />
+              <Route path={RP.default} element={<Dashboard />} />
+              <Route path={RP.dashboard} element={<Dashboard />} />
+              <Route path={RP.statistics} element={<Statistics />} />
+              <Route path={RP.players} element={<Players />} />
 
-                            <Route
-                                path='/*'
-                                element={<Navigate replace to={RP.default} />}
-                            />
-                            <Route path={RP.error404} element={<Error404 />} />
-                        </Routes>
-                    </LayoutPrivate>
-                </ChildrenProvider>
-            </BrowserRouter>
-        </Suspense>
-    )
+              <Route path='/*' element={<Navigate replace to={RP.default} />} />
+              <Route path={RP.error404} element={<Error404 />} />
+            </Routes>
+          </LayoutPrivate>
+        </ChildrenProvider>
+      </BrowserRouter>
+    </Suspense>
+  )
 }

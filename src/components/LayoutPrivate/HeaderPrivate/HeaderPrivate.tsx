@@ -6,9 +6,9 @@ import { ItemsHeader } from './itemsHeaderPrivate'
 
 import useIntl from '../../../hooks/useIntl'
 import {
-    HeaderPrivateProps,
-    HeaderPrivateDefaultProps,
-    HeaderPrivatePropsTypes,
+  HeaderPrivateProps,
+  HeaderPrivateDefaultProps,
+  HeaderPrivatePropsTypes,
 } from './headerPrivate.type'
 
 import './HeaderPrivate.scss'
@@ -16,28 +16,28 @@ import './HeaderPrivate.scss'
 const { Header } = Layout
 
 export const HeaderPrivate: FC<HeaderPrivateProps> = ({
-    collapsed,
-    setCollapsed,
+  collapsed,
+  setCollapsed,
 }) => {
-    const { token } = theme.useToken()
-    const { formatMessage } = useIntl()
+  const { token } = theme.useToken()
+  const { formatMessage } = useIntl()
 
-    const icon = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
+  const icon = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
 
-    const handleClick = () => setCollapsed(prev => !prev)
+  const handleClick = () => setCollapsed(prev => !prev)
 
-    return (
-        <Header
-            className='main-header-private'
-            style={{ background: token.colorBgContainer }}
-        >
-            <Button type='text' onClick={handleClick} icon={icon} />
-            <h1 className='main-header-private__title'>
-                {formatMessage({ id: 'title.innocentlyLearning' })}
-            </h1>
-            <ItemsHeader />
-        </Header>
-    )
+  return (
+    <Header
+      className='main-header-private'
+      style={{ background: token.colorBgContainer }}
+    >
+      <Button type='text' onClick={handleClick} icon={icon} />
+      <h1 className='main-header-private__title'>
+        {formatMessage({ id: 'title.innocentlyLearning' })}
+      </h1>
+      <ItemsHeader />
+    </Header>
+  )
 }
 
 HeaderPrivate.propTypes = HeaderPrivatePropsTypes

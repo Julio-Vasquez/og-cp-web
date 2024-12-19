@@ -1,3 +1,3 @@
 export const configTheme = {
-    colorPrimary: '#6744c6',
+  colorPrimary: '#6744c6',
 }

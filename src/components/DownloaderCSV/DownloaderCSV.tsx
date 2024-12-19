@@ -8,19 +8,19 @@ import { type Csv } from './Downloader.type'
 import './Downloader.scss'
 
 export const DownloaderCSV: FC<Csv> = ({ data }) => {
-    const { formatMessage } = useIntl()
+  const { formatMessage } = useIntl()
 
-    const headers = data.length > 0 ? Object.keys(data[0] as any) : []
+  const headers = data.length > 0 ? Object.keys(data[0] as any) : []
 
-    const handleClickDownload = () => jsonToCsvExport({ data, headers })
+  const handleClickDownload = () => jsonToCsvExport({ data, headers })
 
-    return (
-        <div className='main-csv'>
-            <Button className='main-csv__btn' onClick={handleClickDownload}>
-                {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
-            </Button>
-        </div>
-    )
+  return (
+    <div className='main-csv'>
+      <Button className='main-csv__btn' onClick={handleClickDownload}>
+        {formatMessage({ id: 'text.downloader', objVars: { field: 'CSV' } })}
+      </Button>
+    </div>
+  )
 }
 
 export default DownloaderCSV

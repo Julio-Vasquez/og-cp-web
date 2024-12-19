@@ -17,14 +17,12 @@ export const TooltipX = ({
     ellipsis,
     placement,
     maxLength,
-}: TooltipXProps) => {
-    return (
-        <Tooltip title={title} placement={placement} color={color}>
-            {reduceString({
-                ellipsis,
-                maxLength,
-                value,
-            })}
-        </Tooltip>
-    )
-}
+}: TooltipXProps) => (
+    <Tooltip title={title} placement={placement} color={color}>
+        {reduceString({
+            ellipsis,
+            maxLength,
+            value,
+        })}
+    </Tooltip>
+)

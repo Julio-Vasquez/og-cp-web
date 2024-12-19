@@ -1,28 +1,24 @@
-import { Form, Input } from 'antd'
+import { Button, Form, Input } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
-
-import Star from '../../../components/Avatars/Star/Star'
-import LoginImg from '../../../assets/img/publicBackground.jpg'
-import CustomButton from '../../../components/Buttons/CustomButton/CustomButton'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC } from '../../../utils/constants/routes.constants'
 import { type ForgotPassword as ForgotPasswordForm } from './forgotPassword.type'
 import {
-    ApiResponseError,
-    ApiResponseSuccess,
+  ApiResponseError,
+  ApiResponseSuccess,
 } from '../../../utils/types/response.type'
 import {
-    successNotification,
-    errorNotification,
+  successNotification,
+  errorNotification,
 } from '../../../utils/notifications/notification.action'
 import {
-    maxLength,
-    minLength,
-    requiredField,
+  maxLength,
+  minLength,
+  requiredField,
 } from '../../../utils/functions/form.functions'
 
 import './ForgotPassword.scss'
@@ -30,98 +26,77 @@ import './ForgotPassword.scss'
 const { Item } = Form
 
 const ForgotPassword = () => {
-    const navigate = useNavigate()
-    const { formatMessage } = useIntl()
+  const navigate = useNavigate()
+  const { formatMessage } = useIntl()
 
-    const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
-        successNotification(message)
-        navigate(RP.login)
-    }
+  const textInput = formatMessage({
+    id: 'text.userOrEmail',
+    objVars: {
+      user: formatMessage({ id: 'text.username' }),
+      mail: formatMessage({ id: 'text.mail' }),
+    },
+  })
 
-    const onError = ({ message }: ApiResponseError) => errorNotification(message)
+  const description = formatMessage({
+    id: 'text.inputObj',
+    objVars: { field: textInput },
+  })
 
-    const [mutation, { loading }] = useMutation(
-        { functionFetch: api.auth.forgotPassword },
-        { onCompleted, onError, cancelError: false }
-    )
+  const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
+    successNotification(message)
+    navigate(ROUTES_PUBLIC.login)
+  }
 
-    const onFinish = (values: ForgotPasswordForm) =>
-        mutation<ForgotPasswordForm>({ ...values })
+  const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    return (
-        <div className='forgot-password'>
-            <div className='forgot-password__container'>
-                <img
-                    className='forgot-password__image-container'
-                    src={LoginImg}
-                    alt='Logo form forgot password'
-                />
-                <Form
-                    className='forgot-password__form-data'
-                    name='normal_forgot-password'
-                    onFinish={onFinish}
-                    autoComplete='off'
-                    layout='vertical'
-                >
-                    <LockOutlined className='forgot-password__icon' />
-                    <Star />
-                    <h2 className='forgot-password__title'>
-                        {formatMessage({ id: 'title.forgotPassword' })}
-                    </h2>
-                    <p>
-                        {formatMessage({
-                            id: 'text.inputObj',
-                            objVars: {
-                                field: formatMessage({ id: 'text.username' }),
-                            },
-                        })}
-                    </p>
-                    <Item
-                        hasFeedback
-                        name='username'
-                        className='forgot-password__item'
-                        rules={[
-                            requiredField({ field: 'text.username' }),
-                            maxLength({ field: 'text.username', max: 45 }),
-                            minLength({ field: 'text.username', min: 4 }),
-                        ]}
-                    >
-                        <Input
-                            className='forgot-password__input'
-                            prefix={<UserOutlined className='site-form-item-icon' />}
-                            placeholder={formatMessage({
-                                id: 'text.userOrEmail',
-                                objVars: {
-                                    user: formatMessage({ id: 'text.username' }),
-                                    mail: formatMessage({ id: 'text.mail' }),
-                                },
-                            })}
-                        />
-                    </Item>
-                    <CustomButton
-                        type='primary'
-                        htmlType='submit'
-                        loading={loading}
-                        children={formatMessage({
-                            id: 'button.setPassword',
-                            objVars: {
-                                user: formatMessage({ id: 'button.change' }),
-                                mail: formatMessage({ id: 'button.password' }),
-                            },
-                        })}
-                        width='70%'
-                    />
+  const [mutation, { loading }] = useMutation(
+    { functionFetch: api.auth.forgotPassword },
+    { onCompleted, onError, cancelError: false }
+  )
 
-                    <Link
-                        to={RP.login}
-                        className='forgot-password__link-forgot-password'
-                    >
-                        {formatMessage({ id: 'link.signIn' })}
-                    </Link>
-                </Form>
-            </div>
-        </div>
-    )
+  const onFinish = (values: ForgotPasswordForm) =>
+    mutation<ForgotPasswordForm>({ ...values })
+
+  return (
+    <div className='forgot-password'>
+      <Form
+        className='forgot-password__form'
+        name='normal_forgot-password'
+        onFinish={onFinish}
+        autoComplete='off'
+        layout='vertical'
+      >
+        <h2 className='forgot-password__title'>
+          {formatMessage({ id: 'title.forgotPassword' })}
+        </h2>
+        <p className='forgot-password__description'>{description}</p>
+        <Item
+          hasFeedback
+          name='username'
+          className='forgot-password__item'
+          rules={[
+            requiredField({ field: 'text.username' }),
+            maxLength({ field: 'text.username', max: 45 }),
+            minLength({ field: 'text.username', min: 4 }),
+          ]}
+        >
+          <Input
+            className='forgot-password__input'
+            prefix={<UserOutlined className='site-form-item-icon' />}
+            placeholder={textInput}
+          />
+        </Item>
+
+        <Button type='primary' htmlType='submit' className='forgot-password__button'>
+          {formatMessage({ id: 'text.recoverPassword' })}
+        </Button>
+
+        <Link to={ROUTES_PUBLIC.login} className='forgot-password__actions'>
+          {formatMessage({ id: 'link.signIn' })}
+        </Link>
+      </Form>
+    </div>
+  )
 }
 
 export default ForgotPassword

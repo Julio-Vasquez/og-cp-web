@@ -1,1 +1,1 @@
-export type ROL = 'Administrador' | 'Terapeuta' | 'Usuario'
+export type Rol = 'Administrador' | 'Terapeuta' | 'Usuario'

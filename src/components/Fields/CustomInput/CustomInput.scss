@@ -1,15 +1,15 @@
 .custom-input {
-    &__prefix {
-        width: auto;
-    }
+  &__prefix {
+    width: auto;
+  }
 }
 
 .custom-input .ant-input-group-addon:active {
-    border: none;
+  border: none;
 }
 
 .custom-input .ant-input {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    height: 30px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 30px;
 }

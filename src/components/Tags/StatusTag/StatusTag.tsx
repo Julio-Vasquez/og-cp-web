@@ -1,25 +1,26 @@
 import { Tag } from 'antd'
 
-import { STATUS } from './status.mock'
 import { useIntl } from './../../../hooks/useIntl'
-import {
-    StatusTagProps,
-    StatusTagPropTypes,
-    DefaultStatusTagPropTypes,
-} from './status.type'
+import { State } from '../../../utils/constants/state.enum'
+import { StatusTagProps, StatusTagPropTypes } from './status.type'
+import { FC } from 'react'
 
-export const StatusTag = ({ status }: StatusTagProps) => {
-    const { formatMessage } = useIntl()
+export const StatusTag: FC<StatusTagProps> = ({ status }) => {
+  const { formatMessage } = useIntl()
 
-    const statusValue = STATUS.find(ele => ele.text === status) ?? {
-        color: 'red',
-        text: formatMessage({ id: 'noData' }),
-    }
+  const statusMap: Record<State, { color: string; text: string }> = {
+    [State.Active]: { color: 'green', text: formatMessage({ id: 'active' }) },
+    [State.Inactive]: { color: 'grey', text: formatMessage({ id: 'inactive' }) },
+    [State.Pending]: { color: 'orange', text: formatMessage({ id: 'pending' }) },
+  }
 
-    return <Tag color={statusValue.color}>{statusValue.text}</Tag>
+  const statusValue = statusMap[status as State] ?? {
+    color: 'red',
+    text: formatMessage({ id: 'noData' }),
+  }
+
+  return <Tag color={statusValue.color}>{statusValue.text}</Tag>
 }
-
-StatusTag.defaultProps = DefaultStatusTagPropTypes
 
 StatusTag.propTypes = StatusTagPropTypes
 

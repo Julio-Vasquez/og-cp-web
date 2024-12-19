@@ -1,1 +1,1 @@
-export { ContactData, default } from './LegalInformation'
+export { LegalInformation, default } from './LegalInformation'

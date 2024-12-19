@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 
 export const LayoutPrivatePropsTypes = {
-    children: propTypes.element,
+  children: propTypes.element,
 }
 
 export const LayoutPrivateDefaultProps = {}

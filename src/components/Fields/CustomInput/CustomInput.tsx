@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import { Input, Select, Form } from 'antd'
 
-import {
-    CustomInputProps,
-    CustomInputPropTypes,
-    CustomInputDefaultProps,
-} from './custom.type'
-import './CustomInput.scss'
 import useIntl from '../../../hooks/useIntl'
+import {
+  CustomInputProps,
+  CustomInputPropTypes,
+  CustomInputDefaultProps,
+} from './custom.type'
+
+import './CustomInput.scss'
 
 const { Item } = Form
 
@@ -20,36 +21,32 @@ const { Item } = Form
  */
 
 export const CustomInput: FC<CustomInputProps> = ({
-    data,
-    name,
-    customMap,
-    ...props
+  data,
+  name,
+  customMap,
+  ...props
 }) => {
-    const { formatMessage } = useIntl()
-    const options = data?.map((item: any) => ({
-        value: item[customMap.value],
-        label: item[customMap.label],
-    }))
+  const { formatMessage } = useIntl()
+  const options = data?.map((item: any) => ({
+    value: item[customMap.value],
+    label: item[customMap.label],
+  }))
 
-    const CustomSelect = () => {
-        return (
-            <Item
-                noStyle
-                rules={[{ required: !!props?.props?.['aria-required'] }]}
-                name={name}
-            >
-                <Select
-                    className='custom-input__prefix'
-                    placeholder={formatMessage({ id: 'text.select' })}
-                    options={options}
-                />
-            </Item>
-        )
-    }
+  const CustomSelect = () => (
+    <Item
+      noStyle
+      rules={[{ required: !!props?.props?.['aria-required'] }]}
+      name={name}
+    >
+      <Select
+        className='custom-input__prefix'
+        placeholder={formatMessage({ id: 'text.select' })}
+        options={options}
+      />
+    </Item>
+  )
 
-    return (
-        <Input className='custom-input' {...props} addonBefore={<CustomSelect />} />
-    )
+  return <Input className='custom-input' {...props} addonBefore={<CustomSelect />} />
 }
 
 CustomInput.propTypes = CustomInputPropTypes

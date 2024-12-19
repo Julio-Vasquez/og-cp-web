@@ -1,55 +1,55 @@
 .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  min-height: 600px;
+  margin: 80px auto;
+  &__content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 65%;
-    min-height: 600px;
-    margin: 80px auto;
-    &__content {
-        display: flex;
-        gap: 20px;
-        & > div {
-            flex: 1;
-        }
-        label {
-            font-weight: 400;
-            &::after {
-                content: ':' !important;
-            }
-        }
+    gap: 20px;
+    & > div {
+      flex: 1;
     }
-    &__birth-date {
-        width: 100%;
+    label {
+      font-weight: 400;
+      &::after {
+        content: ':' !important;
+      }
     }
-    &__submit,
-    &__title {
-        text-align: center;
-    }
-    &__submit button {
-        background-color: #6744c6;
-    }
-    &__title {
-        font-size: 2rem;
-        padding-bottom: 8px;
-        color: #6744c6;
-    }
+  }
+  &__birth-date {
+    width: 100%;
+  }
+  &__submit,
+  &__title {
+    text-align: center;
+  }
+  &__submit button {
+    background-color: #6744c6;
+  }
+  &__title {
+    font-size: 2rem;
+    padding-bottom: 8px;
+    color: #6744c6;
+  }
 }
 @media (min-width: 768px) and (max-width: 900px) {
-    .profile {
-        width: 80%;
-    }
+  .profile {
+    width: 80%;
+  }
 }
 
 @media (max-width: 767px) {
-    .profile {
-        width: 94%;
-        &__content {
-            display: list-item;
-            gap: 0;
-        }
-        &__title {
-            font-size: 1.5rem;
-            padding-bottom: 0;
-        }
+  .profile {
+    width: 94%;
+    &__content {
+      display: list-item;
+      gap: 0;
     }
+    &__title {
+      font-size: 1.5rem;
+      padding-bottom: 0;
+    }
+  }
 }

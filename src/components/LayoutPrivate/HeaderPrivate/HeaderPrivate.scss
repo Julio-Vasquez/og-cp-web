@@ -2,30 +2,30 @@
 @use '../../../sass/base/vars';
 
 .main-header-private {
-    @include mixins.flex-between;
-    padding: 0 16px;
-    font-family: vars.$oleo-script;
+  @include mixins.flex-between;
+  padding: 0 16px;
+  font-family: vars.$oleo-script;
 
-    &__title {
-        margin: auto;
-        font-size: 22px;
-        color: vars.$primary-color;
-        font-weight: vars.$font-weight-title;
-        @include mixins.flex-center;
-    }
+  &__title {
+    margin: auto;
+    font-size: 22px;
+    color: vars.$primary-color;
+    font-weight: vars.$font-weight-title;
+    @include mixins.flex-center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .main-header-private__title {
-        padding: 0;
-        display: flex;
-        font-size: 16px;
-        color: vars.$primary-color;
-    }
+  .main-header-private__title {
+    padding: 0;
+    display: flex;
+    font-size: 16px;
+    color: vars.$primary-color;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .main-header-private__title {
-        display: none;
-    }
+  .main-header-private__title {
+    display: none;
+  }
 }

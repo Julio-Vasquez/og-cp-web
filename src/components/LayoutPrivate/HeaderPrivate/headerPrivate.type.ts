@@ -1,18 +1,18 @@
 import propTypes from 'prop-types'
 
 export const HeaderPrivatePropsTypes = {
-    children: propTypes.element,
-    collapsed: propTypes.bool.isRequired,
-    setCollapsed: propTypes.func.isRequired,
+  children: propTypes.element,
+  collapsed: propTypes.bool.isRequired,
+  setCollapsed: propTypes.func.isRequired,
 }
 
 export const HeaderPrivateDefaultProps = {
-    collapsed: true,
+  collapsed: true,
 }
 
 export type HeaderPrivateProps = Omit<
-    propTypes.InferProps<typeof HeaderPrivatePropsTypes>,
-    'setCollapsed'
+  propTypes.InferProps<typeof HeaderPrivatePropsTypes>,
+  'setCollapsed'
 > & {
-    setCollapsed: (value: boolean | ((prev: boolean) => boolean)) => void
+  setCollapsed: (value: boolean | ((prev: boolean) => boolean)) => void
 }

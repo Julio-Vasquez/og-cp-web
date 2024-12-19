@@ -2,58 +2,59 @@
 @use '../../../sass/utils/mixins';
 
 .login {
-    @include mixins.flex-center;
+  @include mixins.flex-center;
 
+  min-height: 100vh;
+  background-color: #f6f7fc;
+
+  &-image {
+    flex: 3;
+    background-image: url(../../../assets/img/public/login.jpg);
+    background-size: cover;
     min-height: 100vh;
-    background-color: #f6f7fc;
 
-    &-image {
-        flex: 3;
-        background-image: url('https://preview.colorlib.com/theme/bootstrap/login-form-02/images/bg_1.jpg.webp');
-        background-size: cover;
-        min-height: 100vh;
-
-        @media only screen and (max-width: vars.$bp-large) {
-            flex: 2;
-        }
-
-        @media only screen and (max-width: vars.$bp-medium) {
-            flex: 1;
-        }
-
-        @media only screen and (max-width: vars.$bp-small) {
-            display: none;
-        }
+    @media only screen and (max-width: vars.$bp-large) {
+      flex: 2;
     }
 
-    &-form {
-        flex: 1;
-        margin: 80px;
-
-        &__header {
-            text-align: center;
-            font-size: 24px;
-            padding-bottom: 80px;
-        }
-        &__item,
-        .ant-form-item {
-            margin-bottom: 24px;
-        }
-        &__input,
-        &__button {
-            height: 40px;
-            font-size: 16px;
-        }
-        &__actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-align: center;
-            font-size: 16px;
-        }
-        &__button {
-            background-color: vars.$primary-color;
-            color: white;
-        }
+    @media only screen and (max-width: vars.$bp-medium) {
+      flex: 1;
     }
+
+    @media only screen and (max-width: vars.$bp-small) {
+      display: none;
+    }
+  }
+
+  &-form {
+    flex: 1;
+    margin: 80px;
+
+    &__header {
+      text-align: center;
+      font-size: 24px;
+      padding-bottom: 80px;
+      user-select: none;
+    }
+    &__item,
+    .ant-form-item {
+      margin-bottom: 24px;
+    }
+    &__input,
+    &__button {
+      @include mixins.input-size;
+    }
+    &__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: vars.$font-weight-title;
+    }
+    &__button {
+      background-color: vars.$primary-color;
+      color: white;
+    }
+  }
 }

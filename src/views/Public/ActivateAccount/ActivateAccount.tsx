@@ -1,71 +1,73 @@
-import { Button } from 'antd'
+import { Spin } from 'antd'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import { CheckCircleFilled } from '@ant-design/icons'
+import { CheckCircleTwoTone } from '@ant-design/icons'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import Star from '../../../components/Avatars/Star/Star'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
 import { ValidateToken } from '../../../utils/storage/storage'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC } from '../../../utils/constants/routes.constants'
 import {
-    ApiResponseError,
-    ApiResponseSuccess,
+  ApiResponseError,
+  ApiResponseSuccess,
 } from '../../../utils/types/response.type'
 import {
-    errorNotification,
-    successNotification,
+  errorNotification,
+  successNotification,
 } from '../../../utils/notifications/notification.action'
 
 import './ActiveAccount.scss'
 
 const ActivateAccount = () => {
-    const { token } = useParams()
-    const navigate = useNavigate()
-    const { formatMessage } = useIntl()
+  const navigate = useNavigate()
+  const { token = '' } = useParams()
+  const { formatMessage } = useIntl()
 
-    const text = formatMessage({ id: 'title.verified' })
+  const text = formatMessage({ id: 'title.verified' })
 
-    const validToken = ValidateToken(token ?? '')
+  const validToken = ValidateToken(token)
 
-    const onCompleted = ({ data: { message } }: ApiResponseSuccess) =>
-        successNotification(message, 'top')
+  const onCompleted = ({ data: { message } }: ApiResponseSuccess) =>
+    successNotification(message, 'top')
 
-    const onError = ({ message }: ApiResponseError) => errorNotification(message)
+  const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    const [mutation, { loading }] = useMutation(
-        { functionFetch: api.auth.activateAccount },
-        { onCompleted, onError, cancelError: false }
-    )
+  const [mutation, { loading }] = useMutation(
+    { functionFetch: api.auth.activateAccount },
+    { onCompleted, onError, cancelError: false }
+  )
 
-    const handleClickActiveAccount = () => navigate(RP.login)
+  const handleClickActiveAccount = () => navigate(ROUTES_PUBLIC.login)
 
-    useEffect(() => {
-        if (validToken) mutation({ token, activate: true })
-    }, [validToken])
+  useEffect(() => {
+    if (validToken) mutation({ token, activate: true })
+  }, [validToken])
 
-    if (!validToken) return <ErrorToken />
+  if (!validToken || !token) return <ErrorToken />
 
-    return (
-        <div className='active-account'>
-            <div className='active-account__form-data'>
-                <CheckCircleFilled className='active-account__icon' />
-                <Star />
-                <h2 className='active-account__title'>{text}</h2>
-                <Button
-                    onClick={handleClickActiveAccount}
-                    className='active-account__submit-form '
-                    loading={loading}
-                >
-                    {formatMessage({ id: 'link.signIn' })}
-                </Button>
-            </div>
+  return (
+    <div className='active-account'>
+      <Spin spinning={loading}>
+        <div className='active-account__container'>
+          <h2 className='active-account__title'>{text}</h2>
+          <CheckCircleTwoTone
+            className='active-account__icon'
+            twoToneColor='#52c41a'
+          />
+          <Link
+            className='active-account__actions'
+            onClick={handleClickActiveAccount}
+            to={ROUTES_PUBLIC.login}
+          >
+            {formatMessage({ id: 'link.signIn' })}
+          </Link>
         </div>
-    )
+      </Spin>
+    </div>
+  )
 }
 
 export default ActivateAccount

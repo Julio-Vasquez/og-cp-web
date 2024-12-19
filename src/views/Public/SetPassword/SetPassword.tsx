@@ -1,32 +1,30 @@
-import { Form, Input } from 'antd'
-import { LockOutlined } from '@ant-design/icons'
+import { Button, Form, Input, Spin } from 'antd'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import Star from '../../../components/Avatars/Star/Star'
-import CustomButton from '../../../components/Buttons/CustomButton'
-import loginImg from '../../../assets/img/publicBackground.jpg'
+import { Secure } from '../../../components/Icons/Secure'
 import { ErrorToken } from '../../../components/Error/ErrorToken'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
 import { useMutation } from '../../../hooks/api'
+import { useDeviceType } from '../../../hooks/useDeviceType'
 import { ValidateToken } from '../../../utils/storage/storage'
 import { FormValues, SetPasswordMutation } from './setPassword.type'
-import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
+import { ROUTES_PUBLIC } from '../../../utils/constants/routes.constants'
 import {
-    ApiResponseError,
-    ApiResponseSuccess,
+  ApiResponseError,
+  ApiResponseSuccess,
 } from '../../../utils/types/response.type'
 import {
-    matchPassword,
-    maxLength,
-    minLength,
-    requiredField,
-} from '../../../utils/functions/form.functions'
-import {
-    errorNotification,
-    successNotification,
+  errorNotification,
+  successNotification,
 } from '../../../utils/notifications/notification.action'
+import {
+  matchPassword,
+  maxLength,
+  minLength,
+  requiredField,
+} from '../../../utils/functions/form.functions'
 
 import './SetPassword.scss'
 
@@ -34,97 +32,105 @@ const { Item } = Form
 const { Password } = Input
 
 export const SetPassword = () => {
-    const { token } = useParams()
-    const navigate = useNavigate()
-    const { formatMessage } = useIntl()
-    const validateToken = ValidateToken(token!)
+  const device = useDeviceType()
+  const navigate = useNavigate()
+  const { token = '' } = useParams()
+  const { formatMessage } = useIntl()
 
-    const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
-        successNotification(message)
-        navigate(RP.login)
-    }
+  const isMobile = device === 'Mobile'
+  const validToken = ValidateToken(token!)
 
-    const onError = ({ message }: ApiResponseError) => errorNotification(message)
+  const onCompleted = ({ data: { message } }: ApiResponseSuccess) => {
+    successNotification(message)
+    navigate(ROUTES_PUBLIC.login)
+  }
 
-    const [mutation, { loading }] = useMutation(
-        { functionFetch: api.auth.setPassword },
-        { onCompleted, onError, cancelError: false }
-    )
+  const onError = ({ message }: ApiResponseError) => errorNotification(message)
 
-    if (!validateToken || !token) return <ErrorToken />
+  const [mutation, { loading }] = useMutation(
+    { functionFetch: api.auth.setPassword },
+    { onCompleted, onError, cancelError: false }
+  )
 
-    const onFinish = ({ newPassword }: FormValues) =>
-        mutation<SetPasswordMutation>({ newPassword, token })
+  if (!validToken || !token) return <ErrorToken />
 
-    return (
-        <div className='set-password'>
-            <div className='set-password__container'>
-                <img
-                    className='set-password__image-container'
-                    src={loginImg}
-                    alt='Logo form set new password'
+  const onFinish = ({ newPassword }: FormValues) =>
+    mutation<SetPasswordMutation>({ newPassword, token })
+
+  return (
+    <div className='set-password'>
+      <Spin spinning={loading}>
+        <div className='set-password__container'>
+          <div className={`set-password__mobile ${isMobile && 'visible'}`}>
+            <Secure size={100} />
+          </div>
+          <div className='set-password__container__image'>
+            <Secure size={200} />
+          </div>
+          <div className='set-password__container__form'>
+            <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
+              <h2 className='set-password__container__title'>
+                {formatMessage({ id: 'text.assignNewPassword' })}
+              </h2>
+              <Item
+                name='newPassword'
+                hasFeedback
+                rules={[
+                  requiredField({ field: 'text.newPassword' }),
+                  maxLength({
+                    field: 'text.newPassword',
+                    max: 45,
+                  }),
+                  minLength({ field: 'text.newPassword', min: 4 }),
+                ]}
+              >
+                <Password
+                  className='set-password__container__item'
+                  placeholder={formatMessage({
+                    id: 'text.newPassword',
+                  })}
                 />
-                <Form
-                    className='set-password__form-data'
-                    name='normal_set-password'
-                    onFinish={onFinish}
-                    autoComplete='off'
-                    layout='vertical'
-                >
-                    <LockOutlined className='set-password__icon' />
-                    <Star />
-                    <h2 className='set-password__title'>
-                        {formatMessage({ id: 'text.assignNewPassword' })}
-                    </h2>
-                    <Item
-                        name='newPassword'
-                        hasFeedback
-                        className='set-password__item'
-                        rules={[
-                            requiredField({ field: 'text.newPassword' }),
-                            maxLength({ field: 'text.newPassword', max: 45 }),
-                            minLength({ field: 'text.newPassword', min: 4 }),
-                        ]}
-                    >
-                        <Password
-                            className='set-password__input'
-                            placeholder={formatMessage({ id: 'text.newPassword' })}
-                        />
-                    </Item>
-                    <Item
-                        name='confirmNewPassword'
-                        dependencies={['newPassword']}
-                        hasFeedback
-                        className='set-password__item'
-                        rules={[
-                            requiredField({ field: 'text.confirmNewPassword' }),
-                            maxLength({ field: 'text.newPassword', max: 45 }),
-                            minLength({ field: 'text.newPassword', min: 4 }),
-                            ({ getFieldValue }) =>
-                                matchPassword({
-                                    getFieldValue,
-                                    field: 'newPassword',
-                                }),
-                        ]}
-                    >
-                        <Password
-                            className='set-password__input'
-                            placeholder={formatMessage({
-                                id: 'text.confirmNewPassword',
-                            })}
-                        />
-                    </Item>
-                    <CustomButton
-                        type='primary'
-                        htmlType='submit'
-                        loading={loading}
-                        children={formatMessage({ id: 'button.send' })}
-                        width='70%'
-                    />
-                </Form>
-            </div>
+              </Item>
+              <Item
+                name='confirmNewPassword'
+                dependencies={['newPassword']}
+                hasFeedback
+                rules={[
+                  requiredField({
+                    field: 'text.confirmNewPassword',
+                  }),
+                  maxLength({
+                    field: 'text.newPassword',
+                    max: 45,
+                  }),
+                  minLength({ field: 'text.newPassword', min: 4 }),
+                  ({ getFieldValue }) =>
+                    matchPassword({
+                      getFieldValue,
+                      field: 'newPassword',
+                    }),
+                ]}
+              >
+                <Password
+                  className='set-password__container__item'
+                  placeholder={formatMessage({
+                    id: 'text.confirmNewPassword',
+                  })}
+                />
+              </Item>
+              <Button
+                type='primary'
+                htmlType='submit'
+                className='set-password__container__item'
+              >
+                {formatMessage({ id: 'text.assignNewPassword' })}
+              </Button>
+            </Form>
+          </div>
         </div>
-    )
+      </Spin>
+    </div>
+  )
 }
 
 export default SetPassword

@@ -1,1 +1,1 @@
-export { LogoDashboard, default } from './Logo'
+export { LogoDashboard, default } from './LogoDashboard'

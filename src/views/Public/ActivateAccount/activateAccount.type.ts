@@ -1,6 +1,6 @@
 type ActivateAccount = {
-    activate: boolean
-    token: string
+  activate: boolean
+  token: string
 }
 
 export type { ActivateAccount }

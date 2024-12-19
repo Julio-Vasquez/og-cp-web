@@ -1,12 +1,13 @@
+@use '../../../sass/utils/mixins';
+
 .personalInformation {
-    padding: 10px 0;
+  padding: 10px 0;
 
-    &__item {
-        margin-top: 10px;
-    }
+  &__item {
+    margin-top: 10px;
+  }
 
-    &__input {
-        font-size: 16px;
-        height: 40px;
-    }
+  &__input {
+    @include mixins.input-size;
+  }
 }

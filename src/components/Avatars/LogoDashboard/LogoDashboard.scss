@@ -1,0 +1,11 @@
+@use '../../../sass/utils/mixins';
+
+.main-logo {
+  @include mixins.flex-center;
+  height: 64px;
+
+  &__img {
+    height: 30px;
+    width: 30px;
+  }
+}

@@ -6,10 +6,10 @@ import { Language } from './language'
 import { SubTitle } from './subTitle'
 
 export const EN = {
-    link: Link,
-    text: Texts,
-    title: Title,
-    button: Button,
-    language: Language,
-    subTitle: SubTitle,
+  link: Link,
+  text: Texts,
+  title: Title,
+  button: Button,
+  language: Language,
+  subTitle: SubTitle,
 }

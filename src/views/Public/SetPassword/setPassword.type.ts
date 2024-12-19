@@ -1,9 +1,9 @@
 export type SetPasswordMutation = {
-    newPassword: string
-    token: string
+  newPassword: string
+  token: string
 }
 
 export type FormValues = {
-    newPassword: string
-    confirmNewPassword: string
+  newPassword: string
+  confirmNewPassword: string
 }

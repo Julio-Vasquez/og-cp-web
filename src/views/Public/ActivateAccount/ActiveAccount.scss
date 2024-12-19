@@ -1,208 +1,61 @@
-:where(.css-dev-only-do-not-override-k7429z).ant-btn-primary:not(:disabled):hover {
-    color: #fff;
-    background-color: #6744c6eb;
-}
+@use '../../../sass/utils/mixins';
+@use '../../../sass/base/vars';
 
 .active-account {
-    background: {
-        image: url('./../../../assets/img/publicBackground.jpg');
+  @include mixins.flex-center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: {
+    image: url('../../../assets/img/public/password.jpg');
+    repeat: no-repeat;
+    size: cover;
+  }
 
-        size: cover;
-        position: center;
-    }
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &__container {
+    @include mixins.flex-center;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 10px;
+    height: 35vh;
+    text-align: center;
+    width: 40vw;
 
-    &__form-data {
-        background-color: white;
-        padding: 6px;
-        width: 50%;
-        height: 600px;
-        max-height: 100vh;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__submit-form {
-        border : {
-            radius: 16px;
-        }
-        width: 25%;
-        height: 40px;
-        border-radius: 50px;
-        display: flex;
-        text-align: center;
-        display: flex;
-        margin: 7% 0;
-        background-color: #6744c6;
-        align-items: center;
-        justify-content: center;
-        color: white;
+    @media only screen and (max-width: vars.$bp-medium) {
+      width: 55vw;
     }
 
-    &__icon {
-        font-size: 10vh;
-        color: #6744c6f3;
-        margin-bottom: 30px;
-        border-radius: 50%;
-        box-shadow: 5px 5px 10px;
+    @media only screen and (max-width: vars.$bp-small) {
+      width: 65vw;
     }
 
-    &__title {
-        font-size: 3vh;
-        text-align: center;
-        margin: 30px 0;
+    @media only screen and (max-width: 477px) {
+      width: 85vw;
     }
 
-    &__link {
-        font-size: 2vh;
+    @media only screen and (max-height: 930px) {
+      height: 50vh;
     }
-}
+  }
 
-@media only screen and (max-width: 1400px) {
-    .active-account {
-        width: 100%;
-        display: grid;
-        place-items: center;
+  &__title {
+    font-size: 36px;
+    text-wrap: balance;
+    user-select: none;
+    padding: 0 12px;
+  }
 
-        &__title-signIn {
-            font-size: 30px;
-        }
+  &__icon > svg {
+    height: 150px;
+    width: 150px;
+    padding-bottom: 20px;
+  }
 
-        &__container {
-            width: 100%;
-            height: 600px;
-        }
-
-        &__signIn-form {
-            width: 400px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 0px 20px 20px 0px;
-        }
+  &__actions {
+    font: {
+      size: 18px;
+      weight: vars.$font-weight-title;
     }
-}
-
-@media only screen and (max-width: 1200px) {
-    .active-account {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
-        &__title {
-            font-size: 26px;
-        }
-
-        &__container {
-            width: 100%;
-            height: 600px;
-        }
-
-        &__form-data {
-            width: 400px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 0px 20px 20px 0px;
-        }
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .active-account {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
-        &__title {
-            font-size: 26px;
-        }
-
-        &__container {
-            width: 100%;
-            height: 600px;
-        }
-
-        &__image-container {
-            display: none;
-        }
-
-        &__form-data {
-            width: 400px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
-        }
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .active-account {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
-        &__title {
-            font-size: 26px;
-        }
-
-        &__container {
-            width: 100%;
-            height: 600px;
-        }
-
-        &__image-container {
-            display: none;
-        }
-
-        &__form-data {
-            width: 400px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
-        }
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    .active-account {
-        width: 100%;
-        display: grid;
-        place-items: center;
-
-        &__title {
-            font-size: 26px;
-        }
-
-        &__container {
-            width: 100%;
-            height: 600px;
-        }
-
-        &__image-container {
-            display: none;
-        }
-
-        &__form-data {
-            width: 400px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 6% 0;
-            border-radius: 20px 20px 20px 20px;
-        }
-    }
+  }
 }

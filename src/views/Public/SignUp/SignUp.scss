@@ -2,65 +2,67 @@
 @use '../../../sass/utils/mixins';
 
 .signup {
-    @include mixins.flex-center;
+  @include mixins.flex-center;
 
+  min-height: 100vh;
+  background-color: #f6f7fc;
+
+  &-image {
+    flex: 3;
+    background-image: url('../../../assets/img/public/signup.jpg');
+    background-size: cover;
     min-height: 100vh;
-    background-color: #f6f7fc;
 
-    &-image {
-        flex: 3;
-        background-image: url('https://preview.colorlib.com/theme/bootstrap/login-form-02/images/bg_1.jpg.webp');
-        background-size: cover;
-        min-height: 100vh;
-
-        @media only screen and (max-width: vars.$bp-large) {
-            flex: 2;
-        }
-
-        @media only screen and (max-width: vars.$bp-medium) {
-            flex: 1;
-        }
-
-        @media only screen and (max-width: vars.$bp-small) {
-            display: none;
-        }
+    @media only screen and (max-width: vars.$bp-large) {
+      flex: 2;
     }
 
-    &-form {
-        flex: 1;
-        margin: 80px;
-
-        &__header {
-            text-align: center;
-            font-size: 24px;
-            padding-bottom: 80px;
-        }
-
-        &__steps {
-            @include mixins.flex-center;
-            padding: {
-                top: 20px;
-                bottom: 20px;
-            }
-            flex-direction: row;
-        }
-
-        &__btn-prev,
-        &__btn-next {
-            border-radius: 10px;
-        }
-
-        &__content {
-            width: 100%;
-        }
-
-        &__actions {
-            text-align: center;
-            font-size: 16px;
-        }
+    @media only screen and (max-width: vars.$bp-medium) {
+      flex: 1;
     }
+
+    @media only screen and (max-width: vars.$bp-small) {
+      display: none;
+    }
+  }
+
+  &-form {
+    flex: 1;
+    margin: 80px;
+
+    &__header {
+      text-align: center;
+      font-size: 24px;
+      padding-bottom: 80px;
+      user-select: none;
+    }
+
+    &__steps {
+      @include mixins.flex-center;
+      padding: {
+        top: 20px;
+        bottom: 20px;
+      }
+      flex-direction: row;
+    }
+
+    &__btn-prev,
+    &__btn-next {
+      border-radius: 10px;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__actions {
+      text-align: center;
+      font-size: 16px;
+      font-weight: vars.$font-weight-title;
+    }
+  }
 }
 
 .ant-steps-item-container .ant-steps-item-icon {
-    margin-right: 0;
+  margin-right: 0;
 }

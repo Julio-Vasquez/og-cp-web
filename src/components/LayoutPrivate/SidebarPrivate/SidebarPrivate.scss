@@ -1,12 +1,13 @@
 .main-sidebar-private {
-    font-size: 14px;
-    .ant-menu-item {
-        border-radius: 0;
-        inset-inline-start: 0;
-        padding-inline: calc(50% - 8px - 8.5px);
-        text-overflow: clip;
-        & > .ant-menu-title-content {
-            flex: none !important;
-        }
+  font-size: 14px;
+  .ant-menu-item {
+    border-radius: 0;
+    inset-inline-start: 0;
+    padding-inline: calc(50% - 8px - 8.5px);
+    text-overflow: clip;
+    padding-top: 4px;
+    & > .ant-menu-title-content {
+      flex: none !important;
     }
+  }
 }

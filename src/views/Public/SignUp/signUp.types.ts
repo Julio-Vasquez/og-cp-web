@@ -1,24 +1,24 @@
 type publicKey = {
-    publicKey: string
+  publicKey: string
 }
 
 export type SignUpRoles = {
-    role: string
+  role: string
 } & publicKey
 
 export type SignUpGenders = {
-    gender: string
+  gender: string
 } & publicKey
 
 export type SignUpTypeDocument = {
-    abbr: string
-    typeDocument: string
+  abbr: string
+  typeDocument: string
 } & publicKey
 
 export type response = {
-    roles: SignUpRoles[]
-    genders: SignUpGenders[]
-    typeDocuments: SignUpTypeDocument[]
+  roles: SignUpRoles[]
+  genders: SignUpGenders[]
+  typeDocuments: SignUpTypeDocument[]
 }
 
 export type AvailableDataTypes = response

@@ -8,26 +8,28 @@ import useIntl from '../../../hooks/useIntl'
 import './LanguageSelector.scss'
 
 export const LanguageSelector: FC = () => {
-    const { i18n } = useTranslation()
-    const { formatMessage } = useIntl()
+  const { i18n } = useTranslation()
+  const { formatMessage } = useIntl()
 
-    const handleChangeLocale = (locale: string) => {
-        i18n.changeLanguage(locale)
-        dayjs.locale(locale)
-    }
+  const options = [
+    { label: formatMessage({ id: 'language.spanish' }), value: 'es' },
+    { label: formatMessage({ id: 'language.english' }), value: 'en' },
+  ]
 
-    return (
-        <Select
-            className='language-selector'
-            onSelect={handleChangeLocale}
-            optionLabelProp='label'
-            placeholder={formatMessage({ id: 'language.selectLanguage' })}
-            options={[
-                { label: formatMessage({ id: 'language.spanish' }), value: 'es' },
-                { label: formatMessage({ id: 'language.english' }), value: 'en' },
-            ]}
-        />
-    )
+  const handleChangeLocale = (locale: string) => {
+    i18n.changeLanguage(locale)
+    dayjs.locale(locale)
+  }
+
+  return (
+    <Select
+      className='language-selector'
+      onSelect={handleChangeLocale}
+      optionLabelProp='label'
+      placeholder={formatMessage({ id: 'language.selectLanguage' })}
+      options={options}
+    />
+  )
 }
 
 export default LanguageSelector
