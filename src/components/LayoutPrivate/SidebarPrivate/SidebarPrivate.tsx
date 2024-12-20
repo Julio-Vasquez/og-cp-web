@@ -7,16 +7,13 @@ import { LogoDashboard } from '../../Avatars/LogoDashboard'
 import useData from '../../../hooks/useData'
 import { useMenuItems } from '../../../hooks/useMenuItems'
 import { AUTH } from '../../../utils/constants/redux.constants'
-import {
-  SidebarPrivateProps,
-  SidebarPrivatePropsDefault,
-} from './sidebarPrivate.type'
+import { type Collapse } from '../../../utils/types/generics.type'
 
 import './SidebarPrivate.scss'
 
 const { Sider: SideBar } = Layout
 
-export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
+export const SidebarPrivate: FC<Collapse> = ({ collapsed }) => {
   const { pathname } = useLocation()
   const { menu: itemMenu } = useData({ reducer: AUTH })
   const menuSidebar = useMenuItems(itemMenu)
@@ -45,7 +42,5 @@ export const SidebarPrivate: FC<SidebarPrivateProps> = ({ collapsed }) => {
     </SideBar>
   )
 }
-
-SidebarPrivate.defaultProps = SidebarPrivatePropsDefault
 
 export default SidebarPrivate

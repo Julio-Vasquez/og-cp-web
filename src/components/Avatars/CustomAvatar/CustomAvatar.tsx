@@ -6,7 +6,7 @@ import p2 from '../../../assets/svg/pegatina-2.svg'
 import p3 from '../../../assets/svg/pegatina-3.svg'
 import p4 from '../../../assets/svg/pegatina-4.svg'
 
-import { type CustomAvatarProps, CustomAvatarPropTypes } from './customAvatar.type'
+import { type CustomAvatarProps } from './customAvatar.type'
 
 const getIcon = (percent: number): string => {
   if (percent >= 0 && percent <= 30) return p3
@@ -18,7 +18,5 @@ const getIcon = (percent: number): string => {
 export const CustomAvatar: FC<CustomAvatarProps> = ({ percent }) => (
   <Avatar src={getIcon(percent)} />
 )
-
-CustomAvatar.propTypes = CustomAvatarPropTypes
 
 export default CustomAvatar

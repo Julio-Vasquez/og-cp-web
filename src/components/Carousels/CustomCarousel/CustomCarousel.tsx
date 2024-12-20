@@ -1,23 +1,16 @@
 import { FC } from 'react'
 import { Carousel } from 'antd'
 
-import {
-    CustomCarouselDefaultProp,
-    CustomCarouselPropTypes,
-    CustomCarouselProps,
-} from './customCarousel.type'
+import { type Children } from '../../../utils/types/generics.type'
 
 import './CustomCarousel.scss'
 
-export const CustomCarousel: FC<CustomCarouselProps> = ({ children }) => (
-    <div className='custom-carousel'>
-        <Carousel autoplaySpeed={5000} autoplay>
-            {children}
-        </Carousel>
-    </div>
+export const CustomCarousel: FC<Children> = ({ children }) => (
+  <div className='custom-carousel'>
+    <Carousel autoplaySpeed={5000} autoplay>
+      {children}
+    </Carousel>
+  </div>
 )
-
-CustomCarousel.propTypes = CustomCarouselPropTypes
-CustomCarousel.defaultProps = CustomCarouselDefaultProp
 
 export default CustomCarousel

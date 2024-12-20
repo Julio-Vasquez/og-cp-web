@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Error404Props, Error404PropTypes, Error404DefaultProps } from './error.type'
-
 import moon from './../../../assets/img/404/moon.svg'
 import logo from './../../../assets/img/404/logo.svg'
 import earth from './../../../assets/img/404/earth.svg'
@@ -15,7 +13,7 @@ import { ROUTES_PUBLIC as RP } from '../../../utils/constants/routes.constants'
 
 import './Error404.scss'
 
-export const Error404: FC<Error404Props> = () => {
+export const Error404: FC = () => {
   const { formatMessage } = useIntl()
   return (
     <div className='bg-purple'>
@@ -62,9 +60,5 @@ export const Error404: FC<Error404Props> = () => {
     </div>
   )
 }
-
-Error404.propTypes = Error404PropTypes
-
-Error404.defaultProps = Error404DefaultProps
 
 export default Error404

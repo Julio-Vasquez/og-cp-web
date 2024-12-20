@@ -6,12 +6,8 @@ import { Form, Input, Select, DatePicker, Spin } from 'antd'
 import CustomInput from '../../Fields/CustomInput/CustomInput'
 
 import useIntl from '../../../hooks/useIntl'
+import { type LegalInformationProps } from './LegalInformation.type'
 import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
-import {
-  LegalInformationDefaultProps,
-  LegalInformationPropTypes,
-  type LegalInformationProps,
-} from './LegalInformation.type'
 import {
   maxLength,
   minLength,
@@ -23,8 +19,8 @@ import './LegalInformation.scss'
 const { Item } = Form
 
 export const LegalInformation: FC<LegalInformationProps> = ({
-  typeDocuments,
-  genders,
+  typeDocuments = [],
+  genders = [],
   loading,
 }) => {
   const { formatMessage } = useIntl()
@@ -105,8 +101,5 @@ export const LegalInformation: FC<LegalInformationProps> = ({
     </div>
   )
 }
-
-LegalInformation.propTypes = LegalInformationPropTypes
-LegalInformation.defaultProps = LegalInformationDefaultProps
 
 export default LegalInformation

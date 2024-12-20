@@ -1,13 +1,10 @@
-import propTypes, { InferProps } from 'prop-types'
+import { Status } from '../../../utils/types/generics.type'
+import { State } from '../../../utils/constants/state.enum'
 
-export const StatusTagPropTypes = {
-  status: propTypes.oneOf(['Activo', 'Inactivo', 'Pendiente']).isRequired,
+export type StatusTagProps = {
+  status: Status
 }
 
-export type StatusTagProps = InferProps<typeof StatusTagPropTypes>
+type Values = { color: string; text: string }
 
-export type StatusType = {
-  key: string
-  color: string
-  text: string
-}
+export type StatusMap = Record<State, Values>

@@ -2,11 +2,7 @@ import { FC } from 'react'
 import { Input, Select, Form } from 'antd'
 
 import useIntl from '../../../hooks/useIntl'
-import {
-  CustomInputProps,
-  CustomInputPropTypes,
-  CustomInputDefaultProps,
-} from './custom.type'
+import { type CustomInputProps } from './custom.type'
 
 import './CustomInput.scss'
 
@@ -27,7 +23,7 @@ export const CustomInput: FC<CustomInputProps> = ({
   ...props
 }) => {
   const { formatMessage } = useIntl()
-  const options = data?.map((item: any) => ({
+  const options = data.map((item: any) => ({
     value: item[customMap.value],
     label: item[customMap.label],
   }))
@@ -46,10 +42,7 @@ export const CustomInput: FC<CustomInputProps> = ({
     </Item>
   )
 
-  return <Input className='custom-input' {...props} addonBefore={<CustomSelect />} />
+  return <Input className='custom-input' addonBefore={<CustomSelect />} {...props} />
 }
-
-CustomInput.propTypes = CustomInputPropTypes
-CustomInput.defaultProps = CustomInputDefaultProps
 
 export default CustomInput

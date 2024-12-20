@@ -5,11 +5,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { ItemsHeader } from './itemsHeaderPrivate'
 
 import useIntl from '../../../hooks/useIntl'
-import {
-  HeaderPrivateProps,
-  HeaderPrivateDefaultProps,
-  HeaderPrivatePropsTypes,
-} from './headerPrivate.type'
+import { type HeaderPrivateProps } from './headerPrivate.type'
 
 import './HeaderPrivate.scss'
 
@@ -39,8 +35,5 @@ export const HeaderPrivate: FC<HeaderPrivateProps> = ({
     </Header>
   )
 }
-
-HeaderPrivate.propTypes = HeaderPrivatePropsTypes
-HeaderPrivate.defaultProps = HeaderPrivateDefaultProps
 
 export default HeaderPrivate

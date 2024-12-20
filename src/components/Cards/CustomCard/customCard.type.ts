@@ -1,18 +1,12 @@
-import propTypes from 'prop-types'
-
-export const CustomCardPropTypes = {
-    image: propTypes.string,
-    title: propTypes.string,
-    visible: propTypes.bool,
-    ellipsis: propTypes.bool,
-    openDialog: propTypes.func,
-    closeDialog: propTypes.func,
-    percentage: propTypes.number,
-    description: propTypes.string,
-    loading: propTypes.bool.isRequired,
-    className: propTypes.string.isRequired,
+export type CustomCardProps = {
+  image?: string
+  title?: string
+  visible?: boolean
+  ellipsis?: boolean
+  openDialog?: () => void
+  closeDialog?: () => void
+  percentage?: number
+  description?: string
+  loading: boolean
+  className: string
 }
-
-export const CustomCardDefaultProps = {}
-
-export type CustomCardProps = propTypes.InferProps<typeof CustomCardPropTypes>

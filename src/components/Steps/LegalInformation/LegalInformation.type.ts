@@ -1,21 +1,10 @@
-import propTypes from 'prop-types'
+import { Loading } from '../../../utils/types/generics.type'
+import {
+  SignUpGenders,
+  SignUpTypeDocument,
+} from '../../../views/Public/SignUp/signUp.types'
 
-export const LegalInformationPropTypes = {
-  typeDocuments: propTypes.arrayOf(
-    propTypes.shape({
-      abbr: propTypes.string.isRequired,
-      publicKey: propTypes.string.isRequired,
-      typeDocument: propTypes.string.isRequired,
-    })
-  ).isRequired,
-  genders: propTypes.array.isRequired,
-  loading: propTypes.bool.isRequired,
-}
-export const LegalInformationDefaultProps = {
-  typeDocuments: [],
-  genders: [],
-}
-
-export type LegalInformationProps = propTypes.InferProps<
-  typeof LegalInformationPropTypes
->
+export type LegalInformationProps = {
+  genders: SignUpGenders[]
+  typeDocuments: SignUpTypeDocument[]
+} & Loading

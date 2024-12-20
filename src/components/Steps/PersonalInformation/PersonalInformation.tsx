@@ -2,11 +2,7 @@ import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
 import useIntl from '../../../hooks/useIntl'
-import {
-  PersonalInformationProps,
-  PersonalInformationPropTypes,
-  PersonalInformationDefaultProps,
-} from './personalInformation.type'
+import { type Loading } from '../../../utils/types/generics.type'
 import {
   maxLength,
   minLength,
@@ -18,7 +14,7 @@ import './PersonalInformation.scss'
 
 const { Item } = Form
 
-export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) => {
+export const PersonalInformation: FC<Loading> = ({ loading }) => {
   const { formatMessage } = useIntl()
 
   return (
@@ -91,8 +87,5 @@ export const PersonalInformation: FC<PersonalInformationProps> = ({ loading }) =
     </div>
   )
 }
-
-PersonalInformation.propTypes = PersonalInformationPropTypes
-PersonalInformation.defaultProps = PersonalInformationDefaultProps
 
 export default PersonalInformation

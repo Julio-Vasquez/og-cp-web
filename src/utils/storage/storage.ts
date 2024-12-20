@@ -1,4 +1,4 @@
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 
 import { Key, Payload, Token } from './storage.types'
 import { JWT_KEY } from '../constants/environment.constant'

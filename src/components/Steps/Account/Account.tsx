@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Form, Input, Spin } from 'antd'
 
 import useIntl from '../../../hooks/useIntl'
-import { AccountDefaultProps, AccountProps, AccountPropsTypes } from './account.type'
+import { type Loading } from '../../../utils/types/generics.type'
 import {
   maxLength,
   minLength,
@@ -16,7 +16,7 @@ import './Account.scss'
 const { Item } = Form
 const { Password } = Input
 
-export const Account: FC<AccountProps> = ({ loading }) => {
+export const Account: FC<Loading> = ({ loading }) => {
   const { formatMessage } = useIntl()
   return (
     <div className='account'>
@@ -89,8 +89,5 @@ export const Account: FC<AccountProps> = ({ loading }) => {
     </div>
   )
 }
-
-Account.propTypes = AccountPropsTypes
-Account.defaultProps = AccountDefaultProps
 
 export default Account

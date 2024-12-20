@@ -4,17 +4,13 @@ import { Layout, theme } from 'antd'
 import HeaderPrivate from './HeaderPrivate'
 import { SidebarPrivate } from './SidebarPrivate'
 
-import {
-  LayoutPrivateProps,
-  LayoutPrivatePropsTypes,
-  LayoutPrivateDefaultProps,
-} from './layoutPrivate.types'
+import { type Children } from '../../utils/types/generics.type'
 
 import './Layout.scss'
 
 const { Content } = Layout
 
-export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
+export const LayoutPrivate: FC<Children> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true)
 
   const {
@@ -36,9 +32,5 @@ export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
     </Layout>
   )
 }
-
-LayoutPrivate.propTypes = LayoutPrivatePropsTypes
-
-LayoutPrivate.defaultProps = LayoutPrivateDefaultProps
 
 export default LayoutPrivate
