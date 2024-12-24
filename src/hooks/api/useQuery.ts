@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import { createInitialState } from './api.util'
 import { ResponseFetch } from '../../utils/api/api.util'
 import { ResponseState, QueryType, Func } from './api.types'
 import { HttpStatus } from '../../utils/types/response.type'
@@ -11,33 +12,39 @@ export const useQuery = <T>(
   { functionFetch }: Func<T>,
   { cancelFirstEffect, cancelError, onError, variables }: QueryType<T> = {}
 ) => {
-  const [req, setReq] = useState<ResponseState<T>>({
-    data: {} as ResponseFetch<T>,
-    loading: false,
-    error: false,
-  })
+  const [req, setReq] = useState<ResponseState<T>>(createInitialState)
 
   useEffect(() => {
     if (!cancelFirstEffect) getData()
   }, [cancelFirstEffect])
 
+  const handleError = ({ message }: ResponseFetch<T>) => {
+    setReq({ ...createInitialState<T>(), error: true })
+    if (onError) onError({ message, status: 'error' })
+    if (!cancelError) errorNotification(message || 'An error occurred')
+  }
+
   const getData = async <N = unknown>(newVariables?: N) => {
     const fetchVariables = newVariables ?? variables
 
-    setReq({ data: {} as ResponseFetch<T>, loading: true, error: false })
+    setReq({ ...createInitialState<T>(), loading: true })
+
     try {
       const data = await functionFetch(fetchVariables)
-      if (validCases.includes(data.statusCode)) {
-        setReq({ data, loading: false })
-        return data
-      } else {
-        setReq({ data: {} as ResponseFetch<T>, loading: false, error: true })
-        return undefined
+
+      if (data.status === 'error' || !data.statusCode) {
+        handleError(data)
+        return
       }
+
+      if (validCases.includes(data.statusCode)) {
+        setReq({ data, loading: false, error: false })
+        return data
+      }
+
+      setReq({ ...createInitialState<T>(), error: true })
     } catch (error: any) {
-      if (!cancelError) errorNotification(error)
-      setReq({ data: {} as ResponseFetch<T>, loading: false, error: true })
-      if (onError) onError(error)
+      handleError(error)
     }
   }
 

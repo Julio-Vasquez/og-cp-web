@@ -71,7 +71,12 @@ interface Error {
   status: 'error'
 }
 
-export type ApiResponseError = BaseResponse & Error
+type OnError = {
+  message: string
+  status: 'error'
+}
+
+export type ApiResponseError = (BaseResponse & Error) | OnError
 export type ApiResponse<T = unknown> = BaseResponse & Success<T>
 
 export type ApiResponseSuccess<T = unknown, V = unknown> = {

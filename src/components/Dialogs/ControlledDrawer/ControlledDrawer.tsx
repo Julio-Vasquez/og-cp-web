@@ -12,9 +12,7 @@ export const ControlledDrawer: FC<ControlledDrawerProps> = ({
 }) => {
   const { visible, closeDialog } = visibleState
 
-  const newChildren = cloneElement(children || <></>, {
-    closeDialog,
-  })
+  const newChildren = cloneElement(children || <></>, { closeDialog })
 
   return (
     <Drawer

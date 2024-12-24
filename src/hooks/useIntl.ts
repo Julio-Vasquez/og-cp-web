@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next'
 
-type props = {
+type Props = {
   id: string
-  objVars?: Object
+  objVars?: Record<string, string>
 }
 
 export const useIntl = () => {
   const { t, i18n } = useTranslation()
 
-  const formatMessage = ({ id, objVars }: props): string =>
+  const formatMessage = ({ id, objVars }: Props): string =>
     objVars ? t(id, objVars) : t(id)
 
   return { formatMessage, lng: i18n.language as 'en' | 'es' }

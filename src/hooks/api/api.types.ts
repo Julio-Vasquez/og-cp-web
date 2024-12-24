@@ -16,7 +16,7 @@ export type MutationType = {
     data,
     variables,
   }: ApiResponseSuccess<T, V>) => void
-  onError?: ({ message, status, statusCode }: ApiResponseError) => void
+  onError?: ({ message, status }: ApiResponseError) => void
 }
 
 export type QueryType<T> = Omit<MutationType, 'onCompleted'> & {
