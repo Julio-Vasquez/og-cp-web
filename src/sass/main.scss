@@ -4,7 +4,7 @@
 
 @forward './utils/main';
 
-@import './vendors/antd';
+@import 'antd/dist/reset.css';
 
 h1,
 h2,

@@ -52,7 +52,7 @@ export const SetPassword = () => {
     { onCompleted, onError, cancelError: false }
   )
 
-  if (!validToken || !token) return <ErrorToken />
+  // if (!validToken || !token) return <ErrorToken />
 
   const onFinish = ({ newPassword }: FormValues) =>
     mutation<SetPasswordMutation>({ newPassword, token })
