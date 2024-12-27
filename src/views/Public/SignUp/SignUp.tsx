@@ -105,11 +105,7 @@ export const SignUp = () => {
                   onClick={previous}
                   disabled={isFirstStep}
                   icon={
-                    <Tooltip
-                      title={formatMessage({
-                        id: 'button.prev',
-                      })}
-                    >
+                    <Tooltip title={formatMessage({ id: 'button.prev' })}>
                       <LeftOutlined />
                     </Tooltip>
                   }
