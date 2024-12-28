@@ -1,60 +1,61 @@
 import { type Rule } from 'antd/es/form'
-import { formTranslate } from './translation.function'
-import { errorMessage } from '../notifications/message.action'
 
-const requiredField = ({ field = 'Field' }) => ({
+import { formatMessage } from '../translation.function'
+import { errorMessage } from '../../notifications/message.action'
+import type { Field, MatchPassword, MaxProps, MinProps } from './type.form'
+
+const requiredField = ({ field = 'Field' }: Field): Rule => ({
   required: true,
-  message: formTranslate({
+  message: formatMessage({
     id: 'text.inputObj',
-    objVars: { field: formTranslate({ id: field }) },
+    objVars: { field: formatMessage({ id: field }) },
   }),
 })
 
-const minLength = ({ field = 'Field', min = 3 }) => ({
-  min: min,
-  messages: `${field} should be ${min} characters at least`,
-  message: formTranslate({
+const minLength = ({ field = 'Field', min = 3 }: MinProps): Rule => ({
+  min,
+  message: formatMessage({
     id: 'text.minLengthObj',
-    objVars: { min, field: formTranslate({ id: field }) },
+    objVars: { min, field: formatMessage({ id: field }) },
   }),
 })
 
 // formTranslation({id: 'texts', field})
 
-const maxLength = ({ field = 'Field', max = 100 }) => ({
+const maxLength = ({ field = 'Field', max = 100 }: MaxProps): Rule => ({
   max,
-  message: formTranslate({
+  message: formatMessage({
     id: 'text.maxLengthObj',
-    objVars: { max, field: formTranslate({ id: field }) },
+    objVars: { max, field: formatMessage({ id: field }) },
   }),
 })
 
 const emailField = (): Rule => ({
   type: 'email',
-  message: formTranslate({
+  message: formatMessage({
     id: 'text.inputObj',
-    objVars: { field: formTranslate({ id: 'text.mail' }) },
+    objVars: { field: formatMessage({ id: 'text.mail' }) },
   }),
 })
 
-const phoneField = () => ({
+const phoneField = (): Rule => ({
   pattern: /^[1-9][0-9]*$/,
-  message: formTranslate({ id: 'text.phoneField' }),
+  message: formatMessage({ id: 'text.phoneField' }),
 })
 
 const postalCodeField = () => ({
   pattern: /^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$/,
-  message: formTranslate({ id: 'text.postalCodeField' }),
+  message: formatMessage({ id: 'text.postalCodeField' }),
 })
 
 const numberField = () => ({
   pattern: /^[0-9.]+$/,
-  message: formTranslate({ id: 'text.numberField' }),
+  message: formatMessage({ id: 'text.numberField' }),
 })
 
 const textField = () => ({
   pattern: /^[a-zA-ZáéíóúÁÉÍÓÚ]+$/,
-  message: formTranslate({ id: 'text.onlyLetters' }),
+  message: formatMessage({ id: 'text.onlyLetters' }),
 })
 
 const checkValidation = (err: any) =>
@@ -98,15 +99,10 @@ const selectFilterSort = () => ({
     optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase()),
 })
 
-type MatchPassword = {
-  getFieldValue: (name: string) => any
-  field: string
-}
-
 const matchPassword = ({ getFieldValue, field }: MatchPassword) => ({
   validator(_: any, value: string) {
     if (!value || getFieldValue(field) === value) return Promise.resolve()
-    return Promise.reject(new Error(formTranslate({ id: 'text.passwordDoMatch' })))
+    return Promise.reject(new Error(formatMessage({ id: 'text.passwordDoMatch' })))
   },
 })
 

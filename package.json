@@ -6,7 +6,7 @@
     "start": "npx http-server ./dist",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "npm run build && vite preview"
   },
   "dependencies": {
     "@ant-design/charts": "^2.2.1",

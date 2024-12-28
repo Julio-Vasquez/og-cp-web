@@ -1,17 +1,16 @@
-import { Button, Input, InputRef, TableColumnType } from 'antd'
+import { Button, Input } from 'antd'
 import Highlighter from 'react-highlight-words'
+import type { InputRef, TableColumnType } from 'antd'
 import { useState, useRef, ChangeEvent } from 'react'
+import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 import { FilterDropdownProps, Key } from 'antd/lib/table/interface'
 
-import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import { Props, TableConfig, Filter, Params } from './table.types'
 
-import { props, tableConfig, filter, params } from './table.types'
-import { UserList } from '../../../views/Private/UsersList/usersList.type'
-
-const getColumnSearch = <T,>({
+const getColumnSearch = <Di, T extends Record<string | number | symbol, any>>({
   dataIndex,
   title,
-}: props<T>): TableColumnType<UserList> => {
+}: Props<Di>): TableColumnType<T> => {
   const inputRef = useRef<InputRef>(null)
   const [searchText, setSearchText] = useState<any>('')
 
@@ -64,9 +63,12 @@ const getColumnSearch = <T,>({
       </div>
     ),
     filterIcon: (filtered: boolean) => (
-      <SearchOutlined style={{ color: filtered ? 'var(--primary)' : undefined }} />
+      <SearchOutlined style={{ color: filtered ? '#ffc069' : undefined }} />
     ),
-    onFilter: (value: string | number | boolean, record: any): boolean =>
+    onFilter: (
+      value: Key | boolean,
+      record: Record<string | number, string | number>
+    ): boolean =>
       record[dataIndex]
         ?.toString()
         .toLowerCase()
@@ -89,7 +91,7 @@ const getTableConfig = ({
   recordKey,
   scrollX = 'max-content',
   pagSize,
-}: tableConfig) => {
+}: TableConfig) => {
   let rowKey = (record: any) => record?._id
   const pagination = pagSize
     ? { pagination: { pageSize: pagSize } }
@@ -99,13 +101,13 @@ const getTableConfig = ({
   return { scroll, rowKey, ...pagination }
 }
 
-const filterColumn = ({ key, filters, defaultFilteredValue }: filter) => ({
+const filterColumn = ({ key, filters, defaultFilteredValue }: Filter) => ({
   filters,
   defaultFilteredValue,
   onFilter: (value: string, record: any) => record[key] === value,
 })
 
-const sorterColumn = ({ isDate = false, tag, subTag = undefined }: params) => {
+const sorterColumn = ({ isDate = false, tag, subTag = undefined }: Params) => {
   const sort = (a: string | number, b: string | number) => {
     a = typeof a === 'string' ? a.toLowerCase() : a
     b = typeof b === 'string' ? b.toLowerCase() : b

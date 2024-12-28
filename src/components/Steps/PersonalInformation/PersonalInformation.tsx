@@ -8,7 +8,7 @@ import {
   minLength,
   textField,
   requiredField,
-} from '../../../utils/functions/form.functions'
+} from '../../../utils/functions/form/form.functions'
 
 import './PersonalInformation.scss'
 

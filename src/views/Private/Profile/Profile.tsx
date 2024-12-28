@@ -6,6 +6,7 @@ import { RolTag } from '../../../components/Tags/RolTag'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
+import { Rol } from '../../../utils/types/roles.type'
 import { useMutation, useQuery } from '../../../hooks/api'
 import { Status } from '../../../utils/constants/status.enum'
 import { DataUser } from '../../../utils/types/userData.type'
@@ -17,7 +18,7 @@ import {
   minLength,
   requiredField,
   textField,
-} from '../../../utils/functions/form.functions'
+} from '../../../utils/functions/form/form.functions'
 
 import './Profile.scss'
 
@@ -35,7 +36,7 @@ export const Profile = () => {
   })
 
   const payload = me.status === Status.success ? me.payload : ({} as DataUser)
-  const hiddenMiddleName = payload.middleName === '' ?? true
+  const hiddenMiddleName = payload.middleName === ''
   const title = formatMessage({
     id: 'title.editObj',
     objVars: { obj: formatMessage({ id: 'text.profile' }) },
@@ -154,7 +155,7 @@ export const Profile = () => {
               <Input type='number' />
             </Item>
             <Item name='role' label={formatMessage({ id: 'text.role' })}>
-              <RolTag />
+              <RolTag value={payload.role as Rol} />
             </Item>
           </div>
           <Item label={formatMessage({ id: 'text.mail' })} name='mail' hasFeedback>

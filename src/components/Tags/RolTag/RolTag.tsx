@@ -5,16 +5,12 @@ import useIntl from '../../../hooks/useIntl'
 import { type RolProps } from './rolTag.type'
 import { ROLES_COLOR } from '../../../utils/constants/roles.constants'
 
-export const RolTag: FC<RolProps> = ({ value, id }) => {
+export const RolTag: FC<RolProps> = ({ value }) => {
   const { formatMessage } = useIntl()
 
-  const rolColor = ROLES_COLOR[value! ?? formatMessage({ id: 'text.user' })]
+  const rolColor = ROLES_COLOR[value ?? formatMessage({ id: 'text.user' })]
 
-  return (
-    <Tag id={id!} color={rolColor}>
-      {value}
-    </Tag>
-  )
+  return <Tag color={rolColor}>{value}</Tag>
 }
 
 export default RolTag

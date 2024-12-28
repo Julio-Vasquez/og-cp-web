@@ -11,8 +11,9 @@ import { SignUpGenders } from '../../../views/Public/SignUp/signUp.types'
 import {
   maxLength,
   minLength,
+  phoneField,
   requiredField,
-} from '../../../utils/functions/form.functions'
+} from '../../../utils/functions/form/form.functions'
 
 import './LegalInformation.scss'
 
@@ -87,6 +88,7 @@ export const LegalInformation: FC<LegalInformationProps> = ({
             requiredField({ field: 'text.phoneNumber' }),
             maxLength({ field: 'text.phoneNumber', max: 10 }),
             minLength({ field: 'text.phoneNumber', min: 10 }),
+            phoneField(),
           ]}
           className='contact-data__item'
         >

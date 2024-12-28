@@ -9,7 +9,7 @@ import {
   emailField,
   matchPassword,
   requiredField,
-} from '../../../utils/functions/form.functions'
+} from '../../../utils/functions/form/form.functions'
 
 import './Account.scss'
 

@@ -14,7 +14,7 @@ import {
   maxLength,
   minLength,
   requiredField,
-} from '../../../utils/functions/form.functions'
+} from '../../../utils/functions/form/form.functions'
 
 import './Login.scss'
 
