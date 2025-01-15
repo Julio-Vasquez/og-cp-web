@@ -11,7 +11,7 @@ export const useMenuItems = (data: Menu = []) => {
   const { lng } = useIntl()
 
   const filteredData =
-    data?.filter(({ actions }) => [true, 'partial'].includes(actions.read)) ?? []
+    data.filter(({ actions }) => [true, 'partial'].includes(actions.read)) ?? []
 
   const sortedData = filteredData.sort((a, b) => a.en.localeCompare(b.en))
 

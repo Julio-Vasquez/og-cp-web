@@ -60,4 +60,5 @@ export const Texts = {
   userOrEmail: '{{user}} o {{mail}}',
   users: 'Users',
   recoverPassword: 'Recover password',
+  updateSuccessful: 'Update Successful',
 }

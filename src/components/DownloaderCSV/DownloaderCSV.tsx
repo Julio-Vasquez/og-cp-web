@@ -11,7 +11,7 @@ export const DownloaderCSV: FC<Csv> = ({ data }) => {
   const { formatMessage } = useIntl()
 
   const headers = data.length > 0 ? Object.keys(data[0] as any) : []
-
+  console.log({ headers, data })
   const handleClickDownload = () => jsonToCsvExport({ data, headers })
 
   return (

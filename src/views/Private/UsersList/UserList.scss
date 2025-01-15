@@ -1,16 +1,14 @@
 @use '../../../sass/base/vars';
 
 .up-down-icons {
-    font-size: 20px;
-}
-.main-table {
-    text-align: center;
-    &__title {
-        font-size: 20px;
-        color: vars.$primary-color;
-    }
+  font-size: 20px;
 }
 
-.actions {
-    text-align: center;
+.main-table {
+  text-align: center;
+
+  &__title {
+    font-size: 20px;
+    color: vars.$primary-color;
+  }
 }

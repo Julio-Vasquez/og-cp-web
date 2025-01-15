@@ -36,7 +36,7 @@ export const SignUp = () => {
   const [personaInformation, setPersonaInformation] = useState({})
 
   const { data, loading } = useQuery<AvailableDataTypes>({
-    functionFetch: api.defaultData.availableData,
+    functionFetch: api.defaultData.availableDataUsers,
   })
 
   const { genders = [], typeDocuments = [] } =

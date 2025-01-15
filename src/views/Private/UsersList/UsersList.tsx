@@ -1,127 +1,66 @@
-import { Badge, Table } from 'antd'
+import { Table } from 'antd'
 
-import { RolTag } from '../../../components/Tags/RolTag'
 import { DownloaderCSV } from '../../../components/DownloaderCSV/DownloaderCSV'
-import { UpgradeOrDegrade } from './components/UpgradeOrDegrade/UpgradeOrDegrade'
 
 import api from '../../../api'
 import useIntl from '../../../hooks/useIntl'
+import useData from '../../../hooks/useData'
 import { useQuery } from '../../../hooks/api'
-import type { Person, UserList } from './usersList.type'
-import { Columns } from '../../../utils/types/table.type'
-import { formatDate } from '../../../utils/types/date.util'
-import { State } from '../../../utils/constants/state.enum'
+import type { UserList } from './usersList.type'
+import { GetInfoToken } from '../../../utils/storage/storage'
 import { Status } from '../../../utils/constants/status.enum'
-import { colors } from '../../../utils/constants/statusColor.constants'
-import { getColumnSearch } from '../../../utils/functions/table/table.function'
+import { AUTH } from '../../../utils/constants/redux.constants'
 import { successNotification } from '../../../utils/notifications/notification.action'
 
+import { ColumnsTable } from './components/TableColumns'
+
 import './UserList.scss'
-import useData from '../../../hooks/useData'
-import { AUTH } from '../../../utils/constants/redux.constants'
-import { GetInfoToken } from '../../../utils/storage/storage'
-import { isAdmin } from '../../../utils/role.util'
 
 export const UsersList = () => {
-    const { token } = useData({ reducer: AUTH })
-    const { role } = GetInfoToken(token)
-    const { formatMessage } = useIntl()
+  const { formatMessage } = useIntl()
+  const { token } = useData({ reducer: AUTH })
+  const { role } = GetInfoToken(token)
 
-    const hasRender = isAdmin(role)
-        ? {
-              title: `${formatMessage({ id: 'text.action' })}`,
-              key: 'actions',
-              align: 'center' as 'center',
-              render: (data: UserList) => (
-                  <UpgradeOrDegrade
-                      username={data.user.username}
-                      role={data.role.role}
-                      onCompleted={onCompleted}
-                  />
-              ),
-          }
-        : {}
+  const { data, loading, refetch } = useQuery<UserList[]>({
+    functionFetch: api.user.userList,
+  })
 
-    const columns: Columns<UserList> = [
-        {
-            title: `${formatMessage({ id: 'text.fullName' })}`,
-            dataIndex: 'person',
-            key: 'person',
-            render: ({ publicKey, birthDate, ...values }: Person) =>
-                Object.values(values).join(' '),
-        },
-        {
-            title: `${formatMessage({ id: 'text.birthDate' })}`,
-            dataIndex: ['person', 'birthDate'],
-            key: 'birthDate',
-            render: item => formatDate({ date: new Date(item), location: 'es-Es' }),
-        },
-        {
-            title: `${formatMessage({ id: 'text.mail' })}`,
-            dataIndex: ['user', 'mail'],
-            key: 'mail',
-        },
-        {
-            title: `${formatMessage({ id: 'text.username' })}`,
-            dataIndex: ['user', 'username'],
-            key: 'username',
-            filterSearch: true,
-            ...getColumnSearch({ dataIndex: 'username', title: 'username' }),
-        },
-        {
-            title: `${formatMessage({ id: 'text.role' })}`,
-            dataIndex: ['role', 'role'],
-            key: 'role',
-            width: 100,
-            render: role => <RolTag value={role} />,
-        },
-        {
-            title: `${formatMessage({ id: 'text.state' })}`,
-            dataIndex: ['user', 'state'],
-            key: 'state',
-            align: 'center',
-            render: (state: State) => <Badge status={colors[state]} text={state} />,
-        },
-        hasRender,
-    ]
+  const onCompleted = (): void => {
+    successNotification(formatMessage({ id: 'text.updateSuccessful' }))
+    refetch()
+  }
 
-    const { data, loading, refetch } = useQuery<UserList[]>({
-        functionFetch: api.user.userList,
-    })
+  const payload = data.status === Status.success ? data.payload : ([] as UserList[])
 
-    const onCompleted = (): void => {
-        successNotification('Update successful')
-        refetch()
-    }
+  const prepareData = payload.map(({ person, role, user }) => ({
+    ...user,
+    ...role,
+    ...person,
+  }))
 
-    const payload =
-        data.status === Status.success ? data.payload : ([] as UserList[])
+  console.log(prepareData)
 
-    const prepareData = payload.map(item => ({
-        ...item.user,
-        ...item.role,
-        ...item.person,
-    }))
+  const title = formatMessage({
+    id: 'text.listObj',
+    objVars: { field: formatMessage({ id: 'text.users' }) },
+  })
 
-    return (
-        <div className='main-table'>
-            <h1 className='main-table__title'>
-                {formatMessage({
-                    id: 'text.listObj',
-                    objVars: { field: formatMessage({ id: 'text.users' }) },
-                })}
-            </h1>
-            <DownloaderCSV data={prepareData} />
-            <Table
-                scroll={{ x: 100 }}
-                className='main-table__table'
-                columns={columns}
-                pagination={{ pageSize: 10 }}
-                dataSource={payload}
-                loading={loading}
-                rowKey={row => row.user.publicKey}
-            />
-        </div>
-    )
+  const tableColumns = ColumnsTable({ role, onCompleted })
+
+  return (
+    <div className='main-table'>
+      <h1 className='main-table__title'>{title}</h1>
+      <DownloaderCSV data={prepareData} />
+      <Table
+        scroll={{ x: 100 }}
+        className='main-table__table'
+        columns={tableColumns}
+        pagination={{ pageSize: 10 }}
+        dataSource={prepareData}
+        loading={loading}
+        rowKey={row => row.publicKey}
+      />
+    </div>
+  )
 }
 export default UsersList

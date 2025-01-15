@@ -1,5 +1,8 @@
 import { Query } from './core'
 
-const availableData = () => Query({ url: 'default-data/available-data' })
+const availableDataUsers = () => Query({ url: 'default-data/available-data-users' })
 
-export default { availableData }
+const availableDataPlayers = () =>
+  Query({ url: 'default-data/available-data-players' })
+
+export default { availableDataUsers, availableDataPlayers }

@@ -1,3 +1,3 @@
-const Ranking = () => <div>Ranking</div>
+const Ranking = () => <h2 style={{ textAlign: 'center' }}>Ranking</h2>
 
 export default Ranking
