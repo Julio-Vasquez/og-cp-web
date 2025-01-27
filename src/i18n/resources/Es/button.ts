@@ -10,3 +10,8 @@ export const Button = {
     confirmPassword: 'Confirmar contraseña',
     addObj: 'Agregar a {{name}}',
 }
+
+export const DownloadPdf = {
+    downloadPdf: 'Descargar PDF',
+    downloadPdfTooltip: 'Haz clic para descargar el PDF',
+}

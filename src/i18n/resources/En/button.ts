@@ -9,3 +9,8 @@ export const Button = {
     email: 'Email',
     confirmPassword: 'Confirm password',
 }
+
+export const DownloaderPdf = {
+    downloadPdf: 'Download Pdf',
+    downloadPdfTooltip: 'Click to download the PDF',
+}
